@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="libs/" kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+	<classpathentry kind="lib" path="src/libs/RXTXcomm.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="BuddyDev_eclipse/src/libs"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="src/libs/RSyntaxTextAreaForArduino.jar"/>
+	<classpathentry kind="lib" path="src/libs/log4j-api-2.5.jar"/>
+	<classpathentry kind="lib" path="src/libs/log4j-core-2.5.jar"/>
+	<classpathentry kind="lib" path="src/libs/richtextfx-fat-0.7-M5.jar"/>
+	<classpathentry kind="lib" path="src/libs/buddyCore-1.0.0.jar"/>
+	<classpathentry kind="lib" path="src/libs/BuddyFifeEditor-1.0.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

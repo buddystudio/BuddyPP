@@ -1,0 +1,33 @@
+#######################################
+# 
+RFID KEYWORD
+########################################
+
+
+
+########################################
+Datatypes	(KEYWORD1)
+########################################
+
+
+RFID	KEYWORD1
+
+
+
+#######################################
+# 
+Methods and Functions (KEYWORD2)
+########################################
+
+
+findCard	KEYWORD2
+anticoll	KEYWORD2
+init	KEYWORD2
+
+reset	KEYWORD2
+auth	KEYWORD2
+read	KEYWORD2
+write	KEYWORD2
+selectTag	KEYWORD2
+halt	KEYWORD2
+serNum	KEYWORD2

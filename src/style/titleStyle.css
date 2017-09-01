@@ -1,0 +1,113 @@
+
+.maxBtn
+{  
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleMax.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.maxBtn:hover
+{
+    -fx-background-color: #333333;
+    -fx-background-image: url("../images/titleMax2.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.maxBtn:pressed
+{
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleMax.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.minBtn
+{  
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleMin.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.minBtn:hover
+{
+    -fx-background-color: #333333;
+    -fx-background-image: url("../images/titleMin2.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.minBtn:pressed
+{
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleMin.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.closeBtn
+{  
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleClose.png");
+    -fx-padding: 5 5 5 5;
+    
+}
+
+.closeBtn:hover
+{
+    -fx-background-color: #333333;
+    -fx-background-image: url("../images/titleClose2.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.closeBtn:pressed
+{
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleClose.png");
+    -fx-padding: 5 5 5 5;
+}
+
+/*---------------------------*/
+
+.closeBtn2
+{  
+    /*-fx-background-color: #333333; */
+    -fx-background-image: url("../images/windowTitleClose2.png");
+    /*-fx-padding: 5 5 5 5;*/
+    
+}
+
+.closeBtn2:hover
+{
+    /*-fx-background-color: #333333; */
+    -fx-background-image: url("../images/windowTitleClose.png");
+    /*-fx-padding: 5 5 5 5;*/
+}
+
+.closeBtn2:pressed
+{
+    /*-fx-background-color: #333333; */
+    -fx-background-image: url("../images/titleAbout2.png");
+    /*-fx-padding: 5 5 5 5;*/
+}
+
+
+/*----------------------------- */
+
+.aboutBtn
+{  
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleAbout.png");
+    -fx-padding: 5 5 5 5;
+    
+}
+
+.aboutBtn:hover
+{
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleAbout2.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.aboutBtn:pressed
+{
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleAbout.png");
+    -fx-padding: 5 5 5 5;
+}

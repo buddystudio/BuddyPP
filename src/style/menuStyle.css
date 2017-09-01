@@ -1,0 +1,290 @@
+.openBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsOpenBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.openBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsOpenBtn2.png");
+}
+
+.openBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsOpenBtn.png");
+}
+
+.newBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsNewBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.newBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsNewBtn2.png");
+}
+
+.newBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsNewBtn.png");
+}
+
+.saveBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSaveBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.saveBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSaveBtn2.png");
+}
+
+.saveBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSaveBtn.png");
+}
+
+.saveAsBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSaveAsBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.saveAsBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSaveAsBtn2.png");
+}
+
+.saveAsBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSaveAsBtn.png");
+}
+
+
+.exampleBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsExampleBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.exampleBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsExampleBtn2.png");
+}
+
+.exampleBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsExampleBtn.png");
+}
+
+.undoBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsUndoBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.undoBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsUndoBtn2.png");
+}
+
+.undoBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsUndoBtn.png");
+}
+
+.redoBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsRedoBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.redoBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsRedoBtn2.png");
+}
+
+.redoBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsRedoBtn.png");
+}
+
+.searchBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSearchBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.searchBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSearchBtn2.png");
+}
+
+.searchBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSearchBtn.png");
+}
+
+.libBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsLibBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.libBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsLibBtn2.png");
+}
+
+.libBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsLibBtn.png");
+}
+
+.verifyBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsVerifyBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.verifyBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsVerifyBtn2.png");
+}
+
+.verifyBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsVerifyBtn.png");
+}
+
+.uploadBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsUploadBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.uploadBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsUploadBtn2.png");
+}
+
+.uploadBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsUploadBtn.png");
+}
+
+.comBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsComBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.comBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsComBtn2.png");
+}
+
+.comBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsComBtn.png");
+}
+
+.settingBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSettingBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.settingBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSettingBtn2.png");
+}
+
+.settingBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsSettingBtn.png");
+}
+
+.forumBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsForumBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.forumBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsForumBtn2.png");
+}
+
+.forumBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsForumBtn.png");
+}
+
+.preSetBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsPreSetBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.preSetBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsPreSetBtn2.png");
+}
+
+.preSetBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsPreSetBtn.png");
+}
+
+.tip
+{  
+    -fx-font-size:13px;
+}
