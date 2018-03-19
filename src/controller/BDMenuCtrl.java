@@ -39,7 +39,8 @@ import view.BDMenuView;
  *
  * @author gsh
  */
-public class BDMenuCtrl {
+public class BDMenuCtrl 
+{
 	public BDWorkspaceCtrl workspaceCtrl;
 	private BDMenuView menuView;
 	private static final Logger logger = LogManager.getLogger(BDCompiler.class);
@@ -489,36 +490,43 @@ public class BDMenuCtrl {
 	// 另存为文件
 	private void saveAsFile() 
 	{
-		File file;
-		FileChooser fileChooser = new FileChooser();
-
-		// Set extension filter
-		FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("文本文档  (*.txt)", "*.txt");
-		FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("程序源码  (*.ino)", "*.ino");
-		FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++程序源码  (*.cpp)", "*.cpp");
-		FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C程序源码  (*.c)", "*.c");
-		FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("头文件  (*.h)", "*.h");
-
-		fileChooser.getExtensionFilters().add(extFilterINO);
-		fileChooser.getExtensionFilters().add(extFilterTXT);
-		fileChooser.getExtensionFilters().add(extFilterCPP);
-		fileChooser.getExtensionFilters().add(extFilterC);
-		fileChooser.getExtensionFilters().add(extFilterH);
-
-		// Show open file dialog
-		file = fileChooser.showSaveDialog(null);
-
 		try 
 		{
+			
+			File file;
+			FileChooser fileChooser = new FileChooser();
+	
+			// Set extension filter
+			FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("文本文档  (*.txt)", "*.txt");
+			FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("程序源码  (*.ino)", "*.ino");
+			FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++程序源码  (*.cpp)", "*.cpp");
+			FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C程序源码  (*.c)", "*.c");
+			FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("头文件  (*.h)", "*.h");
+	
+			fileChooser.getExtensionFilters().add(extFilterINO);
+			fileChooser.getExtensionFilters().add(extFilterTXT);
+			fileChooser.getExtensionFilters().add(extFilterCPP);
+			fileChooser.getExtensionFilters().add(extFilterC);
+			fileChooser.getExtensionFilters().add(extFilterH);
+		
+			// Show open file dialog
+			file = fileChooser.showSaveDialog(null);
+			
+			if(file == null)
+			{
+				return;
+			}
+
+		
 			// 写入文件
 			BDCodeWriter.fileWriter(file.getPath(),
-					workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getText());
-			// 更新文件路径
-			workspaceCtrl.workspaceView.workspaceModel.curTab.code.path = file.getPath();
-			// 更新标签名
-			workspaceCtrl.workspaceView.workspaceModel.curTab.tab.setText(file.getName());
-			// 更改保存状态
-			workspaceCtrl.workspaceView.workspaceModel.curTab.code.isSaved = true;
+				workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getText());
+				// 更新文件路径
+				workspaceCtrl.workspaceView.workspaceModel.curTab.code.path = file.getPath();
+				// 更新标签名
+				workspaceCtrl.workspaceView.workspaceModel.curTab.tab.setText(file.getName());
+				// 更改保存状态
+				workspaceCtrl.workspaceView.workspaceModel.curTab.code.isSaved = true;
 		} 
 		catch (IOException ex) 
 		{
