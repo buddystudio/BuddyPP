@@ -512,20 +512,19 @@ public class BDMenuCtrl
 			// Show open file dialog
 			file = fileChooser.showSaveDialog(null);
 			
-			if(file == null)
+			if(file == null || !file.exists())
 			{
 				return;
 			}
-
 		
-			// 写入文件
+			// Write file
 			BDCodeWriter.fileWriter(file.getPath(),
 				workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getText());
-				// 更新文件路径
+				// Update the file name.
 				workspaceCtrl.workspaceView.workspaceModel.curTab.code.path = file.getPath();
-				// 更新标签名
+				// Update the tab name.
 				workspaceCtrl.workspaceView.workspaceModel.curTab.tab.setText(file.getName());
-				// 更改保存状态
+				// Update the tab state
 				workspaceCtrl.workspaceView.workspaceModel.curTab.code.isSaved = true;
 		} 
 		catch (IOException ex) 

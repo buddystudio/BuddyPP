@@ -401,45 +401,45 @@ public class BDGUICtrl
     // 另存为文件
     private void saveAsFile(BDCodeTabModel tab) 
     {
-    	try 
+    		try 
         {
-    		File file;
+    			File file;
 
-    		FileChooser fileChooser = new FileChooser();
-
-    		// 设置文件后缀过滤
-    		FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("文本文档  (*.txt)", "*.txt");
-    		FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("程序源码  (*.ino)", "*.ino");
-    		FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++程序源码  (*.cpp)", "*.cpp");
-    		FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C程序源码  (*.c)", "*.c");
-    		FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("头文件  (*.h)", "*.h");
-
-    		fileChooser.getExtensionFilters().add(extFilterINO);
-    		fileChooser.getExtensionFilters().add(extFilterTXT);
-    		fileChooser.getExtensionFilters().add(extFilterCPP);
-    		fileChooser.getExtensionFilters().add(extFilterC);
-    		fileChooser.getExtensionFilters().add(extFilterH);
-        
-        
-        	// Show open file dialog
-        	//file = fileChooser.showSaveDialog(null);
-        	file = fileChooser.showSaveDialog(gui.saveWindow);
-        	
-        	if(file == null)
+	    		FileChooser fileChooser = new FileChooser();
+	
+	    		// 设置文件后缀过滤
+	    		FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("文本文档  (*.txt)", "*.txt");
+	    		FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("程序源码  (*.ino)", "*.ino");
+	    		FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++程序源码  (*.cpp)", "*.cpp");
+	    		FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C程序源码  (*.c)", "*.c");
+	    		FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("头文件  (*.h)", "*.h");
+	
+	    		fileChooser.getExtensionFilters().add(extFilterINO);
+	    		fileChooser.getExtensionFilters().add(extFilterTXT);
+	    		fileChooser.getExtensionFilters().add(extFilterCPP);
+	    		fileChooser.getExtensionFilters().add(extFilterC);
+	    		fileChooser.getExtensionFilters().add(extFilterH);
+	        
+	        
+	        	// Show open file dialog
+	        	//file = fileChooser.showSaveDialog(null);
+	        	file = fileChooser.showSaveDialog(gui.saveWindow);
+	        	
+	        	if(file == null || !file.exists())
 			{
 				return;
 			}
 
-            // 写入文件
+            // File write.
             BDCodeWriter.fileWriter(file.getPath(), tab.textArea.getText());
 
-            // 更新文件路径
+            // Update the file path.
             tab.code.path = file.getPath();
 
-            // 更新标签名
+            // Update the tab name.
             tab.tab.setText(file.getName());
 
-            // 更改保存状态
+            // Update the tab state.
             tab.code.isSaved = true;
         } 
         catch (IOException ex) 
