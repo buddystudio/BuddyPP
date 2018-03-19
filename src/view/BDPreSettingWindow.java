@@ -28,7 +28,7 @@ import model.BoardMap;
 
 public class BDPreSettingWindow extends BDWindow 
 {
-	public ComboBox combPin = new ComboBox();
+	public ComboBox<String> combPin = new ComboBox<>();
 	public ComboBox<BoardMap> combMode = new ComboBox<BoardMap>();
 	//public CheckBox chkShowDebug=new CheckBox();
 
@@ -67,11 +67,15 @@ public class BDPreSettingWindow extends BDWindow
 		
 		Map<String, Map<String, String>> mapFile = Base.getMapFile();
 		
-		for (String key : mapFile.keySet()) 
+		try
 		{
-			combMode.getItems().add(new BoardMap(mapFile.get(key).get("name"),key));		
+			for (String key : mapFile.keySet()) 
+			{
+				combMode.getItems().add(new BoardMap(mapFile.get(key).get("name"),key));		
+			}
 		}
-		
+		catch(Exception e){}
+
 		combMode.getSelectionModel().selectFirst();
 
 		combPin.getItems().clear();
