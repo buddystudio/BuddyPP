@@ -1,20 +1,8 @@
 # bin floder
 /bin/
 
-# examples floder
-/examples/
-
-# build floder
-/build/
-
-# hardware floder
-/hardware/
-
 # Compiled class file
 *.class
-
-# Mac OS files
-*.DS_Store
 
 # Log file
 *.log
@@ -35,6 +23,3 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-.DS_Store
-examples/.DS_Store
-hardware/arduino/bootloaders/atmega/ATmegaBOOT_168.c

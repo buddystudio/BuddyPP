@@ -1,6 +1,6 @@
 #!/usr/bin/perl
-$prefix = "`dirname "$0"`/..";
-$datadir = "${prefix}/share";
+$prefix = "c:/WinAVR";
+$datadir = "c:/WinAVR/doc";
 $debugger = "avr-gdb";
 
 @argcmds = ( "-b", "--cd", "--command", "--core", "--pid", "--directory",

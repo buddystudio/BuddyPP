@@ -28,7 +28,7 @@
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE. */
 
-/* $Id: 31-avr-libc-1.6.4-builtins.patch,v 1.1 2008/12/11 06:30:57 arcanum Exp $ */
+/* $Id:$ */
 
 /*
    avr/builtins.h - 
