@@ -54,7 +54,7 @@ if [ x$1 != x ] ; then
   prefix=$1
   shift
 else
-  prefix=/c/WinAVR
+  prefix=/usr/local/AVRMacPack-20081213
 fi
 
 # Allow for alternate isysroot in which to find headers
