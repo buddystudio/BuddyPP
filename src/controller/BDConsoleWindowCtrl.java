@@ -20,11 +20,13 @@ import view.BDConsoleWindow;
  *
  * @author gsh
  */
-public class BDConsoleWindowCtrl implements BDProgressStatusListener {
+public class BDConsoleWindowCtrl implements BDProgressStatusListener 
+{
 
 	BDConsoleWindow consoleWindow;
 
-	public BDConsoleWindowCtrl(BDConsoleWindow consoleWindow) {
+	public BDConsoleWindowCtrl(BDConsoleWindow consoleWindow) 
+	{
 		this.consoleWindow = consoleWindow;
 
 		// =====已过时

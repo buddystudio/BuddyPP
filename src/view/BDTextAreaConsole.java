@@ -22,8 +22,8 @@ import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.model.StyleSpans;
 import org.fxmisc.richtext.model.StyleSpansBuilder;
 
-public class BDTextAreaConsole extends CodeArea {
-
+public class BDTextAreaConsole extends CodeArea 
+{
 	int maxLineCount;
 
 	static File errFile;
@@ -53,14 +53,15 @@ public class BDTextAreaConsole extends CodeArea {
 			//+"|(?<AVRDUDE>"+AVRDUDE_PATTERN+")"					
 					+ "|(?<COMMAND>" + COMMAND_PATTERN + ")");
 
-	public static BDTextAreaConsole getTextAreaConsoleInstance() {
+	public static BDTextAreaConsole getTextAreaConsoleInstance() 
+	{
 		if (currentConsole == null)
 			currentConsole = new BDTextAreaConsole();
 		return currentConsole;
 	}
 
-	private BDTextAreaConsole() {
-		
+	private BDTextAreaConsole() 
+	{
 		this.getStylesheets().add("style/compileStyle.css");
 		
 		maxLineCount = Preferences.getInteger("console.length");

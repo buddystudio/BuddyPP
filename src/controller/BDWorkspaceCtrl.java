@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 import model.BDCodeModel;
 import model.BDCodeTabModel;
+import model.BDConsoleTabModel;
 import model.BDParameters;
 import view.BDWorkspaceView;
 
@@ -31,6 +32,7 @@ public final class BDWorkspaceCtrl
         try 
         {
             // 启动时至少有一个代码标签页
+            this.addConsoleTab();
             this.addNewTab();
             
             // 启动时显示开始页面可新建打开文件
@@ -89,5 +91,12 @@ public final class BDWorkspaceCtrl
         
         // 命名序号自加
         BDParameters.codeIdCount++;
+    }
+    
+    public void addConsoleTab() throws AWTException
+    { 
+    	BDConsoleTabModel newTab = new BDConsoleTabModel(this);
+    	
+    	this.workspaceView.getTabs().add(newTab.tab);
     }
 }
