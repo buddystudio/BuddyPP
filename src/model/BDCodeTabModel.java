@@ -42,7 +42,7 @@ import view.BDAssistantMenuView;
  *
  * @author gsh
  */
-public class BDCodeTabModel
+public class BDCodeTabModel extends BDTabModel
 {
 	private static final Logger logger=LogManager.getLogger();
     public Tab tab = new Tab();
@@ -280,6 +280,7 @@ public class BDCodeTabModel
                         public void componentResized(ComponentEvent e) 
                         {
                             workspaceCtrl.workspaceView.workspaceModel.curTab.spp.updateUI();
+
                             //spp.repaint();
                             //textArea.requestFocus();
                             spp.updateUI();

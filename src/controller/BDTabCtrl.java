@@ -29,6 +29,8 @@ import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import model.BDCodeModel;
 import model.BDCodeTabModel;
+import model.BDConsoleTabModel;
+import model.BDTabModel;
 import view.BDDialogWindow;
 import view.BDWorkspaceView;
 
@@ -36,19 +38,21 @@ import view.BDWorkspaceView;
  *
  * @author gsh
  */
-public class BDTabCtrl {
+public class BDTabCtrl 
+{
 	public BDWorkspaceView workspaceView;
 	private BDCodeTabModel tab;
 	private static final Logger logger = LogManager.getLogger(BDTabCtrl.class);
 
-	public BDTabCtrl(BDCodeTabModel tab, BDWorkspaceCtrl workspaceCtrl) {
-		this.tab = tab;
+	public BDTabCtrl(BDCodeTabModel newTab, BDWorkspaceCtrl workspaceCtrl) 
+	{
+		this.tab = (BDCodeTabModel)newTab;
 
-		if (!tab.tab.isSelected()) {
-			tab.tab.setGraphic(tab.hlink2);
+		if (!newTab.tab.isSelected()) {
+			newTab.tab.setGraphic(newTab.hlink2);
 		}
 
-		tab.hlink1.setOnMouseClicked(new EventHandler<javafx.event.Event>() {
+		newTab.hlink1.setOnMouseClicked(new EventHandler<javafx.event.Event>() {
 			@Override
 			public void handle(javafx.event.Event e) {
 
@@ -63,7 +67,7 @@ public class BDTabCtrl {
 			}
 		});
 
-		tab.hlink2.setOnMouseClicked(new EventHandler<javafx.event.Event>() {
+		newTab.hlink2.setOnMouseClicked(new EventHandler<javafx.event.Event>() {
 			@Override
 			public void handle(javafx.event.Event e) {
 				// 删除标签页
@@ -77,23 +81,23 @@ public class BDTabCtrl {
 		});
 
 		// 选择标签页时触发
-		tab.tab.setOnSelectionChanged(new EventHandler<Event>() {
+		newTab.tab.setOnSelectionChanged(new EventHandler<Event>() {
 			@Override
 			public void handle(Event t) {
 				// tab.textArea.repaint();
 				// tab.spp.repaint();
 
-				if (tab.tab.isSelected()) {
+				if (newTab.tab.isSelected()) {
 					// System.out.println(tab.tab.getText() + " select");
 
 					// 设定当前激活的标签
-					workspaceView.workspaceModel.curTab = tab;
+					workspaceView.workspaceModel.curTab = newTab;
 
 					// System.out.println("");
 
-					tab.tab.setGraphic(tab.hlink1);
+					newTab.tab.setGraphic(newTab.hlink1);
 
-					if (!tab.textArea.hasFocus()) {
+					if (!newTab.textArea.hasFocus()) {
 						// tab.textArea.requestFocusInWindow();
 					}
 
@@ -105,7 +109,7 @@ public class BDTabCtrl {
 									Platform.runLater(new Runnable() {
 										@Override
 										public void run() {
-											tab.tab.getContent().requestFocus();
+											newTab.tab.getContent().requestFocus();
 										}
 									});
 								}
@@ -152,12 +156,14 @@ public class BDTabCtrl {
 				} else {
 					// System.out.println(tab.tab.getText() + " out");
 
-					tab.tab.setGraphic(tab.hlink2);
+					newTab.tab.setGraphic(newTab.hlink2);
 
 					// tab.spp.repaint();
 				}
 			}
 		});
+		
+		BDCodeTabModel tab = (BDCodeTabModel)newTab;
 
 		// 文件拖入
 		tab.sn.setOnDragOver(new EventHandler<DragEvent>() {
