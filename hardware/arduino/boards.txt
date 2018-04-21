@@ -1,6 +1,46 @@
 # See: http://code.google.com/p/arduino/wiki/Platforms
 
 ##############################################################
+leonardo.name=Buddy Board Leonardo
+leonardo.upload.protocol=avr109
+leonardo.upload.maximum_size=28672
+leonardo.upload.speed=57600
+leonardo.upload.disable_flushing=true
+leonardo.bootloader.low_fuses=0xff
+leonardo.bootloader.high_fuses=0xd8
+leonardo.bootloader.extended_fuses=0xcb
+leonardo.bootloader.path=caterina
+leonardo.bootloader.file=Caterina-Leonardo.hex
+leonardo.bootloader.unlock_bits=0x3F
+leonardo.bootloader.lock_bits=0x2F
+leonardo.build.mcu=atmega32u4
+leonardo.build.f_cpu=16000000L
+leonardo.build.vid=0x2341
+leonardo.build.pid=0x8036
+leonardo.build.core=arduino
+leonardo.build.variant=leonardo
+
+
+
+##############################################################
+
+uno.name=Buddy Board Uno
+uno.upload.protocol=arduino
+uno.upload.maximum_size=32256
+uno.upload.speed=115200
+uno.bootloader.low_fuses=0xff
+uno.bootloader.high_fuses=0xde
+uno.bootloader.extended_fuses=0x05
+uno.bootloader.path=optiboot
+uno.bootloader.file=optiboot_atmega328.hex
+uno.bootloader.unlock_bits=0x3F
+uno.bootloader.lock_bits=0x0F
+uno.build.mcu=atmega328p
+uno.build.f_cpu=16000000L
+uno.build.core=arduino
+uno.build.variant=standard
+
+##############################################################
 
 uno.name=Arduino Uno
 uno.upload.protocol=arduino

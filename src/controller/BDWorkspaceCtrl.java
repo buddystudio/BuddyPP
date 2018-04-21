@@ -98,5 +98,8 @@ public final class BDWorkspaceCtrl
     	BDConsoleTabModel newTab = new BDConsoleTabModel(this);
     	
     	this.workspaceView.getTabs().add(newTab.tab);
+    	
+    	
+    	
     }
 }

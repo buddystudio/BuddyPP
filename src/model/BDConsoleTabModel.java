@@ -63,6 +63,7 @@ public class BDConsoleTabModel extends BDTabModel
         // 设置标签标题
         tab.setText(title);
         tab.setClosable(false);
+        
         //content.getChildren().add(new VirtualizedScrollPane<>(consoleTxt));
         //tab.setContent(consoleTxt);
     }
