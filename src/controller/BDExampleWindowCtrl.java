@@ -126,7 +126,7 @@ public class BDExampleWindowCtrl
                     if(mouseEvent.getClickCount() == 2)
                     {
                     		// Open the source code file.
-                    		openFile();
+                        	openFile();
                     }
                 }
             }
@@ -143,30 +143,39 @@ public class BDExampleWindowCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-            		// Open the source code file.
-            		openFile();
+	        		// Open the source code file.
+	            	openFile();
             }
         });
     }
     
     public void openFile()
     {
-    		// 验证输入
-        String path = this.rootWindow.tree.getSelectionModel().getSelectedItem().getGraphic().getId();
-        String name = this.rootWindow.tree.getSelectionModel().getSelectedItem().getValue();
+        String path = "";
+        String name = "";
         
+        try
+        {
+        		path = this.rootWindow.tree.getSelectionModel().getSelectedItem().getGraphic().getId();
+        		name = this.rootWindow.tree.getSelectionModel().getSelectedItem().getValue();
+        }
+        catch(Exception e) 
+        {
+        		return;
+        	}
+        
+        // If the file exist.
         if(path != null)
         {
-            // 创建代码
+            // Create new code object.
             BDCodeModel code = new BDCodeModel();
-
-            code.setName(name);
 
             try 
             {
+            		code.setName(name);
             		code.setCodeText (BDCodeReader.readFileByLines2(path + File.separator + name + File.separator + name + ".ino"));
 
-                // 写入文件路径
+                // Get the file's path.
                 code.path = path + File.separator + name + ".ino";
             } 
             catch (FileNotFoundException ex) 
@@ -182,7 +191,7 @@ public class BDExampleWindowCtrl
 
             try 
             {
-                // 添加代码标签页
+                // Add new codeTab to workspace.
             		rootWorkspaceCtrl.addTab(code);
             } 
             catch (AWTException ex) 
@@ -190,9 +199,7 @@ public class BDExampleWindowCtrl
             		logger.error("",ex);
                 //Logger.getLogger(BDExampleWindowCtrl.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            	//workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.repaint();
-            
+
             // 关闭窗口
             // Close the window.
             this.rootWindow.close();

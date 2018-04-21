@@ -78,6 +78,10 @@ public final class BDAboutWindow extends BDWindow
         Label authorTxt = new Label();
         Label licenseTxt = new Label();
         
+        Label line01Txt = new Label();
+        Label line02Txt = new Label();
+        Label line03Txt = new Label();
+        
         Hyperlink linkTxt = new Hyperlink();  
         
         linkTxt.setText("http://buddy.studio"); 
@@ -93,23 +97,33 @@ public final class BDAboutWindow extends BDWindow
         versionTxt.setTextFill(Color.web("#333333"));  
         authorTxt.setTextFill(Color.web("#333333"));
         licenseTxt.setTextFill(Color.web("#333333"));
+        
+        if(BDParameters.os.equals("Mac OS X"))
+        {
+        		line01Txt.setPadding(new Insets(18, 0, 0, 0));
+            line02Txt.setPadding(new Insets(5, 0, 0, 0));
+            line03Txt.setPadding(new Insets(5, 0, 10, 0));
+            licenseTxt.setPadding(new Insets(5, 0, 0, 0));
+            //linkTxt.setPadding(new Insets(10, 0, 0, 0));
+        		
+        }
+        else
+        {
+        		line01Txt.setPadding(new Insets(17, 0, 0, 0));
+            line02Txt.setPadding(new Insets(8, 0, 0, 0));
+            line03Txt.setPadding(new Insets(8, 0, 10, 0));
+            licenseTxt.setPadding(new Insets(8, 0, 0, 0));
+            //linkTxt.setPadding(new Insets(10, 0, 0, 0));
+        }
+
+        line01Txt.setText("本软件由 " + BDParameters.organization + " 开发、调试及发布。");
+        line02Txt.setText("本软件遵从GPL协议开放源代码，在遵照指定约束条件下您");
+        line03Txt.setText("可以自由传播和修改。  当前版本：" + bitTxt + "-" + BDParameters.version);
        
-        copyrightTxt.setPadding(new Insets(18, 0, 0, 0));
-        authorTxt.setPadding(new Insets(8, 0, 0, 0));
-        versionTxt.setPadding(new Insets(8, 0, 10, 0));
-        licenseTxt.setPadding(new Insets(8, 0, 0, 0));
-        //linkTxt.setPadding(new Insets(10, 0, 0, 0));
-       
-        copyrightTxt.setText("本软件由广州梦车间信息科技有限公司旗下 BuddyStudio 工作室");
-        //copyrightTxt.setText("Copyright © 2013-2015 广州梦车间信息科技有限公司 All Rights Reserved.");
-        versionTxt.setText("可以自由传播和修改。  当前版本：" + bitTxt + "-" + BDParameters.version);
-        //authorTxt.setText("本软件由 李宝智、郭少豪 开发、调试及发布");
-        licenseTxt.setText("开发、调试及发布。本软件遵从GPL协议开放源代码，在遵照指定的约束条件下您");
-       
-        contain.getChildren().add(copyrightTxt);
+        contain.getChildren().add(line01Txt);
         //contain.getChildren().add(authorTxt);
-        contain.getChildren().add(licenseTxt);
-        contain.getChildren().add(versionTxt);
+        contain.getChildren().add(line02Txt);
+        contain.getChildren().add(line03Txt);
         contain.getChildren().add(linkTxt);
        
         rootPanel.getChildren().add(contain);
