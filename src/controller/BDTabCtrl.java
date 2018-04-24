@@ -27,10 +27,10 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
+
 import model.BDCodeModel;
 import model.BDCodeTabModel;
-import model.BDConsoleTabModel;
-import model.BDTabModel;
+
 import view.BDDialogWindow;
 import view.BDWorkspaceView;
 
@@ -52,113 +52,79 @@ public class BDTabCtrl
 			newTab.tab.setGraphic(newTab.hlink2);
 		}
 
-		newTab.hlink1.setOnMouseClicked(new EventHandler<javafx.event.Event>() {
+		newTab.hlink1.setOnMouseClicked(new EventHandler<javafx.event.Event>() 
+		{
 			@Override
-			public void handle(javafx.event.Event e) {
-
+			public void handle(javafx.event.Event e) 
+			{
 				// 删除标签页
 				try {
 					removeTab();
 				} catch (Exception ex) {
 					logger.error(ex.getStackTrace());
 				}
-
-				// System.out.println("close click 1");
 			}
 		});
 
-		newTab.hlink2.setOnMouseClicked(new EventHandler<javafx.event.Event>() {
+		newTab.hlink2.setOnMouseClicked(new EventHandler<javafx.event.Event>() 
+		{
 			@Override
-			public void handle(javafx.event.Event e) {
+			public void handle(javafx.event.Event e) 
+			{
 				// 删除标签页
-				try {
+				try 
+				{
 					removeTab();
-				} catch (Exception ex) {
+				} 
+				catch (Exception ex) 
+				{
 					logger.error(ex.getStackTrace());
 				}
-				// System.out.println("close click 2");
 			}
 		});
 
 		// 选择标签页时触发
-		newTab.tab.setOnSelectionChanged(new EventHandler<Event>() {
+		newTab.tab.setOnSelectionChanged(new EventHandler<Event>() 
+		{
 			@Override
-			public void handle(Event t) {
-				// tab.textArea.repaint();
-				// tab.spp.repaint();
-
-				if (newTab.tab.isSelected()) {
-					// System.out.println(tab.tab.getText() + " select");
-
+			public void handle(Event t) 
+			{
+				if (newTab.tab.isSelected()) 
+				{
 					// 设定当前激活的标签
 					workspaceView.workspaceModel.curTab = newTab;
 
-					// System.out.println("");
-
 					newTab.tab.setGraphic(newTab.hlink1);
 
-					if (!newTab.textArea.hasFocus()) {
+					if (!newTab.textArea.hasFocus()) 
+					{
 						// tab.textArea.requestFocusInWindow();
 					}
 
 					// 延时获得焦点
 					final Timeline animation = new Timeline(
-							new KeyFrame(Duration.millis(25), new EventHandler<ActionEvent>() {
+							new KeyFrame(Duration.millis(25), new EventHandler<ActionEvent>() 
+							{
 								@Override
-								public void handle(ActionEvent actionEvent) {
-									Platform.runLater(new Runnable() {
+								public void handle(ActionEvent actionEvent) 
+								{
+									Platform.runLater(new Runnable() 
+									{
 										@Override
-										public void run() {
+										public void run() 
+										{
 											newTab.tab.getContent().requestFocus();
 										}
 									});
 								}
 							}));
+					
 					animation.setCycleCount(1);
 					animation.play();
-
-					/*
-					 * try { Robot robby = new Robot();
-					 * 
-					 * //robby.delay(1000); robby.keyPress(9);
-					 * robby.keyRelease(9);
-					 * 
-					 * } catch (AWTException ex) {
-					 * Logger.getLogger(BDTabCtrl.class.getName()).log(Level.
-					 * SEVERE, null, ex); }
-					 */
-
-					// System.out.println(workspaceView.workspaceModel.curTab.tab.getText()
-					// + " repaint!!!!!");
-					// workspaceView.workspaceModel.curTab.spp.updateUI();
-
-					/*
-					 * PointerInfo a = MouseInfo.getPointerInfo(); Point b =
-					 * a.getLocation();
-					 * 
-					 * Robot robby;
-					 * 
-					 * try { robby = new Robot();
-					 * 
-					 * robby.delay(150);
-					 * 
-					 * robby.mouseMove(b.x, b.y + 20);
-					 * 
-					 * robby.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-					 * robby.mouseRelease(InputEvent.BUTTON1_MASK);
-					 * 
-					 * robby.mouseMove(b.x, b.y);
-					 * 
-					 * } catch (AWTException ex) {
-					 * Logger.getLogger(BDTabCtrl.class.getName()).log(Level.
-					 * SEVERE, null, ex); }
-					 */
-				} else {
-					// System.out.println(tab.tab.getText() + " out");
-
+				} 
+				else 
+				{
 					newTab.tab.setGraphic(newTab.hlink2);
-
-					// tab.spp.repaint();
 				}
 			}
 		});
@@ -166,60 +132,76 @@ public class BDTabCtrl
 		BDCodeTabModel tab = (BDCodeTabModel)newTab;
 
 		// 文件拖入
-		tab.sn.setOnDragOver(new EventHandler<DragEvent>() {
+		tab.sn.setOnDragOver(new EventHandler<DragEvent>() 
+		{
 			// node添加拖入文件事件
-			public void handle(DragEvent event) {
+			public void handle(DragEvent event) 
+			{
 				Dragboard dragboard = event.getDragboard();
 
-				if (dragboard.hasFiles()) {
+				if (dragboard.hasFiles()) 
+				{
 					File file = dragboard.getFiles().get(0);
 
-					if (file.getAbsolutePath().endsWith(".ino") || file.getAbsolutePath().endsWith(".txt")
-							|| file.getAbsolutePath().endsWith(".cpp") || file.getAbsolutePath().endsWith(".c")
-							|| file.getAbsolutePath().endsWith(".h")) {
-						// 用来过滤拖入类型
-						event.acceptTransferModes(TransferMode.COPY);// 接受拖入文件
+					// 过滤拖入类型
+					if (file.getAbsolutePath().endsWith(".ino") 
+							|| file.getAbsolutePath().endsWith(".txt")
+							|| file.getAbsolutePath().endsWith(".cpp") 
+							|| file.getAbsolutePath().endsWith(".c")
+							|| file.getAbsolutePath().endsWith(".h")) 
+					{
+						// 接受拖入文件
+						event.acceptTransferModes(TransferMode.COPY); 
 					}
 				}
-
 			}
 		});
 
-		tab.sn.setOnDragDropped(new EventHandler<DragEvent>() {
+		tab.sn.setOnDragDropped(new EventHandler<DragEvent>() 
+		{
 			// 拖入后松开鼠标触发的事件
-			public void handle(DragEvent event) {
+			public void handle(DragEvent event) 
+			{
 				// get drag enter file
 				Dragboard dragboard = event.getDragboard();
 
-				if (event.isAccepted()) {
-					File file = dragboard.getFiles().get(0); // 获取拖入的文件
+				if (event.isAccepted()) 
+				{
+					// 获取拖入的文件
+					File file = dragboard.getFiles().get(0); 
 
 					// 重新打开
 					BDCodeModel code = new BDCodeModel();
 
 					code.setName(file.getName());
 
-					try {
-						// code.codeTex =
-						// BDCodeReader.readFileByLines(file.getPath());
+					try 
+					{
 						code.setCodeText(BDCodeReader.readFileByLines2(file.getPath()));
 
 						// 写入文件路径
 						code.path = file.getPath();
-					} catch (FileNotFoundException ex) {
+					} 
+					catch (FileNotFoundException ex) 
+					{
 						logger.error(ex.getStackTrace());
 						// Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE,
 						// null, ex);
-					} catch (IOException ex) {
+					} 
+					catch (IOException ex) 
+					{
 						logger.error(ex.getStackTrace());
 						// Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE,
 						// null, ex);
 					}
 
-					try {
+					try 
+					{
 						// 添加新标签页
 						workspaceCtrl.addTab(code);
-					} catch (AWTException ex) {
+					} 
+					catch (AWTException ex) 
+					{
 						logger.error(ex.getStackTrace());
 						// Logger.getLogger(BDTabCtrl.class.getName()).log(Level.SEVERE,
 						// null, ex);
@@ -247,26 +229,27 @@ public class BDTabCtrl
 
 	}
 
-	// private BDDialogWindow dialogWindow = new BDDialogWindow("保存", " 是否保存对" +
-	// tab.tab.getText() + "的修改？");
 	private BDDialogWindow dialogWindow;
 
-	private void removeTab() {
+	private void removeTab() 
+	{
 		// 判断文件是否已经保存
-		if (workspaceView.workspaceModel.curTab.code.isSaved) {
+		if (workspaceView.workspaceModel.curTab.code.isSaved) 
+		{
 			// 文件已保存之前关闭标签页
 			workspaceView.workspaceModel.tabList.remove(tab);
 
 			workspaceView.getTabs().remove(tab.tab);
 
 			// 是否最后一个标签
-			if (workspaceView.workspaceModel.tabList.isEmpty()) {
+			if (workspaceView.workspaceModel.tabList.isEmpty()) 
+			{
 				// 关闭窗口
 				System.exit(0);
 			}
-		} else {
-			// dialogWindow = new BDDialogWindow("保存", " 是否保存对" +
-			// tab.tab.getText() + "文件的修改？");
+		} 
+		else 
+		{
 			dialogWindow = new BDDialogWindow("  保存", "     是否保存对" + tab.tab.getText() + "文件的修改？");
 
 			// 显示提示窗口
@@ -274,21 +257,29 @@ public class BDTabCtrl
 		}
 
 		// 点击确定按钮
-		dialogWindow.okBtn.setOnMouseClicked(new EventHandler<Event>() {
+		dialogWindow.okBtn.setOnMouseClicked(new EventHandler<Event>() 
+		{
 			@Override
-			public void handle(Event t) {
+			public void handle(Event t) 
+			{
 				// 关闭提示窗口
 				dialogWindow.close();
 
 				// 保存文件
-				if (workspaceView.workspaceModel.curTab.code.path == "") {
+				if (workspaceView.workspaceModel.curTab.code.path == "") 
+				{
 					// 另存为文件
 					saveAsFile();
-				} else {
-					try {
+				} 
+				else 
+				{
+					try 
+					{
 						// 保存文件
 						saveFile();
-					} catch (Exception ex) {
+					} 
+					catch (Exception ex) 
+					{
 						// 另存为文件
 						saveAsFile();
 					}
@@ -300,7 +291,8 @@ public class BDTabCtrl
 				workspaceView.getTabs().remove(tab.tab);
 
 				// 是否最后一个标签
-				if (workspaceView.workspaceModel.tabList.isEmpty()) {
+				if (workspaceView.workspaceModel.tabList.isEmpty()) 
+				{
 					// 关闭窗口
 					System.exit(0);
 				}
@@ -308,9 +300,11 @@ public class BDTabCtrl
 		});
 
 		// 点击放弃按钮
-		dialogWindow.giveupBtn.setOnMouseClicked(new EventHandler<Event>() {
+		dialogWindow.giveupBtn.setOnMouseClicked(new EventHandler<Event>() 
+		{
 			@Override
-			public void handle(Event t) {
+			public void handle(Event t) 
+			{
 				// 关闭提示窗口
 				dialogWindow.close();
 
@@ -320,7 +314,8 @@ public class BDTabCtrl
 				workspaceView.getTabs().remove(tab.tab);
 
 				// 是否最后一个标签
-				if (workspaceView.workspaceModel.tabList.isEmpty()) {
+				if (workspaceView.workspaceModel.tabList.isEmpty()) 
+				{
 					// 关闭窗口
 					System.exit(0);
 				}
@@ -328,9 +323,11 @@ public class BDTabCtrl
 		});
 
 		// 点击取消按钮
-		dialogWindow.cancleBtn.setOnMouseClicked(new EventHandler<Event>() {
+		dialogWindow.cancleBtn.setOnMouseClicked(new EventHandler<Event>() 
+		{
 			@Override
-			public void handle(Event t) {
+			public void handle(Event t) 
+			{
 				// 关闭提示窗口
 				dialogWindow.close();
 			}
@@ -338,8 +335,10 @@ public class BDTabCtrl
 	}
 
 	// 保存文件
-	private void saveFile() {
-		try {
+	private void saveFile() 
+	{
+		try 
+		{
 			String code = workspaceView.workspaceModel.curTab.textArea.getText();
 
 			// 写入文件
@@ -350,7 +349,9 @@ public class BDTabCtrl
 			// 更改保存状态
 			workspaceView.workspaceModel.curTab.code.isSaved = true;
 
-		} catch (IOException ex) {
+		} 
+		catch (IOException ex) 
+		{
 			logger.error("", ex);
 			// Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE,
 			// null, ex);
@@ -358,7 +359,8 @@ public class BDTabCtrl
 	}
 
 	// 另存为文件
-	private void saveAsFile() {
+	private void saveAsFile() 
+	{
 		File file;
 
 		FileChooser fileChooser = new FileChooser();
@@ -379,7 +381,8 @@ public class BDTabCtrl
 		// 显示文件选择器
 		file = fileChooser.showSaveDialog(null);
 
-		try {
+		try 
+		{
 			// 写入文件
 			BDCodeWriter.fileWriter(file.getPath(), workspaceView.workspaceModel.curTab.textArea.getText());
 
@@ -391,7 +394,9 @@ public class BDTabCtrl
 
 			// 更改保存状态
 			workspaceView.workspaceModel.curTab.code.isSaved = true;
-		} catch (IOException ex) {
+		} 
+		catch (IOException ex) 
+		{
 			logger.error("", ex);
 			// Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE,
 			// null, ex);

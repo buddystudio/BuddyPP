@@ -363,14 +363,8 @@ public class BDGUICtrl
             //gui.menuPanel.settingPanel.setPrefWidth(gui.visualBounds.getWidth() - 1024 + 265);
             //gui.menuPanel.settingPanel.setPrefWidth(gui.visualBounds.getWidth() - 1024 - 120 + 250);
 
-            gui.workspaceCtrl.workspaceView.workspaceModel.curTab.spp.updateUI();
-
-            // 刷新组建
-            for (BDCodeTabModel tab : gui.workspaceCtrl.workspaceView.workspaceModel.tabList)
-            {
-                //tab.spp.updateUI();
-                //tab.textArea.updateUI();
-            }
+            // 尝试不重绘
+            //gui.workspaceCtrl.workspaceView.workspaceModel.curTab.spp.updateUI();
         }
     	
     }
@@ -401,34 +395,34 @@ public class BDGUICtrl
     // 另存为文件
     private void saveAsFile(BDCodeTabModel tab) 
     {
-    		try 
+    	try 
         {
-    			File file;
+    		File file;
 
-	    		FileChooser fileChooser = new FileChooser();
+	    	FileChooser fileChooser = new FileChooser();
 	
-	    		// 设置文件后缀过滤
-	    		FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("文本文档  (*.txt)", "*.txt");
-	    		FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("程序源码  (*.ino)", "*.ino");
-	    		FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++程序源码  (*.cpp)", "*.cpp");
-	    		FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C程序源码  (*.c)", "*.c");
-	    		FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("头文件  (*.h)", "*.h");
+	    	// 设置文件后缀过滤
+	    	FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("文本文档  (*.txt)", "*.txt");
+	    	FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("程序源码  (*.ino)", "*.ino");
+	    	FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++程序源码  (*.cpp)", "*.cpp");
+	    	FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C程序源码  (*.c)", "*.c");
+	    	FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("头文件  (*.h)", "*.h");
 	
-	    		fileChooser.getExtensionFilters().add(extFilterINO);
-	    		fileChooser.getExtensionFilters().add(extFilterTXT);
-	    		fileChooser.getExtensionFilters().add(extFilterCPP);
-	    		fileChooser.getExtensionFilters().add(extFilterC);
-	    		fileChooser.getExtensionFilters().add(extFilterH);
+	    	fileChooser.getExtensionFilters().add(extFilterINO);
+	    	fileChooser.getExtensionFilters().add(extFilterTXT);
+	    	fileChooser.getExtensionFilters().add(extFilterCPP);
+	    	fileChooser.getExtensionFilters().add(extFilterC);
+	    	fileChooser.getExtensionFilters().add(extFilterH);
 	        
 	        
-	        	// Show open file dialog
-	        	//file = fileChooser.showSaveDialog(null);
-	        	file = fileChooser.showSaveDialog(gui.saveWindow);
+	        // Show open file dialog
+	        //file = fileChooser.showSaveDialog(null);
+	        file = fileChooser.showSaveDialog(gui.saveWindow);
 	        	
-	        	if(file == null || !file.exists())
-			{
-				return;
-			}
+	        if(file == null || !file.exists())
+	        {
+	        	return;
+	        }
 
             // File write.
             BDCodeWriter.fileWriter(file.getPath(), tab.textArea.getText());

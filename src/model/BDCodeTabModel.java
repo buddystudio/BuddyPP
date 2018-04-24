@@ -44,20 +44,10 @@ import view.BDAssistantMenuView;
  */
 public class BDCodeTabModel extends BDTabModel
 {
-	private static final Logger logger=LogManager.getLogger();
-    public Tab tab = new Tab();
-    public BDCodeModel code = new BDCodeModel();
+	private static final Logger logger = LogManager.getLogger();
     
     public RSyntaxTextArea textArea;
     public RTextScrollPane spp = new RTextScrollPane(textArea);
-    
-    public Hyperlink hlink1 = new Hyperlink();
-    public Hyperlink hlink2 = new Hyperlink();
-    
-    private Image image1    = new Image("images/iconTabClose1.png");    // 标签页关闭按钮
-    private Image image2    = new Image("images/iconTabClose2.png");
-    private ImageView iv1   = new ImageView(image1);
-    private ImageView iv2   = new ImageView(image2);
     
     public SwingNode sn = new SwingNode();
     
@@ -69,8 +59,6 @@ public class BDCodeTabModel extends BDTabModel
     
     public BDCodeTabModel(BDCodeModel code, BDWorkspaceCtrl workspaceCtrl) throws AWTException
     {
-        //spp = new RTextScrollPane(textArea);
-        
         assistantMenu = new BDAssistantMenuView("代码助手", workspaceCtrl);
                 
         // 创建菜单控制器
@@ -92,208 +80,131 @@ public class BDCodeTabModel extends BDTabModel
 
         //tab.setGraphic(iv1);
         tab.setGraphic(hlink1);
-        
         tab.setClosable(false);
-        
-        //SwingNode sn = new SwingNode();
-        
-        //sn.setBackground(java.awt.Color.RED);
-        
         tab.setContent(sn);
 
-        //sn.setStyle("-fx-background-color: #ffffff;"); 
-        
-        //SwingUtilities.invokeAndWait(null);
-        
-        //Platform.runLater(new Runnable() {
-        //SwingUtilities.invokeLater(new Runnable() 
-//        Platform.runLater(new Runnable()
-//        {
-//            @Override
-//            public void run() 
-//            {
-//                try {
-//                    this.wait(1000);
-//                } catch (InterruptedException ex) {
-//                    Logger.getLogger(BDCodeTabModel.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//                
-//                
-//            }
-//       });
-        
-       {//----
-           //tab.getContent().setFocusTraversable(false);
-                //swingNode.setContent(new JButton("Click me!"));
+        textArea = new RSyntaxTextArea(20, 60);
+        spp = new RTextScrollPane(textArea);
                 
-                //RSyntaxTextArea textArea = new RSyntaxTextArea(20, 60);
-                textArea = new RSyntaxTextArea(20, 60);
-                spp = new RTextScrollPane(textArea);
+        // 代码规则选用Arduino
+        textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_ARDUINO);
+        //textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_CPLUSPLUS);
                 
-                // 代码规则选用Arduino
-                textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_ARDUINO);
-                //textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_CPLUSPLUS);
+        // 设置代码编辑区文本字体与大小
+        textArea.setFont(new Font(BDParameters.txtAreafont, Font.PLAIN, BDParameters.txtAreafontSize));
                 
-                // 设置代码编辑区文本字体与大小
-                textArea.setFont(new Font(BDParameters.txtAreafont, Font.PLAIN, BDParameters.txtAreafontSize));
+        // 代码可折叠
+        textArea.setCodeFoldingEnabled(true);
                 
-                // 代码可折叠
-                textArea.setCodeFoldingEnabled(true);
-                
-                // 抗锯齿
-                textArea.setAntiAliasingEnabled(true);
+        // 抗锯齿
+        textArea.setAntiAliasingEnabled(true);
                       
-                // 设定制表符的长度
-                textArea.setTabSize(4);
+        // 设定制表符的长度
+        textArea.setTabSize(4);
 
-                textArea.getPopupMenu().add(assistantMenu);
+        textArea.getPopupMenu().add(assistantMenu);
                 
-                //System.out.println(textArea.getPopupMenu());
-                
-                spp = new RTextScrollPane(textArea);
+        spp = new RTextScrollPane(textArea);
 
-                try
-                {
-                     textArea.setText(code.getCodeText());
-                }
-                catch(Exception e)
-                {
-                	logger.error("",e);
-                }
+        try
+        {
+        	textArea.setText(code.getCodeText());
+        }
+        catch(Exception e)
+        {
+        	logger.error("",e);
+        }
 
-                spp.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        spp.setBorder(javax.swing.BorderFactory.createEmptyBorder());
                 
-                spp.setVisible(true);
-                
-                //spp.setBackground(java.awt.Color.RED);
-                
-                sn.setContent(spp);
-                sn.getContent().setBackground(Color.red);
-
-                /*
-                Robot robby = new Robot();
-
-                try
-                {
-                    
-                    robby.delay(1000);
-                    robby.keyPress(9);
-                    robby.keyRelease(9);
-                }
-                catch(Exception e)
-                {
-                
-                }
-                    */
-                
-                // 文本内容监控（插入/删除/改变）时触发
-                textArea.getDocument().addDocumentListener(new DocumentListener() 
-                {
-                    @Override
-                    public void insertUpdate(DocumentEvent e) 
-                    {
-                        //System.out.println(tab.getText() + " insert");
-                        
-                        code.isSaved = false;
-                        code.isCompiled=false;
-                    }
-
-                    @Override
-                    public void removeUpdate(DocumentEvent e) 
-                    {
-                        //System.out.println(tab.getText() + " remove");
-                        
-                        code.isSaved = false;
-                         code.isCompiled=false;
-                    }
-
-                    @Override
-                    public void changedUpdate(DocumentEvent e) 
-                    {
-                        //System.out.println(tab.getText() + " changed");
-                        
-                        code.isSaved = false;
-                         code.isCompiled=false;
-                    }
-                });
+        spp.setVisible(true);
+        sn.setContent(spp);
+        sn.getContent().setBackground(Color.red);
 
                 
-                textArea.addFocusListener(new FocusAdapter() 
-                {
-                    @Override
-                    public void focusGained(final FocusEvent arg0) 
-                    {
-                        //System.out.println(workspaceCtrl.workspaceView.workspaceModel.curTab.tab.getText() + " foucs!!!!!");
-                        //textArea.requestFocus();
-                        
-                        spp.updateUI(); 
-                    }
+        // 文本内容监控（插入/删除/改变）时触发
+        textArea.getDocument().addDocumentListener(new DocumentListener() 
+        {
+        	@Override
+            public void insertUpdate(DocumentEvent e) 
+            {
+        		code.isSaved = false;
+                code.isCompiled=false;
+            }
 
-                    @Override
-                    public void focusLost(FocusEvent e) 
-                    {
-                        //System.out.println(workspaceCtrl.workspaceView.workspaceModel.curTab.tab.getText() + " lost foucs!!!!!");
-                        
-                        if(tab.equals(workspaceCtrl.workspaceView.workspaceModel.curTab.tab))
-                        {
-                            //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.requestFocusInWindow();
-                            
-                            // 延时获得焦点
-                            final Timeline animation = new Timeline(
-                                        new KeyFrame(Duration.millis(25),
-                                        new EventHandler<ActionEvent>() 
+            @Override
+            public void removeUpdate(DocumentEvent e) 
+            {
+            	code.isSaved = false;
+            	code.isCompiled=false;
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) 
+            {
+            	code.isSaved = false;
+            	code.isCompiled = false;
+            }
+        });
+
+        textArea.addFocusListener(new FocusAdapter() 
+        {
+        	@Override
+            public void focusGained(final FocusEvent arg0) 
+            { 
+        		spp.updateUI(); 
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) 
+            {
+            	if(tab.equals(workspaceCtrl.workspaceView.workspaceModel.curTab.tab))
+                { 
+            		// 延时获得焦点
+                    final Timeline animation = new Timeline(
+                    		new KeyFrame(Duration.millis(25),
+                            new EventHandler<ActionEvent>() 
+                            {
+                    			@Override
+                                public void handle(ActionEvent actionEvent) 
+                                {
+                    				Platform.runLater(new Runnable() 
+                                    {
+                                    	@Override
+                                        public void run() 
                                         {
-                                            @Override
-                                            public void handle(ActionEvent actionEvent) 
-                                            {
-                                                Platform.runLater(new Runnable() 
-                                                {
-                                                    @Override
-                                                    public void run() 
-                                                    {
-                                                        tab.getContent().requestFocus();
+                                    		tab.getContent().requestFocus();
                                                         
-                                                        spp.updateUI();
-                                                    }
-                                                });
-                                            }
-                                        }));
-                                animation.setCycleCount(1);
-                                animation.play();
-                            }
-                    }
-                });
+                                    		spp.updateUI();
+                                        }
+                                     });
+                                 }
+                             }));
+                    
+                      animation.setCycleCount(1);
+                      animation.play();
+                }
+            }
+        });
 
-                textArea.addComponentListener(new ComponentAdapter() 
-                {
-                        @Override
-                        public void componentResized(ComponentEvent e) 
-                        {
-                            //textArea.updateUI();
-                            spp.updateUI();
-                        }    
-                });
+        textArea.addComponentListener(new ComponentAdapter() 
+        {
+        	@Override
+            public void componentResized(ComponentEvent e) 
+            {
+        		spp.updateUI();
+            }    
+        });
                 
-                spp.addComponentListener(new ComponentAdapter() 
-                {
-                        @Override
-                        public void componentResized(ComponentEvent e) 
-                        {
-                            workspaceCtrl.workspaceView.workspaceModel.curTab.spp.updateUI();
+        spp.addComponentListener(new ComponentAdapter() 
+        {
+        	@Override
+            public void componentResized(ComponentEvent e) 
+            {
+        		workspaceCtrl.workspaceView.workspaceModel.curTab.spp.updateUI();
 
-                            //spp.repaint();
-                            //textArea.requestFocus();
-                            spp.updateUI();
-                        }
-                });
-       }//----
-
-    }
-
-    /*
-    public void setOnSelectionChanged(EventHandler<Event> eventHandler) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    */
-    
+                spp.updateUI();
+             }
+        });
+    } 
 }

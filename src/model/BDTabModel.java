@@ -13,8 +13,10 @@ public class BDTabModel
     public Hyperlink hlink1 = new Hyperlink();
     public Hyperlink hlink2 = new Hyperlink();
     
-    private Image image1    = new Image("images/iconTabClose1.png");    // 标签页关闭按钮
-    private Image image2    = new Image("images/iconTabClose2.png");
-    private ImageView iv1   = new ImageView(image1);
-    private ImageView iv2   = new ImageView(image2);
+ // 标签页关闭按钮
+    protected Image image1    = new Image("images/iconTabClose1.png");
+    protected Image image2    = new Image("images/iconTabClose2.png");
+    
+    protected ImageView iv1   = new ImageView(image1);
+    protected ImageView iv2   = new ImageView(image2);
 }

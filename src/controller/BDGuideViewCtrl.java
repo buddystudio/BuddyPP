@@ -75,8 +75,8 @@ public class BDGuideViewCtrl
                     consoleView.hideBtn.setImage(consoleView.spRightIco);
                 }
                 
-                // 重绘
-                workspaceCtrl.workspaceView.workspaceModel.curTab.spp.updateUI();
+                // 重绘（尝试不重绘的效果）
+                //workspaceCtrl.workspaceView.workspaceModel.curTab.spp.updateUI();
             }
         });
         
