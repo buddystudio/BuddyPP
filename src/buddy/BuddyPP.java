@@ -56,13 +56,9 @@ public class BuddyPP extends Application
         System.out.println(arch);
         System.out.println(os);
         if(arch.contains("64"))
-        {
-        	System.out.println("64 bit");
-        }
+        {System.out.println("64 bit");}
         else
-        {
-        	System.out.println("32 bit");
-        }
+        {System.out.println("32 bit");}
          */
         
         // 初始化基本配置参数
@@ -71,13 +67,15 @@ public class BuddyPP extends Application
         Preferences.init(null);
         Preferences.set("upload.verbose", "true");
         
-        java.util.List<String> serialports = BDSerial.list();  // 获取所有可用的COM端口
+        // 获取所有可用的COM端口
+        java.util.List<String> serialports = BDSerial.list();  
         
         BDParameters.serialports = serialports;
        
         if(!serialports.isEmpty())
         {
-            Preferences.set("serial.port", serialports.get(serialports.size() - 1)); // 指定串口
+        	// 指定串口
+            Preferences.set("serial.port", serialports.get(serialports.size() - 1)); 
             BDParameters.connectCom = Preferences.get("serial.port");
         }
 

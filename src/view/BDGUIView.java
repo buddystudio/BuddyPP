@@ -12,9 +12,12 @@ import controller.BDWorkspaceCtrl;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -72,17 +75,35 @@ public class BDGUIView
         
         // Set application icon.
         this.primaryStage.getIcons().add(new Image("/images/icon_64.png"));
+
+        DropShadow ds = new DropShadow();
         
-        // 设置背景颜色
-        root.setStyle("-fx-border-color: #333333;"); 
+        ds.setOffsetX(50.0);
+        ds.setOffsetY(50.0);
+        ds.setColor(Color.GREEN);
         
+        Reflection reflection = new Reflection();
+        
+        ds.setInput(reflection);
+        
+        // Set main panel style
+        String panelStyle = "";
+        
+        panelStyle += "-fx-background-radius:2px;";
+        panelStyle += "-fx-border-color: #333333;";
+        panelStyle += "-fx-border-width:2px;";
+        panelStyle += "-fx-border-radius:3px;";
+        panelStyle += "-fx-background:transparent;";
+        
+        root.setStyle(panelStyle);
+
         topPanel.getChildren().add(this.titlePanel);
         topPanel.getChildren().add(this.menuPanel);
         
         this.root.setTop(this.topPanel);
         this.root.setLeft(this.toolsPanel);
         this.root.setCenter(this.workspacePanel);
-        //this.root.setRight(this.consolePanel); // 右侧栏暂时屏蔽
+        this.root.setRight(this.consolePanel); // 右侧栏暂时屏蔽
         
         // 初始化主窗口并设置尺寸
         //Scene scene = new Scene(this.root, 1024 - 110, 640 + 10 + 10);
@@ -99,8 +120,13 @@ public class BDGUIView
         scene.getStylesheets().add("style/magnetStyle.css");
         scene.getStylesheets().add("style/msgWindowStyle.css");
         
+        // Set panel background transparent.
+        scene.setFill(Color.TRANSPARENT);
+        
         primaryStage.setTitle("Buddy++");
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(scene);
+        
         primaryStage.show();
     }
 }
