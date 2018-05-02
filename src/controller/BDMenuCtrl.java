@@ -477,6 +477,7 @@ public class BDMenuCtrl
 		{
 			// 写入文件
 			BDCodeWriter.fileWriter(workspaceCtrl.workspaceView.workspaceModel.curTab.code.path, code);
+			
 			// 更改保存状态
 			workspaceCtrl.workspaceView.workspaceModel.curTab.code.isSaved = true;
 
@@ -488,12 +489,12 @@ public class BDMenuCtrl
 	}
 
 	// 另存为文件
+	@SuppressWarnings("null")
 	private void saveAsFile() 
 	{
 		try 
 		{
-			
-			File file;
+			File file = null;
 			FileChooser fileChooser = new FileChooser();
 	
 			// Set extension filter
@@ -508,11 +509,15 @@ public class BDMenuCtrl
 			fileChooser.getExtensionFilters().add(extFilterCPP);
 			fileChooser.getExtensionFilters().add(extFilterC);
 			fileChooser.getExtensionFilters().add(extFilterH);
-		
-			// Show open file dialog
-			file = fileChooser.showSaveDialog(null);
-			
-			if(file == null || !file.exists())
+
+			try
+			{
+				// Show open file dialog
+				file = fileChooser.showSaveDialog(null);
+			}
+			catch(Exception ex){}
+
+			if(file == null)
 			{
 				return;
 			}

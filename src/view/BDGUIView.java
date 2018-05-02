@@ -75,16 +75,6 @@ public class BDGUIView
         
         // Set application icon.
         this.primaryStage.getIcons().add(new Image("/images/icon_64.png"));
-
-        DropShadow ds = new DropShadow();
-        
-        ds.setOffsetX(50.0);
-        ds.setOffsetY(50.0);
-        ds.setColor(Color.GREEN);
-        
-        Reflection reflection = new Reflection();
-        
-        ds.setInput(reflection);
         
         // Set main panel style
         String panelStyle = "";
