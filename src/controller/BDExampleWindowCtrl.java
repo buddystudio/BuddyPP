@@ -13,7 +13,9 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mongcj.util.io.BDCodeReader;
+import io.BDCodeReader;
+
+//import com.mongcj.util.io.BDCodeReader;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -40,10 +42,10 @@ public class BDExampleWindowCtrl
 	
     public BDExampleWindowCtrl(BDExampleWindow exampleWindow, BDWorkspaceCtrl workspaceCtrl)
     {
-    		rootWindow = exampleWindow;
-    		rootWorkspaceCtrl = workspaceCtrl;
+    	rootWindow = exampleWindow;
+    	rootWorkspaceCtrl = workspaceCtrl;
  
-    		// Get example files path.
+    	// Get example files path.
         String path = System.getProperty("user.dir") + File.separator + "examples";
         
         // 测试目录
@@ -94,15 +96,15 @@ public class BDExampleWindowCtrl
  
                     		for (int k = 0; k < exSubList2.length; k++) 
                     		{
-                            if (exSubList2[k].isDirectory()) 
-                            {
-                                ImageView iv4 = new ImageView(icon2);
+                    			if (exSubList2[k].isDirectory()) 
+                    			{
+                    				ImageView iv4 = new ImageView(icon2);
                                 
-                                iv4.setId(exSubList[j].getPath());
+                    				iv4.setId(exSubList[j].getPath());
 
-                                TreeItem<String> item3 = new TreeItem<String> (exSubList2[k].getName(), iv4);
-                                item2.getChildren().add(item3);
-                            }
+                    				TreeItem<String> item3 = new TreeItem<String> (exSubList2[k].getName(), iv4);
+                    				item2.getChildren().add(item3);
+                    			}
                     		}
                        
                        item.getChildren().add(item2);
@@ -121,12 +123,12 @@ public class BDExampleWindowCtrl
             @Override
             public void handle(MouseEvent mouseEvent) 
             {
-            		if(mouseEvent.getButton().equals(MouseButton.PRIMARY))
+            	if(mouseEvent.getButton().equals(MouseButton.PRIMARY))
                 {
                     if(mouseEvent.getClickCount() == 2)
                     {
-                    		// Open the source code file.
-                        	openFile();
+                    	// Open the source code file.
+                        openFile();
                     }
                 }
             }
@@ -143,8 +145,8 @@ public class BDExampleWindowCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-	        		// Open the source code file.
-	            	openFile();
+	        	// Open the source code file.
+	            openFile();
             }
         });
     }
@@ -156,13 +158,13 @@ public class BDExampleWindowCtrl
         
         try
         {
-        		path = this.rootWindow.tree.getSelectionModel().getSelectedItem().getGraphic().getId();
-        		name = this.rootWindow.tree.getSelectionModel().getSelectedItem().getValue();
+        	path = this.rootWindow.tree.getSelectionModel().getSelectedItem().getGraphic().getId();
+        	name = this.rootWindow.tree.getSelectionModel().getSelectedItem().getValue();
         }
         catch(Exception e) 
         {
-        		return;
-        	}
+        	return;
+        }
         
         // If the file exist.
         if(path != null)
@@ -172,31 +174,32 @@ public class BDExampleWindowCtrl
 
             try 
             {
-            		code.setName(name);
-            		code.setCodeText (BDCodeReader.readFileByLines2(path + File.separator + name + File.separator + name + ".ino"));
+            	code.setName(name);
+            	//code.setCodeText (BDCodeReader.readFileByLines2(path + File.separator + name + File.separator + name + ".ino"));
+            	code.setCodeText (BDCodeReader.readFileByLines(path + File.separator + name + File.separator + name + ".ino"));
 
                 // Get the file's path.
                 code.path = path + File.separator + name + ".ino";
             } 
             catch (FileNotFoundException ex) 
             {
-            		logger.error("",ex);
+            	logger.error("",ex);
                 //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
             } 
             catch (IOException ex) 
             {
-            		logger.error("",ex);
+            	logger.error("",ex);
                 //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             try 
             {
                 // Add new codeTab to workspace.
-            		rootWorkspaceCtrl.addTab(code);
+            	rootWorkspaceCtrl.addTab(code);
             } 
             catch (AWTException ex) 
             {
-            		logger.error("",ex);
+            	logger.error("",ex);
                 //Logger.getLogger(BDExampleWindowCtrl.class.getName()).log(Level.SEVERE, null, ex);
             }
 
@@ -204,6 +207,5 @@ public class BDExampleWindowCtrl
             // Close the window.
             this.rootWindow.close();
         }
-    	
     }
 }
