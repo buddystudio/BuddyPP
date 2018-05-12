@@ -473,7 +473,10 @@ public class BDMenuCtrl
 	// 保存文件
 	private void saveFile() 
 	{
-		String code = workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getText();
+		//String code = workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getText();
+		//workspaceCtrl.workspaceView.workspaceModel.curTab.code.setCodeText(code);
+		
+		String code = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode();
 		workspaceCtrl.workspaceView.workspaceModel.curTab.code.setCodeText(code);
 		
 		try 

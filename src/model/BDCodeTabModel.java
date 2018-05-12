@@ -138,7 +138,7 @@ public class BDCodeTabModel extends BDTabModel
             public void insertUpdate(DocumentEvent e) 
             {
         		code.isSaved = false;
-                code.isCompiled=false;
+                code.isCompiled = false;
             }
 
             @Override
@@ -223,6 +223,8 @@ public class BDCodeTabModel extends BDTabModel
         
         editorView = new BDEditorView(editorUrl);
 		editorCtrl = new BDEditorCtrl(editorView, tmpCode);
+		
+		editorCtrl.codeModel = code;
 		
 		tab.setContent(editorView);	
     } 

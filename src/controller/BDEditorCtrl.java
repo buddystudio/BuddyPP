@@ -8,13 +8,14 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 import javafx.scene.web.WebView;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+import model.BDCodeModel;
 import netscape.javascript.JSObject;
 import view.BDEditorView;
 
 public class BDEditorCtrl
 {
+	public BDCodeModel codeModel;
+	
 	public WebView webView;
 	
 	public BDEditorCtrl(BDEditorView editor, String code) 
@@ -45,33 +46,6 @@ public class BDEditorCtrl
 	                        System.out.println("Code length is: " + getLength());
 	                        
 	                        // ***** End test *****
-	                        
-	                        //webView.getEngine().executeScript("editor.session.setMode(\"ace/mode/c_cpp\");");
-	                        
-	                        // Set code font size.
-	                        //webView.getEngine().executeScript("editor.setFontSize(14);");
-	                        
-	                        // Insert Code.
-	                        //webView.getEngine().executeScript("editor.insert(\"" + code2 +"\");");
-	                        
-	                        //webView.getEngine().executeScript("editor.gotoLine(3);");
-	                        
-	                        // Find
-	                        //webView.getEngine().executeScript("editor.find('int',{backwards: false,wrap: false,caseSensitive: false,wholeWord: false,regExp: false});");
-	                        
-	                        // Find Next and Find Previous.
-	                        //webView.getEngine().executeScript("editor.findNext();");
-	                        //webView.getEngine().executeScript("editor.findPrevious();");
-	                        
-	                        // Replace.
-	                        //webView.getEngine().executeScript("editor.find('int');");
-	                        //webView.getEngine().executeScript("editor.replace('float');");
-	                        
-	                        // ReplaceAll.
-	                        //webView.getEngine().executeScript("editor.find('int');");
-	                        //webView.getEngine().executeScript("editor.replaceAll('float');");
-	                        
-	                        //addJSHandlers(editor.root);
 
 	                        webView.getEngine().executeScript("editor.getSession().on('change', function(e) {test.onChange();});");
 	                        webView.getEngine().executeScript("editor.getSession().selection.on('changeCursor', function(e) {test.onChangeCursor();});");
@@ -94,6 +68,9 @@ public class BDEditorCtrl
 	
 	public void onChange()
     {
+		codeModel.isSaved = false;
+        codeModel.isCompiled = false;
+        
 		System.out.println("on change...");
     }
 	
