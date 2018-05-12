@@ -23,6 +23,7 @@ import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rtextarea.RTextScrollPane;
 
 import controller.BDAssistantMenuCtrl;
+import controller.BDEditorCtrl;
 import controller.BDWorkspaceCtrl;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -37,6 +38,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import view.BDAssistantMenuView;
+import view.BDEditorView;
 
 /**
  *
@@ -44,6 +46,13 @@ import view.BDAssistantMenuView;
  */
 public class BDCodeTabModel extends BDTabModel
 {
+	private String curPath = this.getClass().getResource("/").getPath();
+	private String editorUrl = "file://" + curPath + "resources/ace-builds-master/editor.html";
+	private String acePath = "/resources/ace-builds-master/src-noconflict";
+	
+	public BDEditorView editorView;
+	public BDEditorCtrl editorCtrl;
+	
 	private static final Logger logger = LogManager.getLogger();
     
     public RSyntaxTextArea textArea;
@@ -81,7 +90,7 @@ public class BDCodeTabModel extends BDTabModel
         //tab.setGraphic(iv1);
         tab.setGraphic(hlink1);
         tab.setClosable(false);
-        tab.setContent(sn);
+        //tab.setContent(sn);
 
         textArea = new RSyntaxTextArea(20, 60);
         spp = new RTextScrollPane(textArea);
@@ -206,5 +215,15 @@ public class BDCodeTabModel extends BDTabModel
                 spp.updateUI();
              }
         });
+        
+        //tab.setContent(sn);
+        //------------------------------------------------------------------------
+        
+        String tmpCode = code.getCodeText().replaceAll("\"","\\\\\"");
+        
+        editorView = new BDEditorView(editorUrl);
+		editorCtrl = new BDEditorCtrl(editorView, tmpCode);
+		
+		tab.setContent(editorView);	
     } 
 }

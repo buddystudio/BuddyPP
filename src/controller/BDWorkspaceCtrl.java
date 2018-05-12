@@ -14,6 +14,7 @@ import model.BDCodeModel;
 import model.BDCodeTabModel;
 import model.BDConsoleTabModel;
 import model.BDParameters;
+
 import view.BDWorkspaceView;
 
 /**
@@ -23,7 +24,7 @@ import view.BDWorkspaceView;
 public final class BDWorkspaceCtrl 
 {
     public BDWorkspaceView workspaceView;
-    private static final Logger logger=LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
     
     public BDWorkspaceCtrl(BDWorkspaceView workspaceView)
     {
@@ -98,8 +99,5 @@ public final class BDWorkspaceCtrl
     	BDConsoleTabModel newTab = new BDConsoleTabModel(this);
     	
     	this.workspaceView.getTabs().add(newTab.tab);
-    	
-    	
-    	
     }
 }

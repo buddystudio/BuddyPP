@@ -35,7 +35,8 @@ public class BDCodeModel
     	setName("sketch_" + BDParameters.codeIdCount);
     	
     	// 新建文件默认内容
-    	setCodeText("\nvoid setup()\n{\n\t// 初始化代码\n\n}\n\nvoid loop()\n{\n\t// 主程序代码\n\n}\n");      
+    	//setCodeText("\nvoid setup()\n{\n\t// 初始化代码\n\n}\n\nvoid loop()\n{\n\t// 主程序代码\n\n}\n");
+    	setCodeText("\\nvoid setup()\\n{\\n\\t// 初始化代码\\n\\n}\\n\\nvoid loop()\\n{\\n\\t// 主程序代码\\n\\n}\\n");  
     }
 
     public String preprocess(String buildPath) throws BDRunnerException 

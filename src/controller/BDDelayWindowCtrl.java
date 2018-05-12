@@ -50,7 +50,6 @@ public class BDDelayWindowCtrl
                 }
                 
                 // 生成语句
-                
                 String code = "delay(" + value + ");";
                 
                 //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.insert(code, workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretPosition());

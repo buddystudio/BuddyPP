@@ -18,7 +18,7 @@ import com.mongcj.util.debug.BDCompiler;
 import com.mongcj.util.debug.BDRunnerException;
 import com.mongcj.util.debug.BDSerial;
 import com.mongcj.util.debug.BDUploader;
-import com.mongcj.util.io.BDCodeReader;
+import io.BDCodeReader;
 import com.mongcj.util.io.BDCodeWriter;
 
 import javafx.application.Platform;
@@ -128,14 +128,17 @@ public class BDMenuCtrl
 				file = fileChooser.showOpenDialog(null);
 				if(file==null)
 					return;
+				
 				BDCodeModel code = new BDCodeModel();
+				
 				code.setName(file.getName());
 
 				try 
 				{
 					// code.codeTex =
 					// BDCodeReader.readFileByLines(file.getPath());
-					code.setCodeText(BDCodeReader.readFileByLines2(file.getPath()));
+					//code.setCodeText(BDCodeReader.readFileByLines2(file.getPath()));
+					code.setCodeText(BDCodeReader.readFileByLines(file.getPath()));
 
 					// 写入文件路径
 					code.path = file.getPath();
@@ -524,7 +527,8 @@ public class BDMenuCtrl
 		
 			// Write file
 			BDCodeWriter.fileWriter(file.getPath(),
-				workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getText());
+				//workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getText());
+				workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode());
 				// Update the file name.
 				workspaceCtrl.workspaceView.workspaceModel.curTab.code.path = file.getPath();
 				// Update the tab name.
