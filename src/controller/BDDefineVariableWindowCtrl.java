@@ -159,7 +159,6 @@ public class BDDefineVariableWindowCtrl
                     // 判断是否为长整型
                     try
                     {
-                       
                         Long.parseLong(value);
                         
                         if(type.equals("unsigned long"))
@@ -264,7 +263,6 @@ public class BDDefineVariableWindowCtrl
                     }
                 }
                 
-                
                 // 生成语句
                 if(value.equals(""))
                 {
@@ -279,9 +277,11 @@ public class BDDefineVariableWindowCtrl
                 //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.insert(code, workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretPosition());
 
                 // 插入代码
-                BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
+                //BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
                 
-                codeAgent.insert(code);
+                //codeAgent.insert(code);
+                
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
                 
                 // 关闭窗口
                 defineVariableWindow.close();

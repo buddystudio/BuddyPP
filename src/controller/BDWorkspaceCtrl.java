@@ -66,7 +66,9 @@ public final class BDWorkspaceCtrl
         BDTabCtrl tabCtrl = new BDTabCtrl(newTab, this);
         
         tabCtrl.workspaceView = this.workspaceView;
-
+        
+        // Select the new code tab.
+        //newTab.tab.getTabPane().getSelectionModel().get
     }
     
     public void addNewTab() throws AWTException
@@ -92,6 +94,9 @@ public final class BDWorkspaceCtrl
         
         // 命名序号自加
         BDParameters.codeIdCount++;
+        
+        // Select the first code tab;
+        newTab.tab.getTabPane().getSelectionModel().selectLast();
     }
     
     public void addConsoleTab() throws AWTException

@@ -250,7 +250,8 @@ public class BDMenuCtrl
 			public void handle(ActionEvent event) 
 			{
 				// 恢复
-				workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.undoLastAction();
+				//workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.undoLastAction();
+				workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.undo();
 			}
 		});
 
@@ -261,7 +262,8 @@ public class BDMenuCtrl
 			public void handle(ActionEvent event) 
 			{
 				// 重做
-				workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.redoLastAction();
+				//workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.redoLastAction();
+				workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.redo();
 			}
 		});
 
@@ -272,9 +274,11 @@ public class BDMenuCtrl
 			public void handle(ActionEvent event) 
 			{
 				// 搜索
-				BDSearchWindowCtrl serchWindowCtrl = new BDSearchWindowCtrl(menuView.searchWindow, workspaceCtrl);
+				//BDSearchWindowCtrl serchWindowCtrl = new BDSearchWindowCtrl(menuView.searchWindow, workspaceCtrl);
 				// 显示搜索窗口
-				menuView.searchWindow.show();
+				//menuView.searchWindow.show();
+				
+				workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.search();
 			}
 		});
 

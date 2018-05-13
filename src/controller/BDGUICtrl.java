@@ -79,7 +79,7 @@ public class BDGUICtrl
             {
                 // 最小化
                 //gui.primaryStage.setIconified(true);
-            		setMinWindow();
+            	setMinWindow();
             }
         });
         
@@ -93,18 +93,16 @@ public class BDGUICtrl
                 {
                     if(mouseEvent.getClickCount() == 2)
                     {
-                    		// Don't work in Mac OS X.
-                    	 	if(!BDParameters.os.equals("Mac OS X"))
-                    	 	{
-                    	 		// 窗口最大化与恢复
-                        		setResizeWindow();
-                    	 	}
-                    		
+                    	// Don't work in Mac OS X.
+                    	if(!BDParameters.os.equals("Mac OS X"))
+                    	{
+                    	 	// 窗口最大化与恢复
+                        	setResizeWindow();
+                    	}	
                     }
                 }
             }
         });
-        
         
         // 点击关于按钮
         gui.titlePanel.aboutBtn.setOnAction(new EventHandler<ActionEvent>() 
