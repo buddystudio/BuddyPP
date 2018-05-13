@@ -153,14 +153,10 @@ class BDDrWindowCtrl
                     // 选变量
                     code += drWindow.value1CmbBox.getValue().toString() + " = digitalRead(" +  dgValue + ");";
                 }
-
-                // 插入语句
-                //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.insert(code, workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretPosition());
+             
+                code = code.replaceAll("\"","\\\\\"");
                 
-                // 插入代码
-                BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
-                
-                codeAgent.insert(code);
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
 
                 // 关闭窗口
                 drWindow.close();

@@ -31,7 +31,8 @@ public class BDComWindowCtrl implements BDMessageConsumer {
 	BDComWindow bdComWindow;
 	private final static Logger logger = LogManager.getLogger();
 
-	public BDComWindowCtrl(BDComWindow comWindow) {
+	public BDComWindowCtrl(BDComWindow comWindow) 
+	{
 		// 设定波特率
 		BDParameters.curComRate = comWindow.rateComoBox.getValue().toString();
 

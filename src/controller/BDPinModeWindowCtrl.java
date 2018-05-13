@@ -75,15 +75,11 @@ class BDPinModeWindowCtrl
 
                 // 生成语句
                 String code = "pinMode(" + dgValue + ", " + pinModeWindow.combMode.getValue() + ");";
-
-                //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.insert(code, workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretPosition());
+             
+                // 插入语句
+                code = code.replaceAll("\"","\\\\\"");
                 
-                
-
-                // 插入代码
-                BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
-                
-                codeAgent.insert(code);
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
                 
                 // 关闭窗口
                 pinModeWindow.close();

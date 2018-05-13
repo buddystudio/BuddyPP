@@ -59,25 +59,8 @@ public class BDWhileWindowCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-                // 验证输入
-                BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
-                
-                // 获取当前行数
-                //int lineNum = workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretLineNumber();
-                int lineNum = codeAgent.getCaretLineNumber();
-                
                 // 获取词位
-                int tabCount = 0;
-                
-                try
-                {
-                    //tabCount = workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getTokenListForLine(lineNum).getLexeme().length();
-                    tabCount = codeAgent.getTabCount();
-                }
-                catch(Exception e)
-                {
-                    tabCount = 0;
-                }
+            	int tabCount = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCurColumn() - 1;
                 
                 // 生成语句
                 String code = "";
@@ -85,36 +68,36 @@ public class BDWhileWindowCtrl
                 // 判断do-while
                 if(whileWindow.isBranch.isSelected() == true)
                 {
-                    code += "do\n";
+                    code += "do\\n";
                     
                     // 添加缩进
                     for(int i = 0; i < tabCount; i++)
                     {
-                        code += "\t";
+                        code += " ";
                     } 
                     
-                    code += "{\n";
-                    
-                    // 添加缩进
-                    for(int i = 0; i <= tabCount; i++)
-                    {
-                        code += "\t";
-                    }
-                    
-                    code += "\n";
+                    code += "{\\n";
                     
                     // 添加缩进
                     for(int i = 0; i < tabCount; i++)
                     {
-                        code += "\t";
+                        code += " ";
                     }
                     
-                    code += "}\n";
+                    code += "\\n";
                     
                     // 添加缩进
                     for(int i = 0; i < tabCount; i++)
                     {
-                        code += "\t";
+                        code += " ";
+                    }
+                    
+                    code += "}\\n";
+                    
+                    // 添加缩进
+                    for(int i = 0; i < tabCount; i++)
+                    {
+                        code += " ";
                     }    
                     
                     if(whileWindow.value1CmbBox.getValue().equals("") && whileWindow.value2CmbBox.getValue().equals(""))
@@ -147,46 +130,43 @@ public class BDWhileWindowCtrl
                 {
                     if(whileWindow.value1CmbBox.getValue().equals("") && whileWindow.value2CmbBox.getValue().equals(""))
                     {
-                        code += "while(1);\n";
+                        code += "while(1);\\n";
                     }
                     else
                     {
-                        code += "while(" + whileWindow.value1CmbBox.getValue().toString() + " " + whileWindow.optCmbBox.getValue().toString() + " " + whileWindow.value2CmbBox.getValue().toString() + ")\n";
+                        code += "while(" + whileWindow.value1CmbBox.getValue().toString() + " " + whileWindow.optCmbBox.getValue().toString() + " " + whileWindow.value2CmbBox.getValue().toString() + ")\\n";
                     }
 
                     // 添加缩进
                     for(int i = 0; i < tabCount; i++)
                     {
-                        code += "\t";
+                        code += " ";
                     }    
 
-                    code += "{\n";
-
-                    // 添加缩进
-                    for(int i = 0; i <= tabCount; i++)
-                    {
-                        code += "\t";
-                    } 
-
-                    code += "\n";
+                    code += "{\\n";
 
                     // 添加缩进
                     for(int i = 0; i < tabCount; i++)
                     {
-                        code += "\t";
+                        code += " ";
                     } 
 
-                    //code += "}\n";
+                    code += "\\n";
+
+                    // 添加缩进
+                    for(int i = 0; i < tabCount; i++)
+                    {
+                        code += " ";
+                    } 
+
+                    //code += "}\\n";
                     code += "}";
                 }
                 
                 // 插入语句
-                //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.insert(code, workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretPosition());
+                code = code.replaceAll("\"","\\\\\"");
                 
-                // 插入代码
-                //BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
-                
-                codeAgent.insert(code);
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
                 
                 // 关闭窗口
                 whileWindow.close();

@@ -133,24 +133,8 @@ public class BDForWindowCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-                BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
-                
-                // 获取当前行数
-                //int lineNum = workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretLineNumber();
-                int lineNum = codeAgent.getCaretLineNumber();
-                
                 // 获取词位
-                int tabCount = 0;
-                
-                try
-                {
-                    //tabCount = workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getTokenListForLine(lineNum).getLexeme().length();
-                    tabCount = codeAgent.getTabCount();
-                }
-                catch(Exception e)
-                {
-                    tabCount = 0;
-                }
+                int tabCount = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCurColumn() - 1;
                 
                 // 生成语句
                 String code = "";
@@ -158,10 +142,9 @@ public class BDForWindowCtrl
                 
                 BDParameters.variableId++;
                 
+                // 简单模式
                 if(forWindow.norRB.isSelected() == true)
-                {
-                    // 简单模式
-                    
+                { 
                     // 缺少输入返回
                     if(forWindow.countTxt.getText().equals(""))
                     {
@@ -171,31 +154,31 @@ public class BDForWindowCtrl
                         return;
                     }
                         
-                    code = "for(int " + vID + " = 0; " + vID + " < " + forWindow.countTxt.getText() + "; " + vID + "++) \n";
+                    code = "for(int " + vID + " = 0; " + vID + " < " + forWindow.countTxt.getText() + "; " + vID + "++) \\n";
                     
                     // 添加缩进
                     for(int i = 0; i < tabCount; i++)
                     {
-                        code += "\t";
+                        code += " ";
                     }
                     
-                    code += "{\n";
-                    
-                    // 添加缩进
-                    for(int i = 0; i <= tabCount; i++)
-                    {
-                        code += "\t";
-                    }
-                    
-                    code += "\n";
+                    code += "{\\n";
                     
                     // 添加缩进
                     for(int i = 0; i < tabCount; i++)
                     {
-                        code += "\t";
+                        code += " ";
                     }
                     
-                    //code += "}\n";
+                    code += "\\n";
+                    
+                    // 添加缩进
+                    for(int i = 0; i < tabCount; i++)
+                    {
+                        code += " ";
+                    }
+                    
+                    //code += "}\\n";
                     code += "}";
                 }
                 else
@@ -238,55 +221,38 @@ public class BDForWindowCtrl
                     
                    // 高级模式
                    code = "for(int " + vID + " = " +  forWindow.initValueTxt.getText() + "; " + vID + " " + forWindow.operaCmbBox.getValue() + " "  + forWindow.limitValueTxt.getText() + "; " + vID + " " + opt + " " + forWindow.stepValueTxt.getText() + ")";
-                   code += "\n";
+                   code += "\\n";
                    
                    // 添加缩进
                    for(int i = 0; i < tabCount; i++)
                    {
-                       code += "\t";
+                       code += " ";
                    }
                    
-                   code += "{\n";
-                   
-                   // 添加缩进
-                   for(int i = 0; i <= tabCount; i++)
-                   {
-                       code += "\t";
-                   }
-                   
-                   code += "\n";
+                   code += "{\\n";
                    
                    // 添加缩进
                    for(int i = 0; i < tabCount; i++)
                    {
-                       code += "\t";
+                       code += " ";
                    }
                    
-                  //code += "}\n";
+                   code += "\\n";
+                   
+                   // 添加缩进
+                   for(int i = 0; i < tabCount; i++)
+                   {
+                       code += " ";
+                   }
+                   
+                  //code += "}\\n";
                    code += "}";
                 }
 
-                //System.out.println(workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getTokenListForLine(lineNum));
-                //System.out.println(workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getTokenListForLine(lineNum).getLexeme().length());
-               //System.out.println(workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getTokenListForLine(lineNum).getTextArray().length);
-                //System.out.println("offset:" + workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretOffsetFromLineStart());
-                //System.out.println("offset:" + workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getli);
-                /*
-                try {
-                    System.out.println("offset:" + workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getLineStartOffset(lineNum));
-                } catch (BadLocationException ex) {
-                    Logger.getLogger(BDForWindowCtrl.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                        */
-                //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getTabSize();
-                //System.out.println("line: " + workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretLineNumber());
+                // 插入语句
+                code = code.replaceAll("\"","\\\\\"");
                 
-                //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.insert(code, workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretPosition());
-
-                // 插入代码
-                
-                
-                codeAgent.insert(code);
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
                 
                 // 关闭窗口
                 forWindow.close();

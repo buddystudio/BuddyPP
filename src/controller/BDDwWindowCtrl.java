@@ -138,14 +138,11 @@ public class BDDwWindowCtrl
                 String code  = "";
 
                 code += "digitalWrite(" + dgValue + ", " + dwWindow.value2CmbBox.getValue().toString() + ");";
-
+             
                 // 插入语句
-                //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.insert(code, workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretPosition());
-
-                // 插入代码
-                BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
+                code = code.replaceAll("\"","\\\\\"");
                 
-                codeAgent.insert(code);
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
                 
                 // 关闭窗口
                 dwWindow.close();

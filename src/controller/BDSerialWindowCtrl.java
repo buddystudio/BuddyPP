@@ -64,28 +64,14 @@ public class BDSerialWindowCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-                BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
-                
-                // 获取当前行数
-                int lineNum = codeAgent.getCaretLineNumber();
-                
-                // 获取词位
-                int tabCount = 0;
-                
-                try
-                {
-                    tabCount = codeAgent.getTabCount();
-                }
-                catch(Exception e)
-                {
-                    tabCount = 0;
-                }
+            	// 获取词位
+                int tabCount = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCurColumn() - 1;
                 
                 String rate = comtWindow.value2CmbBox.getValue().toString();
                 
                 String code  = "Serial.begin(" + rate + ");  ";
                 
-                code += "// 建议将该行代码剪贴到setup()函数内。 \n\n";
+                code += "// 建议将该行代码剪贴到setup()函数内。 \\n\\n";
                 
                 String valName = comtWindow.value1CmbBox.getValue().toString();
                 
@@ -104,105 +90,104 @@ public class BDSerialWindowCtrl
                 // 添加缩进
                 for(int i = 0; i < tabCount; i++)
                 {
-                    code += "\t";
+                    code += " ";
                 }
 
                 if(comtWindow.value1CmbBox.getSelectionModel().getSelectedIndex() == -1)
             	{
-            		code += "String " + comtWindow.value1CmbBox.getValue().toString() + " = \"\";\n\n";
+            		code += "String " + comtWindow.value1CmbBox.getValue().toString() + " = \"\";\\n\\n";
             	}
             	else
             	{
             		// 没有选中直接输入
-                    code += comtWindow.value1CmbBox.getValue().toString() + " = \"\";\n\n";
+                    code += comtWindow.value1CmbBox.getValue().toString() + " = \"\";\\n\\n";
             	}
 
                 // 添加缩进
                 for(int i = 0; i < tabCount; i++)
                 {
-                    code += "\t";
+                    code += " ";
                 }
                 
-                code += "while (Serial.available() > 0)\n";
+                code += "while (Serial.available() > 0)\\n";
                 
                 // 添加缩进
                 for(int i = 0; i < tabCount; i++)
                 {
-                    code += "\t";
+                    code += " ";
                 }
                 
-                code += "{\n";
+                code += "{\\n";
                 
                 // 添加缩进
-                for(int i = 0; i <= tabCount; i++)
+                for(int i = 0; i < tabCount + 4; i++)
                 {
-                    code += "\t";
+                    code += " ";
                 }
                 
-                code += comtWindow.value1CmbBox.getValue().toString() + " += char(Serial.read());\n";
+                code += comtWindow.value1CmbBox.getValue().toString() + " += char(Serial.read());\\n";
                 
                 // 添加缩进
-                for(int i = 0; i <= tabCount; i++)
+                for(int i = 0; i < tabCount + 4; i++)
                 {
-                    code += "\t";
+                    code += " ";
                 }
                 
-                code += "delay(2);\n";
-                
-                // 添加缩进
-                for(int i = 0; i < tabCount; i++)
-                {
-                    code += "\t";
-                }
-                
-                code += "}\n\n";
+                code += "delay(2);\\n";
                 
                 // 添加缩进
                 for(int i = 0; i < tabCount; i++)
                 {
-                    code += "\t";
+                    code += " ";
                 }
                 
-                code += "if(" + comtWindow.value1CmbBox.getValue().toString() + ".length() > 0)\n";
+                code += "}\\n\\n";
                 
                 // 添加缩进
                 for(int i = 0; i < tabCount; i++)
                 {
-                    code += "\t";
+                    code += " ";
                 }
                 
-                code += "{\n";
-                
-                // 添加缩进
-                for(int i = 0; i <= tabCount; i++)
-                {
-                    code += "\t";
-                }
-                
-                code += "Serial.println(" + comtWindow.value1CmbBox.getValue().toString() + ");\n";
-                
-                // 添加缩进
-                for(int i = 0; i <= tabCount; i++)
-                {
-                    code += "\t";
-                }
-                
-                code += comtWindow.value1CmbBox.getValue().toString() + " = \"\";\n";
+                code += "if(" + comtWindow.value1CmbBox.getValue().toString() + ".length() > 0)\\n";
                 
                 // 添加缩进
                 for(int i = 0; i < tabCount; i++)
                 {
-                    code += "\t";
+                    code += " ";
                 }
                 
-                //code += "}\n";
+                code += "{\\n";
+                
+                // 添加缩进
+                for(int i = 0; i < tabCount + 4; i++)
+                {
+                    code += " ";
+                }
+                
+                code += "Serial.println(" + comtWindow.value1CmbBox.getValue().toString() + ");\\n";
+                
+                // 添加缩进
+                for(int i = 0; i < tabCount + 4; i++)
+                {
+                    code += " ";
+                }
+                
+                code += comtWindow.value1CmbBox.getValue().toString() + " = \"\";\\n";
+                
+                // 添加缩进
+                for(int i = 0; i < tabCount; i++)
+                {
+                    code += " ";
+                }
+                
+                //code += "}\\n";
                 code += "}";
 
                 // 插入语句
-                //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.insert(code, workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretPosition());
-
-                // 插入代码
-                codeAgent.insert(code);
+                code = code.replaceAll("\"","\\\\\"");
+                
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
                 
                 // 关闭窗口
                 comtWindow.close();

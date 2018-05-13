@@ -52,17 +52,10 @@ public class BDDelayWindowCtrl
                 // 生成语句
                 String code = "delay(" + value + ");";
                 
-                //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.insert(code, workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretPosition());
+                // 插入语句
+                code = code.replaceAll("\"","\\\\\"");
                 
-                // 插入代码
-                BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
-                
-                codeAgent.insert(code);
-                
-               // System.out.println(combType.getValue().toString() + " " + txtName.getText() + " " + txtValue.getText() + ";");
-                //System.out.println("delay(" + delayWindow.timeTxt.getText() + ");");
-                
-                //textArea.insert("123", textArea.getCaretPosition());
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
                 
                 // 关闭窗口
                 delayWindow.root.close();

@@ -93,24 +93,8 @@ public class BDSwitchWindowCtrl
                         return;
                     }
 
-                    BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
-                    
-                    // 获取当前行数
-                    //int lineNum = workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretLineNumber();
-                    int lineNum = codeAgent.getCaretLineNumber();
-
                     // 获取词位
-                    int tabCount = 0;
-
-                    try
-                    {
-                        //tabCount = workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getTokenListForLine(lineNum).getLexeme().length();
-                        tabCount = codeAgent.getTabCount();
-                    }
-                    catch(Exception e)
-                    {
-                        tabCount = 0;
-                    }
+                    int tabCount = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCurColumn() - 1;
 
                     // 生成代码
                     String code = "";
@@ -127,24 +111,24 @@ public class BDSwitchWindowCtrl
                         value = "";
                     }
 
-                    code += "switch(" + value + ")\n";
+                    code += "switch(" + value + ")\\n";
 
                     // 添加缩进
                     for(int i = 0; i < tabCount; i++)
                     {
-                        code += "\t";
+                        code += " ";
                     }    
 
-                    code += "{\n";
+                    code += "{\\n";
 
                     boolean flag = false;
 
                     for(int i = 0; i < switchWindow.valuesList.size(); i++)
                     {
                         // 添加缩进
-                        for(int j = 0; j <= tabCount; j++)
+                        for(int j = 0; j < tabCount + 4; j++)
                         {
-                            code += "\t";
+                            code += " ";
                         }
 
                         if(switchWindow.valuesList.get(i).getValue().equals(""))
@@ -154,15 +138,15 @@ public class BDSwitchWindowCtrl
                             //switchWindow.valuesList.get(i).setPromptText("请输入条件");
                         }
 
-                        code += "case " + switchWindow.valuesList.get(i).getValue().toString() + ":\n\n";
+                        code += "case " + switchWindow.valuesList.get(i).getValue().toString() + ":\\n\\n";
 
                         // 添加缩进
-                        for(int j = 0; j <= tabCount; j++)
+                        for(int j = 0; j < tabCount + 4; j++)
                         {
-                            code += "\t\t";
+                            code += " ";
                         }
 
-                        code += "break;\n\n";
+                        code += "break;\\n\\n";
 
                         //System.out.println(switchWindow.valuesList.get(i).getValue().toString());
                     }
@@ -174,29 +158,26 @@ public class BDSwitchWindowCtrl
                     }
 
                     // 添加缩进
-                    for(int i = 0; i <= tabCount; i++)
+                    for(int i = 0; i < tabCount + 4; i++)
                     {
-                        code += "\t";
+                        code += " ";
                     }    
 
-                    code += "default :\n";
+                    code += "default :\\n";
 
                     // 添加缩进
                     for(int i = 0; i < tabCount; i++)
                     {
-                        code += "\t";
+                        code += " ";
                     } 
 
-                    //code += "}\n";
+                    //code += "}\\n";
                     code += "}";
 
                     // 插入语句
-                    //workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.insert(code, workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getCaretPosition());
-
-                    // 插入代码
-                    //BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
-                
-                    codeAgent.insert(code);
+                    code = code.replaceAll("\"","\\\\\"");
+                    
+                    workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
                 
                     // 关闭窗口
                     switchWindow.close();
