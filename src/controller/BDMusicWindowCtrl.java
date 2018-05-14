@@ -2,7 +2,7 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import model.BDCodeAgent;
+
 import view.BDMusicNote;
 import view.BDMusicWindow;
 

@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import model.BDCodeAgent;
 import view.BDArWindow;
 
 /**

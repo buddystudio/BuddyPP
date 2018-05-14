@@ -10,8 +10,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Toggle;
-import model.BDCodeAgent;
+
 import model.BDParameters;
+
 import view.BDForWindow;
 
 /**

@@ -2,7 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import model.BDCodeAgent;
+
 import view.BDColorWindow;
 
 public class BDColorWindowCtrl 

@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import model.BDCodeAgent;
+
 import view.BDAwWindow;
 
 /**
