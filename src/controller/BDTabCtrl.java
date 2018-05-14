@@ -5,15 +5,12 @@
  */
 package controller;
 
-import java.awt.AWTException;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mongcj.util.io.BDCodeReader;
 import com.mongcj.util.io.BDCodeWriter;
 
 import javafx.animation.KeyFrame;
@@ -22,13 +19,9 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
-import model.BDCodeModel;
 import model.BDCodeTabModel;
 
 import view.BDDialogWindow;
@@ -131,6 +124,8 @@ public class BDTabCtrl
 		
 		BDCodeTabModel tab = (BDCodeTabModel)newTab;
 
+		
+		/*
 		// 文件拖入
 		tab.sn.setOnDragOver(new EventHandler<DragEvent>() 
 		{
@@ -156,7 +151,10 @@ public class BDTabCtrl
 				}
 			}
 		});
+		
+		*/
 
+		/*
 		tab.sn.setOnDragDropped(new EventHandler<DragEvent>() 
 		{
 			// 拖入后松开鼠标触发的事件
@@ -206,27 +204,10 @@ public class BDTabCtrl
 						// Logger.getLogger(BDTabCtrl.class.getName()).log(Level.SEVERE,
 						// null, ex);
 					}
-
-					/*
-					 * try {
-					 * 
-					 * // 直接打开
-					 * 
-					 * String tmpCode =
-					 * BDCodeReader.readFileByLines2(file.getPath());
-					 * 
-					 * tab.textArea.setText(tmpCode);
-					 * 
-					 * } catch (FileNotFoundException ex) {
-					 * Logger.getLogger(BDTabCtrl.class.getName()).log(Level.
-					 * SEVERE, null, ex); } catch (IOException ex) {
-					 * Logger.getLogger(BDTabCtrl.class.getName()).log(Level.
-					 * SEVERE, null, ex); }
-					 */
 				}
 			}
 		});
-
+	*/
 	}
 
 	private BDDialogWindow dialogWindow;
