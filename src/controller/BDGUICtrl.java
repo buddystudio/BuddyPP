@@ -372,7 +372,7 @@ public class BDGUICtrl
     {
         try 
         {
-            String code = tab.textArea.getText();
+            String code = tab.editorCtrl.getCode();
 
             // 写入文件
             BDCodeWriter.fileWriter(tab.code.path, code);
@@ -423,7 +423,7 @@ public class BDGUICtrl
 	        }
 
             // File write.
-            BDCodeWriter.fileWriter(file.getPath(), tab.textArea.getText());
+            BDCodeWriter.fileWriter(file.getPath(), tab.editorCtrl.getCode());
 
             // Update the file path.
             tab.code.path = file.getPath();

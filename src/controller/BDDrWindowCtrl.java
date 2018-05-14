@@ -25,7 +25,7 @@ class BDDrWindowCtrl
         Matcher Variables;
         
         // 临时字符串
-        String tmpStr = workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getText();
+        String tmpStr = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode();
         
         // 在字符串首加入一个换行符
         tmpStr = "/n" + tmpStr;

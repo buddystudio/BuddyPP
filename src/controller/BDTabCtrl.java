@@ -89,11 +89,14 @@ public class BDTabCtrl
 
 					newTab.tab.setGraphic(newTab.hlink1);
 
+					/*
 					if (!newTab.textArea.hasFocus()) 
 					{
-						// tab.textArea.requestFocusInWindow();
+						tab.textArea.requestFocusInWindow();
 					}
+					*/
 
+					/*
 					// 延时获得焦点
 					final Timeline animation = new Timeline(
 							new KeyFrame(Duration.millis(25), new EventHandler<ActionEvent>() 
@@ -111,9 +114,11 @@ public class BDTabCtrl
 									});
 								}
 							}));
+							
+							*/
 					
-					animation.setCycleCount(1);
-					animation.play();
+					//animation.setCycleCount(1);
+					//animation.play();
 				} 
 				else 
 				{
@@ -121,10 +126,9 @@ public class BDTabCtrl
 				}
 			}
 		});
-		
+
 		BDCodeTabModel tab = (BDCodeTabModel)newTab;
 
-		
 		/*
 		// 文件拖入
 		tab.sn.setOnDragOver(new EventHandler<DragEvent>() 
@@ -320,7 +324,7 @@ public class BDTabCtrl
 	{
 		try 
 		{
-			String code = workspaceView.workspaceModel.curTab.textArea.getText();
+			String code = workspaceView.workspaceModel.curTab.editorCtrl.getCode();
 
 			// 写入文件
 			BDCodeWriter.fileWriter(workspaceView.workspaceModel.curTab.code.path, code);
@@ -365,7 +369,7 @@ public class BDTabCtrl
 		try 
 		{
 			// 写入文件
-			BDCodeWriter.fileWriter(file.getPath(), workspaceView.workspaceModel.curTab.textArea.getText());
+			BDCodeWriter.fileWriter(file.getPath(), workspaceView.workspaceModel.curTab.editorCtrl.getCode());
 
 			// 更新文件路径
 			workspaceView.workspaceModel.curTab.code.path = file.getPath();

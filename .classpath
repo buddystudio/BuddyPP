@@ -8,11 +8,9 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="BuddyDev_eclipse/src/libs"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="src/libs/RSyntaxTextAreaForArduino.jar"/>
 	<classpathentry kind="lib" path="src/libs/log4j-api-2.5.jar"/>
 	<classpathentry kind="lib" path="src/libs/log4j-core-2.5.jar"/>
 	<classpathentry kind="lib" path="src/libs/richtextfx-fat-0.7-M5.jar"/>
 	<classpathentry kind="lib" path="src/libs/buddyCore-1.0.0.jar"/>
-	<classpathentry kind="lib" path="src/libs/BuddyFifeEditor-1.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

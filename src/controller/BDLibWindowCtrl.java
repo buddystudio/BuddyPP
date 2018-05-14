@@ -26,13 +26,8 @@ public class BDLibWindowCtrl{
     {
         BDParameters.libsList.clear();
         
-        //String path = "D:\\Develop\\Arduino\\libraries";
-        //String path = System.getProperty("user.dir") + "\\libraries";
-        
-        String path = System.getProperty("user.dir") + File.separator + "libraries";
-        
         // 获得相对路径
-        //System.out.println("path: " + System.getProperty("user.dir"));
+        String path = System.getProperty("user.dir") + File.separator + "libraries";
         
         // 测试目录
         File file = new File(path);
@@ -64,7 +59,7 @@ public class BDLibWindowCtrl{
                         //if(libFileList[j].getName().indexOf(".h") != -1)
                         if(libFileList[j].getName().contains(".h"))
                         {
-                            //System.out.println("\t" + libFileList[j].getName());
+                            //System.out.println(" " + libFileList[j].getName());
 
                             lib.libsList.add(libFileList[j].getName());
                         }
@@ -77,8 +72,6 @@ public class BDLibWindowCtrl{
         	logger.error("",ex);
         }
        
-        
-       
        libWindow.listView.setItems(libWindow.strList);
        
        libWindow.importBtn.setOnAction(new EventHandler<ActionEvent>() 
@@ -86,12 +79,7 @@ public class BDLibWindowCtrl{
             @Override
             public void handle(ActionEvent event) 
             {
-                // 验证输入
-                //System.out.println(libWindow.listView.getSelectionModel().getSelectedIndex());
-                
                 int index = libWindow.listView.getSelectionModel().getSelectedIndex();
-                
-                //System.out.println(BDParameters.libsList.get(index).libName);
 
                 // 生成语句
                 
@@ -101,10 +89,14 @@ public class BDLibWindowCtrl{
                 
                 for(int i = 0; i < len; i++)
                 {
-                    code += "#include <" + BDParameters.libsList.get(index).libsList.get(i) + ">\n";
+                    code += "#include <" + BDParameters.libsList.get(index).libsList.get(i) + ">\\n";
                 }
 
-                workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.insert(code, 0);
+                // 插入语句
+                code = code.replaceAll("\"","\\\\\"");
+                
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.moveCursorTo(0, 0);
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
 
                 // 关闭窗口
                 libWindow.close();

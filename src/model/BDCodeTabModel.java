@@ -8,10 +8,8 @@ package model;
 import java.awt.AWTException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import controller.BDEditorCtrl;
 import controller.BDWorkspaceCtrl;
-import javafx.embed.swing.SwingNode;
 import javafx.scene.Cursor;
 import view.BDEditorView;
 
@@ -29,10 +27,6 @@ public class BDCodeTabModel extends BDTabModel
 	public BDEditorCtrl editorCtrl;
 	
 	private static final Logger logger = LogManager.getLogger();
-    
-    public RSyntaxTextArea textArea;
-    
-    //public SwingNode sn = new SwingNode();
     
     public BDCodeTabModel(BDCodeModel code, BDWorkspaceCtrl workspaceCtrl) throws AWTException
     {
@@ -53,11 +47,6 @@ public class BDCodeTabModel extends BDTabModel
         //tab.setGraphic(iv1);
         tab.setGraphic(hlink1);
         tab.setClosable(false);
-        //tab.setContent(sn);
-
-        textArea = new RSyntaxTextArea(20, 60);
-
-        //------------------------------------------------------------------------
         
         String tmpCode = code.getCodeText().replaceAll("\"","\\\\\"");
         
