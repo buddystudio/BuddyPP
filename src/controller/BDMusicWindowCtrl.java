@@ -20,32 +20,26 @@ public class BDMusicWindowCtrl
             @Override
             public void handle(MouseEvent event) 
             {
-            	 BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
+            	// 获取词位
+                int tabCount = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCurColumn() - 1;
                  
-                 // Get caret line number.
-                 int lineNum = codeAgent.getCaretLineNumber();
+                String tabTxt = "";
+                
+                // 添加缩进
+                for(int i = 0; i < tabCount; i++)
+                {
+                    tabTxt += " ";
+                }
+                
+                String code1  = tabTxt + "int tune[] = {";
+                String code2  = "float durt[] = {";
                  
-                 // Get tab count.
-                 int tabCount = 0;
-                 
-                 try
-                 {
-                     tabCount = codeAgent.getTabCount();
-                 }
-                 catch(Exception e)
-                 {
-                     tabCount = 0;
-                 }
-                 
-                 String code1  = "int tune[] = {";
-                 String code2  = "float durt[] = {";
-                 
-                 String result1 = "";
-                 String result2 = "";
-                 
-                 // Traversing the noteList.
-                 for(int i = 0; i < musicWindow.noteList.size(); i++)
-                 {
+                String result1 = "";
+                String result2 = "";
+                
+                // Traversing the noteList.
+                for(int i = 0; i < musicWindow.noteList.size(); i++)
+                {
                 	 // Set the durt.
                 	 if(musicWindow.noteList.get(i).note.curdurt == 1)
                 	 {
@@ -154,13 +148,21 @@ public class BDMusicWindowCtrl
                 		 result2 += ", ";
                 	 }
                  }
-                 
+                
                  // End the code.
                  code1 = code1 + result1 + "};";
                  code2 = code2 + result2 + "};";
                  
                  // Insert the code.
-                 codeAgent.insert(code2 + "\n" + code1);
+                 //codeAgent.insert(code2 + "\n" + code1);
+                 
+                 
+                 
+                 // 插入语句
+                 code1 = code1.replaceAll("\"","\\\\\"");
+                 code2 = code2.replaceAll("\"","\\\\\"");
+                 
+                 workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code2 + "\\n" + code1);
                  
                  // Close the window.
                  rootWindow.close();

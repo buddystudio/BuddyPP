@@ -14,33 +14,21 @@ public class BDColorWindowCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-            	BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
-                
-                // Get caret line number.
-                int lineNum = codeAgent.getCaretLineNumber();
-                
-                // Get tab count.
-                int tabCount = 0;
-                
-                try
-                {
-                    tabCount = codeAgent.getTabCount();
-                }
-                catch(Exception e)
-                {
-                    tabCount = 0;
-                }
+            	// 获取词位
+                int tabCount = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCurColumn() - 1;
                 
                 String code  = "String color = \"";
 
                 // Get color value without alpha.
                 code += colorWindow.colorPicker.getValue().toString().substring(0, 7);
                 
-                //code += "};\n";
+                //code += "};\\n";
                 code += "\";";
 
-                // Insert the code.
-                codeAgent.insert(code);
+                // 插入语句
+                code = code.replaceAll("\"","\\\\\"");
+                
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
                 
                 // Close the window.
                 colorWindow.close();
@@ -52,22 +40,8 @@ public class BDColorWindowCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-            	BDCodeAgent codeAgent = new BDCodeAgent(workspaceCtrl.workspaceView.workspaceModel.curTab);
-                
-                // Get caret line number.
-                int lineNum = codeAgent.getCaretLineNumber();
-                
-                // Get tab count.
-                int tabCount = 0;
-                
-                try
-                {
-                    tabCount = codeAgent.getTabCount();
-                }
-                catch(Exception e)
-                {
-                    tabCount = 0;
-                }
+            	// 获取词位
+                int tabCount = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCurColumn() - 1;
                 
                 String code  = "";
                 
@@ -75,26 +49,29 @@ public class BDColorWindowCtrl
                 String g = String.valueOf((int)(255 * colorWindow.colorPicker.getValue().getGreen()));
                 String b = String.valueOf((int)(255 * colorWindow.colorPicker.getValue().getBlue()));
                 
-                code += ("int rColor = " + r + ";\n");
+                code += ("int rColor = " + r + ";\\n");
                 
                 // 添加缩进
                 for(int i = 0; i < tabCount; i++)
                 {
-                    code += "\t";
+                    code += " ";
                 }
                 
-                code += ("int gColor = " + g + ";\n");
+                code += ("int gColor = " + g + ";\\n");
                 
                 // 添加缩进
                 for(int i = 0; i < tabCount; i++)
                 {
-                    code += "\t";
+                    code += " ";
                 }
                 
                 code += ("int bColor = " + b + ";");
 
-                // Insert the code.
-                codeAgent.insert(code);
+                // 插入语句
+                code = code.replaceAll("\"","\\\\\"");
+                
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.focus();
                 
                 // Close the window.
                 colorWindow.close();
