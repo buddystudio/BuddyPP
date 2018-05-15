@@ -5,15 +5,16 @@
  */
 package controller;
 
-import com.mongcj.util.debug.BDProgressStatusEvent;
-import com.mongcj.util.debug.BDProgressStatusListener;
-import com.mongcj.util.debug.BDProgressType;
+import util.debug.BDProgressStatusEvent;
+import util.debug.BDProgressStatusListener;
+import util.debug.BDProgressType;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.WindowEvent;
+
 import view.BDConsoleWindow;
 
 /**

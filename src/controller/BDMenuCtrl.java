@@ -13,13 +13,13 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mongcj.util.debug.BDAvrdudeUploader;
-import com.mongcj.util.debug.BDCompiler;
-import com.mongcj.util.debug.BDRunnerException;
-import com.mongcj.util.debug.BDSerial;
-import com.mongcj.util.debug.BDUploader;
-import io.BDCodeReader;
-import com.mongcj.util.io.BDCodeWriter;
+import util.debug.BDAvrdudeUploader;
+import util.debug.BDCompiler;
+import util.debug.BDRunnerException;
+import util.debug.BDSerial;
+import util.debug.BDUploader;
+import util.io.BDCodeReader;
+import util.io.BDCodeWriter;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -28,9 +28,10 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.FileChooser;
+
 import model.BDCodeModel;
 import model.BDParameters;
-import view.BDConsoleWindow;
+
 import view.BDExampleWindow;
 import view.BDLibWindow;
 import view.BDMenuView;

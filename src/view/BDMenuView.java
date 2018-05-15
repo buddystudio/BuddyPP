@@ -5,7 +5,7 @@
  */
 package view;
 
-import com.mongcj.util.base.Preferences;
+import util.base.Preferences;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

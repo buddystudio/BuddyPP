@@ -8,16 +8,16 @@ package controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mongcj.util.debug.BDMessageConsumer;
-import com.mongcj.util.debug.BDSerial;
+import util.debug.BDMessageConsumer;
+import util.debug.BDSerial;
 
 import javafx.application.Platform;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
+
 import model.BDParameters;
 import view.BDComWindow;
 

@@ -11,16 +11,11 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mongcj.util.io.BDCodeWriter;
+import util.io.BDCodeWriter;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.stage.FileChooser;
-import javafx.util.Duration;
 
 import model.BDCodeTabModel;
 

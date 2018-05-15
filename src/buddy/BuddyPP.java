@@ -20,9 +20,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mongcj.util.base.Base;
-import com.mongcj.util.base.Preferences;
-import com.mongcj.util.debug.BDSerial;
+import util.base.Base;
+import util.base.Preferences;
+import util.debug.BDSerial;
 
 import controller.BDGUICtrl;
 import javafx.application.Application;

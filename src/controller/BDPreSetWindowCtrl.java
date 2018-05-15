@@ -5,12 +5,14 @@
  */
 package controller;
 
-import com.mongcj.util.base.Preferences;
-import com.mongcj.util.debug.BDSerial;
+import util.base.Preferences;
+import util.debug.BDSerial;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
 import model.BDParameters;
+
 import view.BDMenuView;
 import view.BDPreSettingWindow;
 

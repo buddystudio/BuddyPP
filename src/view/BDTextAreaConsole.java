@@ -11,8 +11,8 @@ import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.mongcj.util.base.Base;
-import com.mongcj.util.base.Preferences;
+import util.base.Base;
+import util.base.Preferences;
 
 //import javafx.scene.control.TextArea;
 

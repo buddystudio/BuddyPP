@@ -11,7 +11,7 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mongcj.util.io.BDCodeWriter;
+import util.io.BDCodeWriter;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

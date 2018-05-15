@@ -5,13 +5,12 @@
  */
 package model;
 
-import com.mongcj.util.debug.BDPreprocessor;
-import com.mongcj.util.debug.BDRunnerException;
+import util.debug.BDPreprocessor;
+import util.debug.BDRunnerException;
+import util.debug.BDInoCode;
 
 import java.io.File;
 import java.util.List;
-
-import com.mongcj.util.debug.BDInoCode;
 
 /**
  *

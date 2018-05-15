@@ -8,8 +8,8 @@ package view;
 import java.util.List;
 import java.util.Map;
 
-import com.mongcj.util.base.Base;
-import com.mongcj.util.debug.BDSerial;
+import util.base.Base;
+import util.debug.BDSerial;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
