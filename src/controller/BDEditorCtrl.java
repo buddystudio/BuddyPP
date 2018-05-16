@@ -71,17 +71,17 @@ public class BDEditorCtrl
 		codeModel.isSaved = false;
         codeModel.isCompiled = false;
         
-		System.out.println("on change...");
+		//System.out.println("on change...");
     }
 	
 	public void onChangeCursor()
     {
-		System.out.println("on change cursor...");
+		//System.out.println("on change cursor...");
     }
 	
 	public void onChangeSelection()
     {
-		System.out.println("on change selection...");
+		//System.out.println("on change selection...");
     }
 	
 	// Set code font size.

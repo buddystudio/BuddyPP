@@ -111,3 +111,27 @@
     -fx-background-image: url("../images/titleAbout.png");
     -fx-padding: 5 5 5 5;
 }
+
+/*------------------------------- */
+
+.setBtn
+{  
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleSetting.png");
+    -fx-padding: 5 5 5 5;
+    
+}
+
+.setBtn:hover
+{
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleSetting2.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.setBtn:pressed
+{
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/titleSetting.png");
+    -fx-padding: 5 5 5 5;
+}

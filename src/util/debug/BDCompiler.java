@@ -21,8 +21,8 @@ import util.base.Preferences;
  *
  * @author Boniz
  */
-public class BDCompiler implements BDMessageConsumer {
-
+public class BDCompiler implements BDMessageConsumer 
+{
 	private static final Logger logger = LogManager.getLogger(BDCompiler.class);
 
 	String buildPath; // 生成路径
@@ -737,7 +737,4 @@ public class BDCompiler implements BDMessageConsumer {
 		
 		return true;
 	}
-	
-	
-
 }

@@ -43,6 +43,16 @@ public class BDGUICtrl
         
         this.gui.saveWindow = new BDDialogWindow("  保存提示", "是否保存当前文件");
         
+        // 点击设置按钮
+        gui.titlePanel.settingBtn.setOnAction(new EventHandler<ActionEvent>() 
+        {
+            @Override
+            public void handle(ActionEvent event) 
+            {
+            
+            }
+        });
+        
         // 点击关闭按钮
         gui.titlePanel.closeBtn.setOnAction(new EventHandler<ActionEvent>() 
         {
