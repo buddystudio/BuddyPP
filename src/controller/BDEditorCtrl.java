@@ -9,6 +9,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 import javafx.scene.web.WebView;
 import model.BDCodeModel;
+import model.BDParameters;
 import netscape.javascript.JSObject;
 import view.BDEditorView;
 
@@ -34,6 +35,12 @@ public class BDEditorCtrl
 	                {  
 	            		if (newState == Worker.State.SUCCEEDED) 
 	                    {
+	            			// 初始化编辑器
+	            			//int size = Integer.parseInt(BDParameters.editorFontSize.substring(0, BDParameters.editorFontSize.length() - 2));
+	            			
+	            			setTheme(BDParameters.editorTheme);
+	            			setFontSize(Integer.parseInt(BDParameters.editorFontSize));
+	            			
 	                        // ***** Test code *****
 	                        
 	                        //setFontSize(30);
@@ -52,7 +59,7 @@ public class BDEditorCtrl
 	                        webView.getEngine().executeScript("editor.getSession().selection.on('changeSelection', function(e) {test.onChangeSelection();});");
 
 	                        //setTheme("chaos");
-	                        setTheme("xcode");
+	                        //setTheme("xcode");
 	                        setMode("arduino");
 	                        setCode(code);
 	                    }  

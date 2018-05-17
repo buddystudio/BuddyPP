@@ -7,6 +7,7 @@ package view;
 
 import controller.BDGuideViewCtrl;
 import controller.BDMenuCtrl;
+import controller.BDSettingWindowCtrl;
 import controller.BDToolsCtrl;
 import controller.BDWorkspaceCtrl;
 
@@ -45,6 +46,9 @@ public class BDGUIView
     public BDToolsCtrl toolsCtrl            = new BDToolsCtrl(toolsPanel);
     public BDWorkspaceCtrl workspaceCtrl    = new BDWorkspaceCtrl(workspacePanel);
     public BDGuideViewCtrl consoleCtrl      = new BDGuideViewCtrl(consolePanel, workspaceCtrl, menuPanel);
+    
+    public BDSettingWindow settingWindow	= new BDSettingWindow();
+    public BDSettingWindowCtrl settingWindowCtrl = new BDSettingWindowCtrl(settingWindow, workspaceCtrl);
     
     public BDAboutWindow aboutWindow = new BDAboutWindow();	// 关于我们窗口
 

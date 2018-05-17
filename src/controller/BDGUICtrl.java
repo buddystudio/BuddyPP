@@ -41,6 +41,9 @@ public class BDGUICtrl
     {
         this.gui = gui;
         
+        // 获取编辑器参数
+        BDParameters.getEditorProfile();
+        
         this.gui.saveWindow = new BDDialogWindow("  保存提示", "是否保存当前文件");
         
         // 点击设置按钮
@@ -49,7 +52,7 @@ public class BDGUICtrl
             @Override
             public void handle(ActionEvent event) 
             {
-            
+            	gui.settingWindow.show();
             }
         });
         

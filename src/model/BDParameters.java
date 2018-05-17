@@ -5,6 +5,14 @@
  */
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -39,4 +47,86 @@ public class BDParameters
     static public java.util.List<String> serialports;
     
     static public ObservableList<BDLibsModel> libsList = FXCollections.observableArrayList(); // 到入库列表
+    
+    static public String editorTheme = "";
+    static public String editorFontSize = "";
+    
+    static public String editorProfilePath = "profile/editor.txt";
+    
+    static public void setEditorProfile(String theme, String fontSize)
+    {
+    	// 去除字符串中的空格
+    	editorTheme = theme;
+    	editorFontSize = fontSize.replace(" ", "");
+    	
+    	// 创建一个FileWriter对象
+        FileWriter fw;
+        
+		try 
+		{
+			fw = new FileWriter(editorProfilePath);
+			
+			String codeTxt = "";
+			
+			String line1 = "theme=" + editorTheme + "\n";
+			String line2 = "size=" + editorFontSize + "\n";
+			
+			codeTxt = line1 + line2;
+	        
+	        fw.write(codeTxt);
+	        
+	        // 刷新缓冲区
+	        fw.flush();     
+	        
+	        // 关闭文件流对象
+	        fw.close();
+	        
+		} 
+		catch (IOException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    static public void getEditorProfile()
+    {
+    	// 读取编辑器配置文件
+    	try 
+		{
+			BufferedReader br;
+			
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(editorProfilePath),"UTF-8"));
+			
+			String line = null;
+			
+			int count = 0;
+
+	        while ((line = br.readLine()) != null) 
+	        {   
+	            String codeTxt = line;
+	            
+	            if(count == 0)
+	            {
+	            	editorTheme = codeTxt.substring(6, codeTxt.length());
+	            }
+	            else if(count == 1)
+	            {
+	            	editorFontSize = codeTxt.substring(5, codeTxt.length() - 2);
+	            }
+	            
+	            count++;
+	        }
+
+	        br.close();
+		} 
+		catch (UnsupportedEncodingException | FileNotFoundException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+    }
 }

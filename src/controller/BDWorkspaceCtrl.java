@@ -24,12 +24,13 @@ import view.BDWorkspaceView;
 public final class BDWorkspaceCtrl 
 {
     public BDWorkspaceView workspaceView;
+    
     private static final Logger logger = LogManager.getLogger();
     
     public BDWorkspaceCtrl(BDWorkspaceView workspaceView)
     {
         this.workspaceView = workspaceView;
-
+       
         try 
         {
             // 启动时至少有一个代码标签页
