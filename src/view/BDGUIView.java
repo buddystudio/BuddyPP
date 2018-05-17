@@ -10,9 +10,13 @@ import controller.BDMenuCtrl;
 import controller.BDSettingWindowCtrl;
 import controller.BDToolsCtrl;
 import controller.BDWorkspaceCtrl;
-
+import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
@@ -24,6 +28,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import model.BDGUIModel;
+import model.BDParameters;
 
 /**
  *
@@ -58,8 +63,13 @@ public class BDGUIView
     
     public BDDialogWindow saveWindow;
     
+    public MenuBar menuBar = new MenuBar();
+     
     public BDGUIView(Stage primaryStage)
     {
+    	
+	    
+	    
         // 把工作区控制器传入菜单控制器
         menuCtrl.workspaceCtrl = this.workspaceCtrl;
         
@@ -99,6 +109,10 @@ public class BDGUIView
         this.root.setCenter(this.workspacePanel);
         this.root.setRight(this.consolePanel); // 右侧栏暂时屏蔽
         
+        // 添加菜单
+        this.addMenuBar();
+        
+        
         // 初始化主窗口并设置尺寸
         //Scene scene = new Scene(this.root, 1024 - 110, 640 + 10 + 10);
         Scene scene = new Scene(this.root, 940, 640 + 10 + 10);
@@ -122,5 +136,41 @@ public class BDGUIView
         primaryStage.setScene(scene);
         
         primaryStage.show();
+    }
+    
+    // File menu - new, save, exit
+    public Menu fileMenu = new Menu("File");
+    
+    public MenuItem newMenuItem  = new MenuItem("New");
+    public MenuItem openMenuItem = new MenuItem("Open");
+    public MenuItem saveMenuItem = new MenuItem("Save");
+    public MenuItem exitMenuItem = new MenuItem("Exit");
+    
+    public Menu editMenu = new Menu("Edit");
+    
+    public MenuItem clearItem 	= new MenuItem("Clear");
+    public MenuItem undoItem 	= new MenuItem("Undo");
+    public MenuItem redoItem 	= new MenuItem("Redo");
+    public MenuItem copyItem 	= new MenuItem("Copy");
+    public MenuItem cutItem  	= new MenuItem("Cut");
+    public MenuItem pasteItem 	= new MenuItem("Paste");
+    public MenuItem searchItem = new MenuItem("Search");
+    
+    public void addMenuBar()
+    {
+    	MenuBar menuBar = new MenuBar();
+    	
+	    fileMenu.getItems().addAll(newMenuItem, openMenuItem ,saveMenuItem, new SeparatorMenuItem(), exitMenuItem);
+	    editMenu.getItems().addAll(clearItem, undoItem, redoItem, copyItem, cutItem, pasteItem, searchItem);
+	    
+	    menuBar.setUseSystemMenuBar(true); 
+	    
+	    menuBar.getMenus().addAll(fileMenu, editMenu);
+	    
+        // 设置不可见的菜单（Mac OS）
+        if(BDParameters.os.equals("Mac OS X"))
+	 	{
+        	this.root.setBottom(menuBar);
+	 	}
     }
 }

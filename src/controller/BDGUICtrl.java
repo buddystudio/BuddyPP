@@ -15,6 +15,7 @@ import util.io.BDCodeWriter;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
@@ -43,6 +44,15 @@ public class BDGUICtrl
         
         // 获取编辑器参数
         BDParameters.getEditorProfile();
+        
+        // 添加菜单操作侦听器
+        gui.clearItem.setOnAction(editHandler);
+        gui.undoItem.setOnAction(editHandler);
+        gui.redoItem.setOnAction(editHandler);
+        gui.cutItem.setOnAction(editHandler);
+        gui.copyItem.setOnAction(editHandler);
+        gui.pasteItem.setOnAction(editHandler);
+        gui.searchItem.setOnAction(editHandler);
         
         this.gui.saveWindow = new BDDialogWindow("  保存提示", "是否保存当前文件");
         
@@ -452,5 +462,50 @@ public class BDGUICtrl
         	logger.error("",ex);
             //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }   
+    }
+    
+    private EventHandler<ActionEvent> editHandler = new EventHandler<ActionEvent>()
+	{
+		@Override
+		public void handle(ActionEvent arg0) 
+		{
+			String name = ((MenuItem)arg0.getTarget()).getText();
+			
+			if(name.endsWith("Undo"))
+			{
+				// Undo.
+				gui.workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.undo();
+			}
+			else if(name.equals("Redo"))
+			{
+				// Redo.
+				gui.workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.redo();
+			}
+			else if(name.equals("Copy"))
+			{
+				// Copy
+				gui.workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.copy();
+			}
+			else if(name.equals("Cut"))
+			{
+				// Cut
+				gui.workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.cut();
+			}
+			else if(name.equals("Paste"))
+			{
+				// Paste
+				gui.workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.paste();
+			}
+			else if(name.equals("Search"))
+			{
+				// Search
+				gui.workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.search();
+			}
+			else if(name.equals("Clear"))
+			{
+				// Search
+				gui.workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.setCode("");
+			}
+		}	
+	};
 }
