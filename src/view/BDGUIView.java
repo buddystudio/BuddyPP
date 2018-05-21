@@ -67,9 +67,6 @@ public class BDGUIView
      
     public BDGUIView(Stage primaryStage)
     {
-    	
-	    
-	    
         // 把工作区控制器传入菜单控制器
         menuCtrl.workspaceCtrl = this.workspaceCtrl;
         
@@ -80,6 +77,8 @@ public class BDGUIView
         menuCtrl.setHotKey();
         
         this.primaryStage = primaryStage;
+        
+        this.primaryStage.setTitle("Buddy++");
         
         // 定义无边框窗体
         primaryStage.initStyle(StageStyle.UNDECORATED);
@@ -112,7 +111,6 @@ public class BDGUIView
         // 添加菜单
         this.addMenuBar();
         
-        
         // 初始化主窗口并设置尺寸
         //Scene scene = new Scene(this.root, 1024 - 110, 640 + 10 + 10);
         Scene scene = new Scene(this.root, 940, 640 + 10 + 10);
@@ -144,6 +142,7 @@ public class BDGUIView
     public MenuItem newMenuItem  = new MenuItem("New");
     public MenuItem openMenuItem = new MenuItem("Open");
     public MenuItem saveMenuItem = new MenuItem("Save");
+    public MenuItem saveAsMenuItem = new MenuItem("Save As");
     public MenuItem exitMenuItem = new MenuItem("Exit");
     
     public Menu editMenu = new Menu("Edit");
@@ -156,16 +155,36 @@ public class BDGUIView
     public MenuItem pasteItem 	= new MenuItem("Paste");
     public MenuItem searchItem = new MenuItem("Search");
     
+    public Menu toolsMenu = new Menu("Tools");
+    
+    public MenuItem exampleItem = new MenuItem("Example");
+    public MenuItem librariesItem = new MenuItem("Libraries");
+    public MenuItem serialItem = new MenuItem("Serial");
+    
+    public Menu runMenu = new Menu("Run");
+    
+    public MenuItem compileItem = new MenuItem("Compile");
+    public MenuItem uploadItem = new MenuItem("Upload");
+    public MenuItem compileAndUploadItem = new MenuItem("Compile And UploadItem");
+    
+    public Menu helpMenu = new Menu("Help");
+    
+    public MenuItem settingItem = new MenuItem("Setting");
+    public MenuItem aboutItem = new MenuItem("About");
+    
     public void addMenuBar()
     {
     	MenuBar menuBar = new MenuBar();
     	
-	    fileMenu.getItems().addAll(newMenuItem, openMenuItem ,saveMenuItem, new SeparatorMenuItem(), exitMenuItem);
+	    fileMenu.getItems().addAll(newMenuItem, openMenuItem ,saveMenuItem, saveAsMenuItem, new SeparatorMenuItem(), exitMenuItem);
 	    editMenu.getItems().addAll(clearItem, undoItem, redoItem, copyItem, cutItem, pasteItem, searchItem);
+	    toolsMenu.getItems().addAll(exampleItem, librariesItem, serialItem);
+	    runMenu.getItems().addAll(compileItem, uploadItem, compileAndUploadItem);
+	    helpMenu.getItems().addAll(settingItem, aboutItem);
 	    
 	    menuBar.setUseSystemMenuBar(true); 
 	    
-	    menuBar.getMenus().addAll(fileMenu, editMenu);
+	    menuBar.getMenus().addAll(fileMenu, editMenu, toolsMenu, runMenu, helpMenu);
 	    
         // 设置不可见的菜单（Mac OS）
         if(BDParameters.os.equals("Mac OS X"))
