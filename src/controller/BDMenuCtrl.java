@@ -92,8 +92,7 @@ public class BDMenuCtrl
 				new BDSearchWindowCtrl(menuView.searchWindow, workspaceCtrl);
 				
 				// 显示搜索窗口
-				menuView.searchWindow.show();
-				
+				menuView.searchWindow.show();		
 			}
 		});
 	}
