@@ -333,7 +333,8 @@ public class BDMenuCtrl
 		menuView.menuVerifyBtn.setOnAction(new EventHandler<ActionEvent>() 
 		{
 			@Override
-			public void handle(ActionEvent event) {
+			public void handle(ActionEvent event) 
+			{
 				BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(menuView.consoleWindow);
 				// consoleWindowCtrl.setUploadProgressVisable(false);
 
@@ -432,23 +433,6 @@ public class BDMenuCtrl
 			{
 				// 弹出关于我们的窗口
 				menuView.aboutWindow.show();
-
-				/*
-				 * 
-				 * // 社区 //System.out.println("Forum");
-				 * 
-				 * // 屏蔽原来的功能 java.net.URI uri;
-				 * 
-				 * try { uri = new java.net.URI("http://buddy.mongcj.com/blk");
-				 * 
-				 * java.awt.Desktop.getDesktop().browse(uri); } catch
-				 * (URISyntaxException ex) {
-				 * Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.
-				 * SEVERE, null, ex); } catch (IOException ex) {
-				 * Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.
-				 * SEVERE, null, ex); }
-				 * 
-				 */
 			}
 		});
 

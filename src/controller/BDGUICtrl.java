@@ -85,12 +85,12 @@ public class BDGUICtrl
             @Override
             public void handle(ActionEvent event) 
             {
-	            	// Don't work in Mac OS X.
-	        	 	if(!BDParameters.os.equals("Mac OS X"))
-	        	 	{
-	            		// 窗口最大化与恢复
-	            		setResizeWindow();
-	        	 	}
+	            // Don't work in Mac OS X.
+	        	if(!BDParameters.os.equals("Mac OS X"))
+	        	{
+	        		// 窗口最大化与恢复
+	            	setResizeWindow();
+	        	}
             }
         });
         
@@ -201,11 +201,9 @@ public class BDGUICtrl
                 {
                 	// 恢复窗口
                     setResizeWindow();
-                }
-                
+                }   
             }
         });
-
     }
 
     // 

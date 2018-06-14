@@ -106,7 +106,9 @@ public class BDGUIView
         this.root.setTop(this.topPanel);
         this.root.setLeft(this.toolsPanel);
         this.root.setCenter(this.workspacePanel);
-        this.root.setRight(this.consolePanel); // 右侧栏暂时屏蔽
+        
+        // 右侧栏暂时屏蔽
+        //this.root.setRight(this.consolePanel); 
         
         // 添加菜单
         this.addMenuBar();
