@@ -49,8 +49,8 @@ public class BDEditorCtrl
 	                        //find("void");
 	                        //repalceAll("void", "abcd");
 	                        
-	                        System.out.println(getCode());
-	                        System.out.println("Code length is: " + getLength());
+	                        //System.out.println(getCode());
+	                        //System.out.println("Code length is: " + getLength());
 	                        
 	                        // ***** End test *****
 
