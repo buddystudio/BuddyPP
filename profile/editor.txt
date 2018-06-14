@@ -1,2 +1,2 @@
 theme=xcode
-size=14px
+size=16px

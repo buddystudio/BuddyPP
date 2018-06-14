@@ -126,6 +126,7 @@ public class BDMenuCtrl
 
 				// Show open file dialog
 				file = fileChooser.showOpenDialog(null);
+				
 				if(file==null)
 					return;
 				
@@ -535,16 +536,22 @@ public class BDMenuCtrl
 
 	private void compile(BDConsoleWindowCtrl consoleWindowCtrl) 
 	{
-		// BDPreprocessor preprocessor = new BDPreprocessor();
+		//BDPreprocessor preprocessor = new BDPreprocessor();
 
 		BDCodeModel code = workspaceCtrl.workspaceView.workspaceModel.curTab.code;
 		
+
 		if (!code.isSaved)
-			saveFile();
+			//saveFile();
+
 		if (code.getClassName().isEmpty())
 			code.setClassName(workspaceCtrl.workspaceView.workspaceModel.curTab.tab.getText()); // 编译类名
 
+		System.out.println(code.getClassName());
+		
 		String classname = code.getClassName();
+		
+		// 临时文件路径
 		String compilepath = System.getProperty("java.io.tmpdir") + classname;
 		
 		// 编译后源码路径

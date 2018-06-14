@@ -78,6 +78,9 @@ public class BDEditorCtrl
 		codeModel.isSaved = false;
         codeModel.isCompiled = false;
         
+        // 更新当前代码
+        codeModel.setCodeText(getCode());
+        
 		//System.out.println("on change...");
     }
 	

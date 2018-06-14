@@ -714,7 +714,7 @@ public class BDCompiler implements BDMessageConsumer
 		return list;
 	}
 	
-	//创建编译目录，并清理原有内容。buildPath为编译文件存放路径	
+	// 创建编译目录，并清理原有内容。buildPath为编译文件存放路径	
 	static public boolean clearBuildPath(String buildPath) {
 		if (buildPath == null || buildPath == "")
 			return false;
