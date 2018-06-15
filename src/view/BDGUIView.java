@@ -10,17 +10,17 @@ import controller.BDMenuCtrl;
 import controller.BDSettingWindowCtrl;
 import controller.BDToolsCtrl;
 import controller.BDWorkspaceCtrl;
-import javafx.application.Application;
+
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Reflection;
+import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
@@ -45,12 +45,15 @@ public class BDGUIView
     public BDMenuView   menuPanel           = new BDMenuView();
     public BDToolsView  toolsPanel          = new BDToolsView();
     public BDWorkspaceView workspacePanel   = new BDWorkspaceView();
-    public BDGuideView consolePanel         = new BDGuideView(); 
+    public BDGuideView guidePanel         	= new BDGuideView(); 
+    
+    public SplitPane splitPanel 			= new SplitPane();
+    public VBox consolePanel 				= new VBox();
     
     public BDMenuCtrl menuCtrl              = new BDMenuCtrl(menuPanel);
     public BDToolsCtrl toolsCtrl            = new BDToolsCtrl(toolsPanel);
     public BDWorkspaceCtrl workspaceCtrl    = new BDWorkspaceCtrl(workspacePanel);
-    public BDGuideViewCtrl consoleCtrl      = new BDGuideViewCtrl(consolePanel, workspaceCtrl, menuPanel);
+    public BDGuideViewCtrl consoleCtrl      = new BDGuideViewCtrl(guidePanel , workspaceCtrl, menuPanel);
     
     public BDSettingWindow settingWindow	= new BDSettingWindow();
     public BDSettingWindowCtrl settingWindowCtrl = new BDSettingWindowCtrl(settingWindow, workspaceCtrl);
@@ -92,10 +95,11 @@ public class BDGUIView
         // Set main panel style
         String panelStyle = "";
         
+        // 设置主窗体边框
         panelStyle += "-fx-background-radius:2px;";
         panelStyle += "-fx-border-color: #333333;";
-        panelStyle += "-fx-border-width:2px;";
-        panelStyle += "-fx-border-radius:3px;";
+        panelStyle += "-fx-border-width:1px;";
+        panelStyle += "-fx-border-radius:1px;";
         panelStyle += "-fx-background:transparent;";
         
         root.setStyle(panelStyle);
@@ -103,12 +107,31 @@ public class BDGUIView
         topPanel.getChildren().add(this.titlePanel);
         topPanel.getChildren().add(this.menuPanel);
         
+        consolePanel.setStyle("-fx-background-color: #ffffff;");
+        
+        StackPane consoleTitlePanel = new StackPane();
+        StackPane consoleMsgPanel = new StackPane();
+        
+        consoleTitlePanel.setStyle("-fx-background-color: #444444;");
+        consoleTitlePanel.setPrefHeight(35);
+        
+        consolePanel.getChildren().add(consoleTitlePanel);
+        consolePanel.getChildren().add(consoleMsgPanel);
+
+        splitPanel.setDividerPosition(0, 0.7);
+        splitPanel.getItems().addAll(this.workspacePanel, consolePanel);
+        
         this.root.setTop(this.topPanel);
         this.root.setLeft(this.toolsPanel);
-        this.root.setCenter(this.workspacePanel);
+        this.root.setCenter(this.splitPanel);
+        
+        //BDTextAreaConsole consoleTxt = BDTextAreaConsole.getTextAreaConsoleInstance();
+        
+        //consoleMsgPanel.getChildren().add(new VirtualizedScrollPane<>(consoleTxt));
+        //consoleMsgPanel.getChildren().add(consoleTxt);
         
         // 右侧栏暂时屏蔽
-        //this.root.setRight(this.consolePanel); 
+        //this.root.setRight(this.guidePanel); 
         
         // 添加菜单
         this.addMenuBar();

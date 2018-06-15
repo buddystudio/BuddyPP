@@ -72,8 +72,6 @@ public class BDConsoleWindow extends BDWindow
 			hideDebugLayout();
 	}
 	
-	
-
 	private void hideDebugLayout() 
 	{
 		super.init(420, 150);

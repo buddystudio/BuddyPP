@@ -34,7 +34,7 @@ public final class BDWorkspaceCtrl
         try 
         {
             // 启动时至少有一个代码标签页
-            this.addConsoleTab();
+            //this.addConsoleTab();
             this.addNewTab();
             
             // 启动时显示开始页面可新建打开文件
@@ -44,7 +44,6 @@ public final class BDWorkspaceCtrl
         	logger.error("",ex);
             //Logger.getLogger(BDWorkspaceCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
     public void addTab(BDCodeModel newCode) throws AWTException

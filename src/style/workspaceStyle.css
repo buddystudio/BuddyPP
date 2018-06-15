@@ -15,7 +15,6 @@
 {
     -fx-background-color: -fx-control-inner-background;
     /*-fx-padding: 2;*/
-    
 }
 
 .tab
@@ -70,4 +69,15 @@
     -fx-background-insets: 0, 0 0 1 0;
  /* -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
     -fx-padding: 7 0 -1 30; /* overriden as 5 2 0 0 */
+}
+
+.split-pane:horizontal > .split-pane-divider 
+{
+    -fx-border-color: transparent #444444 transparent #444444;
+    -fx-background-color: transparent, derive(#444444,0%);
+}
+
+.split-pane 
+{
+    -fx-padding: 0 0 0 0;
 }

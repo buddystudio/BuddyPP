@@ -23,40 +23,21 @@ import view.BDConsoleWindow;
  */
 public class BDConsoleWindowCtrl implements BDProgressStatusListener 
 {
-
 	BDConsoleWindow consoleWindow;
 
 	public BDConsoleWindowCtrl(BDConsoleWindow consoleWindow) 
 	{
 		this.consoleWindow = consoleWindow;
 
-		// =====已过时
-		consoleWindow.icon_btn.setOnMousePressed(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				consoleWindow.icon_btn.setImage(consoleWindow.icon_msg_press_img);
-			}
-		});
-
-		consoleWindow.icon_btn.setOnMouseReleased(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				consoleWindow.icon_btn.setImage(consoleWindow.icon_msg_detail_img);
-				consoleWindow.msgWindow.show();
-
-				// Close the console window.
-
-				consoleWindow.close();
-			}
-		});
-		// ======================
 		consoleWindow.detailBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent event) {
+			public void handle(ActionEvent event) 
+			{
 				consoleWindow.msgWindow.show();
 
 				// 更新编译对话框，移除操作按钮
 				removeBtns();
+				
 				// Close the console window.
 				consoleWindow.close();
 			}
@@ -64,7 +45,8 @@ public class BDConsoleWindowCtrl implements BDProgressStatusListener
 
 		consoleWindow.okBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent event) {
+			public void handle(ActionEvent event) 
+			{
 				// 更新编译对话框，移除操作按钮
 				removeBtns();
 
@@ -76,9 +58,11 @@ public class BDConsoleWindowCtrl implements BDProgressStatusListener
 
 		consoleWindow.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
-			public void handle(WindowEvent event) {
+			public void handle(WindowEvent event) 
+			{
 				// 更新编译对话框，移除操作按钮
 				removeBtns();
+				
 				consoleWindow.msgWindow.clearText();
 			}
 		});

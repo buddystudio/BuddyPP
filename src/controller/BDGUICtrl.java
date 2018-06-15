@@ -86,7 +86,7 @@ public class BDGUICtrl
             public void handle(ActionEvent event) 
             {
 	            // Don't work in Mac OS X.
-	        	if(!BDParameters.os.equals("Mac OS X"))
+	        	//if(!BDParameters.os.equals("Mac OS X"))
 	        	{
 	        		// 窗口最大化与恢复
 	            	setResizeWindow();
@@ -117,7 +117,7 @@ public class BDGUICtrl
                     if(mouseEvent.getClickCount() == 2)
                     {
                     	// Don't work in Mac OS X.
-                    	if(!BDParameters.os.equals("Mac OS X"))
+                    	//if(!BDParameters.os.equals("Mac OS X"))
                     	{
                     	 	// 窗口最大化与恢复
                         	setResizeWindow();
@@ -332,6 +332,7 @@ public class BDGUICtrl
     
     private void setResizeWindow()
     {
+    	
     	//if(gui.primaryStage.isMaximized() == true)
         if (gui.guiModel.isMaximized == true) 
         {
@@ -369,10 +370,20 @@ public class BDGUICtrl
             gui.guiModel.preY = gui.primaryStage.getY();
 
             // 自定义最大化
-            gui.primaryStage.setX(0);
-            gui.primaryStage.setY(0);
-            gui.primaryStage.setWidth(gui.visualBounds.getWidth());
-            gui.primaryStage.setHeight(gui.visualBounds.getHeight());
+            if(BDParameters.os.equals("Mac OS X"))
+            {
+            	gui.primaryStage.setX(0);
+                gui.primaryStage.setY(22);
+                gui.primaryStage.setWidth(gui.visualBounds.getWidth());
+                gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 4);
+            }
+            else
+            {
+            	gui.primaryStage.setX(0);
+                gui.primaryStage.setY(0);
+                gui.primaryStage.setWidth(gui.visualBounds.getWidth());
+                gui.primaryStage.setHeight(gui.visualBounds.getHeight());
+            }
 
             //primaryStage.setFullScreen(false);
             // 总在顶端
