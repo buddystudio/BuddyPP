@@ -5,13 +5,19 @@
  */
 package view;
 
+import org.fxmisc.flowless.VirtualizedScrollPane;
+import org.fxmisc.richtext.CodeArea;
+import org.fxmisc.richtext.LineNumberFactory;
+
 import controller.BDGuideViewCtrl;
 import controller.BDMenuCtrl;
 import controller.BDSettingWindowCtrl;
 import controller.BDToolsCtrl;
 import controller.BDWorkspaceCtrl;
-
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -20,6 +26,7 @@ import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -49,6 +56,7 @@ public class BDGUIView
     
     public SplitPane splitPanel 			= new SplitPane();
     public VBox consolePanel 				= new VBox();
+    public CodeArea msgArea					= new CodeArea();
     
     public BDMenuCtrl menuCtrl              = new BDMenuCtrl(menuPanel);
     public BDToolsCtrl toolsCtrl            = new BDToolsCtrl(toolsPanel);
@@ -72,6 +80,11 @@ public class BDGUIView
     {
         // 把工作区控制器传入菜单控制器
         menuCtrl.workspaceCtrl = this.workspaceCtrl;
+        
+        // 把控制台信息组件传入菜单视图
+        menuPanel.consloeArea = this.msgArea;
+        
+        menuPanel.splitPanel = this.splitPanel;
         
         // 把工作区控制器传入工具控制器
         toolsCtrl.workspaceCtrl = this.workspaceCtrl;
@@ -109,8 +122,8 @@ public class BDGUIView
         
         consolePanel.setStyle("-fx-background-color: #ffffff;");
         
-        StackPane consoleTitlePanel = new StackPane();
-        StackPane consoleMsgPanel = new StackPane();
+        HBox consoleTitlePanel = new HBox();			// 横向菜单（清除 / 复制 / 帮助）
+        BorderPane consoleMsgPanel = new BorderPane();	// 控制台信息
         
         consoleTitlePanel.setStyle("-fx-background-color: #444444;");
         consoleTitlePanel.setPrefHeight(35);
@@ -118,17 +131,34 @@ public class BDGUIView
         consolePanel.getChildren().add(consoleTitlePanel);
         consolePanel.getChildren().add(consoleMsgPanel);
 
-        splitPanel.setDividerPosition(0, 0.7);
+        splitPanel.setDividerPosition(0, 0.6);
         splitPanel.getItems().addAll(this.workspacePanel, consolePanel);
         
         this.root.setTop(this.topPanel);
         this.root.setLeft(this.toolsPanel);
         this.root.setCenter(this.splitPanel);
         
-        //BDTextAreaConsole consoleTxt = BDTextAreaConsole.getTextAreaConsoleInstance();
+        BDTextAreaConsole consoleTxt = BDTextAreaConsole.getTextAreaConsoleInstance();
         
-        //consoleMsgPanel.getChildren().add(new VirtualizedScrollPane<>(consoleTxt));
-        //consoleMsgPanel.getChildren().add(consoleTxt);
+        consoleTxt.gui = this;
+        
+        msgArea.setParagraphGraphicFactory(LineNumberFactory.get(msgArea));
+        //msgArea.setWrapText(true);
+        //msgArea.setEditable(false);
+        msgArea.setPrefHeight(535);
+        //msgArea.autosize();
+        msgArea.setAutoScrollOnDragDesired(true);
+        
+        msgArea.getStylesheets().add("style/compileStyle.css");
+        
+        
+        msgArea.richChanges().filter(ch -> !ch.getInserted().equals(ch.getRemoved())).subscribe(change -> 
+        {
+			//msgArea.setStyleSpans(0, BDTextAreaConsole.computeHighlighting(msgArea.getText()));
+			msgArea.setEstimatedScrollY(msgArea.getCaretColumn());
+		});
+   
+        consoleMsgPanel.setCenter(msgArea);     
         
         // 右侧栏暂时屏蔽
         //this.root.setRight(this.guidePanel); 

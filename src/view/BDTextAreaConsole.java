@@ -22,8 +22,12 @@ import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.model.StyleSpans;
 import org.fxmisc.richtext.model.StyleSpansBuilder;
 
+import javafx.application.Platform;
+
 public class BDTextAreaConsole extends CodeArea 
 {
+	public BDGUIView gui;
+	
 	int maxLineCount;
 
 	static File errFile;
@@ -69,40 +73,54 @@ public class BDTextAreaConsole extends CodeArea
 		this.setParagraphGraphicFactory(LineNumberFactory.get(this));
 		this.setWrapText(true);
 		this.setEditable(false);
+		
 		this.richChanges().filter(ch -> !ch.getInserted().equals(ch.getRemoved())) // XXX
 				.subscribe(change -> {
 					this.setStyleSpans(0, computeHighlighting(this.getText()));
 				});
 
-		if (systemOut == null) {
+		if (systemOut == null) 
+		{
 			systemOut = System.out;
 			systemErr = System.err;
 
 			tempFolder = Base.createTempFolder("console");
 			tempFolder.deleteOnExit();
-			try {
+			
+			try 
+			{
 				String outFileName = Preferences.get("console.output.file");
-				if (outFileName != null) {
+				
+				if (outFileName != null) 
+				{
 					outFile = new File(tempFolder, outFileName);
 					outFile.deleteOnExit();
 					stdoutFile = new FileOutputStream(outFile);
 				}
 
 				String errFileName = Preferences.get("console.error.file");
-				if (errFileName != null) {
+				
+				if (errFileName != null) 
+				{
 					errFile = new File(tempFolder, errFileName);
 					errFile.deleteOnExit();
 					stderrFile = new FileOutputStream(errFile);
 				}
-			} catch (IOException e) {
+				
+			} 
+			catch (IOException e) 
+			{
 				Base.showWarning("Console Error",
 						"A problem occurred while trying to open the\nfiles used to store the console output.", e);
 			}
+			
 			consoleOut = new PrintStream(new EditorConsoleStream(false));
 			consoleErr = new PrintStream(new EditorConsoleStream(true));
 
-			if (Preferences.getBoolean("console")) {
-				try {
+			if (Preferences.getBoolean("console")) 
+			{
+				try 
+				{
 					System.setOut(consoleOut);
 					System.setErr(consoleErr);
 				} catch (Exception e) {
@@ -131,7 +149,7 @@ public class BDTextAreaConsole extends CodeArea
 
 	}
 	
-	private static StyleSpans<Collection<String>> computeHighlighting(String text) {
+	public static StyleSpans<Collection<String>> computeHighlighting(String text) {
 		Matcher matcher = PATTERN.matcher(text);
 		int lastKwEnd = 0;
 		int lineHead=0;
@@ -198,7 +216,21 @@ public class BDTextAreaConsole extends CodeArea
 			//setStyle("-fx-text-fill: #FF1d1d;");			
 		//}	
 		
-		appendText(txt);
+		appendText(txt);	
+		
+		try
+		{
+			Platform.runLater(new Runnable() 
+	        {
+	            @Override
+	            public void run() 
+	            {
+	                //更新JavaFX的主线程的代码放在此处
+	            	gui.msgArea.appendText(txt);
+	            }
+	        });	
+		}
+		catch(Exception ex) {}
 		
     }
 

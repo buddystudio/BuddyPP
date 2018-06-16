@@ -64,7 +64,7 @@ public class BDMenuCtrl
 		{
 			if (ctrlS.match(event)) 
 			{
-				// System.out.println("Save File");
+				System.out.println("Save File");
 
 				// Ctrl + S 保存文件
 				if (workspaceCtrl.workspaceView.workspaceModel.curTab.code.path == "") 
@@ -340,6 +340,12 @@ public class BDMenuCtrl
 
 				// 显示编译信息窗口
 				menuView.consoleWindow.show();
+				
+				// 清除控制台信息
+				menuView.consloeArea.clear();
+				
+				// 滑出控制台
+				menuView.splitPanel.setDividerPosition(0, 0.5);
 
 				Task<Void> progressTask = new Task<Void>() 
 				{
@@ -540,19 +546,24 @@ public class BDMenuCtrl
 
 		BDCodeModel code = workspaceCtrl.workspaceView.workspaceModel.curTab.code;
 		
-
 		if (!code.isSaved)
 			//saveFile();
 
 		if (code.getClassName().isEmpty())
 			code.setClassName(workspaceCtrl.workspaceView.workspaceModel.curTab.tab.getText()); // 编译类名
-
-		System.out.println(code.getClassName());
 		
 		String classname = code.getClassName();
 		
 		// 临时文件路径
 		String compilepath = System.getProperty("java.io.tmpdir") + classname;
+		
+		// 输出编译初始化信息
+		System.out.println("*****************************************");
+		System.out.println("");
+		System.out.println("Buddy++ : Compiler processing start");
+		System.out.println("");
+		System.out.println("*****************************************");
+		System.out.println("");
 		
 		// 编译后源码路径
 		if (!BDCompiler.clearBuildPath(compilepath))

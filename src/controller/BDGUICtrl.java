@@ -218,6 +218,8 @@ public class BDGUICtrl
         }
 
         BDCodeTabModel tab = gui.workspaceCtrl.workspaceView.workspaceModel.tabList.get(index);
+        
+        
 
         // 关闭提示窗口
         this.gui.saveWindow.close();

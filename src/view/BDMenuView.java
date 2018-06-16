@@ -7,10 +7,13 @@ package view;
 
 import util.base.Preferences;
 
+import org.fxmisc.richtext.CodeArea;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,6 +35,9 @@ public class BDMenuView extends HBox
     public BDConsoleWindow consoleWindow    = new BDConsoleWindow();    // 编译信息窗口
     public BDPluginWindow pluginWindow      = new BDPluginWindow();     // 工具插件窗口
     public BDAboutWindow aboutWindow        = new BDAboutWindow();      // 关于我们窗口
+    
+    public CodeArea consloeArea				= null;
+    public SplitPane splitPanel 			= null;
     
     public BDHintDialogWindow hintDialogWindow = new BDHintDialogWindow("  提示", "请先确定计算机已经连接开发板！");
     
