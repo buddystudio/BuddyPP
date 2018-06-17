@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import model.BDParameters;
 
 /**
@@ -38,6 +39,7 @@ public class BDMenuView extends HBox
     
     public CodeArea consloeArea				= null;
     public SplitPane splitPanel 			= null;
+    public Stage primaryStage				= null;
     
     public BDHintDialogWindow hintDialogWindow = new BDHintDialogWindow("  提示", "请先确定计算机已经连接开发板！");
     

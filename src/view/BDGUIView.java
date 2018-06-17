@@ -90,6 +90,8 @@ public class BDGUIView
         
         menuPanel.splitPanel = this.splitPanel;
         
+        menuPanel.primaryStage = primaryStage;
+        
         // 把工作区控制器传入工具控制器
         toolsCtrl.workspaceCtrl = this.workspaceCtrl;
         

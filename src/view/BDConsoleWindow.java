@@ -22,15 +22,12 @@ import javafx.stage.StageStyle;
  */
 public class BDConsoleWindow extends BDWindow 
 {
-
 	public ProgressBar progressBarDebug = new ProgressBar(0);
 	// public ProgressBar progressBarUpload=new ProgressBar(0);
 
 	public Label lbl = new Label("程序编译中...");
 	
 	public HBox msgBtnBar = new HBox();
-
-	boolean isShow = false;
 	
 	public BDConsoleMsgWindow msgWindow = new BDConsoleMsgWindow();
 	
@@ -43,7 +40,7 @@ public class BDConsoleWindow extends BDWindow
 	public BDConsoleWindow() 
 	{
 		super.init(420, 150);
-
+		
 		scene.getStylesheets().add("style/consoleStyle.css");
 		scene.getStylesheets().add("style/progressbarStyle.css");
 		scene.getStylesheets().add("style/compileStyle.css");

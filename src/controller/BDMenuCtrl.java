@@ -35,6 +35,7 @@ import model.BDParameters;
 import view.BDExampleWindow;
 import view.BDLibWindow;
 import view.BDMenuView;
+import view.BDWindow;
 
 /**
  *
@@ -44,16 +45,8 @@ public class BDMenuCtrl
 {
 	public BDWorkspaceCtrl workspaceCtrl;
 	private BDMenuView menuView;
+	
 	private static final Logger logger = LogManager.getLogger(BDCompiler.class);
-
-	// public BDSearchWindow searchWindow = new BDSearchWindow(); // 搜索窗口
-	// public BDLibWindow libWindow = new BDLibWindow(); // 添加库窗口
-	// public BDComWindow comWindow = new BDComWindow(); // 串口通讯窗口
-	// public BDPreSettingWindow psw = new BDPreSettingWindow(); // 预设置窗口
-	// public BDExampleWindow expWindow = new BDExampleWindow(); // 例程窗口
-	// public BDConsoleWindow consoleWindow = new BDConsoleWindow(); // 编译信息窗口
-	// public BDPluginWindow pluginWindow = new BDPluginWindow(); // 工具插件窗口
-	// public BDAboutWindow aboutWindow = new BDAboutWindow(); // 关于我们窗口
 
 	public void setHotKey() 
 	{
@@ -230,6 +223,7 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
+
 				// 打开例子
 				if (menuView.expWindow.isShowing()) 
 				{
@@ -241,6 +235,9 @@ public class BDMenuCtrl
 
 				// 添加代码标签页
 				menuView.expWindow.show();
+				
+				// 弹出子窗口与主窗口居中
+				showInTheMiddle(menuView.expWindow);
 			}
 		});
 
@@ -300,6 +297,9 @@ public class BDMenuCtrl
 
 				// 显示添加库窗口
 				menuView.libWindow.show();
+				
+				// 弹出子窗口与主窗口居中
+				showInTheMiddle(menuView.libWindow);
 			}
 		});
 
@@ -316,6 +316,9 @@ public class BDMenuCtrl
 
 					// 弹出对话框提示用户未接入开发板
 					menuView.hintDialogWindow.show();
+					
+					// 弹出子窗口与主窗口居中
+					showInTheMiddle(menuView.hintDialogWindow);
 
 					// 如果未连接则返回
 					return;
@@ -326,6 +329,9 @@ public class BDMenuCtrl
 
 				// 显示串口通讯窗口
 				menuView.comWindow.show();
+				
+				// 弹出子窗口与主窗口居中
+				showInTheMiddle(menuView.comWindow);
 			}
 		});
 
@@ -340,6 +346,9 @@ public class BDMenuCtrl
 
 				// 显示编译信息窗口
 				menuView.consoleWindow.show();
+				
+				// 弹出子窗口与主窗口居中
+				showInTheMiddle(menuView.consoleWindow);
 				
 				// 清除控制台信息
 				menuView.consloeArea.clear();
@@ -377,6 +386,9 @@ public class BDMenuCtrl
 					// 弹出对话框提示用户未接入开发板
 					menuView.hintDialogWindow.show();
 					
+					// 弹出子窗口与主窗口居中
+					showInTheMiddle(menuView.hintDialogWindow);
+					
 					// 如果未连接则返回
 					return;
 				}
@@ -392,6 +404,9 @@ public class BDMenuCtrl
 
 				// 烧录
 				menuView.consoleWindow.show();
+				
+				// 弹出子窗口与主窗口居中
+				showInTheMiddle(menuView.consoleWindow);
 				
 				Task<Void> progressTask = new Task<Void>() 
 				{
@@ -426,8 +441,12 @@ public class BDMenuCtrl
 			public void handle(ActionEvent event) 
 			{
 				BDPluginWindowCtrl pluginWindowVtrl = new BDPluginWindowCtrl(menuView.pluginWindow, workspaceCtrl);
+				
 				// 设置
 				menuView.pluginWindow.show();
+				
+				// 弹出子窗口与主窗口居中
+				showInTheMiddle(menuView.pluginWindow);
 			}
 		});
 
@@ -437,8 +456,12 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
+
 				// 弹出关于我们的窗口
 				menuView.aboutWindow.show();
+				
+				// 弹出子窗口与主窗口居中
+				showInTheMiddle(menuView.aboutWindow);
 			}
 		});
 
@@ -456,6 +479,9 @@ public class BDMenuCtrl
 					menuView.psw.ReflashPort();
 					preSetWindowCtrl = new BDPreSetWindowCtrl(menuView);
 					menuView.psw.show();
+					
+					// 弹出子窗口与主窗口居中
+					showInTheMiddle(menuView.psw);
 				} 
 				catch (Exception ex) 
 				{
@@ -684,5 +710,14 @@ public class BDMenuCtrl
 
 			return false;
 		}
+	}
+	
+	private void showInTheMiddle(BDWindow win)
+	{
+		double posX = menuView.primaryStage.getX() + (menuView.primaryStage.getWidth() - win.getWidth()) / 2;
+		double posY = menuView.primaryStage.getY() + (menuView.primaryStage.getHeight() - win.getHeight()) / 2;
+		
+		win.setX(posX);
+		win.setY(posY);
 	}
 }
