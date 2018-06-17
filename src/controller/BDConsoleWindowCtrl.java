@@ -45,8 +45,11 @@ public class BDConsoleWindowCtrl implements BDProgressStatusListener
 
 		consoleWindow.okBtn.setOnAction(new EventHandler<ActionEvent>() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		consoleWindow.okBtn.setOnAction(new EventHandler<ActionEvent>() 
 		{
+=======
+>>>>>>> parent of bd525ee... 添加控制台扩展控制
 =======
 >>>>>>> parent of bd525ee... 添加控制台扩展控制
 			@Override

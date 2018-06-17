@@ -133,6 +133,7 @@ public class BDGUIView
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         splitPanel.setDividerPosition(0, 1);
         splitPanel.getItems().addAll(this.workspacePanel, consolePanel);
 =======
@@ -142,6 +143,10 @@ public class BDGUIView
         splitPanel.setDividerPosition(0, 1);
         splitPanel.getItems().addAll(this.workspaceRoot, consolePanel);
 >>>>>>> bd525ee68eac6aebaffe83e396132853fa737ec9
+=======
+        splitPanel.setDividerPosition(0, 0.6);
+        splitPanel.getItems().addAll(this.workspacePanel, consolePanel);
+>>>>>>> parent of bd525ee... 添加控制台扩展控制
 =======
         splitPanel.setDividerPosition(0, 0.6);
         splitPanel.getItems().addAll(this.workspacePanel, consolePanel);
