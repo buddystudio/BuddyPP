@@ -344,15 +344,8 @@ public class BDMenuCtrl
 				// 清除控制台信息
 				menuView.consloeArea.clear();
 				
-				// 获取分割位置信息
-            	double pos = menuView.splitPanel.getDividers().get(0).getPosition();
-            	
-            	// 如果控制台未展开
-            	if(pos > 0.99)
-            	{
-            		// 滑出控制台
-    				menuView.splitPanel.setDividerPosition(0, 0.5);
-            	}
+				// 滑出控制台
+				menuView.splitPanel.setDividerPosition(0, 0.5);
 
 				Task<Void> progressTask = new Task<Void>() 
 				{
@@ -637,6 +630,12 @@ public class BDMenuCtrl
 				{
 					consoleWindowCtrl.getView().lbl.setText("很遗憾，编译失败！");
 					
+					// Change the error icon.
+					consoleWindowCtrl.consoleWindow.icon_btn.setImage(consoleWindowCtrl.consoleWindow.icon_msg_error_img);
+					
+					// Show the message bar.
+					consoleWindowCtrl.consoleWindow.msgBtnBar.setVisible(true);
+					
 					// 更新编译进度对话框，隐藏进度条显示操作按钮
 					consoleWindowCtrl.addBtns();
 				}
@@ -683,7 +682,13 @@ public class BDMenuCtrl
 				public void run() 
 				{
 					consoleWindowCtrl.getView().lbl.setText("很遗憾，烧录失败！");
-
+					
+					// Change the error icon.
+					consoleWindowCtrl.consoleWindow.icon_btn.setImage(consoleWindowCtrl.consoleWindow.icon_msg_error_img);
+					
+					// Show the message bar.
+					consoleWindowCtrl.consoleWindow.msgBtnBar.setVisible(true);
+					
 					// 更新编译进度对话框，隐藏进度条显示操作按钮
 					consoleWindowCtrl.addBtns();
 				}

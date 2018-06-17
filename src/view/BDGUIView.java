@@ -149,6 +149,7 @@ public class BDGUIView
         
         splitPanel.setDividerPosition(0, 1);
         splitPanel.getItems().addAll(this.workspaceRoot, consolePanel);
+
         
         this.root.setTop(this.topPanel);
         this.root.setLeft(this.toolsPanel);

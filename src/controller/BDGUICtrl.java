@@ -16,8 +16,6 @@ import util.io.BDCodeWriter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
@@ -95,7 +93,7 @@ public class BDGUICtrl
             	}
             }
         });
-        
+
         // 点击设置按钮
         gui.titlePanel.settingBtn.setOnAction(new EventHandler<ActionEvent>() 
         {
@@ -421,10 +419,10 @@ public class BDGUICtrl
             }
             else
             {
-            	gui.primaryStage.setX(0);
-                gui.primaryStage.setY(0);
-                gui.primaryStage.setWidth(gui.visualBounds.getWidth());
-                gui.primaryStage.setHeight(gui.visualBounds.getHeight());
+            	gui.primaryStage.setX(-1);
+                gui.primaryStage.setY(-1);
+                gui.primaryStage.setWidth(gui.visualBounds.getWidth() + 2);
+                gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 2);
             }
 
             //primaryStage.setFullScreen(false);
