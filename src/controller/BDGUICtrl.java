@@ -421,10 +421,10 @@ public class BDGUICtrl
             }
             else
             {
-            	gui.primaryStage.setX(0);
-                gui.primaryStage.setY(0);
-                gui.primaryStage.setWidth(gui.visualBounds.getWidth());
-                gui.primaryStage.setHeight(gui.visualBounds.getHeight());
+            	gui.primaryStage.setX(-1);
+                gui.primaryStage.setY(-1);
+                gui.primaryStage.setWidth(gui.visualBounds.getWidth() + 2);
+                gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 2);
             }
 
             //primaryStage.setFullScreen(false);
