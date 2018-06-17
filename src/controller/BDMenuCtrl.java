@@ -293,6 +293,7 @@ public class BDMenuCtrl
 				}
 
 				menuView.libWindow = new BDLibWindow();
+				
 				BDLibWindowCtrl libWindowCtrl = new BDLibWindowCtrl(menuView.libWindow, workspaceCtrl);
 
 				// 显示添加库窗口
@@ -349,7 +350,7 @@ public class BDMenuCtrl
 				
 				// 弹出子窗口与主窗口居中
 				showInTheMiddle(menuView.consoleWindow);
-				
+
 				// 清除控制台信息
 				menuView.consloeArea.clear();
 				
@@ -382,13 +383,13 @@ public class BDMenuCtrl
 				if (BDParameters.serialports.isEmpty() || menuView.lbCom.getText().equals("当前串口：未连接")) 
 				{
 					menuView.lbCom.setText("当前串口：未连接");
-					
+
 					// 弹出对话框提示用户未接入开发板
 					menuView.hintDialogWindow.show();
 					
 					// 弹出子窗口与主窗口居中
 					showInTheMiddle(menuView.hintDialogWindow);
-					
+
 					// 如果未连接则返回
 					return;
 				}
@@ -407,7 +408,7 @@ public class BDMenuCtrl
 				
 				// 弹出子窗口与主窗口居中
 				showInTheMiddle(menuView.consoleWindow);
-				
+
 				Task<Void> progressTask = new Task<Void>() 
 				{
 					@Override
@@ -441,7 +442,7 @@ public class BDMenuCtrl
 			public void handle(ActionEvent event) 
 			{
 				BDPluginWindowCtrl pluginWindowVtrl = new BDPluginWindowCtrl(menuView.pluginWindow, workspaceCtrl);
-				
+
 				// 设置
 				menuView.pluginWindow.show();
 				
@@ -456,7 +457,6 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
-
 				// 弹出关于我们的窗口
 				menuView.aboutWindow.show();
 				
@@ -478,6 +478,7 @@ public class BDMenuCtrl
 				{
 					menuView.psw.ReflashPort();
 					preSetWindowCtrl = new BDPreSetWindowCtrl(menuView);
+	
 					menuView.psw.show();
 					
 					// 弹出子窗口与主窗口居中
