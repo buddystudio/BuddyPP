@@ -5,7 +5,6 @@
  */
 package view;
 
-import org.fxmisc.flowless.VirtualizedScrollPane;
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 
@@ -14,10 +13,8 @@ import controller.BDMenuCtrl;
 import controller.BDSettingWindowCtrl;
 import controller.BDToolsCtrl;
 import controller.BDWorkspaceCtrl;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -25,9 +22,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
@@ -45,8 +42,9 @@ public class BDGUIView
 {
     public Stage primaryStage;
     
-    public BorderPane root  = new BorderPane();
-    public VBox topPanel    = new VBox();
+    public BorderPane root  		= new BorderPane();
+    public VBox topPanel    		= new VBox();
+    public BorderPane workspaceRoot	= new BorderPane();
     
     public BDTitleView  titlePanel          = new BDTitleView();
     public BDMenuView   menuPanel           = new BDMenuView();
@@ -55,8 +53,9 @@ public class BDGUIView
     public BDGuideView guidePanel         	= new BDGuideView(); 
     
     public SplitPane splitPanel 			= new SplitPane();
-    public VBox consolePanel 				= new VBox();
+    public BorderPane consolePanel 			= new BorderPane();
     public CodeArea msgArea					= new CodeArea();
+    public VBox dividerPanel 				= new VBox();
     
     public BDMenuCtrl menuCtrl              = new BDMenuCtrl(menuPanel);
     public BDToolsCtrl toolsCtrl            = new BDToolsCtrl(toolsPanel);
@@ -75,6 +74,11 @@ public class BDGUIView
     public BDDialogWindow saveWindow;
     
     public MenuBar menuBar = new MenuBar();
+    
+    public Image iconArrowRightImg = new Image("images/arrow_right.png");
+    public Image iconArrowLeftImg = new Image("images/arrow_left.png");
+    
+    public ImageView arrowBtn = new ImageView(iconArrowLeftImg);
      
     public BDGUIView(Stage primaryStage)
     {
@@ -126,13 +130,25 @@ public class BDGUIView
         BorderPane consoleMsgPanel = new BorderPane();	// 控制台信息
         
         consoleTitlePanel.setStyle("-fx-background-color: #444444;");
-        consoleTitlePanel.setPrefHeight(35);
+        consoleTitlePanel.setPrefHeight(33);
         
-        consolePanel.getChildren().add(consoleTitlePanel);
-        consolePanel.getChildren().add(consoleMsgPanel);
+        dividerPanel.setStyle("-fx-background-color: #444444;");
+        dividerPanel.setPrefWidth(8);
 
-        splitPanel.setDividerPosition(0, 0.6);
-        splitPanel.getItems().addAll(this.workspacePanel, consolePanel);
+        consolePanel.setTop(consoleTitlePanel);
+        consolePanel.setCenter(consoleMsgPanel);
+
+        workspaceRoot.setCenter(workspacePanel);
+        workspaceRoot.setRight(dividerPanel);
+        
+        dividerPanel.setAlignment(Pos.CENTER);
+        dividerPanel.getChildren().add(arrowBtn);
+
+        // 设置右侧控制台最多占60%空间
+        consolePanel.maxWidthProperty().bind(splitPanel.widthProperty().multiply(0.6));
+        
+        splitPanel.setDividerPosition(0, 1);
+        splitPanel.getItems().addAll(this.workspaceRoot, consolePanel);
         
         this.root.setTop(this.topPanel);
         this.root.setLeft(this.toolsPanel);
@@ -149,16 +165,22 @@ public class BDGUIView
         //msgArea.autosize();
         msgArea.setAutoScrollOnDragDesired(true);
         
+        
         msgArea.getStylesheets().add("style/compileStyle.css");
         
-        
+        // 设置控制台信息高亮
         msgArea.richChanges().filter(ch -> !ch.getInserted().equals(ch.getRemoved())).subscribe(change -> 
         {
 			//msgArea.setStyleSpans(0, BDTextAreaConsole.computeHighlighting(msgArea.getText()));
-			msgArea.setEstimatedScrollY(msgArea.getCaretColumn());
+			//msgArea.setEstimatedScrollY(msgArea.getCaretColumn());
+        	
+        	// 光标跟随
+        	msgArea.setEstimatedScrollY(msgArea.getCaretPosition());
+        	
 		});
    
-        consoleMsgPanel.setCenter(msgArea);     
+        consoleMsgPanel.setCenter(msgArea);
+        
         
         // 右侧栏暂时屏蔽
         //this.root.setRight(this.guidePanel); 
