@@ -629,13 +629,7 @@ public class BDMenuCtrl
 				public void run() 
 				{
 					consoleWindowCtrl.getView().lbl.setText("很遗憾，编译失败！");
-					
-					// Change the error icon.
-					consoleWindowCtrl.consoleWindow.icon_btn.setImage(consoleWindowCtrl.consoleWindow.icon_msg_error_img);
-					
-					// Show the message bar.
-					consoleWindowCtrl.consoleWindow.msgBtnBar.setVisible(true);
-					
+	
 					// 更新编译进度对话框，隐藏进度条显示操作按钮
 					consoleWindowCtrl.addBtns();
 				}
@@ -682,12 +676,6 @@ public class BDMenuCtrl
 				public void run() 
 				{
 					consoleWindowCtrl.getView().lbl.setText("很遗憾，烧录失败！");
-					
-					// Change the error icon.
-					consoleWindowCtrl.consoleWindow.icon_btn.setImage(consoleWindowCtrl.consoleWindow.icon_msg_error_img);
-					
-					// Show the message bar.
-					consoleWindowCtrl.consoleWindow.msgBtnBar.setVisible(true);
 					
 					// 更新编译进度对话框，隐藏进度条显示操作按钮
 					consoleWindowCtrl.addBtns();
