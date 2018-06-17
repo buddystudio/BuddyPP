@@ -44,7 +44,6 @@ public class BDConsoleWindowCtrl implements BDProgressStatusListener
 			}
 		});
 
-		consoleWindow.okBtn.setOnAction(new EventHandler<ActionEvent>() {
 		consoleWindow.okBtn.setOnAction(new EventHandler<ActionEvent>() 
 		{
 			@Override
