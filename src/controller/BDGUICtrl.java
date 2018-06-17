@@ -16,8 +16,6 @@ import util.io.BDCodeWriter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
@@ -57,44 +55,6 @@ public class BDGUICtrl
         gui.searchItem.setOnAction(editHandler);
         
         this.gui.saveWindow = new BDDialogWindow("  保存提示", "是否保存当前文件");
-        
-        // 检测分割面板尺寸变化
-        gui.workspacePanel.widthProperty().addListener((obs, oldVal, newVal) -> 
-        {
-        	// 获取分割位置信息
-        	double pos = gui.splitPanel.getDividers().get(0).getPosition();
-        	
-        	if(pos > 0.99)
-        	{
-        		gui.arrowBtn.setImage(gui.iconArrowLeftImg);
-        	}
-        	else
-        	{
-        		gui.arrowBtn.setImage(gui.iconArrowRightImg);
-        	}
-        });
-        
-        // 点击 展开 / 收起 按钮
-        gui.arrowBtn.setOnMouseClicked(new EventHandler<MouseEvent>()
-        {    
-            @Override
-            public void handle(MouseEvent event) 
-            {
-            	// 获取分割位置信息
-            	double pos = gui.splitPanel.getDividers().get(0).getPosition();
-            	
-            	if(pos > 0.99)
-            	{
-            		gui.arrowBtn.setImage(gui.iconArrowLeftImg);
-            		gui.splitPanel.setDividerPosition(0, 0.5);
-            	}
-            	else
-            	{
-            		gui.arrowBtn.setImage(gui.iconArrowRightImg);
-            		gui.splitPanel.setDividerPosition(0, 1);
-            	}
-            }
-        });
         
         // 点击设置按钮
         gui.titlePanel.settingBtn.setOnAction(new EventHandler<ActionEvent>() 
