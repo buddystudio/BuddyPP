@@ -354,8 +354,15 @@ public class BDMenuCtrl
 				// 清除控制台信息
 				menuView.consloeArea.clear();
 				
-				// 滑出控制台
-				menuView.splitPanel.setDividerPosition(0, 0.5);
+				// 获取分割位置信息
+	        	double pos = menuView.splitPanel.getDividers().get(0).getPosition();
+	        	
+	        	// 如果控制台未展开
+	        	if(pos > 0.99)
+	        	{
+	        		// 滑出控制台
+					menuView.splitPanel.setDividerPosition(0, 0.5);
+	        	}
 
 				Task<Void> progressTask = new Task<Void>() 
 				{
