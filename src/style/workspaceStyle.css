@@ -75,6 +75,9 @@
 {
     -fx-border-color: transparent #444444 transparent #444444;
     -fx-background-color: transparent, derive(#444444,0%);
+    
+    /* 设置分隔栏宽度 */
+    -fx-padding: 0 0px 0 1px;
 }
 
 .split-pane 
