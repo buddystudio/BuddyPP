@@ -131,7 +131,7 @@ public class BDGUIView
         consolePanel.getChildren().add(consoleTitlePanel);
         consolePanel.getChildren().add(consoleMsgPanel);
 
-        splitPanel.setDividerPosition(0, 0.6);
+        splitPanel.setDividerPosition(0, 1);
         splitPanel.getItems().addAll(this.workspacePanel, consolePanel);
         
         this.root.setTop(this.topPanel);
