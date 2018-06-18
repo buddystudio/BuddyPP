@@ -48,13 +48,14 @@ public class BDTextAreaConsole extends CodeArea
 
 	static BDTextAreaConsole currentConsole;
 	
-	private static final String COMMAND_PATTERN="(\\.)*avr-(\\.)*";
-	private static final String ERROR_PATTERN="(\\.)*error(\\.)*";
-	//private static final String AVRDUDE_PATTERN="avrdude(\\.)*";
+	private static final String COMMAND_PATTERN = "(\\.)*avr-(\\.)*";
+	private static final String ERROR_PATTERN = "(\\.)*error(\\.)*";
+	//private static final String AVRDUDE_PATTERN = "(\\.)*Send(\\.)*";
+	//private static final String AVRDUDE_PATTERN = "avrdude(\\.)*";
 	
 	private static final Pattern PATTERN = Pattern.compile(		
 			"(?<ERROR>"+ERROR_PATTERN+")"
-			//+"|(?<AVRDUDE>"+AVRDUDE_PATTERN+")"					
+			//+ "|(?<AVRDUDE>"+AVRDUDE_PATTERN + ")"					
 			+ "|(?<COMMAND>" + COMMAND_PATTERN + ")");
 
 	public static BDTextAreaConsole getTextAreaConsoleInstance() 
@@ -164,10 +165,11 @@ public class BDTextAreaConsole extends CodeArea
 		while (matcher.find()) 
 		{
 			String styleClass =
-					matcher.group("COMMAND")!=null?"command"
-						//:matcher.group("AVRDUDE")!=null?"avrdude"
-							:matcher.group("ERROR")!=null?"error":null;
-												
+					matcher.group("COMMAND")!=null?"command":
+					matcher.group("AVRDUDE")!=null?"avrdude":
+					matcher.group("ERROR")!=null?"error":
+					null;
+			
 			assert styleClass != null;
 
 			lineHead = text.lastIndexOf("\n", matcher.start());

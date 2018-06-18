@@ -384,7 +384,8 @@ public class BDMenuCtrl
 		menuView.menuUploadBtn.setOnAction(new EventHandler<ActionEvent>() 
 		{
 			@Override
-			public void handle(ActionEvent event) {
+			public void handle(ActionEvent event) 
+			{
 				BDParameters.serialports = BDSerial.list();
 
 				if (BDParameters.serialports.isEmpty() || menuView.lbCom.getText().equals("当前串口：未连接")) 
@@ -415,6 +416,19 @@ public class BDMenuCtrl
 				
 				// 弹出子窗口与主窗口居中
 				showInTheMiddle(menuView.consoleWindow);
+				
+				// 清除控制台信息
+				menuView.consloeArea.clear();
+				
+				// 获取分割位置信息
+	        	double pos = menuView.splitPanel.getDividers().get(0).getPosition();
+	        	
+	        	// 如果控制台未展开
+	        	if(pos > 0.99)
+	        	{
+	        		// 滑出控制台
+					menuView.splitPanel.setDividerPosition(0, 0.5);
+	        	}
 
 				Task<Void> progressTask = new Task<Void>() 
 				{
@@ -661,16 +675,13 @@ public class BDMenuCtrl
 						// 更新编译进度对话框，隐藏进度条显示操作按钮
 						consoleWindowCtrl.addBtns();
 						
-						// 输出编译失败信息
-						//System.out.println("");
-						//System.out.println("***********************************************");
-						//System.out.println("");
-						//System.out.println("Buddy++ : Compiler processing error.");
-						//System.out.println("");
-						//System.out.println("***********************************************");
-						//System.out.println("");
-						
-						menuView.consloeArea.appendText("失败");
+						menuView.consloeArea.appendText("\n\n");
+						menuView.consloeArea.appendText("***********************************************");
+						menuView.consloeArea.appendText("\n\n");
+						menuView.consloeArea.appendText("Buddy++ : Compiler processing Uusuccessful.");
+						menuView.consloeArea.appendText("\n\n");
+						menuView.consloeArea.appendText("***********************************************");
+						menuView.consloeArea.appendText("\n\n");
 					}
 				});
 			}
@@ -691,15 +702,6 @@ public class BDMenuCtrl
 	
 					// 更新编译进度对话框，隐藏进度条显示操作按钮
 					consoleWindowCtrl.addBtns();
-					
-					// 输出编译失败信息
-					//System.out.println("");
-					//System.out.println("***********************************************");
-					//System.out.println("");
-					//System.out.println("Buddy++ : Compiler processing error.");
-					//System.out.println("");
-					//System.out.println("***********************************************");
-					//System.out.println("");
 					
 					menuView.consloeArea.appendText("\n\n");
 					menuView.consloeArea.appendText("***********************************************");
