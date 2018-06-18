@@ -55,7 +55,7 @@ public class BDTextAreaConsole extends CodeArea
 	private static final Pattern PATTERN = Pattern.compile(		
 			"(?<ERROR>"+ERROR_PATTERN+")"
 			//+"|(?<AVRDUDE>"+AVRDUDE_PATTERN+")"					
-					+ "|(?<COMMAND>" + COMMAND_PATTERN + ")");
+			+ "|(?<COMMAND>" + COMMAND_PATTERN + ")");
 
 	public static BDTextAreaConsole getTextAreaConsoleInstance() 
 	{
@@ -74,9 +74,9 @@ public class BDTextAreaConsole extends CodeArea
 		this.setWrapText(true);
 		this.setEditable(false);
 		
-		this.richChanges().filter(ch -> !ch.getInserted().equals(ch.getRemoved())) // XXX
+		this.richChanges().filter(ch -> !ch.getInserted().equals(ch.getRemoved()))
 				.subscribe(change -> {
-					this.setStyleSpans(0, computeHighlighting(this.getText()));
+					//this.setStyleSpans(0, computeHighlighting(this.getText()));
 				});
 
 		if (systemOut == null) 
@@ -106,7 +106,6 @@ public class BDTextAreaConsole extends CodeArea
 					errFile.deleteOnExit();
 					stderrFile = new FileOutputStream(errFile);
 				}
-				
 			} 
 			catch (IOException e) 
 			{
@@ -123,7 +122,9 @@ public class BDTextAreaConsole extends CodeArea
 				{
 					System.setOut(consoleOut);
 					System.setErr(consoleErr);
-				} catch (Exception e) {
+				} 
+				catch (Exception e) 
+				{
 					e.printStackTrace(systemOut);
 				}
 			}
@@ -131,7 +132,8 @@ public class BDTextAreaConsole extends CodeArea
 
 		// to fix ugliness.. normally macosx java 1.3 puts an
 		// ugly white border around this object, so turn it off.
-		if (Base.isMacOS()) {
+		if (Base.isMacOS()) 
+		{
 			setBorder(null);
 		}
 		
@@ -149,33 +151,46 @@ public class BDTextAreaConsole extends CodeArea
 
 	}
 	
-	public static StyleSpans<Collection<String>> computeHighlighting(String text) {
+	public static StyleSpans<Collection<String>> computeHighlighting(String text) 
+	{
 		Matcher matcher = PATTERN.matcher(text);
-		int lastKwEnd = 0;
-		int lineHead=0;
-		int lineEnd=0;
+		
+		int lastKwEnd 	= 0;
+		int lineHead	= 0;
+		int lineEnd		= 0;
+		
 		StyleSpansBuilder<Collection<String>> spansBuilder = new StyleSpansBuilder<>();
-		while (matcher.find()) {
+
+		while (matcher.find()) 
+		{
 			String styleClass =
 					matcher.group("COMMAND")!=null?"command"
 						//:matcher.group("AVRDUDE")!=null?"avrdude"
 							:matcher.group("ERROR")!=null?"error":null;
 												
-			/* never happens */ 
 			assert styleClass != null;
-			lineHead=text.lastIndexOf("\n", matcher.start());
-			if(lineHead<0)
-				lineHead=0;
-			lineEnd=text.indexOf("\n", matcher.end());
-			if(lineEnd<0)
-				lineEnd=text.length()-1;
-			if(lineHead-lastKwEnd>=0){
-				spansBuilder.add(Collections.emptyList(), lineHead-lastKwEnd);
-				spansBuilder.add(Collections.singleton(styleClass), lineEnd-lineHead);
+
+			lineHead = text.lastIndexOf("\n", matcher.start());
+			
+			if(lineHead < 0)
+				lineHead = 0;
+			
+			lineEnd = text.indexOf("\n", matcher.end());
+			
+			if(lineEnd < 0)
+				lineEnd = text.length() - 1;
+			
+			if(lineHead - lastKwEnd >= 0)
+			{
+				spansBuilder.add(Collections.emptyList(), lineHead - lastKwEnd);
+				spansBuilder.add(Collections.singleton(styleClass), lineEnd - lineHead);
 			}
-			lastKwEnd=lineEnd;
+			
+			lastKwEnd = lineEnd;
 		}
+		
 		spansBuilder.add(Collections.emptyList(), text.length() - lastKwEnd);
+
 		return spansBuilder.create();
 	}
 
@@ -186,20 +201,29 @@ public class BDTextAreaConsole extends CodeArea
 	}
 
 	// added sync for 0091.. not sure if it helps or hinders
-	synchronized public void message(String what, boolean err, boolean advance) {
-		if (err) {
+	synchronized public void message(String what, boolean err, boolean advance) 
+	{
+		if (err) 
+		{
 			systemErr.print(what);
 			// systemErr.print("CE" + what);
-		} else {
+		} 
+		else 
+		{
 			systemOut.print(what);
 			// systemOut.print("CO" + what);
 		}
 
-		if (advance) {
+		if (advance) 
+		{
 			appendText("\n", err);
-			if (err) {
+			
+			if (err) 
+			{
 				systemErr.println();
-			} else {
+			} 
+			else 
+			{
 				systemOut.println();
 			}
 		}
@@ -209,15 +233,16 @@ public class BDTextAreaConsole extends CodeArea
 		// moved down here since something is punting
 	}
 	
-	synchronized private void appendText(String txt, boolean e) {
+	synchronized private void appendText(String txt, boolean e) 
+	{
 		//to do : append text
        // consoleDoc.appendString(txt, e ? errStyle : stdStyle);
 		//if(e){
 			//setStyle("-fx-text-fill: #FF1d1d;");			
 		//}	
-		
-		appendText(txt);	
-		
+
+		appendText(txt);
+
 		try
 		{
 			Platform.runLater(new Runnable() 
@@ -225,13 +250,12 @@ public class BDTextAreaConsole extends CodeArea
 	            @Override
 	            public void run() 
 	            {
-	                //更新JavaFX的主线程的代码放在此处
+	                // 更新JavaFX的主线程的代码放在此处
 	            	gui.msgArea.appendText(txt);
 	            }
 	        });	
 		}
 		catch(Exception ex) {}
-		
     }
 
 	/*
@@ -247,75 +271,102 @@ public class BDTextAreaConsole extends CodeArea
     }
     */
 	
-	public void clear(){
+	public void clear()
+	{
 		deleteText(0, getLength()-1);
 	}
 
-	private static class EditorConsoleStream extends OutputStream {
+	private static class EditorConsoleStream extends OutputStream 
+	{
 		// static EditorConsole current;
 		final boolean err; // whether stderr or stdout
 		final byte single[] = new byte[1];
 
-		public EditorConsoleStream(boolean err) {
+		public EditorConsoleStream(boolean err) 
+		{
 			this.err = err;
 		}
 
 		@Override
-		public void close() {
-		}
+		public void close() {}
 
 		@Override
-		public void flush() {
-		}
+		public void flush() {}
 
 		@Override
-		public void write(byte b[]) { // appears never to be used
-			if (currentConsole != null) {
+		public void write(byte b[]) 
+		{ // appears never to be used
+			if (currentConsole != null) 
+			{
 				currentConsole.write(b, 0, b.length, err);
-			} else {
-				try {
-					if (err) {
+			} 
+			else 
+			{
+				try 
+				{
+					if (err) 
+					{
 						systemErr.write(b);
-					} else {
+					} 
+					else 
+					{
 						systemOut.write(b);
 					}
-				} catch (IOException e) {
-				} // just ignore, where would we write?
+				} 
+				catch (IOException e) {} // just ignore, where would we write?
 			}
 
 			OutputStream echo = err ? stderrFile : stdoutFile;
-			if (echo != null) {
-				try {
+			
+			if (echo != null) 
+			{
+				try 
+				{
 					echo.write(b);
 					echo.flush();
-				} catch (IOException e) {
+				} 
+				catch (IOException e) 
+				{
 					e.printStackTrace();
 					echo = null;
 				}
-			}			
+			}
 		}
 
 		@Override
-		public void write(byte b[], int offset, int length) {
-			if (currentConsole != null) {
+		public void write(byte b[], int offset, int length) 
+		{
+			if (currentConsole != null) 
+			{
 				currentConsole.write(b, offset, length, err);
-			} else {
-				try {
-					if (err) {
+			} 
+			else 
+			{
+				try 
+				{
+					if (err) 
+					{
 						systemErr.write(b);
-					} else {
+					} 
+					else 
+					{
 						systemOut.write(b);
 					}
-				} catch (IOException e) {
-				} // just ignore, where would we write?
+				} 
+				catch (IOException e) {} // just ignore, where would we write?
 			}
 
 			OutputStream echo = err ? stderrFile : stdoutFile;
-			if (echo != null) {
-				try {
+			
+			if (echo != null) 
+			{
+				try 
+				{
 					echo.write(b, offset, length);
 					echo.flush();
-				} catch (IOException e) {
+				} 
+				catch (IOException e) 
+				{
 					e.printStackTrace();
 					echo = null;
 				}
@@ -323,21 +374,31 @@ public class BDTextAreaConsole extends CodeArea
 		}
 
 		@Override
-		public void write(int b) {
+		public void write(int b) 
+		{
 			single[0] = (byte) b;
-			if (currentConsole != null) {
+			
+			if (currentConsole != null) 
+			{
 				currentConsole.write(single, 0, 1, err);
-			} else {
+			} 
+			else 
+			{
 				// redirect for all the extra handling above
 				write(new byte[] { (byte) b }, 0, 1);
 			}
 
 			OutputStream echo = err ? stderrFile : stdoutFile;
-			if (echo != null) {
-				try {
+			
+			if (echo != null) 
+			{
+				try 
+				{
 					echo.write(b);
 					echo.flush();
-				} catch (IOException e) {
+				} 
+				catch (IOException e) 
+				{
 					e.printStackTrace();
 					echo = null;
 				}

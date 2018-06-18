@@ -13,6 +13,7 @@ import controller.BDMenuCtrl;
 import controller.BDSettingWindowCtrl;
 import controller.BDToolsCtrl;
 import controller.BDWorkspaceCtrl;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -168,23 +169,33 @@ public class BDGUIView
         //msgArea.autosize();
         msgArea.setAutoScrollOnDragDesired(true);
         
-        
         msgArea.getStylesheets().add("style/compileStyle.css");
         
         // 设置控制台信息高亮
         msgArea.richChanges().filter(ch -> !ch.getInserted().equals(ch.getRemoved())).subscribe(change -> 
         {
-			//msgArea.setStyleSpans(0, BDTextAreaConsole.computeHighlighting(msgArea.getText()));
-			//msgArea.setEstimatedScrollY(msgArea.getCaretColumn());
+        	Platform.runLater(new Runnable() 
+	        {
+	            @Override
+	            public void run() 
+	            {
+	            	// 如果当前控制台信息为空则返回
+	            	if(msgArea.getText().length() == 0)
+	            	{
+	            		return;
+	            	}
+	            	
+	                //更新JavaFX的主线程的代码放在此处
+	            	msgArea.setStyleSpans(0, BDTextAreaConsole.computeHighlighting(msgArea.getText()));
+	            }
+	        });
         	
         	// 光标跟随
         	msgArea.setEstimatedScrollY(msgArea.getCaretPosition());
-        	
 		});
    
         consoleMsgPanel.setCenter(msgArea);
-        
-        
+
         // 右侧栏暂时屏蔽
         //this.root.setRight(this.guidePanel); 
         

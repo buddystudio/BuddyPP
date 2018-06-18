@@ -591,12 +591,15 @@ public class BDMenuCtrl
 		// 临时文件路径
 		String compilepath = System.getProperty("java.io.tmpdir") + classname;
 		
+		// 清屏
+		//menuView.consloeArea.clear();
+		
 		// 输出编译初始化信息
-		System.out.println("*****************************************");
+		System.out.println("***********************************************");
 		System.out.println("");
-		System.out.println("Buddy++ : Compiler processing start");
+		System.out.println("Buddy++ : Compiler processing will start.");
 		System.out.println("");
-		System.out.println("*****************************************");
+		System.out.println("***********************************************");
 		System.out.println("");
 		
 		// 编译后源码路径
@@ -626,13 +629,24 @@ public class BDMenuCtrl
 		try 
 		{
 			BDCompiler compiler = new BDCompiler();
+			
 			compiler.addProgressStatusListener(consoleWindowCtrl); // 进度条消息处理
 			//consoleWindowCtrl.clearText();
+			
 			// 编译
 			if (compiler.compile(compilepath, compilepath, classname, code.getImportedLibraries(), true)) 
 			{
 				// 编译成功
 				code.isCompiled = true;
+				
+				// 输出编译成功信息
+				System.out.println("");
+				System.out.println("***********************************************");
+				System.out.println("");
+				System.out.println("Buddy++ : Compiler processing complete.");
+				System.out.println("");
+				System.out.println("***********************************************");
+				System.out.println("");
 			} 
 			else 
 			{
@@ -640,12 +654,23 @@ public class BDMenuCtrl
 				Platform.runLater(new Runnable() 
 				{
 					@Override
-					public void run() 
+					public void run()
 					{
 						consoleWindowCtrl.getView().lbl.setText("很遗憾，编译失败！");
 						
 						// 更新编译进度对话框，隐藏进度条显示操作按钮
 						consoleWindowCtrl.addBtns();
+						
+						// 输出编译失败信息
+						//System.out.println("");
+						//System.out.println("***********************************************");
+						//System.out.println("");
+						//System.out.println("Buddy++ : Compiler processing error.");
+						//System.out.println("");
+						//System.out.println("***********************************************");
+						//System.out.println("");
+						
+						menuView.consloeArea.appendText("失败");
 					}
 				});
 			}
@@ -666,6 +691,23 @@ public class BDMenuCtrl
 	
 					// 更新编译进度对话框，隐藏进度条显示操作按钮
 					consoleWindowCtrl.addBtns();
+					
+					// 输出编译失败信息
+					//System.out.println("");
+					//System.out.println("***********************************************");
+					//System.out.println("");
+					//System.out.println("Buddy++ : Compiler processing error.");
+					//System.out.println("");
+					//System.out.println("***********************************************");
+					//System.out.println("");
+					
+					menuView.consloeArea.appendText("\n\n");
+					menuView.consloeArea.appendText("***********************************************");
+					menuView.consloeArea.appendText("\n\n");
+					menuView.consloeArea.appendText("Buddy++ : Compiler processing Uusuccessful.");
+					menuView.consloeArea.appendText("\n\n");
+					menuView.consloeArea.appendText("***********************************************");
+					menuView.consloeArea.appendText("\n\n");
 				}
 			});
 		}
