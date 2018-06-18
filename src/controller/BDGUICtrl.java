@@ -16,6 +16,8 @@ import util.io.BDCodeWriter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
@@ -242,6 +244,38 @@ public class BDGUICtrl
                 }   
             }
         });
+        
+        // 点击菜单清除选项
+        gui.clearMenuItem.setOnAction(new EventHandler<ActionEvent>() 
+        {
+            @Override public void handle(ActionEvent e) 
+            {
+                gui.msgArea.clear();
+            }
+        });
+        
+        // 点击菜单复制选项
+        gui.copyMenuItem.setOnAction(new EventHandler<ActionEvent>() 
+        {
+            @Override public void handle(ActionEvent e) 
+            {
+            	// 把控制台信息复制到剪贴板
+            	Clipboard clipboard = Clipboard.getSystemClipboard();
+            	ClipboardContent cc = new ClipboardContent();
+            	
+            	cc.putString(gui.msgArea.getText());
+            	clipboard.setContent(cc);
+            }
+        });
+        
+        // 点击菜单全选选项
+        gui.selectAllMenuItem.setOnAction(new EventHandler<ActionEvent>() 
+        {
+            @Override public void handle(ActionEvent e) 
+            {
+            	gui.msgArea.selectAll();
+            }
+        });
     }
 
     // 
@@ -424,19 +458,7 @@ public class BDGUICtrl
                 gui.primaryStage.setWidth(gui.visualBounds.getWidth() + 2);
                 gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 2);
             }
-
-            //primaryStage.setFullScreen(false);
-            // 总在顶端
-            //primaryStage.setAlwaysOnTop(true);
-            // 设置面板靠右
-            //gui.menuPanel.settingPanel.setPrefWidth(gui.visualBounds.getWidth() - 1024 + 315);
-            //gui.menuPanel.settingPanel.setPrefWidth(gui.visualBounds.getWidth() - 1024 + 265);
-            //gui.menuPanel.settingPanel.setPrefWidth(gui.visualBounds.getWidth() - 1024 - 120 + 250);
-
-            // 尝试不重绘
-            //gui.workspaceCtrl.workspaceView.workspaceModel.curTab.spp.updateUI();
         }
-    	
     }
 
     // 保存文件
@@ -483,8 +505,7 @@ public class BDGUICtrl
 	    	fileChooser.getExtensionFilters().add(extFilterCPP);
 	    	fileChooser.getExtensionFilters().add(extFilterC);
 	    	fileChooser.getExtensionFilters().add(extFilterH);
-	        
-	        
+
 	        // Show open file dialog
 	        //file = fileChooser.showSaveDialog(null);
 	        file = fileChooser.showSaveDialog(gui.saveWindow);

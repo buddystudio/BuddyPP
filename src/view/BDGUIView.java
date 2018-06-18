@@ -17,6 +17,7 @@ import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -88,6 +89,12 @@ public class BDGUIView
     public ImageView arrowBtn = new ImageView(iconArrowLeftImg);
     public ImageView clearBtn = new ImageView(iconClear01Img);
     public ImageView copyBtn = new ImageView(iconCopy01Img);
+    
+    public ContextMenu menu = new ContextMenu();
+    
+    public MenuItem clearMenuItem 		= new MenuItem("  清除  ");
+    public MenuItem copyMenuItem 		= new MenuItem("  复制  ");
+    public MenuItem selectAllMenuItem 	= new MenuItem("  全选  ");
      
     public BDGUIView(Stage primaryStage)
     {
@@ -108,7 +115,6 @@ public class BDGUIView
         menuCtrl.setHotKey();
         
         this.primaryStage = primaryStage;
-        
         this.primaryStage.setTitle("Buddy++");
         
         // 定义无边框窗体
@@ -167,7 +173,7 @@ public class BDGUIView
         splitPanel.setDividerPosition(0, 1);
         splitPanel.getItems().addAll(this.workspaceRoot, consolePanel);
 
-        
+        // 初始化布局
         this.root.setTop(this.topPanel);
         this.root.setLeft(this.toolsPanel);
         this.root.setCenter(this.splitPanel);
@@ -178,11 +184,16 @@ public class BDGUIView
         
         msgArea.setParagraphGraphicFactory(LineNumberFactory.get(msgArea));
         //msgArea.setWrapText(true);
-        //msgArea.setEditable(false);
+        msgArea.setEditable(false);
+        
         msgArea.setPrefHeight(535);
         //msgArea.autosize();
         msgArea.setAutoScrollOnDragDesired(true);
+
+        // 为控制台添加右键菜单
+        menu.getItems().addAll(clearMenuItem, copyMenuItem, selectAllMenuItem);
         
+		msgArea.setContextMenu(menu);
         msgArea.getStylesheets().add("style/compileStyle.css");
         
         // 设置控制台信息高亮
