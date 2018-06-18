@@ -120,7 +120,7 @@ public class BDMenuCtrl
 				// Show open file dialog
 				file = fileChooser.showOpenDialog(null);
 				
-				if(file==null)
+				if(file == null)
 					return;
 				
 				BDCodeModel code = new BDCodeModel();
@@ -129,8 +129,6 @@ public class BDMenuCtrl
 
 				try 
 				{
-					// code.codeTex =
-					// BDCodeReader.readFileByLines(file.getPath());
 					//code.setCodeText(BDCodeReader.readFileByLines2(file.getPath()));
 					code.setCodeText(BDCodeReader.readFileByLines(file.getPath()));
 
@@ -236,6 +234,11 @@ public class BDMenuCtrl
 				// 添加代码标签页
 				menuView.expWindow.show();
 				
+				if(BDParameters.os.equals("Mac OS X"))
+				{
+					return;
+				}
+				
 				// 弹出子窗口与主窗口居中
 				showInTheMiddle(menuView.expWindow);
 			}
@@ -299,6 +302,11 @@ public class BDMenuCtrl
 				// 显示添加库窗口
 				menuView.libWindow.show();
 				
+				if(BDParameters.os.equals("Mac OS X"))
+				{
+					return;
+				}
+				
 				// 弹出子窗口与主窗口居中
 				showInTheMiddle(menuView.libWindow);
 			}
@@ -318,6 +326,11 @@ public class BDMenuCtrl
 					// 弹出对话框提示用户未接入开发板
 					menuView.hintDialogWindow.show();
 					
+					if(BDParameters.os.equals("Mac OS X"))
+					{
+						return;
+					}
+					
 					// 弹出子窗口与主窗口居中
 					showInTheMiddle(menuView.hintDialogWindow);
 
@@ -330,6 +343,11 @@ public class BDMenuCtrl
 
 				// 显示串口通讯窗口
 				menuView.comWindow.show();
+				
+				if(BDParameters.os.equals("Mac OS X"))
+				{
+					return;
+				}
 				
 				// 弹出子窗口与主窗口居中
 				showInTheMiddle(menuView.comWindow);
@@ -347,6 +365,11 @@ public class BDMenuCtrl
 
 				// 显示编译信息窗口
 				menuView.consoleWindow.show();
+				
+				if(BDParameters.os.equals("Mac OS X"))
+				{
+					return;
+				}
 				
 				// 弹出子窗口与主窗口居中
 				showInTheMiddle(menuView.consoleWindow);
@@ -395,6 +418,11 @@ public class BDMenuCtrl
 					// 弹出对话框提示用户未接入开发板
 					menuView.hintDialogWindow.show();
 					
+					if(BDParameters.os.equals("Mac OS X"))
+					{
+						return;
+					}
+					
 					// 弹出子窗口与主窗口居中
 					showInTheMiddle(menuView.hintDialogWindow);
 
@@ -413,6 +441,11 @@ public class BDMenuCtrl
 
 				// 烧录
 				menuView.consoleWindow.show();
+				
+				if(BDParameters.os.equals("Mac OS X"))
+				{
+					return;
+				}
 				
 				// 弹出子窗口与主窗口居中
 				showInTheMiddle(menuView.consoleWindow);
@@ -467,6 +500,11 @@ public class BDMenuCtrl
 				// 设置
 				menuView.pluginWindow.show();
 				
+				if(BDParameters.os.equals("Mac OS X"))
+				{
+					return;
+				}
+				
 				// 弹出子窗口与主窗口居中
 				showInTheMiddle(menuView.pluginWindow);
 			}
@@ -480,6 +518,11 @@ public class BDMenuCtrl
 			{
 				// 弹出关于我们的窗口
 				menuView.aboutWindow.show();
+				
+				if(BDParameters.os.equals("Mac OS X"))
+				{
+					return;
+				}
 				
 				// 弹出子窗口与主窗口居中
 				showInTheMiddle(menuView.aboutWindow);
@@ -498,9 +541,15 @@ public class BDMenuCtrl
 				try 
 				{
 					menuView.psw.ReflashPort();
+					
 					preSetWindowCtrl = new BDPreSetWindowCtrl(menuView);
 	
 					menuView.psw.show();
+					
+					if(BDParameters.os.equals("Mac OS X"))
+					{
+						return;
+					}
 					
 					// 弹出子窗口与主窗口居中
 					showInTheMiddle(menuView.psw);
@@ -764,6 +813,7 @@ public class BDMenuCtrl
 		}
 	}
 	
+	// 实现子窗体居中于主窗体
 	private void showInTheMiddle(BDWindow win)
 	{
 		double posX = menuView.primaryStage.getX() + (menuView.primaryStage.getWidth() - win.getWidth()) / 2;
