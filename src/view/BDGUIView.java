@@ -210,7 +210,7 @@ public class BDGUIView
 	            		return;
 	            	}
 	            	
-	                //更新JavaFX的主线程的代码放在此处
+	                // 更新JavaFX的主线程的代码放在此处
 	            	msgArea.setStyleSpans(0, BDTextAreaConsole.computeHighlighting(msgArea.getText()));
 	            }
 	        });

@@ -166,7 +166,7 @@ public class BDTextAreaConsole extends CodeArea
 		{
 			String styleClass =
 					matcher.group("COMMAND")!=null?"command":
-					matcher.group("AVRDUDE")!=null?"avrdude":
+					//matcher.group("AVRDUDE")!=null?"avrdude":
 					matcher.group("ERROR")!=null?"error":
 					null;
 			
