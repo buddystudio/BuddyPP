@@ -79,7 +79,15 @@ public class BDGUIView
     public Image iconArrowRightImg = new Image("images/arrow_right.png");
     public Image iconArrowLeftImg = new Image("images/arrow_left.png");
     
+    public Image iconClear01Img = new Image("images/console_clear_icon_01.jpg");
+    public Image iconClear02Img = new Image("images/console_clear_icon_02.jpg");
+    
+    public Image iconCopy01Img = new Image("images/console_copy_icon_01.jpg");
+    public Image iconCopy02Img = new Image("images/console_copy_icon_02.jpg");
+    
     public ImageView arrowBtn = new ImageView(iconArrowLeftImg);
+    public ImageView clearBtn = new ImageView(iconClear01Img);
+    public ImageView copyBtn = new ImageView(iconCopy01Img);
      
     public BDGUIView(Stage primaryStage)
     {
@@ -129,7 +137,13 @@ public class BDGUIView
         
         consolePanel.setStyle("-fx-background-color: #ffffff;");
         
-        HBox consoleTitlePanel = new HBox();			// 横向菜单（清除 / 复制 / 帮助）
+        // 横向菜单（清除 / 复制 / 帮助）
+        HBox consoleTitlePanel = new HBox();
+        
+        consoleTitlePanel.setAlignment(Pos.CENTER_LEFT);
+        //consoleTitlePanel.getChildren().add(clearBtn);
+        //consoleTitlePanel.getChildren().add(copyBtn);
+        
         BorderPane consoleMsgPanel = new BorderPane();	// 控制台信息
         
         consoleTitlePanel.setStyle("-fx-background-color: #444444;");
@@ -194,6 +208,7 @@ public class BDGUIView
         	msgArea.setEstimatedScrollY(msgArea.getCaretPosition());
 		});
    
+        //consoleMsgPanel.setTop(consoleTitlePanel);
         consoleMsgPanel.setCenter(msgArea);
 
         // 右侧栏暂时屏蔽
