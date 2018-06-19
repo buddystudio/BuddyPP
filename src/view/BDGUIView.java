@@ -35,6 +35,7 @@ import javafx.stage.StageStyle;
 
 import model.BDGUIModel;
 import model.BDParameters;
+import util.base.DrawUtil;
 
 /**
  *
@@ -140,6 +141,9 @@ public class BDGUIView
         topPanel.getChildren().add(this.menuPanel);
         
         consolePanel.setStyle("-fx-background-color: #ffffff;");
+        
+        // 添加窗体拉伸效果
+        DrawUtil.addDrawFunc(primaryStage, root);
         
         // 横向菜单（清除 / 复制 / 帮助）
         HBox consoleTitlePanel = new HBox();
