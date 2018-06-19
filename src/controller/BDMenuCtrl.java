@@ -472,13 +472,11 @@ public class BDMenuCtrl
 					// 弹出对话框提示用户未接入开发板
 					menuView.hintDialogWindow.show();
 					
-					if(BDParameters.os.equals("Mac OS X"))
+					if(!BDParameters.os.equals("Mac OS X"))
 					{
-						return;
+						// 弹出子窗口与主窗口居中
+						showInTheMiddle(menuView.hintDialogWindow);
 					}
-					
-					// 弹出子窗口与主窗口居中
-					showInTheMiddle(menuView.hintDialogWindow);
 
 					// 如果未连接则返回
 					return;
