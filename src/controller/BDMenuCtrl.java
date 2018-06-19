@@ -365,13 +365,13 @@ public class BDMenuCtrl
 	         @Override
 	         public void handle(WindowEvent event) 
 	         {
-	        	 if(!compileThread.isAlive() || !uploadThread.isAlive())
-	        	 {
-	        		 return;
-	        	 }
-	        	 
 	        	 if(compileThread != null)
 	        	 {
+	        		 if(!compileThread.isAlive())
+		        	 {
+		        		 return;
+		        	 }
+	        		 
 	        		 // 终止编译
 	        		 compileThread.stop();
 	        		 
@@ -386,6 +386,11 @@ public class BDMenuCtrl
 	        	 
 	        	 if(uploadThread != null)
 	        	 {
+	        		 if(!uploadThread.isAlive())
+		        	 {
+		        		 return;
+		        	 }
+	        		 
 	        		 // 终止上传
 	        		 uploadThread.stop();
 	        		 
@@ -534,7 +539,9 @@ public class BDMenuCtrl
 				};
 
 				// 开始编译上传任务
-				new Thread(progressTask).start();
+				uploadThread = new Thread(progressTask);
+				
+				uploadThread.start();
 			}
 		});
 
@@ -837,6 +844,15 @@ public class BDMenuCtrl
 					
 					// 更新烧录进度对话框，恢复进度条显示
 					consoleWindowCtrl.removeBtns();
+					
+					// 输出烧录初始化信息
+					System.out.println("");
+					System.out.println("*********************************************************");
+					System.out.println("");
+					System.out.println("Buddy++ : Upload processing will start.");
+					System.out.println("");
+					System.out.println("*********************************************************");
+					System.out.println("");
 				}
 			});
 
@@ -856,6 +872,15 @@ public class BDMenuCtrl
 					
 					// 更新编译进度对话框，隐藏进度条显示操作按钮
 					consoleWindowCtrl.addBtns();
+					
+					// 输出烧录失败信息
+					System.out.println("");
+					System.out.println("*********************************************************");
+					System.out.println("");
+					System.out.println("Buddy++ : Upload processing Uusuccessful.");
+					System.out.println("");
+					System.out.println("*********************************************************");
+					System.out.println("");
 				}
 			});
 

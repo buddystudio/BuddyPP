@@ -23,33 +23,11 @@ import view.BDConsoleWindow;
 public class BDConsoleWindowCtrl implements BDProgressStatusListener 
 {
 	public BDMenuCtrl menuCtrl = null;
-	public BDConsoleWindow consoleWindow = null;;
+	public BDConsoleWindow consoleWindow = null;
 
 	public BDConsoleWindowCtrl(BDConsoleWindow consoleWindow) 
 	{
 		this.consoleWindow = consoleWindow;
-		
-		/*
-		// 关闭窗口中止编译操作
-		this.consoleWindow.setOnHiding(new EventHandler<WindowEvent>() 
-		{
-	         @Override
-	         public void handle(WindowEvent event) 
-	         {
-	             Platform.runLater(new Runnable() 
-	             {
-	                 @Override
-	                 public void run() 
-	                 {
-	                	 menuCtrl.compileThread.stop();
-	                	 
-	                     System.out.println("Application Closed by click to Close Button(X)");
-	                     //System.exit(0);
-	                 }
-	             });
-	         }
-	     });
-	     */
 
 		consoleWindow.detailBtn.setOnAction(new EventHandler<ActionEvent>() 
 		{
