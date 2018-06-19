@@ -494,14 +494,12 @@ public class BDMenuCtrl
 				// 烧录
 				menuView.consoleWindow.show();
 				
-				if(BDParameters.os.equals("Mac OS X"))
+				if(!BDParameters.os.equals("Mac OS X"))
 				{
-					return;
+					// 弹出子窗口与主窗口居中
+					showInTheMiddle(menuView.consoleWindow);
 				}
-				
-				// 弹出子窗口与主窗口居中
-				showInTheMiddle(menuView.consoleWindow);
-				
+
 				// 清除控制台信息
 				menuView.consloeArea.clear();
 				
