@@ -173,6 +173,7 @@ public class BDGUIView
         consolePanel.maxWidthProperty().bind(splitPanel.widthProperty().multiply(0.6));
 
         splitPanel.setDividerPosition(0, 1);
+        SplitPane.setResizableWithParent(consolePanel, false);	// 锁定右侧面板
         splitPanel.getItems().addAll(this.workspaceRoot, consolePanel);
 
         // 初始化布局
