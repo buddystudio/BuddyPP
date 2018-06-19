@@ -103,9 +103,7 @@ public class BDGUIView
         
         // 把控制台信息组件传入菜单视图
         menuPanel.consloeArea = this.msgArea;
-        
         menuPanel.splitPanel = this.splitPanel;
-        
         menuPanel.primaryStage = primaryStage;
         
         // 把工作区控制器传入工具控制器
@@ -182,17 +180,15 @@ public class BDGUIView
         
         consoleTxt.gui = this;
         
-        msgArea.setParagraphGraphicFactory(LineNumberFactory.get(msgArea));
-        //msgArea.setWrapText(true);
-        msgArea.setEditable(false);
-        
-        msgArea.setPrefHeight(535);
-        //msgArea.autosize();
-        msgArea.setAutoScrollOnDragDesired(true);
-
         // 为控制台添加右键菜单
         menu.getItems().addAll(clearMenuItem, copyMenuItem, selectAllMenuItem);
         
+        msgArea.setParagraphGraphicFactory(LineNumberFactory.get(msgArea));
+        msgArea.setEditable(false);
+        msgArea.setPrefHeight(535);
+        msgArea.setAutoScrollOnDragDesired(true);
+        //msgArea.setWrapText(true);
+        //msgArea.autosize();
 		msgArea.setContextMenu(menu);
         msgArea.getStylesheets().add("style/compileStyle.css");
         

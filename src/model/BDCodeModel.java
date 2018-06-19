@@ -10,6 +10,8 @@ import util.debug.BDRunnerException;
 import util.debug.BDInoCode;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,14 +30,44 @@ public class BDCodeModel
 
     public BDCodeModel() 
     {    	
-    	code=new BDInoCode();
+    	code = new BDInoCode();
     	
         // 设置新建文件的命名
     	setName("sketch_" + BDParameters.codeIdCount);
     	
+    	String baseCode = "\\nvoid setup()\\n{\\n\\t// 初始化代码\\n\\n}\\n\\nvoid loop()\\n{\\n\\t// 主程序代码\\n\\n}\\n";
+    	String code = createCodeNotes() + baseCode;
+    	
     	// 新建文件默认内容
     	//setCodeText("\nvoid setup()\n{\n\t// 初始化代码\n\n}\n\nvoid loop()\n{\n\t// 主程序代码\n\n}\n");
-    	setCodeText("\\nvoid setup()\\n{\\n\\t// 初始化代码\\n\\n}\\n\\nvoid loop()\\n{\\n\\t// 主程序代码\\n\\n}\\n");  
+    	setCodeText(code);  
+    }
+    
+    // 添加源码页首注释
+    public String createCodeNotes()
+    {
+    	Date day = new Date();    
+
+    	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+
+    	String date 	= df.format(day);
+    	String filename = code.getFileName();
+    	String notes 	= "";
+    	
+    	notes += "\\n";
+    	notes += "/**\\n";
+    	notes += " ************************************************\\n";
+    	notes += " * \\n";
+    	notes += " * @file    : " + filename + ".ino\\n";
+    	notes += " * @brief   :  \\n";
+    	notes += " * @author  :  \\n";
+    	notes += " * @version : 1.0.0 \\n";
+    	notes += " * @date    : " + date + "\\n";
+    	notes += " * \\n";
+    	notes += " ************************************************\\n";
+    	notes += "*/\\n";
+    	
+    	return notes;
     }
 
     public String preprocess(String buildPath) throws BDRunnerException 

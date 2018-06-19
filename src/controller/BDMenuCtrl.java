@@ -365,17 +365,22 @@ public class BDMenuCtrl
 	         @Override
 	         public void handle(WindowEvent event) 
 	         {
+	        	 if(!compileThread.isAlive() || !uploadThread.isAlive())
+	        	 {
+	        		 return;
+	        	 }
+	        	 
 	        	 if(compileThread != null)
 	        	 {
 	        		 // 终止编译
 	        		 compileThread.stop();
 	        		 
 	        		 System.out.println("");
-	        		 System.out.println("***********************************************");
+	        		 System.out.println("*********************************************************");
 	        		 System.out.println("");
 	        		 System.out.println("Buddy++ : Compiler processing has been stoped.");
 	        		 System.out.println("");
-	        		 System.out.println("***********************************************");
+	        		 System.out.println("*********************************************************");
 	        		 System.out.println("");
 	        	 }
 	        	 
@@ -385,11 +390,11 @@ public class BDMenuCtrl
 	        		 uploadThread.stop();
 	        		 
 	        		 System.out.println("");
-	        		 System.out.println("***********************************************");
+	        		 System.out.println("*********************************************************");
 	        		 System.out.println("");
 	        		 System.out.println("Buddy++ : Upload processing has been stoped.");
 	        		 System.out.println("");
-	        		 System.out.println("***********************************************");
+	        		 System.out.println("*********************************************************");
 	        		 System.out.println("");
 	        	 }
 	         }
@@ -702,11 +707,12 @@ public class BDMenuCtrl
 		//menuView.consloeArea.clear();
 		
 		// 输出编译初始化信息
-		System.out.println("***********************************************");
+		System.out.println("");
+		System.out.println("*********************************************************");
 		System.out.println("");
 		System.out.println("Buddy++ : Compiler processing will start.");
 		System.out.println("");
-		System.out.println("***********************************************");
+		System.out.println("*********************************************************");
 		System.out.println("");
 		
 		// 编译后源码路径
@@ -748,11 +754,11 @@ public class BDMenuCtrl
 				
 				// 输出编译成功信息
 				System.out.println("");
-				System.out.println("***********************************************");
+				System.out.println("*********************************************************");
 				System.out.println("");
 				System.out.println("Buddy++ : Compiler processing complete.");
 				System.out.println("");
-				System.out.println("***********************************************");
+				System.out.println("*********************************************************");
 				System.out.println("");
 			} 
 			else 
@@ -769,11 +775,11 @@ public class BDMenuCtrl
 						consoleWindowCtrl.addBtns();
 						
 						menuView.consloeArea.appendText("\n\n");
-						menuView.consloeArea.appendText("***********************************************");
+						menuView.consloeArea.appendText("*********************************************************");
 						menuView.consloeArea.appendText("\n\n");
 						menuView.consloeArea.appendText("Buddy++ : Compiler processing Uusuccessful.");
 						menuView.consloeArea.appendText("\n\n");
-						menuView.consloeArea.appendText("***********************************************");
+						menuView.consloeArea.appendText("*********************************************************");
 						menuView.consloeArea.appendText("\n\n");
 					}
 				});
@@ -797,11 +803,11 @@ public class BDMenuCtrl
 					consoleWindowCtrl.addBtns();
 					
 					menuView.consloeArea.appendText("\n\n");
-					menuView.consloeArea.appendText("***********************************************");
+					menuView.consloeArea.appendText("*********************************************************");
 					menuView.consloeArea.appendText("\n\n");
 					menuView.consloeArea.appendText("Buddy++ : Compiler processing Uusuccessful.");
 					menuView.consloeArea.appendText("\n\n");
-					menuView.consloeArea.appendText("***********************************************");
+					menuView.consloeArea.appendText("*********************************************************");
 					menuView.consloeArea.appendText("\n\n");
 				}
 			});

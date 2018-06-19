@@ -71,6 +71,7 @@ public final class BDWorkspaceCtrl
         //newTab.tab.getTabPane().getSelectionModel().get
     }
     
+    // 创建一个源码标签页
     public void addNewTab() throws AWTException
     { 
         BDCodeModel newCode = new BDCodeModel();
@@ -99,6 +100,7 @@ public final class BDWorkspaceCtrl
         newTab.tab.getTabPane().getSelectionModel().selectLast();
     }
     
+    // 添加控制台标签页
     public void addConsoleTab() throws AWTException
     { 
     	BDConsoleTabModel newTab = new BDConsoleTabModel(this);

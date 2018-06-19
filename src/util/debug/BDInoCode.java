@@ -36,6 +36,11 @@ public class BDInoCode
 		return codeText;
 	}
 	
+	public String getFileName()
+	{
+		return name;
+	}
+	
 	public String preprocess(String buildPath, BDPreprocessor preprocessor) throws BDRunnerException {
 		// make sure the user didn't hide the sketch folder
 		// ensureExistence();
