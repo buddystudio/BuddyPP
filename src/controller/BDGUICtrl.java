@@ -290,8 +290,6 @@ public class BDGUICtrl
         }
 
         BDCodeTabModel tab = gui.workspaceCtrl.workspaceView.workspaceModel.tabList.get(index);
-        
-        
 
         // 关闭提示窗口
         this.gui.saveWindow.close();
@@ -406,8 +404,6 @@ public class BDGUICtrl
     
     private void setResizeWindow()
     {
-    	
-    	//if(gui.primaryStage.isMaximized() == true)
         if (gui.guiModel.isMaximized == true) 
         {
             // 恢复原来的位置
@@ -415,22 +411,12 @@ public class BDGUICtrl
             gui.primaryStage.setY(gui.guiModel.preY);
 
             // 恢复原来的尺寸
-            //gui.primaryStage.setWidth(1024 - 120);
-            //gui.primaryStage.setWidth(1024);
             gui.primaryStage.setWidth(940);
             gui.primaryStage.setHeight(640 + 10 + 10);
 
             // 最大化
             //gui.primaryStage.setMaximized(false);
             gui.guiModel.isMaximized = false;
-
-            // 设置面板靠右
-            //gui.menuPanel.settingPanel.setPrefWidth(315);
-            //gui.menuPanel.settingPanel.setPrefWidth(265);
-            //gui.menuPanel.settingPanel.setPrefWidth(250);
-            
-            //gui.menuPanel.settingPanel.setPrefWidth(250);
-            //gui.menuPanel.rightLables.setPrefWidth(300);
         } 
         else 
         {

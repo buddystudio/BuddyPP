@@ -75,14 +75,14 @@ public class BDMenuView extends HBox
     {
         this.setStyle("-fx-background-color: #42b2e4;");
         
+        
         // 设置菜单栏位置
         this.setPrefHeight(60);
         this.setPadding(new Insets(0, 0, 0, 25));
         //this.setPadding(new Insets(5, 0, 0, 15));
         
         this.setAlignment(Pos.CENTER_LEFT);          // 居中排列
-        
-        
+
         //HBox settingPanel = new HBox();
         
         //Image image = new Image("/images/settingPanel.png");
@@ -143,23 +143,6 @@ public class BDMenuView extends HBox
         
         //settingPanel.setPrefWidth(250);
         rightLables.setPrefWidth(300);
-        
-        /*
-        Button menuOpenBtn      = new Button(); // 打开按钮
-        Button menuNewBtn       = new Button(); // 新建按钮
-        Button menuSaveBtn      = new Button(); // 保存按钮
-        Button menuSaveAsBtn    = new Button(); // 另存为按钮
-        
-        Button menuUndoBtn      = new Button(); // 恢复按钮
-        Button menuRedoBtn      = new Button(); // 重做按钮
-        Button menuSearchBtn    = new Button(); // 搜索按钮
-        
-        Button menuLibBtn       = new Button(); // 添加哭按钮
-        Button menuUploadBtn    = new Button(); // 编译上传按钮
-        Button menuComBtn       = new Button(); // 串口通讯按钮
-        Button menuSettingBtn   = new Button(); // 设置按钮
-        Button menuForumBtn     = new Button(); // 社区按钮
-        */
 
         menuOpenBtn.setPrefSize(50, 50);
         menuNewBtn.setPrefSize(50, 50);
@@ -222,21 +205,6 @@ public class BDMenuView extends HBox
         menuComBtn.setTooltip(menuComBtnTip);
         menuSettingBtn.setTooltip(menuSettingBtnTip);
         menuAboutBtn.setTooltip(menuForumBtnTip);
-        
-        /*
-        menuOpenBtn.setTooltip(new Tooltip("打开"));
-        menuNewBtn.setTooltip(new Tooltip("新建"));
-        menuSaveBtn.setTooltip(new Tooltip("保存"));
-        menuSaveAsBtn.setTooltip(new Tooltip("另存为"));
-        menuUndoBtn.setTooltip(new Tooltip("恢复"));
-        menuRedoBtn.setTooltip(new Tooltip("重做"));
-        menuSearchBtn.setTooltip(new Tooltip("搜索"));
-        menuLibBtn.setTooltip(new Tooltip("添加库"));
-        menuUploadBtn.setTooltip(new Tooltip("烧录"));
-        menuComBtn.setTooltip(new Tooltip("串口调试"));
-        menuSettingBtn.setTooltip(new Tooltip("设置"));
-        menuForumBtn.setTooltip(new Tooltip("社区"));
-        */
         
         menuOpenBtn.getStyleClass().add("openBtn");
         menuNewBtn.getStyleClass().add("newBtn");

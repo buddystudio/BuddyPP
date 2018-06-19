@@ -5,10 +5,16 @@
     -fx-background-color: transparent;    
     -fx-alignment: CENTER;
     -fx-content-display: right; /*  关闭图标放右侧*/
+    
+    /*
     -fx-background-radius: 5 5 5 5;
     -fx-border-style:none;
     -fx-background-insets: 5,5,5,5;
-    
+    *  
+    */
+    -fx-background-radius: 5 5 5 5;
+    -fx-border-style:none;
+    -fx-background-insets: 5,5,5,5;
 }
 
 .tab-content-area 
@@ -22,18 +28,14 @@
     -fx-background-color:#727272;
     -fx-background-insets: 1, 0, 0, 0;
     
-    -fx-text-fill:#ffffff;
-    /*-fx-tab-min-height: 50px;
-    //-fx-effect:innershadow;
-    //-fx-tab-min-height:300px;
+    /* 使用直角外观 */
+    -fx-background-radius: 0;  
+    -fx-border-radius: 0;
     
-    // 去掉蓝色阴影
-    -fx-focus-color:none;
-    //-fx-shadow-highlight-color: #ffffff;
-    //-fx-shadow-highlight-color:-fx-background-color;
-    //-fx-highlight-fill:#ffffff;
-    *
-    */
+    -fx-text-fill:#ffffff;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
 
 .tab:focused

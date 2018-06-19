@@ -28,7 +28,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.FileChooser;
-
+import javafx.stage.WindowEvent;
 import model.BDCodeModel;
 import model.BDParameters;
 
@@ -44,6 +44,11 @@ import view.BDWindow;
 public class BDMenuCtrl 
 {
 	public BDWorkspaceCtrl workspaceCtrl;
+	
+	public Thread compileThread = null;
+	public Thread uploadThread 	= null;
+	
+	private BDMenuCtrl root;
 	private BDMenuView menuView;
 	
 	private static final Logger logger = LogManager.getLogger(BDCompiler.class);
@@ -353,10 +358,47 @@ public class BDMenuCtrl
 				showInTheMiddle(menuView.comWindow);
 			}
 		});
+		
+		// 关闭窗口中止编译操作
+		menuView.consoleWindow.setOnHiding(new EventHandler<WindowEvent>() 
+		{
+	         @Override
+	         public void handle(WindowEvent event) 
+	         {
+	        	 if(compileThread != null)
+	        	 {
+	        		 // 终止编译
+	        		 compileThread.stop();
+	        		 
+	        		 System.out.println("");
+	        		 System.out.println("***********************************************");
+	        		 System.out.println("");
+	        		 System.out.println("Buddy++ : Compiler processing has been stoped.");
+	        		 System.out.println("");
+	        		 System.out.println("***********************************************");
+	        		 System.out.println("");
+	        	 }
+	        	 
+	        	 if(uploadThread != null)
+	        	 {
+	        		 // 终止上传
+	        		 uploadThread.stop();
+	        		 
+	        		 System.out.println("");
+	        		 System.out.println("***********************************************");
+	        		 System.out.println("");
+	        		 System.out.println("Buddy++ : Upload processing has been stoped.");
+	        		 System.out.println("");
+	        		 System.out.println("***********************************************");
+	        		 System.out.println("");
+	        	 }
+	         }
+	     });
 
 		// 编译
 		menuView.menuVerifyBtn.setOnAction(new EventHandler<ActionEvent>() 
 		{
+			@SuppressWarnings("deprecation")
 			@Override
 			public void handle(ActionEvent event) 
 			{
@@ -397,7 +439,11 @@ public class BDMenuCtrl
 				};
 
 				// 开始编译任务
-				new Thread(progressTask).start();
+				compileThread = new Thread(progressTask);
+				
+				compileThread.start();
+				//compileThread.stop();
+				//compileThread.interrupt();
 			}
 		});
 
@@ -467,7 +513,7 @@ public class BDMenuCtrl
 					protected Void call() throws Exception 
 					{
 						// 编译上传
-						if (upload(consoleWindowCtrl)) 
+						if (upload(consoleWindowCtrl))
 						{
 							Platform.runLater(new Runnable() 
 							{
