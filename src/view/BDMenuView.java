@@ -74,14 +74,14 @@ public class BDMenuView extends HBox
     public BDMenuView()
     {
         this.setStyle("-fx-background-color: #42b2e4;");
-        
-        
+            
         // 设置菜单栏位置
         this.setPrefHeight(60);
         this.setPadding(new Insets(0, 0, 0, 25));
         //this.setPadding(new Insets(5, 0, 0, 15));
+        this.setSpacing(-5);
         
-        this.setAlignment(Pos.CENTER_LEFT);          // 居中排列
+        this.setAlignment(Pos.CENTER_LEFT);  // 居中排列
 
         //HBox settingPanel = new HBox();
         
@@ -89,6 +89,7 @@ public class BDMenuView extends HBox
         //ImageView iv = new ImageView(image);
         
         Image image = new Image("/images/sp.png");
+        
         ImageView sp01 = new ImageView(image);
         ImageView sp02 = new ImageView(image);
         ImageView sp03 = new ImageView(image);
