@@ -191,7 +191,7 @@ public class BDGUIView
         
         msgArea.setParagraphGraphicFactory(LineNumberFactory.get(msgArea));
         msgArea.setEditable(false);
-        msgArea.setPrefHeight(535);
+        //msgArea.setPrefHeight(535);
         msgArea.setAutoScrollOnDragDesired(true);
         //msgArea.setWrapText(true);
         //msgArea.autosize();
