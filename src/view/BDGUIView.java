@@ -14,6 +14,7 @@ import controller.BDSettingWindowCtrl;
 import controller.BDToolsCtrl;
 import controller.BDWorkspaceCtrl;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -155,8 +156,9 @@ public class BDGUIView
         BorderPane consoleMsgPanel = new BorderPane();	// 控制台信息
         
         consoleTitlePanel.setStyle("-fx-background-color: #444444;");
+        consoleTitlePanel.setPadding(new Insets(0, 0, 38, 0));
         //consoleTitlePanel.setPrefHeight(33);
-        consoleTitlePanel.setPrefHeight(38);
+        //consoleTitlePanel.setPrefHeight(38);
         
         dividerPanel.setStyle("-fx-background-color: #444444;");
         dividerPanel.setPrefWidth(8);
