@@ -155,7 +155,8 @@ public class BDGUIView
         BorderPane consoleMsgPanel = new BorderPane();	// 控制台信息
         
         consoleTitlePanel.setStyle("-fx-background-color: #444444;");
-        consoleTitlePanel.setPrefHeight(33);
+        //consoleTitlePanel.setPrefHeight(33);
+        consoleTitlePanel.setPrefHeight(38);
         
         dividerPanel.setStyle("-fx-background-color: #444444;");
         dividerPanel.setPrefWidth(8);
