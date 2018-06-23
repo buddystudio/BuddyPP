@@ -48,6 +48,9 @@ public final class BDWorkspaceCtrl
     
     public void addTab(BDCodeModel newCode) throws AWTException
     { 
+    	// 获取编辑器参数
+        BDParameters.getEditorProfile();
+        
         //BDCodeModel newCode = new BDCodeModel();
         BDCodeTabModel newTab = new BDCodeTabModel(newCode, this);
         

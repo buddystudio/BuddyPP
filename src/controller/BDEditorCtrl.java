@@ -23,6 +23,9 @@ public class BDEditorCtrl
 	{
 		this.webView = editor.webView;
 		
+		// 获取编辑器参数
+        //BDParameters.getEditorProfile();
+		
 		JSObject win  = (JSObject) webView.getEngine().executeScript("window");
 		
 		win.setMember("test", this);

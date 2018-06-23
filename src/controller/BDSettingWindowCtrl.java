@@ -5,24 +5,15 @@
  */
 package controller;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.RadioMenuItem;
-import model.BDLibsModel;
+
 import model.BDParameters;
-import util.io.BDCodeReader;
-import view.BDLibWindow;
 import view.BDSettingWindow;
 
 /**
@@ -101,13 +92,18 @@ public class BDSettingWindowCtrl
             	
             	// 写入新的编辑器参数
             	BDParameters.setEditorProfile(theme, fontSize);
-            	
+
             	int size = Integer.parseInt(BDParameters.editorFontSize.substring(0, BDParameters.editorFontSize.length() - 2));
             	
-            	// 初始化编辑器
-            	//workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.setTheme(BDParameters.editorTheme);
-            	//workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.setFontSize(size);
+            	// 更新当前设置
+            	BDParameters.editorTheme = theme;
             	
+            	String tSize = fontSize.substring(0, fontSize.length() - 2);
+            	
+            	tSize = tSize.replace(" ", "");
+            	
+            	BDParameters.editorFontSize = tSize;
+
             	for(int i = 0; i < workspaceCtrl.workspaceView.workspaceModel.tabList.size(); i++)
             	{
             		workspaceCtrl.workspaceView.workspaceModel.tabList.get(i).editorCtrl.setTheme(BDParameters.editorTheme);
