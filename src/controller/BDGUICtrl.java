@@ -39,10 +39,14 @@ public class BDGUICtrl
 
     private static final Logger logger = LogManager.getLogger();
     //private BDDialogWindow saveWindow = new BDDialogWindow("保存提示", "是否保存当前文件");
+    
+    private double pos = 0;
 
     public BDGUICtrl(BDGUIView gui) 
     {
         this.gui = gui;
+        
+        //pos = gui.splitPanel.getDividers().get(0).getPosition();
         
         // 获取编辑器参数
         BDParameters.getEditorProfile();
@@ -62,7 +66,7 @@ public class BDGUICtrl
         gui.workspacePanel.widthProperty().addListener((obs, oldVal, newVal) -> 
         {
         	// 获取分割位置信息
-        	double pos = gui.splitPanel.getDividers().get(0).getPosition();
+        	pos = gui.splitPanel.getDividers().get(0).getPosition();
         	
         	if(pos > 0.99)
         	{
@@ -406,6 +410,9 @@ public class BDGUICtrl
     {
         if (gui.guiModel.isMaximized == true) 
         {
+        	// 获取分割位置信息
+        	//pos = gui.splitPanel.getDividers().get(0).getPosition();
+        	
             // 恢复原来的位置
             gui.primaryStage.setX(gui.guiModel.preX);
             gui.primaryStage.setY(gui.guiModel.preY);
@@ -414,16 +421,13 @@ public class BDGUICtrl
             gui.primaryStage.setWidth(940);
             gui.primaryStage.setHeight(640 + 10 + 10);
 
-            // 最大化
-            //gui.primaryStage.setMaximized(false);
+            // 更新状态标签
             gui.guiModel.isMaximized = false;
         } 
         else 
         {
-            // 最大化
-            //primaryStage.setMaximized(true);
-
-            gui.guiModel.isMaximized = true;
+            // 获取分割位置信息
+        	//pos = gui.splitPanel.getDividers().get(0).getPosition();
 
             // 记录窗体当前的位置
             gui.guiModel.preX = gui.primaryStage.getX();
@@ -444,6 +448,9 @@ public class BDGUICtrl
                 gui.primaryStage.setWidth(gui.visualBounds.getWidth() + 2);
                 gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 2);
             }
+            
+            // 更新状态标签
+            gui.guiModel.isMaximized = true;
         }
     }
 

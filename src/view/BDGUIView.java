@@ -174,7 +174,8 @@ public class BDGUIView
         dividerPanel.getChildren().add(arrowBtn);
 
         // 设置右侧控制台最多占60%空间
-        consolePanel.maxWidthProperty().bind(splitPanel.widthProperty().multiply(0.6));
+        //consolePanel.maxWidthProperty().bind(splitPanel.widthProperty().multiply(0.6));
+        workspaceRoot.minWidthProperty().bind(splitPanel.widthProperty().multiply(0.4));
 
         splitPanel.setDividerPosition(0, 1);
         SplitPane.setResizableWithParent(consolePanel, false);	// 锁定右侧面板
