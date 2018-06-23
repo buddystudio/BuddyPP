@@ -24,6 +24,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -35,6 +36,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import model.BDGUIModel;
+import model.BDMsgTabModel;
 import model.BDParameters;
 import util.base.DrawUtil;
 
@@ -159,13 +161,20 @@ public class BDGUIView
         //consoleTitlePanel.setPadding(new Insets(0, 0, 38, 0));
         //consoleTitlePanel.setPrefHeight(33);
         //consoleTitlePanel.setPrefHeight(38);
-        consoleTitlePanel.setMinHeight(33);
 
         dividerPanel.setStyle("-fx-background-color: #444444;");
         dividerPanel.setPrefWidth(8);
 
-        consolePanel.setTop(consoleTitlePanel);
-        consolePanel.setCenter(consoleMsgPanel);
+        //consolePanel.setTop(consoleTitlePanel);
+        //consolePanel.setCenter(consoleMsgPanel);
+        
+        BDMsgTabModel msgTabModel = new BDMsgTabModel(consoleMsgPanel);
+        
+        TabPane msgTab = new TabPane(msgTabModel.tab);
+        
+        //msgTab.setStyle(".tab-pane:top *.tab-header-area{-fx-padding: 7 0 -1 0;}");
+        
+        consolePanel.setCenter(msgTab);
 
         workspaceRoot.setCenter(workspacePanel);
         workspaceRoot.setRight(dividerPanel);
