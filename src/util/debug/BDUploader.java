@@ -23,7 +23,8 @@ public abstract class BDUploader implements BDMessageConsumer
     
     public BDUploader() {}
     
-    public void addProgressStatusListener(BDProgressStatusListener listener) {
+    public void addProgressStatusListener(BDProgressStatusListener listener) 
+    {
     	this.listener = listener;		
 	}
 
@@ -243,6 +244,5 @@ public abstract class BDUploader implements BDMessageConsumer
         }
 
         return (result == 0); // ? true : false;      
-
     }
 }

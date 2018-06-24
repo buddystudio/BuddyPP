@@ -527,9 +527,30 @@ public class BDMenuCtrl
 								public void run() 
 								{
 									consoleWindowCtrl.getView().lbl.setText("恭喜你，烧录已完成！");
+									
+									// 烧录成功
+									System.out.println("");
+									System.out.println("*********************************************************");
+									System.out.println("");
+									System.out.println("Buddy++ : 恭喜您，烧录成功！");
+									System.out.println("");
+									System.out.println("*********************************************************");
+									System.out.println("");
 								}
 							});
 						}
+						else
+						{
+							// 烧录不成功
+							System.out.println("");
+							System.out.println("*********************************************************");
+							System.out.println("");
+							System.out.println("Buddy++ : 很遗憾，烧录不成功！");
+							System.out.println("");
+							System.out.println("*********************************************************");
+							System.out.println("");
+						}
+						
 						throw new UnsupportedOperationException("Not supported yet.");
 					}
 				};
@@ -821,11 +842,12 @@ public class BDMenuCtrl
 	{
 		BDUploader uploader;
 		BDCodeModel code = workspaceCtrl.workspaceView.workspaceModel.curTab.code;
-		//consoleWindowCtrl.clearText();
+		
 		if (!code.isCompiled)
 			compile(consoleWindowCtrl);
 
 		consoleWindowCtrl.setUploadStyle();
+		
 		uploader = new BDAvrdudeUploader();
 		uploader.addProgressStatusListener(consoleWindowCtrl);
 		
@@ -852,7 +874,8 @@ public class BDMenuCtrl
 				}
 			});
 
-			return uploader.uploadUsingPreferences(code.compilePath, code.getCppName(), false); // 上传
+			// 上传
+			return uploader.uploadUsingPreferences(code.compilePath, code.getCppName(), false); 
 		} 
 		catch (Exception ex) 
 		{
@@ -866,7 +889,7 @@ public class BDMenuCtrl
 				{
 					consoleWindowCtrl.getView().lbl.setText("很遗憾，烧录失败！");
 					
-					// 更新编译进度对话框，隐藏进度条显示操作按钮
+					// 更新烧录进度对话框，隐藏进度条显示操作按钮
 					consoleWindowCtrl.addBtns();
 					
 					// 输出烧录失败信息
