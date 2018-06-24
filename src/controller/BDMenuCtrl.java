@@ -48,7 +48,6 @@ public class BDMenuCtrl
 	public Thread compileThread = null;
 	public Thread uploadThread 	= null;
 	
-	private BDMenuCtrl root;
 	private BDMenuView menuView;
 	
 	private static final Logger logger = LogManager.getLogger(BDCompiler.class);
@@ -362,7 +361,8 @@ public class BDMenuCtrl
 		// 关闭窗口中止编译操作
 		menuView.consoleWindow.setOnHiding(new EventHandler<WindowEvent>() 
 		{
-	         @Override
+	         @SuppressWarnings("deprecation")
+			@Override
 	         public void handle(WindowEvent event) 
 	         {
 	        	 if(compileThread != null)
@@ -378,7 +378,7 @@ public class BDMenuCtrl
 	        		 System.out.println("");
 	        		 System.out.println("*********************************************************");
 	        		 System.out.println("");
-	        		 System.out.println("Buddy++ : Compiler processing has been stoped.");
+	        		 System.out.println("Buddy++ : 很遗憾，编译操作已终止！");
 	        		 System.out.println("");
 	        		 System.out.println("*********************************************************");
 	        		 System.out.println("");
@@ -397,7 +397,7 @@ public class BDMenuCtrl
 	        		 System.out.println("");
 	        		 System.out.println("*********************************************************");
 	        		 System.out.println("");
-	        		 System.out.println("Buddy++ : Upload processing has been stoped.");
+	        		 System.out.println("Buddy++ : 很遗憾，烧录操作已终止！");
 	        		 System.out.println("");
 	        		 System.out.println("*********************************************************");
 	        		 System.out.println("");
@@ -713,7 +713,7 @@ public class BDMenuCtrl
 		System.out.println("");
 		System.out.println("*********************************************************");
 		System.out.println("");
-		System.out.println("Buddy++ : Compiler processing will start.");
+		System.out.println("Buddy++ : 请稍后，源码即将开始编译...");
 		System.out.println("");
 		System.out.println("*********************************************************");
 		System.out.println("");
@@ -759,7 +759,7 @@ public class BDMenuCtrl
 				System.out.println("");
 				System.out.println("*********************************************************");
 				System.out.println("");
-				System.out.println("Buddy++ : Compiler processing complete.");
+				System.out.println("Buddy++ : 恭喜您，源码已编译成功！");
 				System.out.println("");
 				System.out.println("*********************************************************");
 				System.out.println("");
@@ -780,7 +780,7 @@ public class BDMenuCtrl
 						menuView.consloeArea.appendText("\n\n");
 						menuView.consloeArea.appendText("*********************************************************");
 						menuView.consloeArea.appendText("\n\n");
-						menuView.consloeArea.appendText("Buddy++ : Compiler processing Uusuccessful.");
+						menuView.consloeArea.appendText("Buddy++ : 很遗憾，源码编译失败！");
 						menuView.consloeArea.appendText("\n\n");
 						menuView.consloeArea.appendText("*********************************************************");
 						menuView.consloeArea.appendText("\n\n");
@@ -808,7 +808,7 @@ public class BDMenuCtrl
 					menuView.consloeArea.appendText("\n\n");
 					menuView.consloeArea.appendText("*********************************************************");
 					menuView.consloeArea.appendText("\n\n");
-					menuView.consloeArea.appendText("Buddy++ : Compiler processing Uusuccessful.");
+					menuView.consloeArea.appendText("Buddy++ : 很遗憾，源码编译失败！");
 					menuView.consloeArea.appendText("\n\n");
 					menuView.consloeArea.appendText("*********************************************************");
 					menuView.consloeArea.appendText("\n\n");
@@ -845,7 +845,7 @@ public class BDMenuCtrl
 					System.out.println("");
 					System.out.println("*********************************************************");
 					System.out.println("");
-					System.out.println("Buddy++ : Upload processing will start.");
+					System.out.println("Buddy++ : 请稍后，烧录操作即将开始...");
 					System.out.println("");
 					System.out.println("*********************************************************");
 					System.out.println("");
@@ -873,7 +873,7 @@ public class BDMenuCtrl
 					System.out.println("");
 					System.out.println("*********************************************************");
 					System.out.println("");
-					System.out.println("Buddy++ : Upload processing Uusuccessful.");
+					System.out.println("Buddy++ : 很遗憾，烧录操作不成功！");
 					System.out.println("");
 					System.out.println("*********************************************************");
 					System.out.println("");
