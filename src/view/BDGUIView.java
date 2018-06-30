@@ -38,6 +38,7 @@ import javafx.stage.StageStyle;
 import model.BDGUIModel;
 import model.BDMsgTabModel;
 import model.BDParameters;
+import model.BDRefTabModel;
 import util.base.DrawUtil;
 
 /**
@@ -168,9 +169,18 @@ public class BDGUIView
         //consolePanel.setTop(consoleTitlePanel);
         //consolePanel.setCenter(consoleMsgPanel);
         
-        BDMsgTabModel msgTabModel = new BDMsgTabModel(consoleMsgPanel);
+        String curPath = this.getClass().getResource("/").getPath();
+    	String refUrl = "file://" + curPath + "resources/reference/index.html";
+
+        BDWebView refView = new BDWebView(refUrl);
         
-        TabPane msgTab = new TabPane(msgTabModel.tab);
+        BDMsgTabModel msgTabModel = new BDMsgTabModel(consoleMsgPanel);
+        BDRefTabModel refTabModel = new BDRefTabModel(refView);
+        
+        TabPane msgTab = new TabPane();
+
+        msgTab.getTabs().add(msgTabModel.tab);
+        msgTab.getTabs().add(refTabModel.tab);
         
         //msgTab.setStyle(".tab-pane:top *.tab-header-area{-fx-padding: 7 0 -1 0;}");
         

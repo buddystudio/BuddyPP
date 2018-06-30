@@ -1,6 +1,5 @@
 package model;
 
-import javafx.scene.Cursor;
 import javafx.scene.layout.BorderPane;
 
 public class BDMsgTabModel extends BDTabModel 
