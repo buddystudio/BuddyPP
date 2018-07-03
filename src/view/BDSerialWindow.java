@@ -21,13 +21,13 @@ public class BDSerialWindow extends BDWindow
 {
     public Button submitBtn = new Button("确定");
     
-    public ComboBox value1CmbBox = new ComboBox();
-    public ComboBox value2CmbBox = new ComboBox();
+    public ComboBox<String> value1CmbBox = new ComboBox<String>();
+    public ComboBox<String> value2CmbBox = new ComboBox<String>();
     
     public BDSerialWindow()
     {
         // 窗口初始化
-        super.init(580, 60);
+        super.init(550, 60);
         
         // 总在最前方
        this.setAlwaysOnTop(true);
@@ -51,6 +51,8 @@ public class BDSerialWindow extends BDWindow
        value1CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
        value2CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
        submitBtn.setStyle("-fx-background-radius: 0, 0;");
+       
+       value1CmbBox.setPrefWidth(160);
        
        contain.setPadding(new Insets(15, 15, 15, 15));  // 设置边距
        contain.setSpacing(10);                          // 设置间距

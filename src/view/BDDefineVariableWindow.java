@@ -30,7 +30,7 @@ public class BDDefineVariableWindow extends BDWindow
     public BDDefineVariableWindow()
     {
     	// 窗口初始化
-    	super.init(580, 60);
+    	super.init(600, 60);
         
     	// 总在最前方
     	this.setAlwaysOnTop(true);

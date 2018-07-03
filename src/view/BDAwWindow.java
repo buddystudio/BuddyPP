@@ -21,13 +21,13 @@ public class BDAwWindow extends BDWindow
 {   
     public Button submitBtn = new Button("确定");
     
-    public ComboBox value1CmbBox = new ComboBox();
-    public ComboBox value2CmbBox = new ComboBox();
+    public ComboBox<String> value1CmbBox = new ComboBox<String>();
+    public ComboBox<String> value2CmbBox = new ComboBox<String>();
     
     public BDAwWindow()
     {
         // 窗口初始化
-        super.init(700, 60);
+        super.init(585, 60);
         
         // 总在最前方
        this.setAlwaysOnTop(true);
@@ -50,15 +50,17 @@ public class BDAwWindow extends BDWindow
        value1CmbBox.setEditable(true);
        value2CmbBox.setEditable(true);
        
-       value1CmbBox.setPromptText("端口或端口变量");
+       value1CmbBox.setPrefWidth(160);
+       value2CmbBox.setPrefWidth(160);
+       
+       value1CmbBox.setPromptText("端口 / 变量");
        value2CmbBox.setPromptText("0-255");
+       
+       submitBtn.setPrefSize(80, 30);
 
        contain.getChildren().add(value1CmbBox);
        contain.getChildren().add(new Label("变量："));
        contain.getChildren().add(value2CmbBox);
-       
-       submitBtn.setPrefSize(80, 30);
-       
        contain.getChildren().add(submitBtn);
        
        contain.setPadding(new Insets(15, 15, 15, 15));  // 设置边距

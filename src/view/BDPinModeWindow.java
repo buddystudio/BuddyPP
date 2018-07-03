@@ -21,13 +21,14 @@ import model.BDPinModeWindowModel;
 public class BDPinModeWindow extends BDWindow
 {
     public Button submitBtn = new Button("确定");
-    public ComboBox combPin = new ComboBox();
-    public ComboBox combMode = new ComboBox();
+    
+    public ComboBox<String> combPin = new ComboBox<String>();
+    public ComboBox<String> combMode = new ComboBox<String>();
 
     public BDPinModeWindow()
     {
         // 窗口初始化
-        super.init(480, 60);
+        super.init(570, 60);
         
        // 总在最前方
        this.setAlwaysOnTop(true);
@@ -44,8 +45,8 @@ public class BDPinModeWindow extends BDWindow
        Label lbPin     = new Label("端口：");
        Label lbMode    = new Label("模式：");
        
-       combPin.setPrefWidth(100);
-       combMode.setPrefWidth(150);
+       combPin.setPrefWidth(90);
+       combMode.setPrefWidth(220);
        
        BDPinModeWindowModel pmwm = new BDPinModeWindowModel();
        

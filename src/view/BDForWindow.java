@@ -24,8 +24,8 @@ import javafx.stage.StageStyle;
 public final class BDForWindow extends BDWindow
 {
     public Button submitBtn = new Button("确定");
-    public RadioButton norRB = new RadioButton("简单模式");
-    public RadioButton advRB = new RadioButton("高级模式");
+    public RadioButton norRB = new RadioButton("基本");
+    public RadioButton advRB = new RadioButton("高级");
     
     public TextField countTxt = new TextField();        // 循环次数
     
@@ -33,8 +33,9 @@ public final class BDForWindow extends BDWindow
     public TextField limitValueTxt = new TextField();   // 界限值
     public TextField stepValueTxt = new TextField();    // 步长
     
-    public ComboBox operaCmbBox = new ComboBox();       // 运算符1
-    public ComboBox opera2CmbBox = new ComboBox();      // 运算符2
+    // 设置运算符
+    public ComboBox<String> operaCmbBox = new ComboBox<String>();
+    public ComboBox<String> opera2CmbBox = new ComboBox<String>();
     
     public ToggleGroup group = new ToggleGroup();
     
@@ -44,7 +45,7 @@ public final class BDForWindow extends BDWindow
     public BDForWindow()
     {
         // 窗口初始化
-        super.init(700, 140);
+        super.init(730, 140);
         
         // 总在最前方
        this.setAlwaysOnTop(true);
@@ -145,7 +146,7 @@ public final class BDForWindow extends BDWindow
        
        rootPanel.getChildren().add(contain);
        
-       // 默认为简单模式
+       // 默认为基本模式
        norPanel.setDisable(false);
        advPanel.setDisable(true);
     }

@@ -21,13 +21,13 @@ public final class BDArWindow extends BDWindow
 {
     public Button submitBtn = new Button("确定");
     
-    public ComboBox value1CmbBox = new ComboBox();
-    public ComboBox value2CmbBox = new ComboBox();
+    public ComboBox<String> value1CmbBox = new ComboBox<String>();
+    public ComboBox<String> value2CmbBox = new ComboBox<String>();
 
     public BDArWindow()
     {
         // 初始化窗口
-        super.init(700, 60);
+        super.init(585, 60);
         
         // 总在最前方
        this.setAlwaysOnTop(true);
@@ -46,21 +46,21 @@ public final class BDArWindow extends BDWindow
        value1CmbBox.setEditable(true);
        value2CmbBox.setEditable(true);
        
-       value1CmbBox.setPromptText("选择或输入变量名称");
-       value2CmbBox.setPromptText("端口或端口变量");
+       value1CmbBox.setPromptText("变量");
+       value2CmbBox.setPromptText("端口 / 变量");
 
        submitBtn.setStyle("-fx-background-radius: 0, 0;");
        value1CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
        value2CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
        
-       contain.getChildren().add(value1CmbBox);
-       
-       contain.getChildren().add(new Label("端口："));
-       
-       contain.getChildren().add(value2CmbBox);
+       value1CmbBox.setPrefWidth(160);
+       value2CmbBox.setPrefWidth(160);
        
        submitBtn.setPrefSize(80, 30);
        
+       contain.getChildren().add(value1CmbBox);
+       contain.getChildren().add(new Label("端口："));
+       contain.getChildren().add(value2CmbBox);
        contain.getChildren().add(submitBtn);
        
        contain.setPadding(new Insets(15, 15, 15, 15));  // 设置边距

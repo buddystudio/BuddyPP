@@ -21,17 +21,17 @@ import javafx.stage.StageStyle;
 public final class BDIfWindow extends BDWindow
 {
     public Button submitBtn = new Button("确定");
-    public ComboBox optCmbBox = new ComboBox();
+    public ComboBox<String> optCmbBox = new ComboBox<String>();
     
-    public ComboBox value1CmbBox = new ComboBox();
-    public ComboBox value2CmbBox = new ComboBox();
+    public ComboBox<String> value1CmbBox = new ComboBox<String>();
+    public ComboBox<String> value2CmbBox = new ComboBox<String>();
     
     public CheckBox isBranch = new CheckBox("分支");
     
     public BDIfWindow()
     {
         // 窗口初始化
-        super.init(850, 60);
+        super.init(750, 60);
         
         // 总在最前方
         this.setAlwaysOnTop(true);
@@ -75,6 +75,9 @@ public final class BDIfWindow extends BDWindow
         contain.setPadding(new Insets(15, 15, 15, 15));  // 设置边距
         contain.setSpacing(10);                          // 设置间距
         contain.setAlignment(Pos.CENTER);                // 居中排列
+        
+        value1CmbBox.setPrefWidth(160);
+        value2CmbBox.setPrefWidth(160);
 
         contain.getChildren().add(value1CmbBox);
         contain.getChildren().add(optCmbBox);

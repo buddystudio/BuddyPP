@@ -45,7 +45,7 @@ public class BuddyPP extends Application
         String arch = System.getProperty("os.arch");
         String os   = System.getProperty("os.name");
         
-        // 获取当前系统类型（Windows/Mac/Linux）
+        // 获取当前系统类型（Windows / Mac / Linux）
         BDParameters.os = os;
         
         // 获取操作系统指令长度（32bit/64bit）
