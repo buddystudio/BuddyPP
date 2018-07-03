@@ -31,7 +31,7 @@ public final class BDAboutWindow extends BDWindow
     public BDAboutWindow()
     {
         // 窗口初始化
-        super.init(500, 350);
+        super.init(500, 365);
 
         scene.getStylesheets().add("style/settingStyle.css");
        
@@ -56,14 +56,10 @@ public final class BDAboutWindow extends BDWindow
         	bitTxt = "x86";
         }
        
-        BDTitleView  titlePanel  = new BDTitleView();
-       
         this.setTitle("  关于");
         this.setScene(scene);
        
         VBox contain  = new VBox();
-       
-        //contain.getChildren().add(titlePanel);
        
         contain.setAlignment(Pos.TOP_CENTER);
        
