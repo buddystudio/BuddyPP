@@ -6,17 +6,22 @@
 package controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import util.io.BDCodeReader;
 import util.io.BDCodeWriter;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.stage.FileChooser;
-
+import model.BDCodeModel;
 import model.BDCodeTabModel;
 
 import view.BDDialogWindow;
@@ -83,37 +88,6 @@ public class BDTabCtrl
 					workspaceView.workspaceModel.curTab = newTab;
 
 					newTab.tab.setGraphic(newTab.hlink1);
-
-					/*
-					if (!newTab.textArea.hasFocus()) 
-					{
-						tab.textArea.requestFocusInWindow();
-					}
-					*/
-
-					/*
-					// 延时获得焦点
-					final Timeline animation = new Timeline(
-							new KeyFrame(Duration.millis(25), new EventHandler<ActionEvent>() 
-							{
-								@Override
-								public void handle(ActionEvent actionEvent) 
-								{
-									Platform.runLater(new Runnable() 
-									{
-										@Override
-										public void run() 
-										{
-											newTab.tab.getContent().requestFocus();
-										}
-									});
-								}
-							}));
-							
-							*/
-					
-					//animation.setCycleCount(1);
-					//animation.play();
 				} 
 				else 
 				{
@@ -124,13 +98,15 @@ public class BDTabCtrl
 
 		BDCodeTabModel tab = (BDCodeTabModel)newTab;
 
-		/*
-		// 文件拖入
-		tab.sn.setOnDragOver(new EventHandler<DragEvent>() 
+		
+		/*// 文件拖入
+		tab.setOnDragOver(new EventHandler<DragEvent>() 
 		{
 			// node添加拖入文件事件
 			public void handle(DragEvent event) 
 			{
+				System.out.println("111111111111111111");
+				
 				Dragboard dragboard = event.getDragboard();
 
 				if (dragboard.hasFiles()) 
@@ -146,19 +122,22 @@ public class BDTabCtrl
 					{
 						// 接受拖入文件
 						event.acceptTransferModes(TransferMode.COPY); 
+						
+						System.out.println(file.getPath());
 					}
 				}
 			}
-		});
+		});*/
 		
-		*/
-
-		/*
-		tab.sn.setOnDragDropped(new EventHandler<DragEvent>() 
+		
+		/*tab.editorView.setOnDragDone(new EventHandler<DragEvent>() 
 		{
 			// 拖入后松开鼠标触发的事件
 			public void handle(DragEvent event) 
 			{
+				System.out.println("22222222222222222222");
+				
+				
 				// get drag enter file
 				Dragboard dragboard = event.getDragboard();
 
@@ -174,7 +153,7 @@ public class BDTabCtrl
 
 					try 
 					{
-						code.setCodeText(BDCodeReader.readFileByLines2(file.getPath()));
+						code.setCodeText(BDCodeReader.readFileByLines(file.getPath()));
 
 						// 写入文件路径
 						code.path = file.getPath();
@@ -197,7 +176,7 @@ public class BDTabCtrl
 						// 添加新标签页
 						workspaceCtrl.addTab(code);
 					} 
-					catch (AWTException ex) 
+					catch (Exception ex) 
 					{
 						logger.error(ex.getStackTrace());
 						// Logger.getLogger(BDTabCtrl.class.getName()).log(Level.SEVERE,
@@ -205,8 +184,7 @@ public class BDTabCtrl
 					}
 				}
 			}
-		});
-	*/
+		});*/
 	}
 
 	private BDDialogWindow dialogWindow;
