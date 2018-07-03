@@ -10,6 +10,8 @@ import java.awt.AWTException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import model.BDCodeModel;
 import model.BDCodeTabModel;
 import model.BDConsoleTabModel;
@@ -45,7 +47,7 @@ public final class BDWorkspaceCtrl
             //Logger.getLogger(BDWorkspaceCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void addTab(BDCodeModel newCode) throws AWTException
     { 
     	// 获取编辑器参数

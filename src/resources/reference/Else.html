@@ -48,7 +48,7 @@ a.varlink { text-decoration:none; }
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>if / else</h2>
-<p><strong>if/else</strong> allows greater control over the flow of code than the basic <strong>if</strong> statement, by allowing multiple tests to be grouped together. For example, an analog input could be tested and one action taken if the input was less than 500, and another action taken if the input was 500 or greater. The code would look like this:
+<p><strong>if/else</strong> 与基本的if语句相比，由于允许多个测试组合在一起，if/else可以使用更多的控制流。例如，可以测试一个模拟量输入，如果输入值小于500，则采取一个动作，而如果输入值大于或等于500，则采取另一个动作。代码看起来像是这样：
 </p>
 <p class='vspace'></p><pre>if (pinFiveInput &lt; 500)
 {
@@ -59,12 +59,11 @@ else
   // action B
 }
 </pre>
-<p class='vspace'></p><p><strong>else</strong> can proceed another <strong>if</strong> test, so that multiple, mutually exclusive tests can be run at the same time. 
+<p class='vspace'></p><p>else中可以进行另一个if测试，这样多个相互独立的测试就可以同时进行。每一个测试一个接一个地执行直到遇到一个测试为真为止。当发现一个测试条件为真时，与其关联的代码块就会执行，然后程序将跳到完整的if/else结构的下一行。如果没有一个测试被验证为真。缺省的else语句块，如果存在的话，将被设为默认行为，并执行。
 </p>
-<p class='vspace'></p><p>Each test will proceed to the next one until a true test is encountered. When a true test is found, its associated block of code is run, and the program then skips to the line following the entire if/else construction. If no test proves to be true, the default <strong>else</strong> block is executed, if one is present, and sets the default behavior. 
+<p class='vspace'></p><p>注意：一个else if语句块可能有或者没有终止else语句块，同理。每个else if分支允许有无限多个。 
 </p>
-<p class='vspace'></p><p>Note that an <strong>else if</strong> block may be used with or without a terminating <strong>else</strong> block and vice versa. An unlimited number of such <strong>else if</strong> branches is allowed.
-</p>
+
 <p class='vspace'></p><pre>if (pinFiveInput &lt; 500)
 {
   // do Thing A
@@ -78,10 +77,9 @@ else
   // do Thing C
 }
 
-</pre><p>Another way to express branching, mutually exclusive tests, is with the <a class='wikilink' href='SwitchCase.html'>switch case</a> statement.
+</pre><p>另外一种表达互斥分支测试的方式，是使用switch case语句。
 </p>
-<p class='vspace'></p><h4>See also:</h4>
-<p><a class='wikilink' href='SwitchCase.html'>switch case</a>
+<br />
 <a class='wikilink' href='index.html'>返回首页</a>
 </p>
 

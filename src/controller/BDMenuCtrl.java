@@ -55,14 +55,12 @@ public class BDMenuCtrl
 	public void setHotKey() 
 	{
 		KeyCombination ctrlS = KeyCodeCombination.keyCombination("Ctrl+S");
-		KeyCombination ctrlF = KeyCodeCombination.keyCombination("Ctrl+F");
+		//KeyCombination ctrlF = KeyCodeCombination.keyCombination("Ctrl+F");
 
 		workspaceCtrl.workspaceView.setOnKeyPressed(event -> 
 		{
 			if (ctrlS.match(event)) 
 			{
-				System.out.println("Save File");
-
 				// Ctrl + S 保存文件
 				if (workspaceCtrl.workspaceView.workspaceModel.curTab.code.path == "") 
 				{
@@ -84,6 +82,7 @@ public class BDMenuCtrl
 				}
 			}
 			
+			/*
 			if (ctrlF.match(event)) 
 			{
 				new BDSearchWindowCtrl(menuView.searchWindow, workspaceCtrl);
@@ -91,6 +90,7 @@ public class BDMenuCtrl
 				// 显示搜索窗口
 				menuView.searchWindow.show();		
 			}
+			*/
 		});
 	}
 

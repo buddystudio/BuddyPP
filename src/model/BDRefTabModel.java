@@ -1,16 +1,14 @@
 package model;
 
-import javafx.scene.layout.BorderPane;
+import view.BDWebView;
 
 public class BDRefTabModel extends BDTabModel 
 {
-	public BDRefTabModel(BorderPane root)
+	public BDRefTabModel(BDWebView refView)
     {
         // 设置标签标题
         tab.setText("帮助文档");
-
         tab.setClosable(false);
-        
-		tab.setContent(root);	
+		tab.setContent(refView);	
     } 
 }
