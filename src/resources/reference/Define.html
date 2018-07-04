@@ -36,53 +36,42 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px">
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>Define</h2>
-<p><code>#define</code> is a useful C component that allows the programmer to give a name to a constant value before the program is compiled. Defined constants in arduino don't take up any program memory space on the chip. The compiler will replace references to these constants with the defined value at compile time.
+<p class='vspace'></p><h2>Define 宏定义</h2>
+<p><code>#define</code> 宏定义是一个有用的C组件，它允许程序员在程序编译前给常量取一个名字。在arduino中定义的常量不会在芯片中占用任何程序空间。编译器在编译时会将这些常量引用替换为定义的值。
 </p>
-<p class='vspace'></p><p>This can have some unwanted side effects though, if for example, a constant name that had been #defined is included in some other constant or variable name. In that case the text would be replaced by the #defined number (or text).
+<p class='vspace'></p><p>这虽然可能有些有害的副作用，举例来说，一个已被定义的常量名被包含在一些其它的常量或变量名中。那样的话该文本将被替换成被定义的数字（或文本）。
 </p>
-<p class='vspace'></p><p>In general, the <em><a class='wikilink' href='Const.html'>const</a></em> keyword is preferred for defining constants and should be used instead of #define.
+<p class='vspace'></p><p>通常，用const关键字定义常量是更受欢迎的且用来代替#define会很有用。
 </p>
-<p class='vspace'></p><p>Arduino defines have the same syntax as C defines:
+<p class='vspace'></p><p>Arduino宏定义与C宏定义有同样的语法。
 </p>
-<p class='vspace'></p><h4>Syntax</h4>
+<p class='vspace'></p><h4>语法</h4>
 <p><code>#define constantName value</code>
 </p>
-<p class='vspace'></p><p>Note that the # is necessary. 
-</p>
-<p class='vspace'></p><h4>Example</h4>
-<pre>#define ledPin 3
+<p class='vspace'></p><h4>例子</h4>
+<pre>
+#define ledPin 3
 // The compiler will replace any mention of ledPin with the value 3 at compile time.
 </pre>
-<p class='vspace'></p><h4>Tip</h4>
-<p>There is no semicolon after the #define statement. If you include one, the compiler will throw cryptic errors further down the page.
+<p class='vspace'></p><h4>提示</h4>
+<p>#define语句的后面分号。如果你加了一个，编译器将会在进一步的页面引发奇怪的错误。
 </p>
 <p class='vspace'></p><pre>#define ledPin 3;    // this is an error 
-
 </pre>
-<p class='vspace'></p><p>Similarly, including an equal sign after the #define statement will also generate a cryptic compiler error further down the page.
+<p class='vspace'></p><p>类似地，包含一个等号通常也会在进一步的页面引发奇怪的编译错误。
 </p>
 <p class='vspace'></p><pre>#define ledPin  = 3  // this is also an error 
-
 </pre>
-<p class='vspace'></p><h4>See</h4>
-<ul><li><a class='wikilink' href='Const.html'>const</a>
-</li><li><a class='wikilink' href='IntegerConstants.html'>Constants</a>
-</li></ul><p><a class='wikilink' href='index.html'>返回首页</a>
+<br />
+<p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

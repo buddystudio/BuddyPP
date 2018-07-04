@@ -36,53 +36,53 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body  style="line-height:25px">
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>return</h2>
-<p>Terminate a function and return a value from a function to the calling function, if desired.
+<p>终止一个函数，并向被调用函数并返回一个值，如果你想的话。
 </p>
-<p class='vspace'></p><h4>Syntax:</h4>
+<p class='vspace'></p><h4>语法</h4>
 <p>return;
 </p>
 <p class='vspace'></p><p>return value;    // both forms are valid
 </p>
-<p class='vspace'></p><h4>Parameters</h4>
-<p>value: any variable or constant type
+<p class='vspace'></p><h4>参数</h4>
+<p>任何类型的变量或常量。
 </p>
-<p class='vspace'></p><h4>Examples:</h4>
-<p>A function to compare a sensor input to a threshold
-</p><pre> int checkSensor(){       
-    if (analogRead(0) &gt; 400) {
+<p class='vspace'></p><h4>例子</h4>
+<p>将传感器读数与阈值进行比较</p>
+<pre> 
+int checkSensor()
+{       
+    if (analogRead(0) &gt; 400) 
+	{
         return 1;
-    else{
+    else
+	{
         return 0;
     }
 }
 </pre>
-<p class='vspace'></p><p>The return keyword is handy to test a section of code without having to "comment out" large sections of possibly buggy code.
+<p class='vspace'></p><p>return 关键字对测试一段代码很方便，不需“注释掉”大段的可能是错误的代码。
 </p>
-<p class='vspace'></p><pre>void loop(){
+<p class='vspace'></p><pre>
+void loop()
+{
 
-// brilliant code idea to test here
+	// brilliant code idea to test here
 
-return;
+	return;
 
-// the rest of a dysfunctional sketch here
-// this code will never be executed
+	// the rest of a dysfunctional sketch here
+	// this code will never be executed
 }
 </pre>
-<p class='vspace'></p><h4>See also</h4>
-<p><a class='wikilink' href='Comments.html'>comments</a>
-</p>
+
 <p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
 

@@ -36,35 +36,37 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px">
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>break</h2>
-<p><strong>break</strong> is used to exit from a <strong>do</strong>, <strong>for</strong>, or <strong>while</strong> loop, bypassing the normal loop condition. It is also used to exit from a <strong>switch</strong> statement.
+<p><strong>break</strong> 用于中止do，for，或while循环，绕过正常的循环条件，也用于中止switch语句。
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
 for (x = 0; x &lt; 255; x ++)
 {
     digitalWrite(PWMpin, x);
-    sens = analogRead(sensorPin);  
-    if (sens &gt; threshold){      // bail out on sensor detect
-       x = 0;
-       break;
-    }  
+	
+    sens = analogRead(sensorPin); 
+	
+    if (sens &gt; threshold)
+	{      
+		// bail out on sensor detect
+		x = 0;
+		break;
+    }
+	
     delay(50);
 }
 
-
-</pre><p><a class='wikilink' href='index.html'>返回首页</a>
+</pre>
+<br />
+<p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
 
 

@@ -36,37 +36,33 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px">
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>#include</h2>
-<p><strong>#include</strong> is used to include outside libraries in your sketch. This gives the programmer access to a large group of standard C libraries (groups of pre-made functions), and also libraries written especially for Arduino.
+<p><strong>#include</strong> 用于在你的sketch中包含外部的库。这使程序员可以访问一个巨大的标准C库（预定义函数集合）的集合。
 </p>
-<p class='vspace'></p><p>The main reference page for AVR C libraries (AVR is a reference to  the Atmel chips on which the Arduino is based) is <a class='urllink' href='http://www.nongnu.org/avr-libc/user-manual/modules.html' rel='nofollow'>here.</a>
+<p class='vspace'></p><p>AVR C库（AVR是Atmel芯片的一个基准，Arduino正是基于它）的主参考手册页在这里。
 </p>
-<p class='vspace'></p><p>Note that <strong>#include</strong>, similar to <strong>#define</strong>, has no semicolon terminator, and the compiler will yield cryptic error messages if you add one.
+<p class='vspace'></p><p>注意#include和#define相似，没有分号终止符，且如果你加了，编译器会产生奇怪的错误信息。
 </p>
-<p class='vspace'></p><h4>Example</h4>
-<p>This example includes a library that is used to put data into the program space <em>flash</em> instead of <em>ram</em>. This saves the ram space for dynamic memory needs and makes large lookup tables more practical.
+<p class='vspace'></p><h4>例子</h4>
+<p>该示例包含一个用于输出数据到程序空间闪存的库，而不是内存。这会为动态内存需求节省存储空间且使需要创建巨大的查找表变得更实际。
 </p>
-<p class='vspace'></p><pre>
+<p class='vspace'></p>
+<pre>
 #include &lt;avr/pgmspace.h&gt;
 
 prog_uint16_t myConstants[] PROGMEM = {0, 21140, 702  , 9128,  0, 25764, 8456,
 0,0,0,0,0,0,0,0,29810,8968,29762,29762,4500};
 
-</pre><p><a class='wikilink' href='index.html'>返回首页</a>
+</pre>
+<p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

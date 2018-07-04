@@ -36,38 +36,40 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px">
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>while loops</h2>
-<h4>Description</h4>
-<p><strong>while</strong> loops will loop continuously, and infinitely, until the expression inside the parenthesis, () becomes false. Something must change the tested variable, or the <strong>while</strong> loop will never exit. This could be in your code, such as an incremented variable, or an external condition, such as testing a sensor.
+<p class='vspace'></p><h2>while 循环</h2>
+<h4>描述</h4>
+<p>while循环将会连续地无限地循环，直到圆括号（）中的表达式变为假。被测试的变量必须被改变，否则while循环将永远不会中止。这可以是你的代码，比如一个递增的变量，或者是一个外部条件，比如测试一个传感器。
 </p>
-<p class='vspace'></p><h4>Syntax</h4>
-<pre>while(expression){
+<p class='vspace'></p><h4>语法</h4>
+<pre>
+while(expression)
+{
   // statement(s)
 }
 </pre>
-<p class='vspace'></p><h4>Parameters</h4>
-<p>expression - a (boolean) C statement that evaluates to true or false 
+<p class='vspace'></p><h4>参数</h4>
+<p>expression - 一个（布尔型）C语句，被求值为真或假 
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
 var = 0;
-while(var &lt; 200){
+
+while(var &lt; 200)
+{
   // do something repetitive 200 times
   var++;
 }
 
-</pre><p><a class='wikilink' href='index.html'>返回首页</a>
+</pre>
+<br />
+<p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
 
 

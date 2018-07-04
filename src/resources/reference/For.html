@@ -36,7 +36,7 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px">
 <div id="page">
   
 
@@ -47,11 +47,11 @@ a.varlink { text-decoration:none; }
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>for statements</h2>
-<h4>Desciption</h4>
-<p>The <strong>for</strong> statement is used to repeat a block of statements enclosed in curly braces. An increment counter is usually used to increment and terminate the loop. The <strong>for</strong> statement is useful for any repetitive operation, and is often used in combination with arrays to operate on collections of data/pins.
+<p class='vspace'></p><h2>for 语句</h2>
+<h4>描述</h4>
+<p><strong>for</strong> 语句用于重复执行被花括号包围的语句块。一个增量计数器通常被用来递增和终止循环。for语句对于任何需要重复的操作是非常有用的。常常用于与数组联合使用以收集数据/引脚。
 </p>
-<p class='vspace'></p><p>There are three parts to the <strong>for</strong> loop header:
+<p class='vspace'></p><p>for循环的结构有三个部分：
 </p>
 <p class='vspace'></p><p><code><strong>for</strong> (<strong>initialization</strong>;<strong> condition</strong>;<strong>  increment</strong>) {</code>
 </p>
@@ -59,11 +59,12 @@ a.varlink { text-decoration:none; }
 </p>
 <p class='vspace'></p><p><code>}</code>
 </p><div><img height='220px' src='http://arduino.cc/en/uploads/Reference/ForLoopIllustrated.png' alt='' title='' /></div>
-<p class='vspace'></p><p>The <strong>initialization</strong> happens first and exactly once.  Each time through the loop, the <strong>condition</strong> is tested; if it's true, the statement block, and the <strong>increment</strong> is executed, then the <strong>condition</strong> is tested again.  When the <strong>condition</strong> becomes false, the loop ends.
+<p class='vspace'></p><p>初始化部分被第一个执行，且只执行一次。每次通过这个循环，条件判断部分将被测试;如果为真，语句块和数据递增部分就会被执行,然后条件判断部分就会被再次测试，当条件测试为假时，结束循环。
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
 // Dim an LED using a PWM pin
+
 int PWMpin = 10; // LED in series with 470 ohm resistor on pin 10
 
 void setup()
@@ -73,41 +74,44 @@ void setup()
 
 void loop()
 {
-   for (int i=0; i &lt;= 255; i++){
+   for (int i=0; i &lt;= 255; i++)
+   {
       analogWrite(PWMpin, i);
       delay(10);
    } 
 }
 
 </pre>
-<p class='vspace'></p><h4>Coding Tips</h4>
-<p>The C <strong>for</strong> loop is much more flexible than <strong>for</strong> loops found in some other computer languages, including BASIC. Any or all of the three header elements may be omitted, although the semicolons are required. Also the statements for initialization, condition, and increment can be any valid C statements with unrelated variables, and use any C datatypes including floats. These types of unusual <strong>for</strong> statements may provide solutions to some rare programming problems. 
+<p class='vspace'></p><h4>提示</h4>
+<p>C中的for循环比在其它计算机语言中发现的for循环要灵活的多，包括BASIC。三个头元素中的任何一个或全部可能被省略，尽管分号是必须的。而且初始化部分、条件判断部分和数据递增部分可以是任何合法的使用任意变量的C语句。且可以使用任何数据类型包括floats。这些不常用的类型用于语句段也许可以为一些罕见的编程问题提供解决方案。
 </p>
-<p class='vspace'></p><p>For example, using a multiplication in the increment line will generate a logarithmic progression:<br />
+<p class='vspace'></p><p>例如，在递增部分中使用一个乘法将形成对数级增长：
 </p><pre>for(int x = 2; x &lt; 100; x = x * 1.5){
 println(x);
 }
 </pre>
-<p class='vspace'></p><p>Generates: 2,3,4,6,9,13,19,28,42,63,94
+<p class='vspace'></p><p>输出结果: 2,3,4,6,9,13,19,28,42,63,94
 </p>
-<p class='vspace'></p><p>Another example, fade an LED up and down with one <strong>for</strong> loop:
+<p class='vspace'></p><p>另一个例子，在一个for循环中使一个LED灯渐渐地变亮和变暗：
 </p>
-<p class='vspace'></p><pre>void loop()
+<p class='vspace'></p><pre>
+void loop()
 {
    int x = 1;
-   for (int i = 0; i &gt; -1; i = i + x){
+   for (int i = 0; i &gt; -1; i = i + x)
+   {
       analogWrite(PWMpin, i);
-      if (i == 255) x = -1;             // switch direction at peak
+	  
+	  // switch direction at peak
+      if (i == 255) x = -1;
+	  
       delay(10);
    } 
 }
 </pre>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='While.html'>while</a>
+<br />
 </li></ul><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

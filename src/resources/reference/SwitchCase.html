@@ -36,25 +36,22 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px">
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>switch / case statements</h2>
-<p>Like <strong>if</strong> statements, <strong>switch...case</strong> controls the flow of programs by allowing programmers to specify different code that should be executed in various conditions.  In particular, a switch statement compares the value of a variable to the values specified in case statements.  When a case statement is found whose value matches that of the variable, the code in that case statement is run.  
+<p class='vspace'></p><h2>switch / case 语句</h2>
+<p>类似if语句，switch...case通过允许程序员根据不同的条件指定不同的应被执行的代码来控制程序流。特别地，一个switch语句对一个变量的值与case语句中指定的值进行比较。当一个case语句被发现其值等于该变量的值。就会运行这个case语句下的代码。
 </p>
-<p class='vspace'></p><p>The <strong>break</strong> keyword exits the switch statement, and is typically used at the end of each case.  Without a break statement, the switch statement will continue executing the following expressions ("falling-through") until a break, or the end of the switch statement is reached.
+<p class='vspace'></p><p>break关键字将中止并跳出switch语句段，常常用于每个case语句的最后面。如果没有break语句，switch语句将继续执行下面的表达式（“持续下降”）直到遇到break，或者是到达switch语句的末尾。
 </p>
-<p class='vspace'></p><h3>Example</h3>
+<p class='vspace'></p><h3>例子</h3>
 <pre>
-  switch (var) {
+  switch (var) 
+  {
     case 1:
       //do something when var equals 1
       break;
@@ -67,9 +64,10 @@ a.varlink { text-decoration:none; }
   }
 
 </pre>
-<p class='vspace'></p><h3>Syntax</h3>
+<p class='vspace'></p><h3>语法</h3>
 <pre>
-switch (var) {
+switch (var) 
+{
   case label:
     // statements
     break;
@@ -81,13 +79,12 @@ switch (var) {
 }
 
 </pre>
-<p class='vspace'></p><h3>Parameters</h3>
-<p>var: the variable whose value to compare to the various cases
+<p class='vspace'></p><h3>参数</h3>
+<p>var: 与不同的case中的值进行比较的变量
 </p>
-<p class='vspace'></p><p>label: a value to compare the variable to
+<p class='vspace'></p><p>label: 相应的case的值
 </p>
-<p class='vspace'></p><h4>See also:</h4>
-<p><a class='wikilink' href='Else.html'>if...else</a>
+<br />
 <a class='wikilink' href='index.html'>返回首页</a>
 </p>
 

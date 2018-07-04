@@ -36,38 +36,36 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px">
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>continue</h2>
-<p>The continue statement skips the rest of the current iteration of a loop (<strong>do</strong>, <strong>for</strong>, or <strong>while</strong>).  It continues by checking the conditional expression of the loop, and proceeding with any subsequent iterations.
+<p>continue语句跳过一个循环的当前迭代的余下部分。（do，for，或while）。通过检查循环测试条件它将继续进行随后的迭代。
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
 
 for (x = 0; x &lt; 255; x ++)
 {
-    if (x &gt; 40 &amp;&amp; x &lt; 120){      // create jump in values
+    if (x &gt; 40 &amp;&amp; x &lt; 120)
+	{      
+		// create jump in values
         continue;
     }
 
     digitalWrite(PWMpin, x);
+	
     delay(50);
 }
 
 </pre>
-<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+<br />
+<p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

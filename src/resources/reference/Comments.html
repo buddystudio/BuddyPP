@@ -36,42 +36,40 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px">
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>Comments</h2>
-<p>Comments are lines in the program that are used to inform yourself or others about the way the program works. They are ignored by the compiler, and not exported to the processor, so they don't take up any space on the Atmega chip. 
+<p class='vspace'></p><h2>注释</h2>
+<p>注释是程序中的一些行，用于让自己或他人了解程序的工作方式。他们会被编译器忽略，而不会输出到控制器，所以它们不会占用Atmega芯片上的任何空间。
 </p>
-<p class='vspace'></p><p>Comments only purpose are to help you understand (or remember) how your program works or to inform others how your program works.
-There are two different ways of marking a line as a comment:
+<p class='vspace'></p><p>注释唯一的目的是帮助你理解（或记忆）你的程序是怎样工作的，或者是告知其他人你的程序是怎样工作的。标记一行为注释只有两种方式：
 </p>
-<p class='vspace'></p><h4>Example</h4>
-<pre> x = 5;  // This is a single line comment. Anything after the slashes is a comment 
-         // to the end of the line
+<p class='vspace'></p><h4>例子</h4>
+<pre> 
+x = 5;	// This is a single line comment. Anything after the slashes is a comment 
+	// to the end of the line
 
 /* this is multiline comment - use it to comment out whole blocks of code
 
-if (gwb == 0){   // single line comment is OK inside a multiline comment
-x = 3;           /* but not another multiline comment - this is invalid */
+if (gwb == 0)
+{   
+	// single line comment is OK inside a multiline comment
+	x = 3;           
+	
+	/* but not another multiline comment - this is invalid */
 }
+
 // don't forget the "closing" comment - they have to be balanced!
 */
-
 </pre>
-<p class='vspace'></p><p><strong>Tip</strong><br />When experimenting with code, "commenting out" parts of your program is a convenient way to remove lines that may be buggy. This leaves the lines in the code, but turns them into comments, so the compiler just ignores them.   This can be especially useful when trying to locate a problem, or when a program refuses to compile and the compiler error is cryptic  or unhelpful.
+<p class='vspace'></p><p><strong>提示</strong><br />当验证代码时，注释掉你的程序的一部分来移除可能是错误的行是一种方便的方法。这不是把这些行从程序中移除，而是把它们放到注释中，所以编译器就会忽略它们。这在定位问题时，或者当程序无法编译通过且编译错误信息很古怪或没有帮助时特别有用。
 </p>
 <p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>
