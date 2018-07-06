@@ -38,63 +38,52 @@ a.varlink { text-decoration:none; }
 </head>
 <body>
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h1>Boolean Operators </h1>
-<p>These can be used inside the condition of an <a class='wikilink' href='If.html'>if</a> statement.
+<p class='vspace'></p><h1>布尔运算符</h1>
+<p>它们可用于if语句中的条件。
 </p>
-<p class='vspace'></p><h3>&amp;&amp; (logical and)</h3>
-<p>True only if both operands are true, e.g.
-</p><pre>
+<p class='vspace'></p><h3>&amp;&amp; (逻辑 与)</h3>
+<p>只有在两个操作数都为真时才返回真，例如：
+</p><p class='vspace'></p><pre>
 if (digitalRead(2) == HIGH  &amp;&amp; digitalRead(3) == HIGH) { // read two switches 
   // ...
 } 
-</pre><p>is true only if both inputs are high.
+</pre><p class='vspace'></p><p>只在两个输入都为高时返回真。
 </p>
-<p class='vspace'></p><h3>|| (logical or)</h3>
-<p>True if either operand is true, e.g.
-</p><pre>
+<p class='vspace'></p><h3>|| (逻辑 或)</h3><p class='vspace'></p>
+<p>任意一个为真时返回真，例如：
+</p><p class='vspace'></p><pre>
 if (x &gt; 0 || y &gt; 0) {
   // ...
 } 
-</pre><p>is true if either x or y is greater than 0.
+</pre><p class='vspace'></p><p>x或y任意一个大于0时返回真。
 </p>
-<p class='vspace'></p><h3>! (not)</h3>
-<p>True if the operand is false, e.g.
-</p><pre>
+<p class='vspace'></p><h3>! (逻辑 非)</h3><p class='vspace'></p>
+<p>当操作数为假时返回真，例如：
+</p><p class='vspace'></p><pre>
 if (!x) { 
   // ...
 } 
-</pre><p>is true if x is false (i.e. if x equals 0).
+</pre><p class='vspace'></p><p>若x为假返回真（即如果x等于0）。
 </p>
-<p class='vspace'></p><h4>Warning</h4>
-<p>Make sure you don't mistake the boolean AND operator, &amp;&amp; (double ampersand) for the bitwise AND operator &amp; (single ampersand). They are entirely different beasts.
+<p class='vspace'></p><h4>警告</h4>
+<p>确保你没有把布尔与运算符，&&（两个与符号）错认为按位与运算符&（单个与符号）。它们是完全不同的概念。
 </p>
-<p class='vspace'></p><p>Similarly, do not confuse the boolean || (double pipe) operator with the bitwise OR operator | (single pipe).
+<p class='vspace'></p><p>同样，不要混淆布尔或运算符||（双竖杠）与按位或运算符|（单竖杠）。
 </p>
-<p class='vspace'></p><p>The bitwise not ~ (tilde) looks much different than the boolean not ! (exclamation point or "bang" as the programmers say) but you still have to be sure which one you want where.
+<p class='vspace'></p><p>按位取反~（波浪号）看起来与布尔非!有很大不同（感叹号或程序员口中的“棒”），但是你仍然必须确保在什么地方用哪一个。
 </p>
-<p class='vspace'></p><h4>Examples</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
 if (a &gt;= 10 &amp;&amp; a &lt;= 20){}   // true if a is between 10 and 20
 
 </pre>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='BitwiseAnd.html'>&amp;</a> (bitwise AND)
-</li><li><a class='wikilink' href='BitwiseAnd.html'>|</a> (bitwise OR)
-</li><li><a class='wikilink' href='BitwiseXorNot.html'>~</a> (bitwise NOT
-</li><li><a class='wikilink' href='If.html'>if</a>
-</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

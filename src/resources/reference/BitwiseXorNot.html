@@ -38,17 +38,13 @@ a.varlink { text-decoration:none; }
 </head>
 <body>
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>Bitwise NOT (~)</h2>
-<p>The bitwise NOT operator in C++ is the tilde character ~. Unlike &amp; and |, the bitwise NOT operator is applied to a single operand to its right. Bitwise NOT changes each bit to its opposite: 0 becomes 1, and 1 becomes 0. For example:
+<p class='vspace'></p><h2>位非 (~)</h2>
+<p>在C++中按位取反运算符为波浪符“~”。不像“&”和“|”，按位取反运算符应用于其右侧的单个操作数。按位取反操作会翻转其每一位。0变为1，1变为0。例如：
 </p>
 <p class='vspace'></p><pre>    0  1    operand1
 </pre>
@@ -58,16 +54,14 @@ a.varlink { text-decoration:none; }
 <p class='vspace'></p><pre>    int a = 103;    // binary:  0000000001100111
     int b = ~a;     // binary:  1111111110011000 = -104
 </pre>
-<p class='vspace'></p><p>You might be surprised to see a negative number like -104 as the result of this operation. This is because the highest bit in an int variable is the so-called sign bit. If the highest bit is 1, the number is interpreted as negative. This encoding of positive and negative numbers is referred to as two's complement. For more information, see the Wikipedia article on <a class='urllink' href='http://en.wikipedia.org/wiki/Twos_complement' rel='nofollow'>two's complement.</a>
+<p class='vspace'></p><p>看到此操作的结果为一个负数：-104，你可能会感到惊讶，这是因为一个整型变量的最高位是所谓的符号位。如果最高位为1，该整数被解释为负数。这里正数和负数的编码被称为二进制补码。欲了解更多信息，请参阅维基百科条目：补码。
 </p>
-<p class='vspace'></p><p>As an aside, it is interesting to note that for any integer x, ~x is the same as -x-1.
+<p class='vspace'></p><p>顺便说一句，值得注意的是，对于任何整数x， ~x 与 -x-1 相等。
 </p>
-<p class='vspace'></p><p>At times, the sign bit in a signed integer expression can cause some unwanted surprises.
+<p class='vspace'></p><p>有时候，符号位在有符号整数表达式中能引起一些不期的意外。
 </p>
 <p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

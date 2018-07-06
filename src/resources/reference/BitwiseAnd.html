@@ -38,121 +38,127 @@ a.varlink { text-decoration:none; }
 </head>
 <body>
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>Bitwise AND (&amp;), Bitwise OR (|),  Bitwise XOR (^)</h2>
-<h4>Bitwise AND (&amp;)</h4>
-<p>The bitwise operators perform their calculations at the bit level of variables. They help solve a wide range of common programming problems. Much of the material below is from an excellent tutorial on bitwise math wihch may be found <a class='urllink' href='http://www.arduino.cc/playground/Code/BitMath' rel='nofollow'>here.</a>
+<p class='vspace'></p><h2>位运算</h2>
+<h4>按位与 (&amp;)</h4>
+<p>按位操作符在变量的位级执行运算。它们帮助解决各种常见的编程问题。以下大部分资料来自一个有关位数学的优秀教程，或许可以在这里找到。
 </p>
-<p class='vspace'></p><h4>Description and Syntax</h4>
-<p>Below are descriptions and syntax for all of the operators. Further details may be found in the referenced tutorial.
+<p class='vspace'></p><h4>描述和语法</h4>
+<p>以下是所有这些运算符的描述和语法。更详细的资料或许可以在参考指南中找到。
 </p>
-<p class='vspace'></p><h4>Bitwise AND (&amp;)</h4>
-<p>The bitwise AND operator in C++ is a single ampersand, &amp;, used between two other integer expressions. Bitwise AND operates on each bit position of the surrounding expressions independently, according to this rule: if both input bits are 1, the resulting output is 1, otherwise the output is 0. Another way of expressing this is:
+<p class='vspace'></p><h4>按位与 (&amp;)</h4>
+<p>在C++中按位与运算符是单个与符号，用于其它两个整型表达式之间使用。按位与运算独立地在周围的表达式的每一位上执行操作。根据这一规则：如果两个输入位都是1，结果输出1，否则输出0。表达这一思想的另一个方法是：
 </p>
 <p class='vspace'></p><pre>    0  0  1  1    operand1
     0  1  0  1    operand2
     ----------
     0  0  0  1    (operand1 &amp; operand2) - returned result
 </pre>
-<p class='vspace'></p><p>In Arduino, the type int is a 16-bit value, so using &amp; between two int expressions causes 16 simultaneous AND operations to occur. In a code fragment like:
+<p class='vspace'></p><p>在Arduino中，int型是16位的。所以在两个整型表达式之间使用&将会导致16个与运算同时发生。代码片断就像这样：
 </p>
 <p class='vspace'></p><pre>    int a =  92;    // in binary: 0000000001011100
     int b = 101;    // in binary: 0000000001100101
     int c = a &amp; b;  // result:    0000000001000100, or 68 in decimal.
 </pre>
-<p class='vspace'></p><p>Each of the 16 bits in a and b are processed by using the bitwise AND, and all 16 resulting bits are stored in c, resulting in the value 01000100 in binary, which is 68 in decimal.
+<p class='vspace'></p><p>在a和b的16位的每一位将使用按位与处理。且所有16位结果存入C中，以二进制存入的结果值01000100，即十进制的68。
 </p>
-<p class='vspace'></p><p>One of the most common uses of bitwise AND is to select a particular bit (or bits) from an integer value, often called masking. See below for an example
+<p class='vspace'></p><p>按位与的其中一个最常用的用途是从一个整型数中选择特定的位，常被称为掩码屏蔽。看如下示例：
 </p>
-<p class='vspace'></p><h4>Bitwise OR (|)</h4>
-<p>The bitwise OR operator in C++ is the vertical bar symbol, |. Like the &amp; operator, | operates independently each bit in its two surrounding integer expressions, but what it does is different (of course). The bitwise OR of two bits is 1 if either or both of the input bits is 1, otherwise it is 0. In other words:
+<p class='vspace'></p><h4>按位或 (|)</h4>
+<p>在C++中按位或运算符是垂直的条杆符号，|。就像&运算符，|独立地计算它周围的两个整型表达式的每一位。（当然）它所做的是不同的（操作)。两个输入位其中一个或都是1按位或将得到1，否则为0。换句话说：
 </p>
 <p class='vspace'></p><pre>    0  0  1  1    operand1
     0  1  0  1    operand2
     ----------
     0  1  1  1    (operand1 | operand2) - returned result
 </pre>
-<p class='vspace'></p><p>Here is an example of the bitwise OR used in a snippet of C++ code:
+<p class='vspace'></p><p>这是一个使用一小断C++代码描述的按位或（运算）的例子：
 </p>
 <p class='vspace'></p><pre>    int a =  92;    // in binary: 0000000001011100
     int b = 101;    // in binary: 0000000001100101
     int c = a | b;  // result:    0000000001111101, or 125 in decimal.
 </pre>
-<p class='vspace'></p><h4>Example Program</h4>
-<p>A common job for the bitwise AND and OR operators is what programmers call Read-Modify-Write on a port. On microcontrollers, a port is an 8 bit number that represents something about the condition of the pins. Writing to a port controls all of the pins at once. 
+<p class='vspace'></p><h4>例子</h4>
+<p>按位与和按位或的一个共同的工作是在端口上进行程序员称之为读-改-写的操作。在微控制器中，每个端口是一个8位数字，每一位表示一个引脚的状态。写一个端口可以同时控制所有的引脚。 
 </p>
-<p class='vspace'></p><p>PORTD is a built-in constant that refers to the output states of digital pins 0,1,2,3,4,5,6,7. If there is 1 in an bit position, then that pin is HIGH. (The pins already need to be set to outputs with the pinMode() command.) So if we write <code>PORTD = B00110001;</code> we have made pins 2,3 &amp; 7 HIGH. 
-One slight hitch here is that we <em>may</em> also have changeed the state of Pins 0 &amp; 1, which are used by the Arduino for serial communications so we may have interfered with serial communication. 
+<p class='vspace'></p><p>PORTD是内建的参照数字口0，1，2，3，4，5，6，7的输出状态的常量。如果一个比特位是1，那么该引脚置高。（引脚总是需要用pinMode()指令设置为输出模式）。所以如果我们写入PORTD = B000001；我们就会让引脚2，3和7输出高。一个小小的问题是，我们同时也改变了某些引脚的0，1状态。这用于Arduino与串口通讯，所以我们可能会干扰串口通讯。
 </p>
-<p class='vspace'></p><pre>     Our algorithm for the program is:
-</pre><ul><li>Get PORTD and clear out only the bits corresponding to the pins we wish to control (with bitwise AND).
-</li><li>Combine the modified PORTD value with the new value for the pins under control (with biwise OR).
-</li></ul><p class='vspace'></p><pre>int i;     // counter variable
+<p class='vspace'></p><pre>     我们的程序规则是：
+</pre><ul><li>仅仅获取和清除我们想控制的与相应引脚对应的位（使用按位与）。
+</li><li>合并要修改的PORTD值与所控制的引脚的新值（使用按位或）。
+</li></ul><p class='vspace'></p>
+<pre>
+int i;     // counter variable
 int j;
 
-void setup(){
-DDRD = DDRD | B11111100; // set direction bits for pins 2 to 7, leave 0 and 1 untouched (xx | 00 == xx)
-// same as pinMode(pin, OUTPUT) for pins 2 to 7
-Serial.begin(9600);
+void setup()
+{
+	DDRD = DDRD | B11111100; // set direction bits for pins 2 to 7, leave 0 and 1 untouched (xx | 00 == xx)
+	
+	// same as pinMode(pin, OUTPUT) for pins 2 to 7
+	Serial.begin(9600);
 }
 
-void loop(){
-for (i=0; i&lt;64; i++){
+void loop()
+{
+	for (i=0; i&lt;64; i++)
+	{
 
-PORTD = PORTD &amp; B00000011;  // clear out bits 2 - 7, leave pins 0 and 1 untouched (xx &amp; 11 == xx)
-j = (i &lt;&lt; 2);               // shift variable up to pins 2 - 7 - to avoid pins 0 and 1
-PORTD = PORTD | j;          // combine the port information with the new information for LED pins
-Serial.println(PORTD, BIN); // debug to show masking
-delay(100);
-   }
+		PORTD = PORTD &amp; B00000011;  // clear out bits 2 - 7, leave pins 0 and 1 untouched (xx &amp; 11 == xx)
+		
+		j = (i &lt;&lt; 2);	// shift variable up to pins 2 - 7 - to avoid pins 0 and 1
+		
+		PORTD = PORTD | j; 	// combine the port information with the new information for LED pins
+		
+		Serial.println(PORTD, BIN); // debug to show masking
+	
+		delay(100);
+	}
 }
 </pre>
-<p class='vspace'></p><h4>Bitwise XOR (^)</h4>
-<p>There is a somewhat unusual operator in C++ called bitwise EXCLUSIVE OR, also known as bitwise XOR. (In English this is usually pronounced "eks-or".) The bitwise XOR operator is written using the caret symbol ^. This operator is very similar to the bitwise OR operator |, only it evaluates to 0 for a given bit position when both of the input bits for that position are 1:
+<p class='vspace'></p><h4>按位异或 (^)</h4>
+<p>在C++中有一个有点不寻常的操作，它被称为按位异或，或者XOR（在英语中，通常读作“eks-or”）。按位异或运算符使用符号^。该运算符与按位或运算符“|”非常相似 ,唯一的不同是当输入位都为1时它返回0。
 </p>
 <p class='vspace'></p><pre>    0  0  1  1    operand1
     0  1  0  1    operand2
     ----------
     0  1  1  0    (operand1 ^ operand2) - returned result
 </pre>
-<p class='vspace'></p><p>Another way to look at bitwise XOR is that each bit in the result is a 1 if the input bits are different, or 0 if they are the same.
+<p class='vspace'></p><p>看待XOR的另一个视角是，当输入不同时结果为1，当输入相同时结果为0。
 </p>
-<p class='vspace'></p><p>Here is a simple code example:
+<p class='vspace'></p><p>这里是一个简单的示例代码：
 </p>
 <p class='vspace'></p><pre>    int x = 12;     // binary: 1100
     int y = 10;     // binary: 1010
     int z = x ^ y;  // binary: 0110, or decimal 6
 </pre>
-<p class='vspace'></p><p>The ^ operator is often used to toggle (i.e. change from 0 to 1, or 1 to 0) some of the bits in an integer expression.  In a bitwise OR operation if there is a 1 in the mask bit, that bit is inverted; if there is a 0, the bit is not inverted and stays the same. Below is a program to blink digital pin 5.
+<p class='vspace'></p><p>“^”运算符常用于翻转整数表达式的某些位（例如从0变为1，或从1变为0）。在一个按位异或操作中，如果相应的掩码位为1， 该位将翻转，如果为0，该位不变。以下是一个闪烁引脚5的程序。
 </p>
-<p class='vspace'></p><pre>
+<p class='vspace'></p>
+<pre>
 // Blink_Pin_5
 // demo for Exclusive OR
-void setup(){
-DDRD = DDRD | B00100000; // set digital pin five as OUTPUT 
-Serial.begin(9600);
+
+void setup()
+{
+	DDRD = DDRD | B00100000; // set digital pin five as OUTPUT 
+	
+	Serial.begin(9600);
 }
 
-void loop(){
-PORTD = PORTD ^ B00100000;  // invert bit 5 (digital pin 5), leave others untouched
-delay(100);
+void loop()
+{
+	PORTD = PORTD ^ B00100000;  // invert bit 5 (digital pin 5), leave others untouched
+	
+	delay(100);
 }
 </pre>
-<p class='vspace'></p><p>See Also
-</p><ul><li><a class='wikilink' href='Boolean.html'>&amp;&amp;</a>(Boolean AND)
-</li><li><a class='wikilink' href='Boolean.html'>||</a>(Boolean OR)
-</li></ul><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

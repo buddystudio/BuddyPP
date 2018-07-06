@@ -38,41 +38,36 @@ a.varlink { text-decoration:none; }
 </head>
 <body>
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>bitshift left (&lt;&lt;), bitshift right (&gt;&gt;)</h2>
-<h4>Description</h4>
-<p>From <em>The Bitmath Tutorial</em>  in The Playground
+<p class='vspace'></p><h2>左移运算 (&lt;&lt;), 右移运算 (&gt;&gt;)</h2>
+<h4>描述</h4>
+
+<p class='vspace'></p><p>在C++中有两个移位运算符：左移运算符<<和右移运算符>>。这些运算符将使左边操作数的每一位左移或右移其右边指定的位数。
 </p>
-<p class='vspace'></p><p>There are two bit shift operators in C++: the left shift operator &lt;&lt; and the right shift operator &gt;&gt;. These operators cause the bits in the left operand to be shifted left or right by the number of positions specified by the right operand.<br /><br />More on bitwise math may be found <a class='urllink' href='http://www.arduino.cc/playground/Code/BitMath' rel='nofollow'>here.</a>
-</p>
-<p class='vspace'></p><h4>Syntax</h4>
+<p class='vspace'></p><h4>语法</h4>
 <p>variable &lt;&lt; number_of_bits
 </p>
 <p class='vspace'></p><p>variable &gt;&gt; number_of_bits 
 </p>
-<p class='vspace'></p><h4>Parameters</h4>
+<p class='vspace'></p><h4>参数</h4>
 <p>variable - (byte, int, long)
 number_of_bits integer &lt;= 32
 </p>
-<p class='vspace'></p><h4>Example:</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>    int a = 5;        // binary: 0000000000000101
     int b = a &lt;&lt; 3;   // binary: 0000000000101000, or 40 in decimal
     int c = b &gt;&gt; 3;   // binary: 0000000000000101, or back to 5 like we started with
 </pre>
-<p class='vspace'></p><p>When you shift a value x by y bits (x &lt;&lt; y), the leftmost y bits in x are lost, literally shifted out of existence:
+<p class='vspace'></p><p>当把x左移y位（x << y），x中最左边的y位将会丢失。
 </p>
 <p class='vspace'></p><pre>    int a = 5;        // binary: 0000000000000101
     int b = a &lt;&lt; 14;  // binary: 0100000000000000 - the first 1 in 101 was discarded
 </pre>
-<p class='vspace'></p><p>If you are certain that none of the ones in a value are being shifted into oblivion, a simple way to think of the left-shift operator is that it multiplies the left operand by 2 raised to the right operand power. For example, to generate powers of 2, the following expressions can be employed:
+<p class='vspace'></p><p>如果您确信没有值被移出，理解左移位运算符一个简单的办法是，把它的左操作数乘2将提高其幂值。例如，要生成2的乘方，可以使用以下表达式：
 </p>
 <p class='vspace'></p><pre>    1 &lt;&lt;  0  ==    1
     1 &lt;&lt;  1  ==    2
@@ -84,25 +79,23 @@ number_of_bits integer &lt;= 32
     1 &lt;&lt; 10  == 1024
     ...
 </pre>
-<p class='vspace'></p><p>When you shift x right by y bits (x &gt;&gt; y), and the highest bit in x is a 1, the behavior depends on the exact data type of x. If x is of type int, the highest bit is the sign bit, determining whether x is negative or not, as we have discussed above. In that case, the sign bit is copied into lower bits, for esoteric historical reasons:
+<p class='vspace'></p><p>当把x右移y位，x的最高位为1，该行为依赖于x的确切的数据类型。如果x的类型是int，最高位为符号位，决定x是不是负数，正如我们在上面已经讨论过的。在这种情况下，符号位会复制到较低的位：
 </p>
 <p class='vspace'></p><pre>    int x = -16;     // binary: 1111111111110000
     int y = x &gt;&gt; 3;  // binary: 1111111111111110
 </pre>
-<p class='vspace'></p><p>This behavior, called sign extension, is often not the behavior you want. Instead, you may wish zeros to be shifted in from the left. It turns out that the right shift rules are different for unsigned int expressions, so you can use a typecast to suppress ones being copied from the left:
+<p class='vspace'></p><p>这个行为，被称为符号扩展，常常不是你所期待的。反而，你可能希望移入左边的是0。事实上右移规则对于无符合整型表达式是不同的。所以你可以使用强制类型转换来避免左边移入1。
 </p>
 <p class='vspace'></p><pre>    int x = -16;                   // binary: 1111111111110000
     int y = (unsigned int)x &gt;&gt; 3;  // binary: 0001111111111110
 </pre>
-<p class='vspace'></p><p>If you are careful to avoid sign extension, you can use the right-shift operator &gt;&gt; as a way to divide by powers of 2. For example:
+<p class='vspace'></p><p>如果你可以很小心地避免符号扩展，你可以使用右移位运算符>>，作为除以2的幂的一种方法。例如：
 </p>
 <p class='vspace'></p><pre>    int x = 1000;
     int y = x &gt;&gt; 3;   // integer division of 1000 by 8, causing y = 125.
 </pre>
 <p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>
