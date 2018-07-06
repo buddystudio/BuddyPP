@@ -11,7 +11,21 @@ import javafx.scene.web.WebView;
 import model.BDCodeModel;
 import model.BDParameters;
 import netscape.javascript.JSObject;
+import util.io.BDCodeReader;
 import view.BDEditorView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
+import javafx.event.EventHandler;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class BDEditorCtrl
 {
@@ -74,6 +88,67 @@ public class BDEditorCtrl
 	                    }
 	                }  
 	            });
+		
+		this.webView.setOnDragOver(new EventHandler<DragEvent>() 
+		{
+			@Override
+			public void handle(DragEvent event) 
+			{
+				//if (event.getGestureSource() != m_imageView) 
+				{
+					event.acceptTransferModes(TransferMode.ANY);
+				}
+			}
+		});
+		
+		this.webView.setOnDragDropped(new EventHandler<DragEvent>() 
+		{
+			@SuppressWarnings("unused")
+			@Override
+			public void handle(DragEvent event) 
+			{
+				Dragboard dragboard = event.getDragboard();
+				
+				List<File> files = dragboard.getFiles();
+				
+				if(files.size() > 0)
+				{
+					File file = files.get(0);
+					
+					//System.out.println(file.getPath());
+					
+					if(file == null)
+					{
+						return;
+					}
+					
+					try 
+					{
+						String code = BDCodeReader.readFileByLines(file.getPath());
+						
+						code = code.replaceAll("\"","\\\\\"");
+						
+						// Clean code.
+						webView.getEngine().executeScript("editor.setValue('');");
+						
+						// Set Code.
+						webView.getEngine().executeScript("editor.insert(\"" + code +"\");");
+					} 
+					catch (UnsupportedEncodingException e) 
+					{
+						e.printStackTrace();
+					} 
+					catch (FileNotFoundException e) 
+					{
+						e.printStackTrace();
+					} 
+					catch (IOException e) 
+					{
+						e.printStackTrace();
+					}
+				}
+			}
+		});
 	}
 	
 	public void onChange()
