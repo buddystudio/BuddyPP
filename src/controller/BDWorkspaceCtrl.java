@@ -53,6 +53,31 @@ public final class BDWorkspaceCtrl
     	// 获取编辑器参数
         BDParameters.getEditorProfile();
         
+        boolean isRepeat = false;
+        
+        // 判断文件是否重复打开
+        for(int i = 0; i < this.workspaceView.workspaceModel.tabList.size(); i++)
+        {
+        	String path01 = this.workspaceView.workspaceModel.tabList.get(i).code.path;
+        	String path02 = newCode.path;
+
+        	// 路径比对
+        	if(path01.compareTo(path02) == 0)
+        	{
+        		isRepeat = true;
+        		
+        		return;
+        	}
+        }
+        
+        // 当前拖入文件已经打开
+        if(isRepeat == true)
+        {
+        	System.out.println("repeat");
+        	
+        	return;
+        }
+        
         //BDCodeModel newCode = new BDCodeModel();
         BDCodeTabModel newTab = new BDCodeTabModel(newCode, this);
         

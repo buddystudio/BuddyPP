@@ -86,6 +86,11 @@ public class BDCodeModel
     	code.name = name;
     }
     
+    public void setPath(String path)
+    {
+    	this.path = path;
+    }
+    
     // 编译的类名
     public String getClassName()
     {

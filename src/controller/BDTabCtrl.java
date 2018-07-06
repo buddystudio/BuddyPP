@@ -8,6 +8,7 @@ package controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -97,6 +98,54 @@ public class BDTabCtrl
 		});
 
 		BDCodeTabModel tab = (BDCodeTabModel)newTab;
+		
+		tab.tab.getTabPane().setOnDragOver(new EventHandler<DragEvent>() 
+		{
+			@Override
+			public void handle(DragEvent event) 
+			{
+				//if (event.getGestureSource() != m_imageView) 
+				{
+					event.acceptTransferModes(TransferMode.ANY);
+				}
+			}
+		});
+		
+		tab.tab.getTabPane().setOnDragDropped(new EventHandler<DragEvent>() 
+		{
+			@Override
+			public void handle(DragEvent event) 
+			{
+				Dragboard dragboard = event.getDragboard();
+				
+				List<File> files = dragboard.getFiles();
+				
+				for(int i = 0; i < files.size(); i++)
+				//if(files.size() > 0)
+				{
+					File file = files.get(i);
+
+					// 重新打开
+					BDCodeModel code = new BDCodeModel();
+
+					try 
+					{
+						// 写入文件路径
+						code.setName(file.getName());
+						code.setPath(file.getPath());
+						
+						code.setCodeText(BDCodeReader.readFileByLines(file.getPath()));
+						
+						// 添加新标签页
+						workspaceCtrl.addTab(code);
+					} 
+					catch (Exception ex) 
+					{
+						logger.error(ex.getStackTrace());
+					}
+				}
+			}
+		});
 
 		
 		/*// 文件拖入

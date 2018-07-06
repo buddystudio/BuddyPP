@@ -114,9 +114,7 @@ public class BDEditorCtrl
 				if(files.size() > 0)
 				{
 					File file = files.get(0);
-					
-					//System.out.println(file.getPath());
-					
+
 					if(file == null)
 					{
 						return;
