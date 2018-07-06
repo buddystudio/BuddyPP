@@ -136,6 +136,8 @@ public class BDTabCtrl
 						
 						code.setCodeText(BDCodeReader.readFileByLines(file.getPath()));
 						
+						code.setCodeText(code.getCodeText().replaceAll("\"","\\\\\""));
+
 						// 添加新标签页
 						workspaceCtrl.addTab(code);
 					} 
@@ -146,94 +148,6 @@ public class BDTabCtrl
 				}
 			}
 		});
-
-		
-		/*// 文件拖入
-		tab.setOnDragOver(new EventHandler<DragEvent>() 
-		{
-			// node添加拖入文件事件
-			public void handle(DragEvent event) 
-			{
-				System.out.println("111111111111111111");
-				
-				Dragboard dragboard = event.getDragboard();
-
-				if (dragboard.hasFiles()) 
-				{
-					File file = dragboard.getFiles().get(0);
-
-					// 过滤拖入类型
-					if (file.getAbsolutePath().endsWith(".ino") 
-							|| file.getAbsolutePath().endsWith(".txt")
-							|| file.getAbsolutePath().endsWith(".cpp") 
-							|| file.getAbsolutePath().endsWith(".c")
-							|| file.getAbsolutePath().endsWith(".h")) 
-					{
-						// 接受拖入文件
-						event.acceptTransferModes(TransferMode.COPY); 
-						
-						System.out.println(file.getPath());
-					}
-				}
-			}
-		});*/
-		
-		
-		/*tab.editorView.setOnDragDone(new EventHandler<DragEvent>() 
-		{
-			// 拖入后松开鼠标触发的事件
-			public void handle(DragEvent event) 
-			{
-				System.out.println("22222222222222222222");
-				
-				
-				// get drag enter file
-				Dragboard dragboard = event.getDragboard();
-
-				if (event.isAccepted()) 
-				{
-					// 获取拖入的文件
-					File file = dragboard.getFiles().get(0); 
-
-					// 重新打开
-					BDCodeModel code = new BDCodeModel();
-
-					code.setName(file.getName());
-
-					try 
-					{
-						code.setCodeText(BDCodeReader.readFileByLines(file.getPath()));
-
-						// 写入文件路径
-						code.path = file.getPath();
-					} 
-					catch (FileNotFoundException ex) 
-					{
-						logger.error(ex.getStackTrace());
-						// Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE,
-						// null, ex);
-					} 
-					catch (IOException ex) 
-					{
-						logger.error(ex.getStackTrace());
-						// Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE,
-						// null, ex);
-					}
-
-					try 
-					{
-						// 添加新标签页
-						workspaceCtrl.addTab(code);
-					} 
-					catch (Exception ex) 
-					{
-						logger.error(ex.getStackTrace());
-						// Logger.getLogger(BDTabCtrl.class.getName()).log(Level.SEVERE,
-						// null, ex);
-					}
-				}
-			}
-		});*/
 	}
 
 	private BDDialogWindow dialogWindow;
