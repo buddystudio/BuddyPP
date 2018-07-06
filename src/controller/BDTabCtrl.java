@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -136,7 +135,7 @@ public class BDTabCtrl
 						
 						code.setCodeText(BDCodeReader.readFileByLines(file.getPath()));
 						
-						code.setCodeText(code.getCodeText().replaceAll("\"","\\\\\""));
+						//code.setCodeText(code.getCodeText().replaceAll("\"","\\\\\""));
 
 						// 添加新标签页
 						workspaceCtrl.addTab(code);
@@ -274,8 +273,6 @@ public class BDTabCtrl
 		catch (IOException ex) 
 		{
 			logger.error("", ex);
-			// Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE,
-			// null, ex);
 		}
 	}
 
@@ -319,8 +316,6 @@ public class BDTabCtrl
 		catch (IOException ex) 
 		{
 			logger.error("", ex);
-			// Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE,
-			// null, ex);
 		}
 	}
 }

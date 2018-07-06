@@ -82,18 +82,11 @@ public class BDMenuView extends HBox
         this.setSpacing(-5);
         
         this.setAlignment(Pos.CENTER_LEFT);  // 居中排列
-
-        //HBox settingPanel = new HBox();
-        
-        //Image image = new Image("/images/settingPanel.png");
-        //ImageView iv = new ImageView(image);
         
         Image image = new Image("/images/sp.png");
         
         ImageView sp01 = new ImageView(image);
         ImageView sp02 = new ImageView(image);
-        ImageView sp03 = new ImageView(image);
-        ImageView sp04 = new ImageView(image);
         
         Tooltip menuPreSetBtnTip = new Tooltip("预设值");
         
@@ -107,14 +100,7 @@ public class BDMenuView extends HBox
         
         rightLables = new VBox();
         
-        //rightLables.setStyle("-fx-padding: 12,0,0,0;");
-        //rightLables.setPadding(new Insets(0, 0, 0, 0));
-        
-        
-        //Label lbBoard   = new Label();
-        //Label lbCom     = new Label();
-        
-        lbBoard.setText("当前板型：Buddy Board LEO");
+        lbBoard.setText("当前板型：Buddy LEO");
         
         if(BDParameters.serialports.isEmpty())
         {
@@ -124,7 +110,6 @@ public class BDMenuView extends HBox
         {
             lbCom.setText("当前串口："+Preferences.get("serial.port"));
         }
-        
         
         lbBoard.setStyle("-fx-text-fill: #ffffff;-fx-font-size:13px;"); 
         lbCom.setStyle("-fx-text-fill: #ffffff;-fx-font-size:13px;"); 
@@ -136,13 +121,7 @@ public class BDMenuView extends HBox
         
         settingPanel.setAlignment(Pos.CENTER_LEFT);
         
-        //settingPanel.getChildren().add(rightLables);
-        
         // 设定设置面板的宽度
-        //settingPanel.setPrefWidth(315);
-        //settingPanel.setPrefWidth(265);
-        
-        //settingPanel.setPrefWidth(250);
         rightLables.setPrefWidth(300);
 
         menuOpenBtn.setPrefSize(50, 50);

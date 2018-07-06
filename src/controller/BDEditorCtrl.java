@@ -107,7 +107,7 @@ public class BDEditorCtrl
 			@Override
 			public void handle(DragEvent event) 
 			{
-				Dragboard dragboard = event.getDragboard();
+				/*Dragboard dragboard = event.getDragboard();
 				
 				List<File> files = dragboard.getFiles();
 				
@@ -144,7 +144,7 @@ public class BDEditorCtrl
 					{
 						e.printStackTrace();
 					}
-				}
+				}*/
 			}
 		});
 	}

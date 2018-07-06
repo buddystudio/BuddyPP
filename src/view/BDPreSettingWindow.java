@@ -24,16 +24,12 @@ import model.BoardMap;
  *
  * @author gsh
  */
-
-
 public class BDPreSettingWindow extends BDWindow 
 {
 	public ComboBox<String> combPin = new ComboBox<>();
 	public ComboBox<BoardMap> combMode = new ComboBox<BoardMap>();
-	//public CheckBox chkShowDebug=new CheckBox();
 
 	public Button btnSubmit = new Button("确定");
-	//public boolean isShow = false;
 
 	public BDPreSettingWindow() 
 	{
@@ -84,30 +80,14 @@ public class BDPreSettingWindow extends BDWindow
 
 		btnSubmit.setPrefSize(70, 30);
 		
-		// 暂时屏蔽该功能
-		/*
-		chkShowDebug.setText("显示编译信息");
-		
-		isShow = Boolean.parseBoolean(Preferences.get("showdebug"));
-		
-		if(isShow)
-		{
-			chkShowDebug.setSelected(true);
-		}
-		else{
-			chkShowDebug.setSelected(false);
-		}
-		*/
-		
 		contain.setPadding(new Insets(15, 15, 15, 15)); // 设置边距
-		contain.setSpacing(10); // 设置间距
-		contain.setAlignment(Pos.CENTER); // 居中排列
+		contain.setSpacing(10); 						// 设置间距
+		contain.setAlignment(Pos.CENTER); 				// 居中排列
 
 		contain.getChildren().add(lbMode);
 		contain.getChildren().add(combMode);
 		contain.getChildren().add(lbPin);
 		contain.getChildren().add(combPin);
-		//contain.getChildren().add(chkShowDebug);
 		contain.getChildren().add(btnSubmit);
 
 		rootPanel.getChildren().add(contain);
@@ -125,6 +105,4 @@ public class BDPreSettingWindow extends BDWindow
 			combPin.getSelectionModel().select(0);
 		}
 	}
-
-		
 }
