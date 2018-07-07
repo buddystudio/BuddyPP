@@ -36,7 +36,7 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
   
 
@@ -47,38 +47,36 @@ a.varlink { text-decoration:none; }
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>Variable Scope</h2>
-<p>Variables in the C programming language, which Arduino uses, have a property called <em>scope</em>. This is in contrast to languages such as BASIC where every variable is a <em>global</em> variable.
+<p class='vspace'></p><h2>变量的作用域</h2>
+<p>在Arduino使用的C编程语言的变量，有一个名为 作用域(scope) 的属性 。这一点与类似BASIC的语言形成了对比，在BASIC语言中所有变量都是 全局(global) 变量。
 </p>
-<p class='vspace'></p><p>A global variable is one that can be <em>seen</em> by every function in a program. Local variables are only visible to the function in which they are declared. In the Arduino environment, any  variable declared outside of a function (e.g. setup(), loop(), etc. ), is a global variable.
+<p class='vspace'></p><p>在一个程序内的全局变量是可以被所有函数所调用的。局部变量只在声明它们的函数内可见。在Arduino的环境中，任何在函数（例如，setup(),loop()等）外声明的变量，都是全局变量。
 </p>
-<p class='vspace'></p><p>When programs start to get larger and more complex, local variables are a useful way to insure that only one function has access to its own variables. This prevents programming errors when one function inadvertently modifies variables used by another function.
+<p class='vspace'></p><p>当程序变得更大更复杂时，局部变量是一个有效确定每个函数只能访问其自己变量的途径。这可以防止，当一个函数无意中修改另一个函数使用的变量的程序错误。
 </p>
-<p class='vspace'></p><p>It is also sometimes handy to declare and initialize a variable inside a <em>for</em> loop. This creates a variable that can only be accessed from inside the for-loop brackets.
+<p class='vspace'></p><p>有时在一个for循环内声明并初始化一个变量也是很方便的选择。这将创建一个只能从for循环的括号内访问的变量。
 </p>
-<p class='vspace'></p><h4>Example:</h4>
-<pre>int gPWMval;  // any function will see this variable
+<p class='vspace'></p><h4>例子</h4>
+<pre>
+int gPWMval;  // any function will see this variable
 
 void setup()
 {
-  // ...
+	// ...
 }
 
 void loop()
 {
-  int i;    // "i" is only "visible" inside of "loop"
-  float f;  // "f" is only "visible" inside of "loop"
-  // ...
+	int i;    // "i" is only "visible" inside of "loop"
+	float f;  // "f" is only "visible" inside of "loop"
+	// ...
 
-  for (int j = 0; j &lt;100; j++){
-  // variable j can only be accessed inside the for-loop brackets
-  }
-
+	for (int j = 0; j &lt;100; j++){
+	// variable j can only be accessed inside the for-loop brackets
+	}
 }
-</pre><p><a class='wikilink' href='index.html'>返回首页</a>
+</pre><p class='vspace'><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

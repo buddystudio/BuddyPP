@@ -33,58 +33,45 @@ type='text/css' />
 a.varlink { text-decoration:none; }
 
 --></style>  <meta name='robots' content='index,follow' />
-
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>unsigned long</h2>
-<h4>Description</h4>
-<p>Unsigned long variables are extended size variables for number storage, and store 32 bits (4 bytes). Unlike standard longs unsigned longs won't store negative numbers, making their range from 0 to 4,294,967,295 (2^32 - 1).
+<h4>描述</h4>
+<p>无符号长整型变量扩充了变量容量以存储更大的数据，它能存储位(4字节)数据。与标准长整型不同无符号长整型无法存储负数，其范围从0到4,294,967,295（2 ^  - 1）。
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
 unsigned long time;
 
 void setup()
 {
-  Serial.begin(9600);
+	Serial.begin(9600);
 }
 
 void loop()
 {
-  Serial.print("Time: ");
-  time = millis();
-  //prints time since program started
-  Serial.println(time);
-  // wait a second so as not to send massive amounts of data
-  delay(1000);
+	Serial.print("Time: ");
+	time = millis();
+	//prints time since program started
+	Serial.println(time);
+	// wait a second so as not to send massive amounts of data
+	delay(1000);
 }
-
-</pre><h4>Syntax</h4>
-<pre>    unsigned long var = val;
+</pre><h4>语法</h4>
+<pre>
+unsigned long var = val;
 </pre>
-<p class='vspace'></p><ul><li>var - your long variable name
-</li><li>val - the value you assign to that variable 
-</li></ul><p class='vspace'></p><h4>See Also</h4>
-<ul><li><a class='wikilink' href='Byte.html'>byte</a>
-</li><li><a class='wikilink' href='Int.html'>int</a>
-</li><li><a class='wikilink' href='UnsignedInt.html'>unsigned int</a>
-</li><li><a class='wikilink' href='Long.html'>long</a>
-</li><li><a class='urllink' href='http://arduino.cc/en/Reference/VariableDeclaration' rel='nofollow'>Variable Declaration</a>
+<p class='vspace'></p><ul><li>var - 你所定义的变量名
+</li><li>val - 给变量所赋的值 
 </li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

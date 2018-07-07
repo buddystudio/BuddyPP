@@ -36,7 +36,7 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
   
 
@@ -47,16 +47,16 @@ a.varlink { text-decoration:none; }
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>volatile keyword</h2>
-<p>volatile is a keyword known as a variable <em>qualifier</em>, it is usually used before the datatype of a variable, to modify the way in which the compiler and subsequent program treats the variable.
+<p class='vspace'></p><h2>volatile keyword 易变变量</h2>
+<p>volatile这个关键字是变量修饰符，常用在变量类型的前面，以告诉编译器和接下来的程序怎么对待这个变量。
 </p>
-<p class='vspace'></p><p>Declaring a variable volatile is a directive to the compiler. The compiler is software which translates your C/C++ code into  the machine code, which are the real instructions for the Atmega chip in the Arduino.
+<p class='vspace'></p><p>声明一个volatile变量是编译器的一个指令。编译器是一个将你的C/C++代码转换成机器码的软件，机器码是arduino上的Atmega芯片能识别的真正指令。
 </p>
-<p class='vspace'></p><p>Specifically, it directs the compiler to load the variable from RAM and not from a storage register, which is a temporary memory location where program variables are stored and manipulated. Under certain conditions, the value for a variable stored in registers can be inaccurate.
+<p class='vspace'></p><p>具体来说，它指示编译器编译器从RAM而非存储寄存器中读取变量，存储寄存器是程序存储和操作变量的一个临时地方。在某些情况下，存储在寄存器中的变量值可能是不准确的。
 </p>
-<p class='vspace'></p><p>A variable should be declared volatile whenever its value can be changed by something beyond the control of the code section in which it appears, such as a concurrently executing thread. In the Arduino, the only place that this is likely to occur is in sections of code associated with interrupts, called an interrupt service routine. 
+<p class='vspace'></p><p>如果一个变量所在的代码段可能会意外地导致变量值改变那此变量应声明为volatile，比如并行多线程等。在arduino中，唯一可能发生这种现象的地方就是和中断有关的代码段，成为中断服务程序。 
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
 // toggles LED when interrupt pin changes state
 
@@ -65,27 +65,22 @@ volatile int state = LOW;
 
 void setup()
 {
-  pinMode(pin, OUTPUT);
-  attachInterrupt(0, blink, CHANGE);
+	pinMode(pin, OUTPUT);
+	attachInterrupt(0, blink, CHANGE);
 }
 
 void loop()
 {
-  digitalWrite(pin, state);
+	digitalWrite(pin, state);
 }
 
 void blink()
 {
-  state = !state;
+	state = !state;
 }
-
 </pre>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='AttachInterrupt.html'>AttachInterrupt</a>
-</li></ul><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

@@ -36,39 +36,27 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>char</h2>
-<h4>Description</h4>
-<p>A data type that takes up 1 byte of memory that stores a character value.  Character literals are written in single quotes, like this:  'A'  (for multiple characters - strings - use double quotes: "ABC").  
+<h4>描述</h4>
+<p>一个数据类型，占用1个字节的内存存储一个字符值。字符都写在单引号，如'A'（多个字符（字符串）使用双引号，如“ABC”）。 
 </p>
-<p class='vspace'></p><p>Characters are stored as numbers however. You can see the specific encoding in the <a class='wikilink' href='ASCIIchart.html'>ASCII chart</a>. This means that it is possible to do arithmetic on characters, in which the ASCII value of the character is used (e.g.  'A' + 1  has the value 66, since the ASCII value of the capital letter A is 65). See <a class='wikilink' href='Serial_Println.html'>Serial.println</a> reference for more on how characters are translated to numbers.
+<p class='vspace'></p><p>字符以编号的形式存储。你可以在ASCII表中看到对应的编码。这意味着字符的ASCII值可以用来作数学计算。（例如'A'+ 1，因为大写A的ASCII值是65，所以结果为66）。如何将字符转换成数字参考serial.println命令。
 </p>
-<p class='vspace'></p><p>The char datatype is a signed type, meaning that it encodes numbers from -128 to 127. For an unsigned, one-byte (8 bit) data type, use the <em>byte</em> data type.
+<p class='vspace'></p><p>char数据类型是有符号的类型，这意味着它的编码为-8到7。对于一个无符号一个字节（8位）的数据类型，使用byte数据类型。
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>  char myChar = 'A';
   char myChar = 65;      // both are equivalent
-
 </pre>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='Byte.html'>byte</a>
-</li><li><a class='wikilink' href='Int.html'>int</a>
-</li><li><a class='wikilink' href='Array.html'>array</a>
-</li><li><a class='wikilink' href='Serial_Println.html'>Serial.println</a>
-</li></ul><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

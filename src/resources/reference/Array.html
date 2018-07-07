@@ -6,7 +6,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
   <link rel='stylesheet' href='arduinoWideRender.css' 
 type='text/css' />
-    <!--HeaderText--><style type='text/css'><!--
+    <!--HeaderText--><style type='text/css'>
   ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
   code { white-space: nowrap; }
   .vspace { margin-top:1.33em; }
@@ -32,77 +32,65 @@ type='text/css' />
     .rfloat { float:right; margin-left:0.5em; }
 a.varlink { text-decoration:none; }
 
---></style>  <meta name='robots' content='index,follow' />
+</style>  <meta name='robots' content='index,follow' />
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>Arrays</h2>
-<p>An array is a collection of variables that are accessed with an index number. Arrays in the C programming language, on which Arduino is based, can be complicated, but using simple arrays is relatively straightforward.
+<p>数组是一种可访问的变量的集合。Arduino的数组是基于C语言的，因此这会变得很复杂，但使用简单的数组是比较简单的。
 </p>
-<p class='vspace'></p><h4>Creating (Declaring) an Array</h4>
-<p>All of the methods below are valid ways to create (declare) an array.
+<p class='vspace'></p><h4>创建（声明）一个数组</h4>
+<p>下面的方法都可以用来创建（声明）数组。
 </p>
 <p class='vspace'></p><pre>
   int myInts[6];
   int myPins[] = {2, 4, 8, 3, 6};
   int mySensVals[6] = {2, 4, -8, 3, 2};
   char message[6] = "hello";
-
 </pre>
-<p class='vspace'></p><p>You can declare an array without initializing it as in myInts.<br /><br />In myPins we declare an array without explicitly choosing a size. The compiler counts the elements and creates an array of the appropriate size.
+<p class='vspace'></p><p>你可以声明一个未初始化数组，例如myPins。在myPins中，我们声明了一个没有明确大小的数组。编译器将会计算元素的大小，并创建一个适当大小的数组。
 </p>
-<p class='vspace'></p><p>Finally you can both initialize and size your array, as in mySensVals. Note that when declaring an array of type char, one more element than your initialization is required, to hold the required null character.
+<p class='vspace'></p><p>当然，你也可以初始化数组的大小，例如在mySensVals中。请注意，当声明一个char类型的数组时，你初始化的大小必须大于元素的个数，以容纳所需的空字符。
 </p>
-<p class='vspace'></p><h4>Accessing an Array</h4>
-<p>Arrays are <strong>zero indexed</strong>, that is, referring to the array initialization above, the first element of the array is at index 0, hence<br /><br /><code>mySensVals[0] == 2, mySensVals[1] == 4,</code> and so forth.
+<p class='vspace'></p><h4>访问数组</h4>
+<p>数组是从零开始索引的，也就说，上面所提到的数组初始化，数组第一个元素是为索引0，因此：
 </p>
-<p class='vspace'></p><p>It also means that in an array with ten elements, index nine is the last element. Hence:
-</p><pre>
+<p class='vspace'></p><p>这也意味着，在包含十个元素的数组中，索引九是最后一个元素。因此，
+</p><p class='vspace'></p><pre>
 int myArray[10]={9,3,2,4,3,2,7,8,9,11};
-     // myArray[9]    contains 11
-     // myArray[10]   is invalid and contains random information (other memory address)      
-
+// myArray[9]    contains 11
+// myArray[10]   is invalid and contains random information (other memory address)      
 </pre>
-<p class='vspace'></p><p>For this reason you should be careful in accessing arrays. Accessing past the end of an array (using an index number greater than your declared array size - 1) is reading from memory that is in use for other purposes. Reading from these locations is probably not going to do much except yield invalid data. Writing to random memory locations is definitely a bad idea and can often lead to unhappy results such as crashes or program malfunction. This can also be a difficult bug to track down.
+<p class='vspace'></p><p>出于这个原因，你在访问数组应该小心。若访问的数据超出数组的末尾（即索引数大于你声明的数组的大小- 1），则将从其他内存中读取数据。从这些地方读取的数据，除了产生无效的数据外，没有任何作用。向随机存储器中写入数据绝对是一个坏主意，通常会导致不愉快的结果，如导致系统崩溃或程序故障。要排查这样的错误是也是一件难事。
 </p>
-<p class='vspace'></p><p>Unlike BASIC or JAVA, the C compiler does no checking to see if array access is within legal bounds of the array size that you have declared.
+<p class='vspace'></p><p>不同于Basic或JAVA，C语言编译器不会检查你访问的数组是否大于你声明的数组。
 </p>
-<p class='vspace'></p><h4>To assign a value to an array:</h4>
+<p class='vspace'></p><h4>指定一个数组的值：</h4>
 <pre>
 mySensVals[0] = 10;
 </pre>
-<p class='vspace'></p><h4>To retrieve a value from an array:</h4>
+<p class='vspace'></p><h4>从数组中访问一个值：</h4>
 <p><code>x = mySensVals[4]</code>;
 </p>
-<p class='vspace'></p><h4>Arrays and FOR Loops</h4>
-<p>Arrays are often manipulated inside <strong>for</strong> loops, where the loop counter is used as the index for each array element. For example, to print the elements of an array over the serial port, you could do something like this:
+<p class='vspace'></p><h4>数组和循环</h4>
+<p>数组往往在for循环中进行操作，循环计数器可用于访问每个数组元素。例如，将数组中的元素通过串口打印，你可以这样做：
 </p>
 <p class='vspace'></p><pre>
 int i;
-for (i = 0; i &lt; 5; i = i + 1) {
-  Serial.println(myPins[i]);
+
+for (i = 0; i &lt; 5; i = i + 1) 
+{
+	Serial.println(myPins[i]);
 }
-</pre><h4>Example</h4>
-<p>For a complete program that demonstrates the use of arrays, see the <a class='urllink' href='http://www.arduino.cc/en/Tutorial/KnightRider' rel='nofollow'>Knight Rider example</a> from the <a class='urllink' href='http://www.arduino.cc/en/Main/LearnArduino' rel='nofollow'>Tutorials</a>.
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='urllink' href='http://arduino.cc/en/Reference/VariableDeclaration' rel='nofollow'>Variable Declaration</a>
-</li><li><a class='wikilink' href='PROGMEM.html'>PROGMEM</a>
-</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
-</p>
-
-
 </div>
 </body>
 </html>

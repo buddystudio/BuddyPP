@@ -36,37 +36,34 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>float</h2>
-<h4>Description  	   	</h4>
-<p>Datatype for floating-point numbers, a number that has a decimal point. Floating-point numbers are often used to approximate analog and continuous values because they have greater resolution than integers. Floating-point numbers can be as large as 3.4028235E+38 and as low as -3.4028235E+38. They are stored as 32 bits (4 bytes) of information.
+<h4>描述</h4>
+<p>float，浮点型数据，就是有一个小数点的数字。浮点数经常被用来近似的模拟连续值，因为他们比整数更大的精确度。浮点数的取值范围在 3.40285 E+38 ~ -3.40285E +38 。它被存储为位（4字节）的信息。
 </p>
-<p class='vspace'></p><p>Floats have only 6-7 decimal digits of precision. That means the total number of digits, not the number to the right of the decimal point. Unlike other platforms, where you can get more precision by using a double (e.g. up to 15 digits), on the Arduino, double is the same size as float.
+<p class='vspace'></p><p>float只有6-7位有效数字。这指的是总位数，而不是小数点右边的数字。与其他平台不同的是，在那里你可以使用double型得到更精确的结果（如15位），在Arduino上，double型与float型的大小相同。
 </p>
-<p class='vspace'></p><p>Floating point numbers are not exact, and may yield strange results when compared.  For example <code>6.0 / 3.0</code> may not equal <code>2.0</code>.  You should instead check that the absolute value of the difference between the numbers is less than some small number.
+<p class='vspace'></p><p>浮点数字在有些情况下是不准确的，在数据大小比较时，可能会产生奇怪的结果。例如 6.0 / 3.0 可能不等于 2.0。你应该使两个数字之间的差额的绝对值小于一些小的数字，这样就可以近似的得到这两个数字相等这样的结果。
 </p>
-<p class='vspace'></p><p>Floating point math is also much slower than integer math in performing calculations, so should be avoided if, for example, a loop has to run at top speed for a critical timing function. Programmers often go to some lengths to convert floating point calculations to integer math to increase speed.
+<p class='vspace'></p><p>浮点运算速度远远慢于执行整数运算，例如，如果这个循环有一个关键的计时功能，并需要以最快的速度运行，就应该避免浮点运算。程序员经常使用较长的程式把浮点运算转换成整数运算来提高速度。
 </p>
-<p class='vspace'></p><h4>Examples</h4>
-<pre>    float myfloat;
-    float sensorCalbrate = 1.117;
+<p class='vspace'></p><h4>例子</h4>
+<pre>
+	float myfloat;
+	float sensorCalbrate = 1.117;
 </pre>
-<p class='vspace'></p><h4>Syntax</h4>
+<p class='vspace'></p><h4>语法</h4>
 <pre>    float var = val;
 </pre>
 <p class='vspace'></p><ul><li>var - your float variable name
 </li><li>val - the value you assign to that variable
-</li></ul><p class='vspace'></p><h4>Example Code</h4>
+</li></ul><p class='vspace'></p><h4>例子</h4>
 <pre>
    int x;
    int y;
@@ -76,14 +73,8 @@ a.varlink { text-decoration:none; }
    y = x / 2;            // y now contains 0, ints can't hold fractions
    z = (float)x / 2.0;   // z now contains .5 (you have to use 2.0, not 2)
 </pre>
-<p class='vspace'></p><h4>See Also</h4>
-<ul><li><a class='wikilink' href='Int.html'>int</a>
-</li><li><a class='wikilink' href='Double.html'>double</a>
-</li><li><a class='urllink' href='http://arduino.cc/en/Reference/VariableDeclaration' rel='nofollow'>Variable Declaration</a>
-</li></ul><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

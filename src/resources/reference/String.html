@@ -4,8 +4,7 @@
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Arduino Reference - String </title>
   <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
-  <link rel='stylesheet' href='arduinoWideRender.css' 
-type='text/css' />
+  <link rel='stylesheet' href='arduinoWideRender.css' type='text/css' />
     <!--HeaderText--><style type='text/css'><!--
   ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
   code { white-space: nowrap; }
@@ -36,23 +35,19 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>string</h2>
-<h4>Description</h4>
-<p>Text strings can be represented in two ways.  you can use the String data type, which is part of the core as of version 0019, or you can make a string out of an array of type char and null-terminate it.  This page described the latter method. For more details on the String object, which gives you more functionality at the cost of more memory, see the <a class='wikilink' href='StringObject.html'>String object</a> page.
+<h4>描述</h4>
+<p>文本字符串可以有两种表现形式。你可以使用字符串数据类型（这是0019版本的核心部分），或者你可以做一个字符串，由char类型的数组和空终止字符('\0')构成。（求助，待润色-Leo）本节描述了后一种方法。而字符串对象（String object）将让你拥有更多的功能，同时也消耗更多的内存资源。
 </p>
-<p class='vspace'></p><h4>Examples</h4>
-<p>All of the following are valid declarations for strings.
+<p class='vspace'></p><h4>例子</h4>
+<p>以下所有字符串都是有效的声明。
 </p><pre>
   char Str1[15];
   char Str2[8] = {'a', 'r', 'd', 'u', 'i', 'n', 'o'};
@@ -60,68 +55,63 @@ a.varlink { text-decoration:none; }
   char Str4[ ] = "arduino";
   char Str5[8] = "arduino";
   char Str6[15] = "arduino";
-
 </pre>
-<p class='vspace'></p><p><strong>Possibilities for declaring strings</strong>
+<p class='vspace'></p><p><strong>声明字符串的解释</strong>
 </p>
-<p class='vspace'></p><ul><li>Declare an array of chars without initializing it as in Str1
-</li><li>Declare an array of chars (with one extra char) and the compiler will add the required null character, as in Str2
-</li><li>Explicitly add the null character, Str3
-</li><li>Initialize with a string constant in quotation marks; the compiler will size the array to fit the string constant and a terminating null character, Str4
-</li><li>Initialize the array with an explicit size and string constant, Str5
-</li><li>Initialize the array, leaving extra space for a larger string, Str6
-</li></ul><p class='vspace'></p><p><strong>Null termination</strong>
+<p class='vspace'></p><ul><li>在Str1中 声明一个没有初始化的字符数组。
+</li><li>在Str2中 声明一个字符数组（包括一个附加字符），编译器会自动添加所需的空字符。
+</li><li>在Str3中 明确加入空字符。
+</li><li>在Str4中 用引号分隔初始化的字符串常数，编译器将调整数组的大小，以适应字符串常量和终止空字符。
+</li><li>在Str5中 初始化一个包括明确的尺寸和字符串常量的数组。
+</li><li>在Str6中 初始化数组，预留额外的空间用于一个较大的字符串。
+</li></ul><p class='vspace'></p><p><strong>空终止字符</strong>
 </p>
-<p class='vspace'></p><p>Generally, strings are terminated with a null character (ASCII code 0).  This allows functions (like Serial.print()) to tell where the end of a string is.  Otherwise, they would continue reading subsequent bytes of memory that aren't actually part of the string.
+<p class='vspace'></p><p>一般来说，字符串的结尾有一个空终止字符（ASCII代码0）。以此让功能函数（例如Serial.pring()）知道一个字符串的结束。否则，他们将从内存继续读取后续字节，而这些并不属于所需字符串的一部分。
 </p>
-<p class='vspace'></p><p>This means that your string needs to have space for one more character than the text you want it to contain.  That is why Str2 and Str5 need to be eight characters, even though "arduino" is only seven - the last position is automatically filled with a null character.  Str4 will be automatically sized to eight characters, one for the extra null.  In Str3, we've explicitly included the null character (written '\0') ourselves.  
+<p class='vspace'></p><p>这意味着，你的字符串比你想要的文字包含更多的个字符空间。这就是为什么Str2和Str5需要八个字符，即使“Arduino”只有七个字符 - 最后一个位置会自动填充空字符。str4将自动调整为八个字符，包括一个额外的空。在Str3的，我们自己已经明确地包含了空字符(写入'\ 0')。
 </p>
-<p class='vspace'></p><p>Note that it's possible to have a string without a final null character (e.g. if you had specified the length of Str2 as seven instead of eight).  This will break most functions that use strings, so you shouldn't do it intentionally.  If you notice something behaving strangely (operating on characters not in the string), however, this could be the problem.
+<p class='vspace'></p><p>需要注意的是，字符串可能没有一个最后的空字符（例如在Str2中您已定义字符长度为7，而不是8）。这会破坏大部分使用字符串的功能，所以不要故意而为之。如果你注意到一些奇怪的现象（在字符串中操作字符），基本就是这个原因导致的了。
 </p>
-<p class='vspace'></p><p><strong>Single quotes or double quotes?</strong>
+<p class='vspace'></p><p><strong>单引号？还是双引号？</strong>
 </p>
-<p class='vspace'></p><p>Strings are always defined inside double quotes ("Abc") and characters are always defined inside single quotes('A').
+<p class='vspace'></p><p>定义字符串时使用双引号（例如“ABC”），而定义一个单独的字符时使用单引号（例如'A'）。
 </p>
-<p class='vspace'></p><p><strong>Wrapping long strings</strong>
+<p class='vspace'></p><p><strong>封装长字符串</strong>
 </p>
-<p class='vspace'></p><p>You can wrap long strings like this:
+<p class='vspace'></p><p>你可以像这样封装长字符串：
 </p><pre>
 char myString[] = "This is the first line"
 " this is the second line"
 " etcetera";
-
 </pre>
-<p class='vspace'></p><p><strong>Arrays of strings</strong>
+<p class='vspace'></p><p><strong>字符串数组</strong>
 </p>
-<p class='vspace'></p><p>It is often convenient, when working with large amounts of text, such as a project with an LCD display, to setup an array of strings. Because strings themselves are arrays, this is in actually an example of a two-dimensional array. 
+<p class='vspace'></p><p>当你的应用包含大量的文字，如带有液晶显示屏的一个项目，建立一个字符串数组是非常便利的。因为字符串本身就是数组，它实际上是一个两维数组的典型。
 </p>
-<p class='vspace'></p><p>In the code below, the asterisk after the datatype char "char*" indicates that this is an array of "pointers". All array names are actually pointers, so this is required to make an array of arrays. Pointers are one of the more esoteric parts of C for beginners to understand, but it isn't necessary to understand pointers in detail to use them effectively here.
+<p class='vspace'></p><p>在下面的代码，”char*”在字符数据类型char后跟了一个星号'*'表示这是一个“指针”数组。所有的数组名实际上是指针，所以这需要一个数组的数组。指针对于C语言初学者而言是非常深奥的部分之一，但我们没有必要了解详细指针，就可以有效地应用它。
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
-
 char* myStrings[]={"This is string 1", "This is string 2", "This is string 3",
 "This is string 4", "This is string 5","This is string 6"};
 
-void setup(){
-Serial.begin(9600);
+void setup()
+{
+	Serial.begin(9600);
 }
 
-void loop(){
-for (int i = 0; i &lt; 6; i++){
-   Serial.println(myStrings[i]);
-   delay(500);
-   }
+void loop()
+{
+	for (int i = 0; i &lt; 6; i++)
+	{
+		Serial.println(myStrings[i]);
+		
+		delay(500);
+	}
 }
 </pre>
-<p class='vspace'></p><h4>See Also</h4>
-<ul><li><a class='wikilink' href='Array.html'>array</a>
-</li><li><a class='wikilink' href='PROGMEM.html'>PROGMEM</a>
-</li><li><a class='urllink' href='http://arduino.cc/en/Reference/VariableDeclaration' rel='nofollow'>Variable Declaration</a>
-</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

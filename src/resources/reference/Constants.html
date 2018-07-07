@@ -36,71 +36,54 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>constants</h2>
-<p>Constants are predefined variables in the Arduino language. They are used to make the programs easier to read. We classify constants in groups.
-</p>
-<p class='vspace'></p><h3>Defining Logical Levels, true and false (Boolean Constants)</h3>
-<p>There are two constants used to represent truth and falsity in the Arduino language: <strong>true</strong>, and <strong>false</strong>.
+<p class='vspace'></p><h2>常量</h2>
+<p>常量 是在Arduino语言里预定义的变量。它们被用来使程序更易阅读。我们按组将常量分类。</p>
+<p class='vspace'></p><h3>逻辑层定义，true与false（布尔Boolean常量）</h3>
+<p>在Arduino内有两个常量用来表示真和假：<strong>true</strong>, and <strong>false</strong>.
 </p>
 <p class='vspace'></p><h4>false</h4>
-<p>false is the easier of the two to define. false is defined as 0 (zero). 
+<p>在这两个常量中false更容易被定义。false被定义为0（零）。
 </p>
 <p class='vspace'></p><h4>true</h4>
-<p>true is often said to be defined as 1, which is correct, but true has a wider definition. Any integer which is <em>non-zero</em> is true, in a Boolean sense. So -1, 2 and -200 are all defined as true, too, in a Boolean sense. 
+<p>true通常被定义为1，这是正确的，但true具有更广泛的定义。在布尔含义（Boolean sense）里任何 非零 整数 为true。所以在布尔含义内-1，2和-200都定义为ture。 需要注意的是true和false常量，不同于HIGH，LOW，INPUT和OUTPUT，需要全部小写。
 </p>
-<p class='vspace'></p><p>Note that the <em>true</em> and <em>false</em> constants are typed in lowercase unlike HIGH, LOW, INPUT, &amp; OUTPUT. 
+<p class='vspace'></p><p>这里引申一下，题外话arduino是大小写敏感语言（case sensitive）。
 </p>
-<p class='vspace'></p><h3>Defining Pin Levels, HIGH and LOW</h3>
-<p>When reading or writing to a digital pin there are only two possible values a pin can take/be-set-to: <strong>HIGH</strong> and <strong>LOW</strong>.
+<p class='vspace'></p><h3>引脚电压定义，HIGH和LOW</h3>
+<p>当读取（read）或写入（write）数字引脚时只有两个可能的值： <strong>HIGH</strong> and <strong>LOW</strong>.
 </p>
 <p class='vspace'></p><p><strong>HIGH</strong>
 </p>
-<p class='vspace'></p><p>The meaning of HIGH (in reference to a pin) is somewhat different depending on whether a pin is set to an INPUT or OUTPUT. 
-When a pin is configured as an INPUT with pinMode, and read with digitalRead, the microcontroller will report HIGH if a voltage of 3 volts or more is present at the pin. 
+<p class='vspace'></p><p>HIGH（参考引脚）的含义取决于引脚（pin）的设置，引脚定义为INPUT或OUTPUT时含义有所不同。当一个引脚通过pinMode被设置为INPUT，并通过digitalRead读取（read）时。如果当前引脚的电压大于等于3V，微控制器将会返回为HIGH。
 </p>
-<p class='vspace'></p><p>A pin may also be configured as an INPUT with pinMode, and subsequently made HIGH with digitalWrite, this will set the internal 20K pullup resistors, which will <em>steer</em> the input pin to a HIGH reading unless it is pulled LOW by external circuitry. This is how INPUT_PULLUP works as well
+<p class='vspace'></p><p>引脚也可以通过pinMode被设置为INPUT，并通过digitalWrite设置为HIGH。输入引脚的值将被一个内在的20K上拉电阻 控制 在HIGH上，除非一个外部电路将其拉低到LOW。 
 </p>
-<p class='vspace'></p><p>When a pin is configured to OUTPUT with pinMode, and set to HIGH with digitalWrite, the pin is at 5 volts. In this state it can <em>source</em> current, e.g. light an LED that is connected through a series resistor to ground, or to another pin configured as an output, and set to LOW.
+<p class='vspace'></p><p>当一个引脚通过pinMode被设置为OUTPUT，并digitalWrite设置为HIGH时，引脚的电压应在5V。在这种状态下，它可以 输出电流 。例如，点亮一个通过一串电阻接地或设置为LOW的OUTPUT属性引脚的LED。
 </p>
 <p class='vspace'></p><p><strong>LOW</strong>
 </p>
-<p class='vspace'></p><p>The meaning of LOW also has a different meaning depending on whether a pin is set to INPUT or OUTPUT. When a pin is configured as an INPUT with pinMode, and read with digitalRead, the microcontroller will report LOW if a voltage of 2 volts or less is present at the pin. 
+<p class='vspace'></p><p>LOW的含义同样取决于引脚设置，引脚定义为INPUT或OUTPUT时含义有所不同。当一个引脚通过pinMode配置为INPUT，通过digitalRead设置为读取（read）时，如果当前引脚的电压小于等于2V，微控制器将返回为LOW。
 </p>
-<p class='vspace'></p><p>When a pin is configured to OUTPUT with pinMode, and set to LOW with digitalWrite, the pin is at 0 volts. In this state it can <em>sink</em> current, e.g. light an LED that is connected through a series resistor to, +5 volts, or to another pin configured as an output, and set to HIGH.
+<p class='vspace'></p><p>当一个引脚通过pinMode配置为OUTPUT，并通过digitalWrite设置为LOW时，引脚为0V。在这种状态下，它可以 倒灌 电流。例如，点亮一个通过串联电阻连接到+5V，或到另一个引脚配置为OUTPUT、HIGH的的LED。
 </p>
-<p class='vspace'></p><h3>Defining Digital Pins, INPUT, INPUT_PULLUP, and OUTPUT</h3>
-<p>Digital pins can be used as <strong>INPUT</strong>, <strong>INPUT_PULLUP</strong>, or <strong>OUTPUT</strong>. Changing a pin with pinMode() changes the electrical behavior of the pin.
+<p class='vspace'></p><h3>数字引脚（Digital pins）定义，INPUT 和 OUTPUT</h3>
+<p>数字引脚当作 INPUT 或 OUTPUT都可以 。用pinMode()方法使一个数字引脚从INPUT到OUTPUT变化。
 </p>
-<p class='vspace'></p><h4>Pins Configured as INPUT</h4>
-<p>Arduino (Atmega) pins configured as <strong>INPUT</strong> with pinMode() are said to be in a high-impedance state. Pins configured as INPUT make extremely small demands on the circuit that they are sampling, equivalent to a series resistor of 100 Megohms in front of the pin. This makes them useful for reading a sensor, but not powering an LED.
+<p class='vspace'></p><h4>引脚（Pins）配置为输入（Inputs）</h4>
+<p>Arduino（Atmega）引脚通过pinMode()配置为 输入（INPUT） 即是将其配置在一个高阻抗的状态。配置为INPUT的引脚可以理解为引脚取样时对电路有极小的需求，即等效于在引脚前串联一个100兆欧姆(Megohms)的电阻。这使得它们非常利于读取传感器，而不是为LED供电。
 </p>
-<p class='vspace'></p><p>If you have your pin configured as an INPUT, you will want the pin to have a reference to ground, often accomplished with a pull-down resistor (a resistor going to ground) as described in the <a class='wikilink' href='http://arduino.cc/en/Tutorial/DigitalReadSerial'>Digital Read Serial</a> tutorial.
+<p class='vspace'></p><h4>引脚（Pins）配置为输出（Outputs）</h4>
+<p>引脚通过pinMode()配置为 输出（OUTPUT） 即是将其配置在一个低阻抗的状态。这意味着它们可以为电路提供充足的电流。Atmega引脚可以向其他设备/电路提供（提供正电流positive current）或倒灌（提供负电流negative current）达40毫安（mA）的电流。这使得它们利于给LED供电，而不是读取传感器。输出（OUTPUT）引脚被短路的接地或5V电路上会受到损坏甚至烧毁。Atmega引脚在为继电器或电机供电时，由于电流不足，将需要一些外接电路来实现供电。
 </p>
-<p class='vspace'></p><h4>Pins Configured as INPUT_PULLUP</h4>
-<p>The Atmega chip on the Arduino has internal pull-up resistors (resistors that connect to power internally) that you can access. If you prefer to use these instead of external pull-down resistors, you can use the <strong>INPUT_PULLUP</strong> argument in pinMode(). This effectively inverts the behavior, where HIGH means the sensor is off, and LOW means the sensor is on. See the  <a class='wikilink' href='http://arduino.cc/en/Tutorial/InputPullupSerial'>Input Pullup Serial</a> tutorial for an example of this in use.
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-<p class='vspace'></p><h4>Pins Configured as Outputs</h4>
-<p>Pins configured as <strong>OUTPUT</strong> with pinMode() are said to be in a low-impedance state. This means that they can provide a substantial amount of current to other circuits. Atmega pins can source (provide positive current) or sink (provide negative current) up to 40 mA (milliamps) of current to other devices/circuits. This makes them useful for powering LED's but useless for reading sensors. Pins configured as outputs can also be damaged or destroyed if short circuited to either ground or 5 volt power rails. The amount of current provided by an Atmega pin is also not enough to power most relays or motors, and some interface circuitry will be required. 
-</p>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='PinMode.html'>pinMode()</a>
-</li><li><a class='wikilink' href='IntegerConstants.html'>Integer Constants</a>
-</li><li><a class='wikilink' href='BooleanVariables.html'>boolean variables</a>
-</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
-</p>
-
-
 </div>
 </body>
 </html>

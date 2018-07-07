@@ -36,23 +36,19 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>const keyword</h2>
-<p>The <strong>const</strong> keyword stands for constant. It is a variable <em>qualifier</em> that modifies the behavior of the variable, making a variable "<em>read-only</em>". This means that the variable can be used just as any other variable of its type, but its value cannot be changed. You will get a compiler error if you try to assign a value to a <strong>const</strong> variable. 
+<p class='vspace'></p><h2>const keyword 常量</h2>
+<p>const关键字代表常量。它是一个变量限定符，用于修改变量的性质，使其变为只读状态。这意味着该变量，就像任何相同类型的其他变量一样使用，但不能改变其值。如果尝试为一个const变量赋值，编译时将会报错。
 </p>
-<p class='vspace'></p><p>Constants defined with the <em>const</em> keyword obey the rules of <em><a class='wikilink' href='Scope.html'>variable scoping</a></em> that govern other variables. This, and the pitfalls of using<em>#define</em>, makes the <em>const</em> keyword a superior method for defining constants and is preferred over using <em><a class='wikilink' href='Define.html'>#define</a></em>. 
+<p class='vspace'></p><p>const关键字定义的常量，遵守 variable scoping 管辖的其他变量的规则。这一点加上使用 #define的缺陷 ，使 const 关键字成为定义常量的一个的首选方法。
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4例子</h4>
 <pre>
 const float pi = 3.14;
 float x;
@@ -62,18 +58,10 @@ float x;
 x = pi * 2;    // it's fine to use const's in math
 
 pi = 7;        // illegal - you can't write to (modify) a constant
-
-
-</pre><h4><strong>#define</strong> or <strong>const</strong></h4>
-<p>You can use either <strong>const</strong> or <strong>#define</strong> for creating numeric or string constants.  For <a class='wikilink' href='Array.html'>arrays</a>, you will need to use <strong>const</strong>. In general <em>const</em> is preferred over <em>#define</em> for defining constants.
+</pre><h4>#define 或 const</h4>
+<p>您可以使用 const 或 ＃define 创建数字或字符串常量。但 arrays, 你只能使用 const。 一般 const 相对 的＃define是首选 的定义常量语法。
 </p>
-<p class='vspace'></p><p>See also:
-</p><ul><li><a class='wikilink' href='Define.html'>#define</a>
-</li><li><a class='wikilink' href='Volatile.html'>volatile</a>
-</li></ul><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
-</html>

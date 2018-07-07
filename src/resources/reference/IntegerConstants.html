@@ -36,7 +36,7 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
   
 
@@ -47,10 +47,10 @@ a.varlink { text-decoration:none; }
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
-<p class='vspace'></p><h2>Integer Constants</h2>
-<p>Integer constants are numbers used directly in a sketch, like <code>123</code>.  By default, these numbers are treated as <a class='wikilink' href='Int.html'>int</a>'s but you can change this with the U and L modifiers (see below).
+<p class='vspace'></p><h2>整形常数</h2>
+<p>整数常量是直接在程序中使用的数字，如 123。 默认情况下，这些数字被视为int，但你可以通过U和L修饰符进行更多的限制（见下文）。
 </p>
-<p class='vspace'></p><p>Normally, integer constants are treated as base 10 (decimal) integers, but special notation (formatters) may be used to enter numbers in other bases.  
+<p class='vspace'></p><p>通常情况下，整数常量默认为十进制，但可以加上特殊前缀表示为其他进制。 
 </p>
 <p class='vspace'></p><pre>
 Base               Example    Formatter        Comment
@@ -65,58 +65,49 @@ Base               Example    Formatter        Comment
 16 (hexadecimal)      0x7B    leading "0x"     characters 0-9, A-F, a-f valid    
 
 </pre>
-<p class='vspace'></p><p><strong>Decimal</strong> is base 10. This is the common-sense math with which you are acquainted. Constants without other prefixes are assumed to be in decimal format.
+<p class='vspace'></p><p>小数是十进制数。这是数学常识。如果一个数没有特定的前缀，则默认为十进制。
 </p>
-<p class='vspace'></p>Example:<pre>
+<p class='vspace'></p>例子<p class='vspace'></p><pre>
 101     // same as 101 decimal   ((1 * 10^2) + (0 * 10^1) + 1)
 </pre>
 <p><br />
-<strong>Binary</strong> is base two.  Only characters 0 and 1 are valid. 
+二进制以2为基底，只有数字0和1是有效的。 
 </p>
-<p class='vspace'></p>Example:<pre>
+<p class='vspace'></p>例子<p class='vspace'></p><pre>
 B101    // same as 5 decimal   ((1 * 2^2) + (0 * 2^1) + 1)
 </pre>
-<p>The binary formatter only works on bytes (8 bits) between 0 (B0) and 255 (B11111111). If it is convenient to input an int (16 bits) in binary form you can do it a two-step procedure such as:
+<p>二进制格式只能是8位的，即只能表示0-255之间的数。如果输入二进制数更方便的话，你可以用以下的方式：
 </p>
 <p class='vspace'></p><pre>
 myInt = (B11001100 * 256) + B10101010;    // B11001100 is the high byte
 
 </pre>
-<p class='vspace'></p><p><strong>Octal</strong> is base eight.  Only characters 0 through 7 are valid. Octal values are indicated by the prefix "0"
+<p class='vspace'></p><p>八进制是以8为基底，只有0-7是有效的字符。前缀“0”（数字0）表示该值为八进制。
 </p>
-<p class='vspace'></p><p>Example:
-</p><pre>
+<p class='vspace'></p><p>例子
+</p><p class='vspace'></p><pre>
 0101    // same as 65 decimal   ((1 * 8^2) + (0 * 8^1) + 1) 
-</pre><div class='indent'>Warning
-</div><div class='indent'>It is possible to generate a hard-to-find bug by (unintentionally) including a leading zero before a constant and having the compiler unintentionally interpret your constant as octal.
+</pre>
+<div class='indent'>警告</div>
+<div class='indent'>八进制数0前缀很可能无意产生很难发现的错误，因为你可能不小心在常量前加了个“0”，结果就悲剧了。
 </div><p><br />
-<strong>Hexadecimal (or hex)</strong> is base sixteen. Valid characters are 0 through 9 and letters A through F; A has the value 10, B is 11, up to F, which is 15. Hex values are indicated by the prefix "0x". Note that A-F may be syted in upper or lower case (a-f).
+十六进制以16为基底，有效的字符为0-9和A-F。十六进制数用前缀“0x”（数字0，字母爱克斯）表示。请注意，A-F不区分大小写，就是说你也可以用a-f。
 </p>
-<p class='vspace'></p><p>Example:
-</p><pre>
+<p class='vspace'></p><p>例子
+</p><p class='vspace'></p><pre>
 0x101   // same as 257 decimal   ((1 * 16^2) + (0 * 16^1) + 1)
 
 </pre>
-<p class='vspace'></p><h4>U &amp; L formatters</h4>
-<p>By default, an integer constant is treated as an <a class='wikilink' href='Int.html'>int</a> with the attendant limitations in values.  To specify an integer constant with another data type, follow it with:
+<p class='vspace'></p><h4>U &amp; L 格式</h4>
+<p>默认情况下，整型常量被视作int型。要将整型常量转换为其他类型时，请遵循以下规则：
 </p>
-<p class='vspace'></p><ul><li>a 'u' or 'U' to force the constant into an unsigned data format. Example: <code>33u</code>
-</li><li>a 'l' or 'L' to force the constant into a long data format. Example: <code>100000L</code>
-</li><li>a 'ul' or 'UL' to force the constant into an unsigned long constant. Example: <code>32767ul</code> 
+<p class='vspace'></p><ul><li>'u' or 'U' 指定一个常量为无符号型。（只能表示正数和0） 例如:  <code>33u</code>
+</li><li>'l' or 'L' 指定一个常量为长整型。（表示数的范围更广） 例如:  <code>100000L</code>
+</li><li>'ul' or 'UL' 这个你懂的，就是上面两种类型，称作无符号长整型。 例如： <code>32767ul</code> 
 </li></ul><p><br />
 </p>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='Constants.html'>constants</a>
-</li><li><a class='wikilink' href='Define.html'>#define</a>
-</li><li><a class='wikilink' href='Byte.html'>byte</a>
-</li><li><a class='wikilink' href='Int.html'>int</a>
-</li><li><a class='wikilink' href='UnsignedInt.html'>unsigned int</a>
-</li><li><a class='wikilink' href='Long.html'>long</a>
-</li><li><a class='wikilink' href='UnsignedLong.html'>unsigned long</a>
-</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

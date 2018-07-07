@@ -36,51 +36,41 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>unsigned int</h2>
-<h4>Description</h4>
-<p>Unsigned ints (unsigned integers) are the same as ints in 
-that they store a 2 byte value. Instead of storing negative numbers however they only store positive values, yielding a useful range of 0 to 65,535 (2^16) - 1).
+<h4>描述</h4>
+<p>unsigned int（无符号整型）与整型数据同样大小，占据2字节。它只能用于存储正数而不能存储负数，范围0~65,535 (6) - 1)。
 </p>
-<p class='vspace'></p><p>The difference between unsigned ints and (signed) ints, lies in the way the highest bit, sometimes refered to as the "sign" bit, is interpreted. In the Arduino  int type (which is signed), if the high bit is a "1", the number is interpreted as a negative number, and the other 15 bits are interpreted with <a class='urllink' href='http://en.wikipedia.org/wiki/2%27s_complement' rel='nofollow'>2's complement math.</a> 
+<p class='vspace'></p><p>无符号整型和整型最重要的区别是它们的最高位不同，既符号位。在Arduino整型类型中，如果最高位是1，则此数被认为是负数，剩下的15位为按2的补码计算所得值。
 </p>
-<p class='vspace'></p><h4>Example</h4>
-<pre>    unsigned int ledPin = 13;
+<p class='vspace'></p><h4>例子</h4>
+<pre>
+unsigned int ledPin = 13;
 </pre>
-<p class='vspace'></p><h4>Syntax</h4>
-<pre>     unsigned int var = val;
+<p class='vspace'></p><h4>语法</h4>
+<pre>
+unsigned int var = val;
 </pre>
-<p class='vspace'></p><ul><li>var - your unsigned int variable name
-</li><li>val - the value you assign to that variable
-</li></ul><p class='vspace'></p><h4>Coding Tip</h4>
-<p>When variables are made to exceed their maximum capacity they "roll over" back to their minimum capacitiy, note that this happens in both directions
+<p class='vspace'></p><ul><li>var - 无符号变量名称
+</li><li>val - 给变量所赋予的值
+</li></ul><p class='vspace'></p><h4>提示</h4>
+<p>当变量的值超过它能表示的最大值时它会“滚回”最小值，反向也会出现这种现象。
 </p>
-<p class='vspace'></p><pre>   unsigned int x
-   x = 0;
-   x = x - 1;       // x now contains 65535 - rolls over in neg direction
-   x = x + 1;       // x now contains 0 - rolls over
-
+<pre>   
+	unsigned int x
+	
+	x = 0;
+	x = x - 1;       // x now contains 65535 - rolls over in neg direction
+	x = x + 1;       // x now contains 0 - rolls over
 </pre>
-<p class='vspace'></p><h4>See Also</h4>
-<ul><li><a class='wikilink' href='Byte.html'>byte</a>
-</li><li><a class='wikilink' href='Int.html'>int</a>
-</li><li><a class='wikilink' href='Long.html'>long</a>
-</li><li><a class='wikilink' href='UnsignedLong.html'>unsigned long</a>
-</li><li><a class='urllink' href='http://arduino.cc/en/Reference/VariableDeclaration' rel='nofollow'>Variable Declaration</a>
-</li></ul><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

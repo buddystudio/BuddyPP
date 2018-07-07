@@ -36,21 +36,17 @@ a.varlink { text-decoration:none; }
 
   <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
 </head>
-<body>
+<body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>boolean</h2>
-<p>A <strong>boolean</strong> holds one of two values, <a class='wikilink' href='Constants.html'>true</a> or <a class='wikilink' href='Constants.html'>false</a>.  (Each boolean variable occupies one byte of memory.)
+<p>一个布尔变量拥有两个值，true或false。（每个布尔变量占用一个字节的内存。）
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
 int LEDpin = 5;       // LED on pin 5
 int switchPin = 13;   // momentary switch on 13, other side connected to ground
@@ -59,33 +55,27 @@ boolean running = false;
 
 void setup()
 {
-  pinMode(LEDpin, OUTPUT);
-  pinMode(switchPin, INPUT);
-  digitalWrite(switchPin, HIGH);      // turn on pullup resistor
+	pinMode(LEDpin, OUTPUT);
+	pinMode(switchPin, INPUT);
+	digitalWrite(switchPin, HIGH);	// turn on pullup resistor
 }
 
 void loop()
 {
-  if (digitalRead(switchPin) == LOW)
-  {  // switch is pressed - pullup keeps pin high normally
-    delay(100);                        // delay to debounce switch
-    running = !running;                // toggle running variable
-    digitalWrite(LEDpin, running)      // indicate via LED
-  }
+	if (digitalRead(switchPin) == LOW)
+	{  
+		// switch is pressed - pullup keeps pin high normally
+		
+		delay(100);                        // delay to debounce switch
+		
+		running = !running;                // toggle running variable
+		
+		digitalWrite(LEDpin, running)      // indicate via LED
+	}
 }
-
-
-
-
 </pre>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='Constants.html'>constants</a>
-</li><li><a class='wikilink' href='Boolean.html'>boolean operators</a>
-</li><li><a class='urllink' href='http://arduino.cc/en/Reference/VariableDeclaration' rel='nofollow'>Variable Declaration</a>
-</li></ul><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>
