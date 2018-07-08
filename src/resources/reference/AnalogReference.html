@@ -38,45 +38,36 @@ a.varlink { text-decoration:none; }
 </head>
 <body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>analogReference(type)</h2>
-<h4>Description</h4>
-<p>Configures the reference voltage used for analog input (i.e. the value used as the top of the input range).  The options are:
+<h4>描述</h4>
+<p>配置模式引脚的参考电压. 函数 analogRead 在读取模拟值之后, 将根据参考电压将 模拟值转换到[0,10]区间. 有以下类型：
 </p>
-<p class='vspace'></p><ul><li>DEFAULT: the default analog reference of 5 volts (on 5V Arduino boards) or 3.3 volts (on 3.3V Arduino boards)
-</li><li>INTERNAL: an built-in reference, equal to 1.1 volts on the <span class='wikiword'>ATmega168</span> or <span class='wikiword'>ATmega328</span> and 2.56 volts on the <span class='wikiword'>ATmega8</span> (<em>not available on the Arduino Mega</em>)
-</li><li><span class='wikiword'>INTERNAL1V1</span>: a built-in 1.1V reference (<em>Arduino Mega only</em>)
-</li><li><span class='wikiword'>INTERNAL2V56</span>: a built-in 2.56V reference (<em>Arduino Mega only</em>)
-</li><li>EXTERNAL: the voltage applied to the AREF pin (<strong>0 to 5V only</strong>) is used as the reference.
-</li></ul><p class='vspace'></p><h4>Parameters</h4>
-<p>type: which type of reference to use (DEFAULT, INTERNAL, <span class='wikiword'>INTERNAL1V1</span>, <span class='wikiword'>INTERNAL2V56</span>, or EXTERNAL).
+<p class='vspace'></p><ul><li>DEFAULT：默认5V（Arduino板为5V）或3.3伏特（Arduino板为3.3V）为基准电压。
+</li><li>INTERNAL：在ATmega168和ATmega328上以1.1V为基准电压，以及在ATmega8上以2.56V为基准电压（Arduino Mega无此选项）。
+</li><li>INTERNAL1V1：以1.1V为基准电压（此选项仅针对Arduino Mega）
+</li><li>INTERNAL2V56：以2.56V为基准电压（此选项仅针对Arduino Mega）
+</li><li>EXTERNAL：以AREF引脚（0至5V）的电压作为基准电压。
+</li></ul><p class='vspace'></p><h4>参数</h4>
+<p>type: 使用哪种参考类型（DEFAULT, INTERNAL, INTERNAL1V1, INTERNAL2V56, 或者 EXTERNAL）
 </p>
-<p class='vspace'></p><h4>Returns</h4>
+<p class='vspace'></p><h4>返回值</h4>
 <p>None.
 </p>
-<p class='vspace'></p><h4>Note</h4>
-<p>After changing the analog reference, the first few readings from analogRead() may not be accurate.  
+<p class='vspace'></p><h4>注意</h4>
+<p>改变基准电压后，之前从analogRead()读取的数据可能不准确。
 </p>
-<p class='vspace'></p><h4>Warning</h4>
-<p><strong>Don't use anything less than 0V or more than 5V for external reference voltage on the AREF pin!  If you're using an external reference on the AREF pin, you must set the analog reference to EXTERNAL before calling analogRead().</strong>  Otherwise, you will short together the active reference voltage (internally generated) and the AREF pin, possibly damaging the microcontroller on your Arduino board.  
+<p class='vspace'></p><h4>警告</h4>
+<p>不要在AREF引脚上使用使用任何小于0V或超过5V的外部电压。如果你使用AREF引脚上的电压作为基准电压，你在调用analogRead()前必须设置参考类型为EXTERNAL。否则，你将会削短有效的基准电压（内部产生）和AREF引脚，这可能会损坏您Arduino板上的单片机。 
 </p>
-<p class='vspace'></p><p>Alternatively, you can connect the external reference voltage to the AREF pin through a 5K resistor, allowing you to switch between external and internal reference voltages.  Note that the resistor will alter the voltage that gets used as the reference because there is an internal 32K resistor on the AREF pin. The two act as a voltage divider, so, for example, 2.5V applied through the resistor will yield 2.5 * 32 / (32 + 5) = ~2.2V at the AREF pin.  
+<p class='vspace'></p><p>另外，您可以在外部基准电压和AREF引脚之间连接一个5K电阻，使你可以在外部和内部基准电压之间切换。请注意，总阻值将会发生改变，因为AREF引脚内部有一个32K电阻。这两个电阻都有分压作用。所以，例如，如果输入2.5V的电压，最终在在AREF引脚上的电压将为2.5 * 32 /（32 + 5）= 2.2V。  
 </p>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='http://arduino.cc/en/Tutorial/AnalogInputPins'>Description of the analog input pins</a>
-</li><li><a class='wikilink' href='AnalogRead.html'>analogRead</a>()
-</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

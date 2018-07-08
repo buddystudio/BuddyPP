@@ -91,67 +91,47 @@ a.varlink { text-decoration:none; }
 </head>
 <body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>pinMode()</h2>
-<h4>Description</h4>
-<p>Configures the specified pin to behave either as an input or an output. See the description of  <a class='wikilink' href='http://arduino.cc/en/Tutorial/DigitalPins'>digital pins</a> for details on the functionality of the pins.
+<h4>描述</h4>
+<p>设置引脚模式，配置引脚为输出或输出模式。
 </p>
-<p class='vspace'></p><p>As of Arduino 1.0.1, it is possible to enable the internal pullup resistors with the mode INPUT_PULLUP.  Additionally, the INPUT mode explicitly disables the internal pullups.
-</p>
-<p class='vspace'></p><h4>Syntax</h4>
+<p class='vspace'></p><h4>语法</h4>
 <p>pinMode(pin, mode)
 </p>
-<p class='vspace'></p><h4>Parameters</h4>
+<p class='vspace'></p><h4>参数</h4>
 <p>pin: the number of the pin whose mode you wish to set
 </p>
-<p class='vspace'></p><p>mode: <a class='wikilink' href='Constants.html'>INPUT</a>, <a class='wikilink' href='Constants.html'>OUTPUT</a>, or <a class='wikilink' href='Constants.html'>INPUT_PULLUP</a>. (see the  <a class='wikilink' href='http://arduino.cc/en/Tutorial/DigitalPins'>digital pins</a> page for a more complete description of the functionality.)
+<p class='vspace'></p><p>mode: <a class='wikilink' href='Constants.html'>INPUT</a>, <a class='wikilink' href='Constants.html'>OUTPUT</a>, or <a class='wikilink' href='Constants.html'>INPUT_PULLUP</a>. 
 </p>
-<p class='vspace'></p><h4>Returns</h4>
+<p class='vspace'></p><h4>返回值</h4>
 <p>None
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <p>
-<div class='sourceblock ' id='sourceblock1'>
-  <div class='sourceblocktext'><div class="arduino"><br />
-<br />
-<span class="kw1">int</span> ledPin <span class="sy0">=</span> <span class="nu0">13</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// LED connected to digital pin 13</span><br />
-<br />
-<span class="kw1">void</span> <span class="kw3">setup</span><span class="br0">&#40;</span><span class="br0">&#41;</span><br />
-<span class="br0">&#123;</span><br />
-&nbsp; <span class="kw1">pinMode</span><span class="br0">&#40;</span>ledPin<span class="sy0">,</span> <span class="kw2">OUTPUT</span><span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp;<span class="co1">// sets the digital pin as output</span><br />
-<span class="br0">&#125;</span><br />
-<br />
-<span class="kw1">void</span> <span class="kw3">loop</span><span class="br0">&#40;</span><span class="br0">&#41;</span><br />
-<span class="br0">&#123;</span><br />
-&nbsp; <span class="kw1">digitalWrite</span><span class="br0">&#40;</span>ledPin<span class="sy0">,</span> <span class="kw2">HIGH</span><span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; <span class="co1">// sets the LED on</span><br />
-&nbsp; <span class="kw1">delay</span><span class="br0">&#40;</span><span class="nu0">1000</span><span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="co1">// waits for a second</span><br />
-&nbsp; <span class="kw1">digitalWrite</span><span class="br0">&#40;</span>ledPin<span class="sy0">,</span> <span class="kw2">LOW</span><span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp;<span class="co1">// sets the LED off</span><br />
-&nbsp; <span class="kw1">delay</span><span class="br0">&#40;</span><span class="nu0">1000</span><span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="co1">// waits for a second</span><br />
-<span class="br0">&#125;</span></div></div>
-  <div class='sourceblocklink'><a href='#' type='text/plain'>[Get Code]</a></div>
+<pre>
+int ledPin = 13;	// LED connected to digital pin 13
+
+void setup()
+{
+	pinMode(ledPin, OUTPUT);	// sets the digital pin as output
+}
+
+void loop()
+{
+	digitalWrite(ledPin, HIGH);   // sets the LED on
+	delay(1000);                  // waits for a second
+	digitalWrite(ledPin, LOW);    // sets the LED off
+}
+</pre>
 </div>
-
 </p>
-<p class='vspace'></p><h4>Note</h4>
-<p>The analog input pins can be used as digital pins, referred to as A0, A1, etc.  
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='Constants.html'>constants</a>
-</li><li><a class='wikilink' href='DigitalWrite.html'>digitalWrite</a>()
-</li><li><a class='wikilink' href='DigitalRead.html'>digitalRead</a>()
-</li><li>Tutorial: <a class='wikilink' href='http://arduino.cc/en/Tutorial/DigitalPins'>Description of the pins on an Arduino board</a>
-</li></ul><p><a class='wikilink' href='index.html'>返回首页</a>
-</p>
-
-
 </div>
 </body>
 </html>

@@ -38,64 +38,49 @@ a.varlink { text-decoration:none; }
 </head>
 <body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>analogWrite()</h2>
-<h4>Description</h4>
-<p>Writes an analog value (<a class='wikilink' href='http://arduino.cc/en/Tutorial/PWM'>PWM wave</a>) to a pin.  Can be used to light a LED at varying brightnesses or drive a motor at various speeds.  After a call to <strong>analogWrite()</strong>, the pin will generate a steady square wave of the specified duty cycle until the next call to <strong>analogWrite()</strong> (or a call to <strong>digitalRead()</strong> or <strong>digitalWrite()</strong> on the same pin).  The frequency of the PWM signal is approximately 490 Hz.
+<h4>描述</h4>
+<p>从一个引脚输出模拟值（PWM）。可用于让LED以不同的亮度点亮或驱动电机以不同的速度旋转。analogWrite()输出结束后，该引脚将产生一个稳定的特殊占空比方波，直到下次调用analogWrite()（或在同一引脚调用digitalRead()或digitalWrite()）。PWM信号的频率大约是490赫兹。
 </p>
-<p class='vspace'></p><p>On most Arduino boards (those with the <span class='wikiword'>ATmega168</span> or <span class='wikiword'>ATmega328</span>), this function works on pins 3, 5, 6, 9, 10, and 11.  On the Arduino Mega, it works on pins 2 through 13.  Older Arduino boards with an <span class='wikiword'>ATmega8</span> only support analogWrite() on pins 9, 10, and 11.  You do not need to call pinMode() to set the pin as an output before calling analogWrite().
+<p class='vspace'></p><p>在大多数arduino板（ATmega168或ATmega328），只有引脚3，5，6，9，10和11可以实现该功能。在aduino Mega上，引脚2到13可以实现该功能。老的Arduino板（ATmega8）的只有引脚9、10、11可以使用analogWrite()。在使用analogWrite()前，你不需要调用pinMode()来设置引脚为输出引脚。
 </p>
-<p class='vspace'></p><p>The <em>analogWrite</em> function has nothing whatsoever to do with the analog pins or the <em>analogRead</em> function. 
+<p class='vspace'></p><p>analogWrite函数与模拟引脚、analogRead函数没有直接关系。
 </p>
-<p class='vspace'></p><h4>Syntax</h4>
+<p class='vspace'></p><h4>语法</h4>
 <p>analogWrite(pin, value)
 </p>
-<p class='vspace'></p><h4>Parameters</h4>
-<p>pin: the pin to write to.  
+<p class='vspace'></p><h4>参数</h4>
+<p>pin: 用于输入数值的引脚。 
 </p>
-<p class='vspace'></p><p>value: the duty cycle: between 0 (always off) and 255 (always on).
+<p class='vspace'></p><p>value: 占空比：0（完全关闭）到255（完全打开）之间。
 </p>
-<p class='vspace'></p><h4>Returns</h4>
-<p>nothing
+<p class='vspace'></p><h4>返回值</h4>
+<p>None
 </p>
-<p class='vspace'></p><h4>Notes and Known Issues</h4>
-<p>The PWM outputs generated on pins 5 and 6 will have higher-than-expected duty cycles.  This is because of interactions with the millis() and delay() functions, which share the same internal timer used to generate those PWM outputs. This will be noticed mostly on low duty-cycle settings (e.g 0 - 10) and may result in a value of 0 not fully turning off the output on pins 5 and 6.
-</p>
-<p class='vspace'></p><h4>Example</h4>
-<p>Sets the output to the LED proportional to the value read from the potentiometer.
-</p>
-<p class='vspace'></p><pre> 
+<p class='vspace'></p><h4>例子</h4>
+<pre>
 int ledPin = 9;      // LED connected to digital pin 9
 int analogPin = 3;   // potentiometer connected to analog pin 3
 int val = 0;         // variable to store the read value
 
 void setup()
 {
-  pinMode(ledPin, OUTPUT);   // sets the pin as output
+	pinMode(ledPin, OUTPUT);   // sets the pin as output
 }
 
 void loop()
 {
-  val = analogRead(analogPin);   // read the input pin
-  analogWrite(ledPin, val / 4);  // analogRead values go from 0 to 1023, analogWrite values from 0 to 255
+	val = analogRead(analogPin);   // read the input pin
+	analogWrite(ledPin, val / 4);  // analogRead values go from 0 to 1023, analogWrite values from 0 to 255
 }
-
 </pre>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='AnalogRead.html'>analogRead</a>()
-</li><li><a class='wikilink' href='http://arduino.cc/en/Tutorial/PWM'>Tutorial: PWM</a>
-</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>
