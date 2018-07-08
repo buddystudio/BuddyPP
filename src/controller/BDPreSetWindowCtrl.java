@@ -60,7 +60,7 @@ public class BDPreSetWindowCtrl
                 if(BDParameters.serialports.isEmpty())
                 {
                     // 如果未连接则返回
-                    return;
+                    //return;
                 }
                 
                 menuView.lbBoard.setText("当前板型：" + preSettingWindow.combMode.getValue().toString());
