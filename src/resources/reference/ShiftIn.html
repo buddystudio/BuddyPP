@@ -38,43 +38,33 @@ a.varlink { text-decoration:none; }
 </head>
 <body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>shiftIn()</h2>
-<h4>Description</h4>
-<p>Shifts in a byte of data one bit at a time.  Starts from either the most (i.e. the leftmost) or least (rightmost) significant bit.  For each bit, the clock pin is pulled high, the next bit is read from the data line, and then the clock pin is taken low.
+<h4>描述</h4>
+<p>将一个数据的一个字节一位一位的移入。从最高有效位（最左边）或最低有效位（最右边）开始。对于每个位，先拉高时钟电平，再从数据传输线中读取一位，再将时钟线拉低。
 </p>
-<p class='vspace'></p><p>Note: this is a software implementation; Arduino also provides an <a class='wikilink' href='SPI.html'>SPI library</a> that uses the hardware implementation, which is faster but only works on specific pins.
+<p class='vspace'></p><p>注意：这是一个软件实现；Arduino提供了一个硬件实现的SPI库，它速度更快但只在特定脚有效。
 </p>
-<p class='vspace'></p><h4>Syntax</h4>
+<p class='vspace'></p><h4>语法</h4>
 <pre>
 byte incoming = shiftIn(dataPin, clockPin, bitOrder)
-
 </pre>
-<p class='vspace'></p><h4>Parameters</h4>
-<p>dataPin: the pin on which to input each bit (<em>int</em>)
+<p class='vspace'></p><h4>参数</h4>
+<p>dataPin: 输出每一位数据的引脚(int) 
 </p>
-<p class='vspace'></p><p>clockPin: the pin to toggle to signal a read from  <strong>dataPin</strong> 
+<p class='vspace'></p><p>clockPin: 时钟脚，当dataPin有值时此引脚电平变化(int) 
 </p>
-<p class='vspace'></p><p>bitOrder: which order to shift in the bits; either <strong>MSBFIRST</strong> or <strong>LSBFIRST</strong>.<br />(Most Significant Bit First, or, Least Significant Bit First) 
+<p class='vspace'></p><p>bitOrder: 输出位的顺序，最高位优先或最低位优先。
 </p>
-<p class='vspace'></p><h4>Returns</h4>
+<p class='vspace'></p><h4>返回值</h4>
 <p>the value read (<em>byte</em>)
 </p>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='ShiftOut.html'>shiftOut()</a>
-</li><li><a class='wikilink' href='SPI.html'>SPI</a>
-</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

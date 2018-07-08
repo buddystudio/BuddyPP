@@ -38,50 +38,36 @@ a.varlink { text-decoration:none; }
 </head>
 <body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>tone()</h2>
-<h4>Description</h4>
-<p>Generates a square wave of the specified frequency (and 50% duty cycle) on a pin.  A duration can be specified, otherwise the wave continues until a call to <a class='wikilink' href='NoTone.html'>noTone</a>().  The pin can be connected to a piezo buzzer or other speaker to play tones.  
+<h4>描述</h4>
+<p>在一个引脚上产生一个特定频率的方波（50%占空比）。持续时间可以设定，否则波形会一直产生直到调用noTone()函数。该引脚可以连接压电蜂鸣器或其他喇叭播放声音。  
 </p>
-<p class='vspace'></p><p>Only one tone can be generated at a time.  If a tone is already playing on a different pin, the call to tone() will have no effect.  If the tone is playing on the same pin, the call will set its frequency.  
+<p class='vspace'></p><p>在同一时刻只能产生一个声音。如果一个引脚已经在播放音乐，那调用tone()将不会有任何效果。如果音乐在同一个引脚上播放，它会自动调整频率。  
 </p>
-<p class='vspace'></p><p>Use of the tone() function will interfere with PWM output on pins 3 and 11 (on boards other than the Mega).
+<p class='vspace'></p><p>使用tone()函数会与3脚和11脚的PWM产生干扰（Mega板除外）。
 </p>
-<p class='vspace'></p><p><strong>NOTE:</strong> if you want to play different pitches on multiple pins, you need to call noTone() on one pin before calling tone() on the next pin.
+<p class='vspace'></p><p><strong>注意</strong>如果你要在多个引脚上产生不同的音调，你要在对下一个引脚使用tone()函数前对此引脚调用noTone()函数。
 </p>
-<p class='vspace'></p><h4>Syntax</h4>
+<p class='vspace'></p><h4>语法</h4>
 <p>tone(pin, frequency) <br />tone(pin, frequency, duration)
 </p>
-<p class='vspace'></p><h4>Parameters</h4>
-<p>pin: the pin on which to generate the tone
+<p class='vspace'></p><h4>参数</h4>
+<p>pin: 要产生声音的引脚 
 </p>
-<p class='vspace'></p><p>frequency: the frequency of the tone in hertz - <em>unsigned int</em>
+<p class='vspace'></p><p>产生声音的频率，单位Hz，类型unsigned int
 </p>
-<p class='vspace'></p><p>duration: the duration of the tone in milliseconds (optional) - <em>unsigned long</em>
+<p class='vspace'></p><p>duration: 声音持续的时间，单位毫秒（可选），类型unsigned long
 </p>
-<p class='vspace'></p><h4>Returns</h4>
+<p class='vspace'></p><h4>返回值</h4>
 <p>nothing
 </p>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='NoTone.html'>noTone</a>()
-</li><li><a class='wikilink' href='AnalogWrite.html'>analogWrite</a>()
-</li><li><a class='wikilink' href='http://arduino.cc/en/Tutorial/Tone'>Tutorial:Tone</a>
-</li><li><a class='wikilink' href='http://arduino.cc/en/Tutorial/Tone2'>Tutorial:Pitch follower</a>
-</li><li><a class='wikilink' href='http://arduino.cc/en/Tutorial/Tone3'>Tutorial:Simple Keyboard</a> 
-</li><li><a class='wikilink' href='http://arduino.cc/en/Tutorial/Tone4'>Tutorial: multiple tones</a> 
-<p class='vspace'></p></li><li><a class='wikilink' href='http://arduino.cc/en/Tutorial/PWM'>Tutorial: PWM</a>
-</li></ul><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>
