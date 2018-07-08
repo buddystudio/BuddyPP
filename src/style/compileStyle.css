@@ -22,6 +22,11 @@
     -fx-font-weight: bold;
 }
 
+.normal{
+	-fx-fill: #FF0000;
+    -fx-font-weight: bold;
+}
+
 .paragraph-box:has-caret {
     -fx-background-color: #e2f9fc;
 }

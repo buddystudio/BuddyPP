@@ -71,6 +71,7 @@ public class BDTextAreaConsole extends CodeArea
 		this.getStylesheets().add("style/compileStyle.css");
 		
 		maxLineCount = Preferences.getInteger("console.length");
+		
 		this.setEditable(false);
 		this.setParagraphGraphicFactory(LineNumberFactory.get(this));
 		this.setWrapText(true);
