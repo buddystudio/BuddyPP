@@ -38,54 +38,44 @@ a.varlink { text-decoration:none; }
 </head>
 <body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>millis()</h2>
-<h4>Description</h4>
-<p>Returns the number of milliseconds since the Arduino board began running the current program.  This number will overflow (go back to zero), after approximately 50 days.
+<h4>描述</h4>
+<p>返回Arduino开发板从运行当前程序开始的毫秒数。这个数字将在约50天后溢出（归零）
 </p>
-<p class='vspace'></p><h4>Parameters</h4>
+<p class='vspace'></p><h4>参数</h4>
 <p>None
 </p>
-<p class='vspace'></p><h4>Returns</h4>
+<p class='vspace'></p><h4>返回值</h4>
 <p>Number of milliseconds since the program started (<em>unsigned long</em>)
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
 unsigned long time;
 
-void setup(){
-  Serial.begin(9600);
+void setup()
+{
+	Serial.begin(9600);
 }
-void loop(){
-  Serial.print("Time: ");
-  time = millis();
-  //prints time since program started
-  Serial.println(time);
-  // wait a second so as not to send massive amounts of data
-  delay(1000);
+void loop()
+{
+	Serial.print("Time: ");
+	time = millis();
+	//prints time since program started
+	Serial.println(time);
+	// wait a second so as not to send massive amounts of data
+	delay(1000);
 }
-
 </pre>
-<p class='vspace'></p><h4>Tip:</h4>
-<p>Note that the parameter for millis is an unsigned long, errors may be generated if a programmer tries to do math with other datatypes such as ints. 
+<p class='vspace'></p><h4>提示</h4>
+<p>参数 millis 是一个无符号长整数，试图和其他数据类型（如整型数）做数学运算可能会产生错误
 </p>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='Micros.html'>micros</a>()
-</li><li><a class='wikilink' href='Delay.html'>delay</a>()
-</li><li><a class='wikilink' href='DelayMicroseconds.html'>delayMicroseconds</a>()
-</li><li><a class='urllink' href='http://arduino.cc/en/Tutorial/BlinkWithoutDelay' rel='nofollow'>Tutorial: Blink Without Delay</a>
-</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

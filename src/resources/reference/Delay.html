@@ -38,60 +38,48 @@ a.varlink { text-decoration:none; }
 </head>
 <body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>delay()</h2>
-<h4>Description</h4>
-<p>Pauses the program for the amount of time (in miliseconds) specified as parameter.   (There are 1000 milliseconds in a second.)
+<h4>描述</h4>
+<p>使程序暂停设定的时间（单位毫秒）。（一秒等于1000毫秒）
 </p>
-<p class='vspace'></p><h4>Syntax</h4>
+<p class='vspace'></p><h4>语法</h4>
 <p>delay(ms)
 </p>
-<p class='vspace'></p><h4>Parameters</h4>
-<p>ms: the number of milliseconds to pause (<em>unsigned long</em>)
+<p class='vspace'></p><h4>参数</h4>
+<p>ms：暂停的毫秒数（unsigned long）
 </p>
-<p class='vspace'></p><h4>Returns</h4>
+<p class='vspace'></p><h4>返回值</h4>
 <p>nothing
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
-int ledPin = 13;                 // LED connected to digital pin 13
+int ledPin = 13;	// LED connected to digital pin 13
 
 void setup()
 {
-  pinMode(ledPin, OUTPUT);      // sets the digital pin as output
+	pinMode(ledPin, OUTPUT);	// sets the digital pin as output
 }
 
 void loop()
 {
-  digitalWrite(ledPin, HIGH);   // sets the LED on
-  delay(1000);                  // waits for a second
-  digitalWrite(ledPin, LOW);    // sets the LED off
-  delay(1000);                  // waits for a second
+	digitalWrite(ledPin, HIGH);   // sets the LED on
+	delay(1000);                  // waits for a second
+	digitalWrite(ledPin, LOW);    // sets the LED off
+	delay(1000);                  // waits for a second
 }
-
 </pre>
-<p class='vspace'></p><h4>Caveat</h4>
-<p>While it is easy to create a blinking LED with the delay() function, and many sketches use short delays for such tasks as switch debouncing, the use of delay() in a sketch has significant drawbacks. No other reading of sensors, mathematical calculations, or pin manipulation can go on during the delay function, so in effect, it brings most other activity to a halt. For alternative approaches to controlling timing see the <a class='wikilink' href='Millis.html'>millis()</a> function and the sketch sited below. More knowledgeable programmers usually avoid the use of delay() for timing of events longer than 10's of milliseconds unless the Arduino sketch is very simple.
+<p class='vspace'></p><h4>警告</h4>
+<p>虽然创建一个使用delay()的闪烁LED很简单，并且许多例子将很短的delay用于消除开关抖动，delay()确实拥有很多显著的缺点。在delay函数使用的过程中，读取传感器值、计算、引脚操作均无法执行，因此，它所带来的后果就是使其他大多数活动暂停。其他操作定时的方法请参加millis()函数和它下面的例子。大多数熟练的程序员通常避免超过10毫秒的delay(),除非arduino程序非常简单。
 </p>
-<p class='vspace'></p><p>Certain things <em>do</em> go on while the delay() function is controlling the Atmega chip however, because the delay function does not disable interrupts. Serial communication that appears at the RX pin is recorded, PWM (<a class='wikilink' href='AnalogWrite.html'>analogWrite</a>) values and pin states are maintained, and <a class='wikilink' href='AttachInterrupt.html'>interrupts</a> will work as they should.
+<p class='vspace'></p><p>但某些操作在delay()执行时任然能够运行，因为delay函数不会使中断失效。通信端口RX接收到得数据会被记录，PWM(analogWrite)值和引脚状态会保持，中断也会按设定的执行。
 </p>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='Millis.html'>millis</a>()
-</li><li><a class='wikilink' href='Micros.html'>micros</a>()
-</li><li><a class='wikilink' href='DelayMicroseconds.html'>delayMicroseconds</a>()
-</li><li><a class='wikilink' href='http://arduino.cc/en/Tutorial/BlinkWithoutDelay'>Blink Without Delay</a> example
-</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>

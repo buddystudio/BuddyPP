@@ -38,28 +38,24 @@ a.varlink { text-decoration:none; }
 </head>
 <body style="line-height:25px"> 
 <div id="page">
-  
-
-  
-
   <div id="pagetext">
   <!--PageText-->
 <div id='wikitext'>
 <p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
 </p>
 <p class='vspace'></p><h2>micros()</h2>
-<h4>Description</h4>
-<p>Returns the number of microseconds since the Arduino board began running the current program.  This number will overflow (go back to zero), after approximately 70 minutes.  On 16 <span class='wikiword'>MHz</span> Arduino boards (e.g. Duemilanove and Nano), this function has a resolution of four microseconds (i.e. the value returned is always a multiple of four).  On 8 <span class='wikiword'>MHz</span> Arduino boards (e.g. the <span class='wikiword'>LilyPad</span>), this function has a resolution of eight microseconds.
+<h4>描述</h4>
+<p>返回 Arduino 开发板从运行当前程序开始的微秒数。这个数字将在约70分钟后溢出（归零）。在 16MHz 的 Arduino 开发板上（比如 Duemilanove 和 Nano），这个函数的分辨率为四微秒（即返回值总是四的倍数）。在 8MHz 的 Arduino 开发板上（比如 LilyPad），这个函数的分辨率为八微秒。
 </p>
-<p class='vspace'></p><p><em>Note</em>: there are 1,000 microseconds in a millisecond and 1,000,000 microseconds in a second.
+<p class='vspace'></p><p>注意 ：每毫秒是1,000微秒，每秒是1,000,000微秒。
 </p>
-<p class='vspace'></p><h4>Parameters</h4>
+<p class='vspace'></p><h4>参数</h4>
 <p>None
 </p>
-<p class='vspace'></p><h4>Returns</h4>
+<p class='vspace'></p><h4>返回值</h4>
 <p>Number of microseconds since the program started (<em>unsigned long</em>)
 </p>
-<p class='vspace'></p><h4>Example</h4>
+<p class='vspace'></p><h4>例子</h4>
 <pre>
 unsigned long time;
 
@@ -74,16 +70,9 @@ void loop(){
   // wait a second so as not to send massive amounts of data
   delay(1000);
 }
-
 </pre>
-<p class='vspace'></p><h4>See also</h4>
-<ul><li><a class='wikilink' href='Millis.html'>millis</a>()
-</li><li><a class='wikilink' href='Delay.html'>delay</a>()
-</li><li><a class='wikilink' href='DelayMicroseconds.html'>delayMicroseconds</a>()
-</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
 </p>
-
-
 </div>
 </body>
 </html>
