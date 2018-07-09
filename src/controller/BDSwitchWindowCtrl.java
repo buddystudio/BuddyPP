@@ -190,15 +190,14 @@ public class BDSwitchWindowCtrl
         });
     }
     
-    @SuppressWarnings("unchecked")
-	private void addValues(int count)
+    private void addValues(int count)
     {
         switchWindow.bottomPanel.getChildren().clear();
         switchWindow.valuesList.clear();
         
         for(int i = 0; i < count; i++)
         {
-            ComboBox valueCmbBox = new ComboBox();
+            ComboBox<String> valueCmbBox = new ComboBox<String>();
             
             valueCmbBox.setEditable(true);
 
@@ -221,7 +220,8 @@ public class BDSwitchWindowCtrl
                 valueCmbBox.getItems().add(Variables.group(3));
             }
 
-            valueCmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
+            valueCmbBox.setStyle("-fx-background-radius: 0, 0; -fx-font-size: 15;");
+            valueCmbBox.setPrefWidth(200);
             
             switchWindow.bottomPanel.getChildren().add(valueCmbBox);
             switchWindow.valuesList.add(valueCmbBox);

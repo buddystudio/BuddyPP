@@ -40,7 +40,7 @@ public class BDSwitchWindow extends BDWindow
 	public BDSwitchWindow()
     {
         // 窗口初始化
-    	super.init(480, 250);
+    	super.init(500, 250);
         
         // 总在最前方
     	this.setAlwaysOnTop(true);
@@ -59,8 +59,8 @@ public class BDSwitchWindow extends BDWindow
     	topPanel.getChildren().add(new Label("表达式："));
        
     	value1CmbBox.setEditable(true);
-       
     	value1CmbBox.setPromptText("整形表达式");
+    	value1CmbBox.setPrefWidth(200);
        
     	value2CmbBox.getItems().add("1");
     	value2CmbBox.getItems().add("2");
@@ -96,11 +96,11 @@ public class BDSwitchWindow extends BDWindow
     	topPanel.setSpacing(10);                          	// 设置间距
     	topPanel.setAlignment(Pos.CENTER_LEFT);           	// 居中排列
        
-    	bottomPanel.setPadding(new Insets(-15, 15, 15, 73)); // 设置边距
+    	bottomPanel.setPadding(new Insets(-15, 15, 15, 85)); // 设置边距
     	bottomPanel.setSpacing(10);                          // 设置间距
     	//bottomPanel.setAlignment(Pos.CENTER_LEFT);         // 居中排列
        
-    	buttonPanel.setPadding(new Insets(0, 0, 0, 295));  	// 设置边距
+    	buttonPanel.setPadding(new Insets(-55, 0, 0, 350));  	// 设置边距
        
     	contain.setPadding(new Insets(15, 15, 10, 15));  	// 设置边距
     	contain.setSpacing(10);                          	// 设置间距

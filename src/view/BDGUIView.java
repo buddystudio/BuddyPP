@@ -34,7 +34,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+import model.BDDocTabModel;
 import model.BDGUIModel;
 import model.BDMsgTabModel;
 import model.BDParameters;
@@ -173,14 +173,17 @@ public class BDGUIView
     	String refUrl = "file://" + curPath + "resources/reference/index.html";
 
         BDWebView refView = new BDWebView(refUrl);
+        BDWebView docView = new BDWebView(refUrl);
         
         BDMsgTabModel msgTabModel = new BDMsgTabModel(consoleMsgPanel);
         BDRefTabModel refTabModel = new BDRefTabModel(refView);
+        BDDocTabModel docTabModel = new BDDocTabModel(docView);
         
         TabPane msgTab = new TabPane();
 
         msgTab.getTabs().add(msgTabModel.tab);
         msgTab.getTabs().add(refTabModel.tab);
+        msgTab.getTabs().add(docTabModel.tab);
         
         //msgTab.setStyle(".tab-pane:top *.tab-header-area{-fx-padding: 7 0 -1 0;}");
         
