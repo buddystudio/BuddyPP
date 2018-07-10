@@ -100,7 +100,7 @@ public class BDSwitchWindow extends BDWindow
     	bottomPanel.setSpacing(10);                          // 设置间距
     	//bottomPanel.setAlignment(Pos.CENTER_LEFT);         // 居中排列
        
-    	buttonPanel.setPadding(new Insets(-55, 0, 0, 350));  	// 设置边距
+    	buttonPanel.setPadding(new Insets(-15, 0, 0, 350));  	// 设置边距
        
     	contain.setPadding(new Insets(15, 15, 10, 15));  	// 设置边距
     	contain.setSpacing(10);                          	// 设置间距
