@@ -105,7 +105,7 @@ public class BDDefineVariableWindowCtrl
                     else
                     {
                         // 如果是字符串
-                        value = "\"" + value + "\"";
+                        value = "\\\"" + value + "\\\"";
                     }
                 }
                 else if(type.equals("boolean"))

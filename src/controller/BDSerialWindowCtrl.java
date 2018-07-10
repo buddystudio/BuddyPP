@@ -57,7 +57,14 @@ public class BDSerialWindowCtrl
         comtWindow.value2CmbBox.getItems().add("57600");
         comtWindow.value2CmbBox.getItems().add("115200");
         
+        // 默认设定波特率为9600
         comtWindow.value2CmbBox.getSelectionModel().select(4);
+        
+        // 如果字符变量为空则返回
+        if(comtWindow.value1CmbBox.getValue().toString().equals(""))
+        {
+        	return;
+        }
         
         comtWindow.submitBtn.setOnAction(new EventHandler<ActionEvent>() 
         {    
