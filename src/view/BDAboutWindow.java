@@ -96,16 +96,15 @@ public final class BDAboutWindow extends BDWindow
         
         if(BDParameters.os.equals("Mac OS X"))
         {
-        		line01Txt.setPadding(new Insets(18, 0, 0, 0));
+        	line01Txt.setPadding(new Insets(18, 0, 0, 0));
             line02Txt.setPadding(new Insets(5, 0, 0, 0));
             line03Txt.setPadding(new Insets(5, 0, 10, 0));
             licenseTxt.setPadding(new Insets(5, 0, 0, 0));
             //linkTxt.setPadding(new Insets(10, 0, 0, 0));
-        		
         }
         else
         {
-        		line01Txt.setPadding(new Insets(17, 0, 0, 0));
+        	line01Txt.setPadding(new Insets(17, 0, 0, 0));
             line02Txt.setPadding(new Insets(8, 0, 0, 0));
             line03Txt.setPadding(new Insets(8, 0, 10, 0));
             licenseTxt.setPadding(new Insets(8, 0, 0, 0));
@@ -154,4 +153,3 @@ public final class BDAboutWindow extends BDWindow
         }
     }
 }
-

@@ -31,7 +31,7 @@ void setup()
 	Serial.println("VolumeSize is : " + (String)SDCard.GetVolumeSize(UNIT_Mb) + " Mb");
   
 	// Print the file dir.
-	Serial.println("\nFiles found on the card (name, date and size in bytes): ");
+	Serial.println("Files found on the card (name, date and size in bytes): ");
 	Serial.println("===============================================================");
 	SDCard.ShowList();
   

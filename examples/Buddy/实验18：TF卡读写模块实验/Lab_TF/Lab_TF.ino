@@ -53,7 +53,7 @@ void setup()
  if (!SD.begin(10,11,12,13)) {
     Serial.println("Fail");
  }                                                       
-  Serial.print("\nInitializing SD card...");
+  Serial.println("Initializing SD card...");
   // On the Ethernet Shield, CS is pin 4. It's set as an output by default.
   // Note that even if it's not used as the CS pin, the hardware SS pin 
   // (10 on most Arduino boards, 53 on the Mega) must be left as an output 
@@ -71,7 +71,7 @@ void setup()
   } 
   
   // print the type of card
-  Serial.print("\nCard type: ");
+  Serial.println("Card type: ");
   switch(card.type()) {
     case SD_CARD_TYPE_SD1:
       Serial.println("SD1");
@@ -88,20 +88,20 @@ void setup()
 
   // Now we will try to open the 'volume'/'partition' - it should be FAT16 or FAT32
   if (!volume.init(card)) {
-    Serial.println("Could not find FAT16/FAT32 partition.\nMake sure you've formatted the card");
+    Serial.println("Could not find FAT16/FAT32 partition. Make sure you've formatted the card");
     return;
   }
 
 
   // print the type and size of the first FAT-type volume
   uint32_t volumesize;
-  Serial.print("\nVolume type is FAT");
+  Serial.println("Volume type is FAT");
   Serial.println(volume.fatType(), DEC);
   Serial.println();
   
   volumesize = volume.blocksPerCluster();    // clusters are collections of blocks
   volumesize *= volume.clusterCount();       // we'll have a lot of clusters
-  volumesize *= 512;                            // SD card blocks are always 512 bytes
+  volumesize *= 512;                         // SD card blocks are always 512 bytes
   Serial.print("Volume size (bytes): ");
   Serial.println(volumesize);
   Serial.print("Volume size (Kbytes): ");
@@ -112,7 +112,7 @@ void setup()
   Serial.println(volumesize);
 
   
-  Serial.println("\nFiles found on the card (name, date and size in bytes): ");
+  Serial.println("Files found on the card (name, date and size in bytes): ");
   root.openRoot(volume);
   
   // list all files in the card with date and size
