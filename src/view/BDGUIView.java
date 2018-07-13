@@ -171,9 +171,10 @@ public class BDGUIView
         
         String curPath = this.getClass().getResource("/").getPath();
     	String refUrl = "file://" + curPath + "resources/reference/index.html";
+    	String docUrl = "file://" + curPath + "resources/doc/index.html";
 
         BDWebView refView = new BDWebView(refUrl);
-        BDWebView docView = new BDWebView(refUrl);
+        BDWebView docView = new BDWebView(docUrl);
         
         BDMsgTabModel msgTabModel = new BDMsgTabModel(consoleMsgPanel);
         BDRefTabModel refTabModel = new BDRefTabModel(refView);

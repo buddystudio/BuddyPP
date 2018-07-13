@@ -1,0 +1,95 @@
+
+<!-- saved from url=(0043)file:///C:/Users/gsh/Desktop/doc-1/2-1.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body style="line-height:25px"> <p><a href="index.html">返回首页</a></p><p>Buddy++拥有非常简洁的界面，我们把常用的功能设计为图形化的一级菜单，从而简化了官方IDE的多级文本菜单。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/110.jpg"></p>
+
+<p>界面整体分为四大部分，一是上方的基础功能菜单、二是左侧的扩展功能菜单、三是位于中央的代码编辑器、四是位于右侧的可扩展信息栏。</p>
+
+<p>基础功能菜单位于界面上方蓝色部分，其包括文件操作、编辑选项及编译烧录三个板块：</p>
+
+<ul><li><p>1、文件操作板块</p><ul><li><p>文件的创建</p></li><li>文件的保存</li><li>文件的另存为</li></ul></li><li>2、编辑选项<ul><li>重做</li><li>恢复</li><li>搜索</li></ul></li><li>3、编译烧录<ul><li>引入库</li><li>串口调试工具</li><li>编译</li><li>烧录</li><li>预设值（设定板型和烧录串口）</li></ul></li></ul>
+
+<h1>2.1.1  文件的操作</h1>
+
+<p>Buddy++提供最基础的源码文件处理，其中包括源码文件的创建、保存和关闭。在进行编码之前我们首先需要创建一个源码文件，在启动Buddy++的时候程序已经默认为开发者创建了一个源码文件。</p>
+
+<p>如果开发者需要同时编辑两个源码文件，点击“新建”按钮，程序将会创建一个标签页面，点击相应的标签即可切换当前的源码文件，如果要关闭当前的源码文件点击标签上的“交叉”按钮即可。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/23.jpg"></p>
+
+<p>如果代码编辑区只有一个标签页面，当关闭这个标签的时候Buddy++主程序也将会被关闭，如果当前源码文件未保存，程序将会弹出提示框咨询是否保存当前文件，如果不保存可点击“放弃”按钮，如果选择保存则需要指定保存的路径。</p>
+
+<p>如果开发者要保存当前编辑的源码文件，点击主界面顶端菜单的“保存”按钮即可，如果文件是第一次保存则需要指定文件的保存路径，否则文件将保存在默认的路径。</p>
+
+<p>新版本的Buddy++支持文件拖入操作，例如您希望Buddy++打开计算机桌面的某个源码文件，您仅需要点击选中该文件并把它拖入至代码编辑区，Buddy++将会自动新建一个代码标签页并把该文件的内容导入。</p>
+
+<h1>2.1.2  导入例程</h1>
+
+<p>Buddy++为入门开发者提供了丰富的基础案例，其中包括针对面包板电路的基础案例，也包含以模块化为基础的开发案例。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/32.jpg"></p>
+
+<p>点击界面上方功能菜单中的“例子”按钮，开发者可以在弹出的窗口中选择所需参考的示例工程，选择无误后点击“打开例程”按钮即可。导入例程后开发者可以按需要修改源码内容，从而提高开发效率。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/42.jpg"></p>
+
+<h1>2.1.3  编辑与搜索</h1>
+
+<p>Buddy++顶端主菜单支持代码编辑区最为基础和最为常用的编辑功能，其中包括重复（Redo）、恢复（Undo）和搜索（Serach）。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/52.jpg"></p>
+
+<p>搜索功能提供基础的筛选搜索选项，开发者可以输入关键词并选择“大小写区分”、“顺序/反向”等子选项以满足搜索操作。</p>
+
+<h1>2.1.4  引入库</h1>
+
+<p>当项目开发涉及较高级的功能或需要使用第三方模块，这时一般需要引入第三方的库文件，Buddy++为开发者提供方便快捷的开发库引入功能，通过简单的选择开发者就可以完成操作。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/62.jpg"></p>
+
+<p>点击界面上方功能菜单中的“添加库”按钮，开发者可以在弹出的窗口中选择所需导入的库文件。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/72.jpg"></p>
+
+<h1>2.1.5  串口调试</h1>
+
+<p>与Arduino官方提供的IDE一样，Buddy++为开发者提供基础的串口通讯与调试工具。在开启串口调试工具之前先保证主控板已经正确地连接到计算机，并且已经正确地进行了预设置（正确地选择主控板型号和串口序号），否则在开启工具的时候将会弹出提示框。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/82.jpg"></p>
+
+<p>在进行串口通讯之前，开发者还需要正确地选择通讯波特率，开发者还可以根据实际需求选择显示设置。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/92.jpg"></p>
+
+<h1>2.1.6  程序的编译</h1>
+
+<p>当开发者完成了源码的编辑，接下来就是要进行程序的编译与烧录，点击“编译”按钮，程序将会开始编译操作操作，此时右侧的信息栏将会自动展开并激活控制台标签页。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/102.jpg"></p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/112.jpg"></p>
+
+<p>如果编译操作顺利完成，Buddy++将会弹出编译成功的对话框，否则将会弹出编译失败的对话框。如遇编译失败的情况，开发者可以细阅控制台输出的提示信息找出导致编译失败的具体原因。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/122.jpg"></p>
+
+<h1>2.1.7  程序的烧录</h1>
+
+<p>如果开发者希望提高开发效率可以直接点击“烧录”按钮，Buddy++将会先完成编译操作然后进行烧录操作。在进行烧录之前首先要保证程序已经成功编译，在编译之前开发者需要保证在预设值的时候选择了正确的主控板型号和串口序号，如果选择有误编译过程则有可能出现错误。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/131.jpg"></p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/141.jpg"></p>
+
+<p>同样地当烧录工作开始时，右侧的信息栏会自动展开并激活控制台标签页。如果烧录操作顺利完成，Buddy++将会弹出烧录成功的对话框，否则将会弹出烧录失败的对话框。如遇烧录失败的情况，开发者可以细阅控制台输出的提示信息找出导致烧录失败的具体原因。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/151.jpg"></p>
+
+<h1>2.1.8  预设置</h1>
+
+<p>使用数据线把Arduino主控板连接到计算机后首先需要进行预设置，在预设值的对话框中开发者需要通过下拉菜单选择当前连接的主控板型号和当前连接串口的序号。</p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/161.jpg"></p>
+
+<p style="text-align: center;"><img style = "width:95%;" alt="" src="./2-1_files/171.jpg"></p><p><a href="index.html">返回首页</a></p></body></html>
