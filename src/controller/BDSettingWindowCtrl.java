@@ -41,7 +41,14 @@ public class BDSettingWindowCtrl
     		settingWindow.strList2.add(i + " px");
     	}
     	
-    	File dirFile = new File(this.getClass().getResource("/").getPath() + this.acePath);
+    	//File dirFile = new File(this.getClass().getResource("/").getPath() + this.acePath);
+    	
+    	String curPath = this.getClass().getResource("/").getPath();
+    	String filePath = curPath + "resources/ace-builds-master/src-noconflict";
+	    
+	    //File dirFile = new File("E:/Projects/ACE4JavaFX/bin/resources/ace-builds-master/src-noconflict");
+	    //File dirFile = new File(this.getClass().getResource("/").getPath() + this.acePath);
+    	File dirFile = new File(filePath);
 	    
 	    if (!dirFile.exists()) 
 	    {  
