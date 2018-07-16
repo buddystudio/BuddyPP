@@ -31,8 +31,8 @@ public class BDMusicWindowCtrl
                     tabTxt += " ";
                 }
                 
-                String code1  = tabTxt + "int tune[] = {";
-                String code2  = "float durt[] = {";
+                String code2  = tabTxt + "int tune[] = {";
+                String code1  = "float durt[] = {";
                  
                 String result1 = "";
                 String result2 = "";
