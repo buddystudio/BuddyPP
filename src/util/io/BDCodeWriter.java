@@ -6,8 +6,10 @@
 package util.io;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 /**
  *
@@ -31,6 +33,7 @@ public class BDCodeWriter
     		return;    		
     	}
         
+    	/*
         // 创建一个FileWriter对象
         FileWriter fw = new FileWriter(fileName);
         
@@ -39,6 +42,15 @@ public class BDCodeWriter
         fw.flush();        
         // 关闭文件流对象
         fw.close();
+        */
+    	
+    	FileOutputStream fos = new FileOutputStream(fileName);
+    	
+        OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
+        
+        osw.write(codeTxt);   
+        
+        osw.flush(); 
     }
     
     public static void preparePath(String path)
