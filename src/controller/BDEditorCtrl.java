@@ -264,7 +264,10 @@ public class BDEditorCtrl
 	// Insert the code.
 	public void insert(String code)
 	{
-		webView.getEngine().executeScript("editor.insert(\"" + code +"\");");		
+		webView.getEngine().executeScript("editor.insert(\"" + code +"\");");	
+		
+		// Get Focus.
+		webView.requestFocus();
 	}
 	
 	// Search
