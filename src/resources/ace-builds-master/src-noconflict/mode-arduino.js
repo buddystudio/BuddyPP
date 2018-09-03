@@ -88,7 +88,7 @@ var arduinoHighlightRules = function() {
 
     var builtinConstants = (
         "NULL|true|false|TRUE|FALSE|nullptr" + 
-        "|HIGH|LOW|INPUT|OUTPUT|INPUT_PULLUP|LED_BUILTIN|integer constants|floating point constants"
+        "|HIGH|LOW|INPUT|OUTPUT|OUTPUT_OPEN_DRAIN|INPUT_ANALOG|INPUT_PULLDOWN|INPUT_FLOATING|PWM|PWM_OPEN_DRAIN|INPUT_PULLUP|LED_BUILTIN|integer constants|floating point constants"
     );
 
     var keywordMapper = this.$keywords = this.createKeywordMapper({

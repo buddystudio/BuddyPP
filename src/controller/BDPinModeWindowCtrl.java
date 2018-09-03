@@ -80,6 +80,7 @@ class BDPinModeWindowCtrl
                 code = code.replaceAll("\"","\\\\\"");
                 
                 workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
+                //workspaceCtrl.workspaceView.workspaceModel.curTab.editorView.webView.requestFocus();
                 
                 // 关闭窗口
                 pinModeWindow.close();
