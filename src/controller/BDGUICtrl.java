@@ -418,8 +418,10 @@ public class BDGUICtrl
             gui.primaryStage.setY(gui.guiModel.preY);
 
             // 恢复原来的尺寸
-            gui.primaryStage.setWidth(940);
-            gui.primaryStage.setHeight(640 + 10 + 10);
+            //gui.primaryStage.setWidth(940);
+            //gui.primaryStage.setHeight(640 + 10 + 10);
+            gui.primaryStage.setWidth(BDParameters.curWidth);
+            gui.primaryStage.setHeight(BDParameters.curHeight);
 
             // 更新状态标签
             gui.guiModel.isMaximized = false;
@@ -436,6 +438,9 @@ public class BDGUICtrl
             // 自定义最大化
             if(BDParameters.os.equals("Mac OS X"))
             {
+            	BDParameters.curWidth = gui.primaryStage.getWidth();
+                BDParameters.curHeight = gui.primaryStage.getHeight();
+                
             	gui.primaryStage.setX(0);
                 gui.primaryStage.setY(22);
                 gui.primaryStage.setWidth(gui.visualBounds.getWidth());
@@ -443,6 +448,9 @@ public class BDGUICtrl
             }
             else
             {
+            	BDParameters.curWidth = gui.primaryStage.getWidth();
+                BDParameters.curHeight = gui.primaryStage.getHeight();
+                
             	gui.primaryStage.setX(-1);
                 gui.primaryStage.setY(-1);
                 gui.primaryStage.setWidth(gui.visualBounds.getWidth() + 2);

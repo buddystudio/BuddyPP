@@ -16,7 +16,8 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Preferences {
+public class Preferences 
+{
 	static final String PREFS_FILE = "preferences.txt";
 	static Hashtable<String, String> defaults;
 	static Hashtable<String, String> table = new Hashtable<String, String>();

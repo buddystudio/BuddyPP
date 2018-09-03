@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 import javafx.stage.Stage;
+import model.BDParameters;
 
 /**
  * 拉伸工具类
@@ -19,8 +20,9 @@ public class DrawUtil
     private static boolean isBottomRight;			// 是否处于右下角调整窗口状态
     private static boolean isBottom;				// 是否处于下边界调整窗口状态
     private final static int RESIZE_WIDTH = 10;		// 判定是否为调整窗口状态的范围与边界距离
-    private final static double MIN_WIDTH = 940;	// 窗口最小宽度
-    private final static double MIN_HEIGHT = 660;	// 窗口最小高
+    
+    private final static double MIN_WIDTH = BDParameters.minWidth;		// 窗口最小宽度
+    private final static double MIN_HEIGHT = BDParameters.minHeight;	// 窗口最小高
     
     public static void addDrawFunc(Stage stage, BorderPane root) 
     {

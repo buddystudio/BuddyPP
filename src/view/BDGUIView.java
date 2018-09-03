@@ -49,6 +49,7 @@ public class BDGUIView
 {
     public Stage primaryStage;
     
+    public BorderPane window		= new BorderPane();
     public BorderPane root  		= new BorderPane();
     public VBox topPanel    		= new VBox();
     public BorderPane workspaceRoot	= new BorderPane();
@@ -135,13 +136,24 @@ public class BDGUIView
         // 设置主窗体边框
         panelStyle += "-fx-background-radius:2px;";
         panelStyle += "-fx-border-color: #333333;";
-        panelStyle += "-fx-border-width:1px;";
+        panelStyle += "-fx-border-width:2px;";
         panelStyle += "-fx-border-radius:1px;";
         panelStyle += "-fx-background:transparent;";
         
-        root.setStyle(panelStyle);
+        String panelStyle2 = "";
+        
+        // 设置主窗体边框
+        panelStyle2 += "-fx-background-radius:0px;";
+        panelStyle2 += "-fx-border-color: #333333;";
+        panelStyle2 += "-fx-border-width:3px;";
+        panelStyle2 += "-fx-border-radius:0px;";
+        panelStyle2 += "-fx-background:transparent;";
+        
+        window.setStyle(panelStyle);
+        root.setStyle(panelStyle2);
+        
 
-        topPanel.getChildren().add(this.titlePanel);
+        //topPanel.getChildren().add(this.titlePanel);
         topPanel.getChildren().add(this.menuPanel);
         
         consolePanel.setStyle("-fx-background-color: #ffffff;");
@@ -209,6 +221,9 @@ public class BDGUIView
         this.root.setLeft(this.toolsPanel);
         this.root.setCenter(this.splitPanel);
         
+        window.setTop(this.titlePanel);
+        window.setCenter(this.root);
+        
         BDTextAreaConsole consoleTxt = BDTextAreaConsole.getTextAreaConsoleInstance();
         
         consoleTxt.gui = this;
@@ -259,7 +274,7 @@ public class BDGUIView
         
         // 初始化主窗口并设置尺寸
         //Scene scene = new Scene(this.root, 1024 - 110, 640 + 10 + 10);
-        Scene scene = new Scene(this.root, 940, 640 + 10 + 10);
+        Scene scene = new Scene(window, 940, 640 + 10 + 10);
         
         this.root.setFocusTraversable(true);
 
