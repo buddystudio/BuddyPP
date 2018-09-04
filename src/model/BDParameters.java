@@ -29,8 +29,8 @@ public class BDParameters
     
     static public String version         = "1.1.0-beta";  	// 软件版本号
     static public String langues         = "zh-cn";  		// 语言
-    static public String organization	= "BuddyStudio";		// 开发组织
-    static public String author			= "李宝智、郭少豪";	// 开发者署名
+    static public String organization	= "BuddyStudio";	// 开发组织
+    static public String author			= "李宝智、郭少豪";		// 开发者署名
     
     static public String boardType       = "";       		// 开发板型号
     static public String connectCom      = "";       		// 串口序号

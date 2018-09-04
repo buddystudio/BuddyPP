@@ -25,10 +25,12 @@ import view.BDComWindow;
  *
  * @author gsh
  */
-public class BDComWindowCtrl implements BDMessageConsumer {
+public class BDComWindowCtrl implements BDMessageConsumer 
+{
 	BDSerial serial;
 	String serialPort;
 	BDComWindow bdComWindow;
+	
 	private final static Logger logger = LogManager.getLogger();
 
 	public BDComWindowCtrl(BDComWindow comWindow) 
@@ -42,8 +44,14 @@ public class BDComWindowCtrl implements BDMessageConsumer {
 		if (serialPort == null || serialPort.isEmpty())
 			return;
 
-		bdComWindow.setOnCloseRequest((WindowEvent event) -> {
-			serial.dispose();
+		bdComWindow.setOnCloseRequest((WindowEvent event) -> 
+		{
+			if (serial != null) 
+			{
+				serial.dispose();
+			}
+			
+			bdComWindow.ctrlBtn.setText("开始");
 			bdComWindow.recMsgtxt.setText("");
 			bdComWindow.close();			
 		});
@@ -60,6 +68,28 @@ public class BDComWindowCtrl implements BDMessageConsumer {
 
 			}
 		});
+		
+		// 开始接收信息
+				bdComWindow.ctrlBtn.setOnAction(new EventHandler<ActionEvent>() 
+				{
+					@Override
+					public void handle(ActionEvent event) 
+					{
+						if(bdComWindow.ctrlBtn.getText().equals("开始"))
+						{
+							bdComWindow.ctrlBtn.setText("暂停");
+							
+							stopSerialPort();
+							openSerialPort();
+						}
+						else
+						{
+							bdComWindow.ctrlBtn.setText("开始");
+							
+							stopSerialPort();
+						}
+					}
+				});
 
 		// 选择波特率
 		bdComWindow.rateComoBox.valueProperty().addListener(new ChangeListener<String>() {
@@ -85,8 +115,8 @@ public class BDComWindowCtrl implements BDMessageConsumer {
 			}
 		});
 
-		closeSerialPort();
-		openSerialPort();
+		//closeSerialPort();
+		//openSerialPort();
 	}
 
 	// 打开端口
@@ -101,6 +131,16 @@ public class BDComWindowCtrl implements BDMessageConsumer {
 		}
 		// 设置监听，收到信息后由message方法处理
 		serial.addListener(this);
+	}
+	
+	// 暂停
+	private void stopSerialPort() 
+	{
+		if (serial != null) 
+		{
+			serial.dispose();
+			serial = null;
+		}
 	}
 
 	// 关闭端口

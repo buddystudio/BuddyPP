@@ -26,6 +26,7 @@ public class BDComWindow extends BDWindow
     
     public TextField sendMsgTxt = new TextField();              	// 发送信息文本
     public Button sendMsgBtn = new Button("发送");              		// 发送信息按钮
+    public Button ctrlBtn = new Button("开始");						// 控制按钮
 
     public CheckBox isAutoScroll = new CheckBox("自动滚屏");    		// 是否自动滚屏
     public CheckBox lineChkBox = new CheckBox("自动换行");      		// 是否自动换行
@@ -35,7 +36,7 @@ public class BDComWindow extends BDWindow
     public BDComWindow() 
     {
         // 窗口初始化
-        super.init(400, 510);
+        super.init(500, 550);
         
         scene.getStylesheets().add("style/listViewStyle.css");
 
@@ -54,7 +55,7 @@ public class BDComWindow extends BDWindow
         HBox topPanel = new HBox();
         HBox bottomPanel = new HBox();
 
-        sendMsgTxt.setPrefWidth(300);
+        sendMsgTxt.setPrefWidth(400);
         sendMsgBtn.setPrefWidth(80);
 
         topPanel.setPadding(new Insets(5, 5, 5, 7));    // 设置边距
@@ -72,6 +73,9 @@ public class BDComWindow extends BDWindow
         rateComoBox.setPrefWidth(150);
         rateComoBox.getItems().clear();
         
+        ctrlBtn.setPrefWidth(80);
+        ctrlBtn.setStyle("-fx-background-radius: 0, 0;");
+        
         String[] rates = {"300", "1200", "2400", "4800", "9600", "14400",
             "19200", "28800", "38400", "57600", "115200"};
         
@@ -81,6 +85,7 @@ public class BDComWindow extends BDWindow
 
         bottomPanel.getChildren().add(isAutoScroll);
         bottomPanel.getChildren().add(lineChkBox);
+        bottomPanel.getChildren().add(ctrlBtn);
         bottomPanel.getChildren().add(rateComoBox);
         
         // Disable two checkbox.
@@ -96,7 +101,8 @@ public class BDComWindow extends BDWindow
         sendMsgBtn.setPrefHeight(30);
         
         recMsgtxt.getStyleClass().add("mylistview");
-        recMsgtxt.setStyle("-fx-font-size: 16;");
+        //recMsgtxt.setStyle("-fx-font-size: 16;");
+        recMsgtxt.setStyle("-fx-font-size: 20;");
         
         recMsgtxt.setEditable(false);
 
