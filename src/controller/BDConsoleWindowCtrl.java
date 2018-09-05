@@ -46,6 +46,7 @@ public class BDConsoleWindowCtrl implements BDProgressStatusListener
 
 		consoleWindow.okBtn.setOnAction(new EventHandler<ActionEvent>() 
 		{
+			
 			@Override
 			public void handle(ActionEvent event) 
 			{
@@ -58,6 +59,7 @@ public class BDConsoleWindowCtrl implements BDProgressStatusListener
 			}
 		});
 
+		/*
 		consoleWindow.setOnCloseRequest(new EventHandler<WindowEvent>() 
 		{
 			@Override
@@ -67,8 +69,11 @@ public class BDConsoleWindowCtrl implements BDProgressStatusListener
 				removeBtns();
 				
 				consoleWindow.msgWindow.clearText();
+				
+				event.consume();
 			}
 		});
+		*/
 
 		consoleWindow.msgWindow.setOnCloseRequest(new EventHandler<WindowEvent>() 
 		{

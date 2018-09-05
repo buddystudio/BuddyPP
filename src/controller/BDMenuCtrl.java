@@ -47,6 +47,7 @@ public class BDMenuCtrl
 	
 	public Thread compileThread = null;
 	public Thread uploadThread 	= null;
+	public Thread subUploadThread 	= null;
 	
 	private BDMenuView menuView;
 	
@@ -358,13 +359,35 @@ public class BDMenuCtrl
 			}
 		});
 		
+		// 编译信息窗口关闭时触发
+		menuView.consoleWindow.setOnCloseRequest(new EventHandler<WindowEvent>() 
+		{
+			@Override
+		    public void handle(WindowEvent event) 
+		    {
+		    	// 更新编译对话框，移除操作按钮
+				//removeBtns();
+				
+				//consoleWindow.msgWindow.clearText();
+		    	
+		    	if(subUploadThread != null)
+	        	{
+	        		if(subUploadThread.isAlive())
+		        	{
+	        			// 如果烧录已经触发就不能让开发者手动暂停
+	        			event.consume();
+		        	}
+	        	}
+		    }
+		});
+		
 		// 关闭窗口中止编译操作
 		menuView.consoleWindow.setOnHiding(new EventHandler<WindowEvent>() 
 		{
-	         @SuppressWarnings("deprecation")
+	        @SuppressWarnings("deprecation")
 			@Override
 	         public void handle(WindowEvent event) 
-	         {
+	         {	        	 
 	        	 if(compileThread != null)
 	        	 {
 	        		 if(!compileThread.isAlive())
@@ -384,6 +407,23 @@ public class BDMenuCtrl
 	        		 System.out.println("");
 	        	 }
 	        	 
+	        	 if(subUploadThread != null)
+	        	 {
+	        		 //if(!subUploadThread.isAlive())
+	        		 if(subUploadThread.isAlive())
+		        	 {
+		        		 return;
+		        	 }
+	        		 
+	        		 // 终止上传
+	        		 //subUploadThread.stop();
+	        		 
+	        		 // 开始烧录后用户不能操作停止
+	        		 return;
+	        		 
+	        		 //System.out.println("Buddy++ : 子烧录操作已终止！");
+	        	 }
+	        	 
 	        	 if(uploadThread != null)
 	        	 {
 	        		 if(!uploadThread.isAlive())
@@ -393,11 +433,12 @@ public class BDMenuCtrl
 	        		 
 	        		 // 终止上传
 	        		 uploadThread.stop();
+	        		 //uploadThread = null;
 	        		 
 	        		 System.out.println("");
 	        		 System.out.println("*********************************************************");
 	        		 System.out.println("");
-	        		 System.out.println("Buddy++ : 很遗憾，烧录操作已终止！");
+	        		 System.out.println("Buddy++ : 很遗憾，编译与烧录操作已终止！");
 	        		 System.out.println("");
 	        		 System.out.println("*********************************************************");
 	        		 System.out.println("");
@@ -417,6 +458,8 @@ public class BDMenuCtrl
 
 				// 显示编译信息窗口
 				menuView.consoleWindow.show();
+				
+				consoleWindowCtrl.removeBtns();
 				
 				if(!BDParameters.os.equals("Mac OS X"))
 				{
@@ -452,8 +495,6 @@ public class BDMenuCtrl
 				compileThread = new Thread(progressTask);
 				
 				compileThread.start();
-				//compileThread.stop();
-				//compileThread.interrupt();
 			}
 		});
 
@@ -554,8 +595,10 @@ public class BDMenuCtrl
 						throw new UnsupportedOperationException("Not supported yet.");
 					}
 				};
+				
+				//new Thread(progressTask).start();
 
-				// 开始编译上传任务
+				// 开始上传任务
 				uploadThread = new Thread(progressTask);
 				
 				uploadThread.start();
@@ -787,6 +830,8 @@ public class BDMenuCtrl
 			} 
 			else 
 			{
+				code.isCompiled = false;
+				
 				// 编译失败
 				Platform.runLater(new Runnable() 
 				{
@@ -873,9 +918,30 @@ public class BDMenuCtrl
 					System.out.println("");
 				}
 			});
-
+			
+			Task<Boolean> progressTask = new Task<Boolean>() 
+			{
+				@Override
+				protected Boolean call() throws Exception 
+				{
+					// 烧录完成后返回结果
+					return uploader.uploadUsingPreferences(code.compilePath, code.getCppName(), false); 
+					//throw new UnsupportedOperationException("Not supported yet.");
+				}
+			};
+			
+			// 开始编译任务
+			//new Thread(progressTask).start();
+			
+			// 开始编译上传任务
+			subUploadThread = new Thread(progressTask);
+			
+			subUploadThread.start();
+			
+			return progressTask.get();
+			
 			// 上传
-			return uploader.uploadUsingPreferences(code.compilePath, code.getCppName(), false); 
+			//return uploader.uploadUsingPreferences(code.compilePath, code.getCppName(), false); 
 		} 
 		catch (Exception ex) 
 		{
@@ -885,7 +951,7 @@ public class BDMenuCtrl
 			Platform.runLater(new Runnable() 
 			{
 				@Override
-				public void run() 
+				public void run()
 				{
 					consoleWindowCtrl.getView().lbl.setText("很遗憾，烧录失败！");
 					
