@@ -9,10 +9,12 @@ import java.awt.AWTException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import util.base.Base;
 import util.debug.BDAvrdudeUploader;
 import util.debug.BDCompiler;
 import util.debug.BDRunnerException;
@@ -31,7 +33,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.WindowEvent;
 import model.BDCodeModel;
 import model.BDParameters;
-
+import model.BDWindowsManager;
 import view.BDExampleWindow;
 import view.BDLibWindow;
 import view.BDMenuView;
@@ -228,16 +230,21 @@ public class BDMenuCtrl
 			{
 
 				// 打开例子
-				if (menuView.expWindow.isShowing()) 
+				/*if (menuView.expWindow.isShowing()) 
 				{
 					menuView.expWindow.close();
-				}
+				}*/
+				
+				/*if (BDWindowsManager.expWindow.isShowing()) 
+				{
+					BDWindowsManager.expWindow.close();
+				}*/
 
-				menuView.expWindow = new BDExampleWindow();
-				BDExampleWindowCtrl exampleWindowCtrl = new BDExampleWindowCtrl(menuView.expWindow, workspaceCtrl);
+				BDWindowsManager.expWindow = new BDExampleWindow();
+				BDExampleWindowCtrl exampleWindowCtrl = new BDExampleWindowCtrl(BDWindowsManager.expWindow, workspaceCtrl);
 
 				// 添加代码标签页
-				menuView.expWindow.show();
+				BDWindowsManager.expWindow.show();
 				
 				if(BDParameters.os.equals("Mac OS X"))
 				{
@@ -245,7 +252,7 @@ public class BDMenuCtrl
 				}
 				
 				// 弹出子窗口与主窗口居中
-				showInTheMiddle(menuView.expWindow);
+				showInTheMiddle(BDWindowsManager.expWindow);
 			}
 		});
 
@@ -295,17 +302,17 @@ public class BDMenuCtrl
 			public void handle(ActionEvent event) 
 			{
 				// 添加库
-				if (menuView.libWindow.isShowing()) 
+				/*if (menuView.libWindow.isShowing()) 
 				{
 					menuView.libWindow.close();
-				}
+				}*/
 
-				menuView.libWindow = new BDLibWindow();
+				BDWindowsManager.libWindow = new BDLibWindow();
 				
-				BDLibWindowCtrl libWindowCtrl = new BDLibWindowCtrl(menuView.libWindow, workspaceCtrl);
+				BDLibWindowCtrl libWindowCtrl = new BDLibWindowCtrl(BDWindowsManager.libWindow, workspaceCtrl);
 
 				// 显示添加库窗口
-				menuView.libWindow.show();
+				BDWindowsManager.libWindow.show();
 				
 				if(BDParameters.os.equals("Mac OS X"))
 				{
@@ -313,7 +320,7 @@ public class BDMenuCtrl
 				}
 				
 				// 弹出子窗口与主窗口居中
-				showInTheMiddle(menuView.libWindow);
+				showInTheMiddle(BDWindowsManager.libWindow);
 			}
 		});
 
@@ -329,7 +336,8 @@ public class BDMenuCtrl
 					menuView.lbCom.setText("当前串口：未连接");
 
 					// 弹出对话框提示用户未接入开发板
-					menuView.hintDialogWindow.show();
+					//menuView.hintDialogWindow.show();
+					BDWindowsManager.hintDialogWindow.show();
 					
 					if(BDParameters.os.equals("Mac OS X"))
 					{
@@ -337,17 +345,17 @@ public class BDMenuCtrl
 					}
 					
 					// 弹出子窗口与主窗口居中
-					showInTheMiddle(menuView.hintDialogWindow);
+					showInTheMiddle(BDWindowsManager.hintDialogWindow);
 
 					// 如果未连接则返回
 					return;
 				}
 
 				// 串口通讯
-				BDComWindowCtrl comWindowCtrl = new BDComWindowCtrl(menuView.comWindow);
+				BDComWindowCtrl comWindowCtrl = new BDComWindowCtrl(BDWindowsManager.comWindow);
 
 				// 显示串口通讯窗口
-				menuView.comWindow.show();
+				BDWindowsManager.comWindow.show();
 				
 				if(BDParameters.os.equals("Mac OS X"))
 				{
@@ -355,12 +363,13 @@ public class BDMenuCtrl
 				}
 				
 				// 弹出子窗口与主窗口居中
-				showInTheMiddle(menuView.comWindow);
+				showInTheMiddle(BDWindowsManager.comWindow);
 			}
 		});
 		
 		// 编译信息窗口关闭时触发
-		menuView.consoleWindow.setOnCloseRequest(new EventHandler<WindowEvent>() 
+		//menuView.consoleWindow.setOnCloseRequest(new EventHandler<WindowEvent>() 
+		BDWindowsManager.consoleWindow.setOnCloseRequest(new EventHandler<WindowEvent>() 
 		{
 			@Override
 		    public void handle(WindowEvent event) 
@@ -382,7 +391,8 @@ public class BDMenuCtrl
 		});
 		
 		// 关闭窗口中止编译操作
-		menuView.consoleWindow.setOnHiding(new EventHandler<WindowEvent>() 
+		//menuView.consoleWindow.setOnHiding(new EventHandler<WindowEvent>() 
+		BDWindowsManager.consoleWindow.setOnHiding(new EventHandler<WindowEvent>() 
 		{
 	        @SuppressWarnings("deprecation")
 			@Override
@@ -453,18 +463,21 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
-				BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(menuView.consoleWindow);
+				//BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(menuView.consoleWindow);
+				BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(BDWindowsManager.consoleWindow);
 				// consoleWindowCtrl.setUploadProgressVisable(false);
 
 				// 显示编译信息窗口
-				menuView.consoleWindow.show();
+				//menuView.consoleWindow.show();
+				BDWindowsManager.consoleWindow.show();
 				
 				consoleWindowCtrl.removeBtns();
 				
 				if(!BDParameters.os.equals("Mac OS X"))
 				{
 					// 弹出子窗口与主窗口居中
-					showInTheMiddle(menuView.consoleWindow);
+					//showInTheMiddle(menuView.consoleWindow);
+					showInTheMiddle(BDWindowsManager.consoleWindow);
 				}
 
 				// 清除控制台信息
@@ -511,12 +524,12 @@ public class BDMenuCtrl
 					menuView.lbCom.setText("当前串口：未连接");
 
 					// 弹出对话框提示用户未接入开发板
-					menuView.hintDialogWindow.show();
+					BDWindowsManager.hintDialogWindow.show();
 					
 					if(!BDParameters.os.equals("Mac OS X"))
 					{
 						// 弹出子窗口与主窗口居中
-						showInTheMiddle(menuView.hintDialogWindow);
+						showInTheMiddle(BDWindowsManager.hintDialogWindow);
 					}
 
 					// 如果未连接则返回
@@ -525,20 +538,24 @@ public class BDMenuCtrl
 				
 				try
 				{
-					menuView.consoleWindow.contain.getChildren().remove(menuView.consoleWindow.bottomPanel);
-					menuView.consoleWindow.contain.getChildren().add(menuView.consoleWindow.progressBarDebug);
+					//menuView.consoleWindow.contain.getChildren().remove(menuView.consoleWindow.bottomPanel);
+					//menuView.consoleWindow.contain.getChildren().add(menuView.consoleWindow.progressBarDebug);
+					
+					BDWindowsManager.consoleWindow.contain.getChildren().remove(BDWindowsManager.consoleWindow.bottomPanel);
+					BDWindowsManager.consoleWindow.contain.getChildren().add(BDWindowsManager.consoleWindow.progressBarDebug);
 				}
 				catch(Exception ex){}
 
-				BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(menuView.consoleWindow);				
+				//BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(menuView.consoleWindow);
+				BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(BDWindowsManager.consoleWindow);
 
 				// 烧录
-				menuView.consoleWindow.show();
+				BDWindowsManager.consoleWindow.show();
 				
 				if(!BDParameters.os.equals("Mac OS X"))
 				{
 					// 弹出子窗口与主窗口居中
-					showInTheMiddle(menuView.consoleWindow);
+					showInTheMiddle(BDWindowsManager.consoleWindow);
 				}
 
 				// 清除控制台信息
@@ -611,10 +628,11 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
-				BDPluginWindowCtrl pluginWindowVtrl = new BDPluginWindowCtrl(menuView.pluginWindow, workspaceCtrl);
+				BDPluginWindowCtrl pluginWindowVtrl = new BDPluginWindowCtrl(BDWindowsManager.pluginWindow, workspaceCtrl);
 
 				// 设置
-				menuView.pluginWindow.show();
+				//menuView.pluginWindow.show();
+				BDWindowsManager.pluginWindow.show();
 				
 				if(BDParameters.os.equals("Mac OS X"))
 				{
@@ -622,7 +640,8 @@ public class BDMenuCtrl
 				}
 				
 				// 弹出子窗口与主窗口居中
-				showInTheMiddle(menuView.pluginWindow);
+				//showInTheMiddle(menuView.pluginWindow);
+				showInTheMiddle(BDWindowsManager.pluginWindow);
 			}
 		});
 
@@ -633,7 +652,9 @@ public class BDMenuCtrl
 			public void handle(ActionEvent event) 
 			{
 				// 弹出关于我们的窗口
-				menuView.aboutWindow.show();
+				//menuView.aboutWindow.show();
+				
+				BDWindowsManager.aboutWindow.show();
 				
 				if(BDParameters.os.equals("Mac OS X"))
 				{
@@ -641,7 +662,8 @@ public class BDMenuCtrl
 				}
 				
 				// 弹出子窗口与主窗口居中
-				showInTheMiddle(menuView.aboutWindow);
+				//showInTheMiddle(menuView.aboutWindow);
+				showInTheMiddle(BDWindowsManager.aboutWindow);
 			}
 		});
 
@@ -656,11 +678,11 @@ public class BDMenuCtrl
 				
 				try 
 				{
-					menuView.psw.ReflashPort();
+					BDWindowsManager.psw.ReflashPort();
 					
 					preSetWindowCtrl = new BDPreSetWindowCtrl(menuView);
 	
-					menuView.psw.show();
+					BDWindowsManager.psw.show();
 					
 					if(BDParameters.os.equals("Mac OS X"))
 					{
@@ -668,7 +690,7 @@ public class BDMenuCtrl
 					}
 					
 					// 弹出子窗口与主窗口居中
-					showInTheMiddle(menuView.psw);
+					showInTheMiddle(BDWindowsManager.psw);
 				} 
 				catch (Exception ex) 
 				{
@@ -754,7 +776,7 @@ public class BDMenuCtrl
 	}
 
 	private void compile(BDConsoleWindowCtrl consoleWindowCtrl) 
-	{
+	{	
 		//BDPreprocessor preprocessor = new BDPreprocessor();
 
 		BDCodeModel code = workspaceCtrl.workspaceView.workspaceModel.curTab.code;

@@ -21,6 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.BDParameters;
+import model.BDWindowsManager;
 
 /**
  *
@@ -28,20 +29,20 @@ import model.BDParameters;
  */
 public class BDMenuView extends HBox
 {
-    public BDSearchWindow searchWindow      = new BDSearchWindow();     // 搜索窗口
-    public BDLibWindow libWindow            = new BDLibWindow();        // 添加库窗口
-    public BDComWindow comWindow            = new BDComWindow();        // 串口通讯窗口
-    public BDPreSettingWindow psw           = new BDPreSettingWindow(); // 预设置窗口
-    public BDExampleWindow expWindow        = new BDExampleWindow();    // 例程窗口
-    public BDConsoleWindow consoleWindow    = new BDConsoleWindow();    // 编译信息窗口
-    public BDPluginWindow pluginWindow      = new BDPluginWindow();     // 工具插件窗口
-    public BDAboutWindow aboutWindow        = new BDAboutWindow();      // 关于我们窗口
+    //public BDSearchWindow searchWindow      = new BDSearchWindow();     // 搜索窗口
+    //public BDLibWindow libWindow            = new BDLibWindow();        // 添加库窗口
+    //public BDComWindow comWindow            = new BDComWindow();        // 串口通讯窗口
+    //public BDPreSettingWindow psw           = new BDPreSettingWindow(); // 预设置窗口
+    //public BDExampleWindow expWindow        = new BDExampleWindow();    // 例程窗口
+    //public BDConsoleWindow consoleWindow    = new BDConsoleWindow();    // 编译信息窗口
+    //public BDPluginWindow pluginWindow      = new BDPluginWindow();     // 工具插件窗口
+    //public BDAboutWindow aboutWindow        = new BDAboutWindow();      // 关于我们窗口
     
     public CodeArea consloeArea				= null;
     public SplitPane splitPanel 			= null;
     public Stage primaryStage				= null;
     
-    public BDHintDialogWindow hintDialogWindow = new BDHintDialogWindow("  提示", "请先确定计算机已经连接开发板！");
+    //public BDHintDialogWindow hintDialogWindow = new BDHintDialogWindow("  提示", "请先确定计算机已经连接开发板！");
     
     public Button menuOpenBtn      = new Button(); // 打开按钮
     public Button menuNewBtn       = new Button(); // 新建按钮
@@ -73,6 +74,8 @@ public class BDMenuView extends HBox
         
     public BDMenuView()
     {
+    	BDWindowsManager.hintDialogWindow = new BDHintDialogWindow("  提示", "请先确定计算机已经连接开发板！");
+    	
         this.setStyle("-fx-background-color: #42b2e4;");
             
         // 设置菜单栏位置

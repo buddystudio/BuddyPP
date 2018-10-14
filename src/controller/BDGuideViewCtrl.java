@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent;
+import model.BDWindowsManager;
 import view.BDGuideView;
 import view.BDMenuView;
 
@@ -85,9 +86,10 @@ public class BDGuideViewCtrl
             @Override
             public void handle(MouseEvent event) 
             {
-                BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(menuView.consoleWindow);
+                BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(BDWindowsManager.consoleWindow);
                 
-                menuView.consoleWindow.show();
+                //menuView.consoleWindow.show();
+                BDWindowsManager.consoleWindow.show();
             }
         });
         

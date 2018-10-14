@@ -12,7 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import model.BDParameters;
-
+import model.BDWindowsManager;
 import view.BDMenuView;
 import view.BDPreSettingWindow;
 
@@ -28,7 +28,8 @@ public class BDPreSetWindowCtrl
     public BDPreSetWindowCtrl(BDMenuView menuView) throws Exception
     {
         this.menuView = menuView;
-        this.preSettingWindow = menuView.psw;
+        //this.preSettingWindow = menuView.psw;
+        this.preSettingWindow = BDWindowsManager.psw;
         
         Preferences.init(null);
         Preferences.set("upload.verbose", "true");    

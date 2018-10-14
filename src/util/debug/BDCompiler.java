@@ -25,23 +25,24 @@ public class BDCompiler implements BDMessageConsumer
 {
 	private static final Logger logger = LogManager.getLogger(BDCompiler.class);
 
-	String buildPath; // 生成路径
+	String buildPath; 							// 生成路径
 	String primaryClassName;
 
-	boolean verbose; // 错误内容是否有动�?
-	boolean sketchIsCompiled; // 是否已经编译
+	boolean verbose; 							// 错误内容是否有动
+	boolean sketchIsCompiled; 					// 是否已经编译
 	BDRunnerException exception;
-	BDProgressStatusListener progressListener; // 进度侦听�?
+	BDProgressStatusListener progressListener; // 进度侦听
 
-	public BDCompiler() {
-	}
+	public BDCompiler() {}
 
-	public void addProgressStatusListener(BDProgressStatusListener listener) {
+	public void addProgressStatusListener(BDProgressStatusListener listener) 
+	{
 		progressListener = listener;
 	}
 
 	@Override
-	public void message(String s) {
+	public void message(String s) 
+	{
 		int i;
 
 		// remove the build path so people only see the filename

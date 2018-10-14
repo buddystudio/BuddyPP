@@ -34,7 +34,7 @@ import view.BDGUIView;
  *
  * @author gsh
  */
-public class BuddyPP extends Application 
+public class BuddyPP extends Application
 { 
 	private static final Logger logger = LogManager.getLogger(BuddyPP.class);
 	

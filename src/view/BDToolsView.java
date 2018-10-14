@@ -16,19 +16,19 @@ import javafx.scene.layout.VBox;
  */
 public class BDToolsView extends VBox
 {
-    public BDDefineVariableWindow dfvWindow = new BDDefineVariableWindow();     // 变量定义窗口
-    public BDPinModeWindow pinModeWindow    = new BDPinModeWindow();            // pinMode端口设置窗口
-    public BDDelayWindow delayWindow        = new BDDelayWindow();              // Delay延时设置窗口
-    public BDForWindow forWindow            = new BDForWindow();                // For条件循环设置窗口
-    public BDWhileWindow whileWindow        = new BDWhileWindow();              // While条件循环设置窗口
-    public BDIfWindow ifWindow              = new BDIfWindow();                 // If条件循环设置窗口
-    public BDDrWindow drWindow              = new BDDrWindow();                 // DigitalRead数字端口读取设置窗口
-    public BDDwWindow dwWindow              = new BDDwWindow();                 // DigitalWrite数字端口写入设置窗口
-    public BDArWindow arWindow              = new BDArWindow();                 // AnalogRead模拟端口读取设置窗口
-    public BDAwWindow awWindow              = new BDAwWindow();                 // AnalogWrite模拟端口写入设置窗口
-    public BDSerialWindow serialWindow      = new BDSerialWindow();             // Serial串口通讯模板设置窗口
-    public BDSwitchWindow switchWindow      = new BDSwitchWindow();             // SwitchCase条件分支设置窗口
-    public BDLEDsWindow ledsWindow          = new BDLEDsWindow();
+    //public BDDefineVariableWindow dfvWindow = new BDDefineVariableWindow();     // 变量定义窗口
+    //public BDPinModeWindow pinModeWindow    = new BDPinModeWindow();            // pinMode端口设置窗口
+    //public BDDelayWindow delayWindow        = new BDDelayWindow();              // Delay延时设置窗口
+    //public BDForWindow forWindow            = new BDForWindow();                // For条件循环设置窗口
+    //public BDWhileWindow whileWindow        = new BDWhileWindow();              // While条件循环设置窗口
+    //public BDIfWindow ifWindow              = new BDIfWindow();                 // If条件循环设置窗口
+    //public BDDrWindow drWindow              = new BDDrWindow();                 // DigitalRead数字端口读取设置窗口
+    //public BDDwWindow dwWindow              = new BDDwWindow();                 // DigitalWrite数字端口写入设置窗口
+    //public BDArWindow arWindow              = new BDArWindow();                 // AnalogRead模拟端口读取设置窗口
+    //public BDAwWindow awWindow              = new BDAwWindow();                 // AnalogWrite模拟端口写入设置窗口
+    //public BDSerialWindow serialWindow      = new BDSerialWindow();             // Serial串口通讯模板设置窗口
+    //public BDSwitchWindow switchWindow      = new BDSwitchWindow();             // SwitchCase条件分支设置窗口
+    //public BDLEDsWindow ledsWindow          = new BDLEDsWindow();
     
     public BDPluginWindow pluginWindow      = new BDPluginWindow();             // 工具插件窗口
     

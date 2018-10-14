@@ -7,6 +7,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import model.BDWindowsManager;
 import view.BDToolsView;
 
 /**
@@ -25,10 +26,11 @@ public class BDToolsCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-                BDDefineVariableWindowCtrl defineVariableWindowCtrl = new BDDefineVariableWindowCtrl(toolsView.dfvWindow, workspaceCtrl);
+                BDDefineVariableWindowCtrl defineVariableWindowCtrl = new BDDefineVariableWindowCtrl(BDWindowsManager.dfvWindow, workspaceCtrl);
                 
                 // 弹出变量定义窗口
-                toolsView.dfvWindow.show();
+                //toolsView.dfvWindow.show();
+                BDWindowsManager.dfvWindow.show();
             }
         });
        
@@ -38,9 +40,9 @@ public class BDToolsCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-                BDIfWindowCtrl ifWindowCtrl = new BDIfWindowCtrl(toolsView.ifWindow, workspaceCtrl);
+                BDIfWindowCtrl ifWindowCtrl = new BDIfWindowCtrl(BDWindowsManager.ifWindow, workspaceCtrl);
                 
-                toolsView.ifWindow.show();
+                BDWindowsManager.ifWindow.show();
             }
         });
        
@@ -50,10 +52,10 @@ public class BDToolsCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-                BDPinModeWindowCtrl pinModeWindowCtrl = new BDPinModeWindowCtrl(toolsView.pinModeWindow, workspaceCtrl);
+                BDPinModeWindowCtrl pinModeWindowCtrl = new BDPinModeWindowCtrl(BDWindowsManager.pinModeWindow, workspaceCtrl);
                 
                 // 弹出端口定义窗口
-                toolsView.pinModeWindow.show();
+                BDWindowsManager.pinModeWindow.show();
             }
         });
        
@@ -63,10 +65,10 @@ public class BDToolsCtrl
             @Override
             public void handle(ActionEvent event) 
             {   
-                BDWhileWindowCtrl whileWindowCtrl = new BDWhileWindowCtrl(toolsView.whileWindow, workspaceCtrl);
+                BDWhileWindowCtrl whileWindowCtrl = new BDWhileWindowCtrl(BDWindowsManager.whileWindow, workspaceCtrl);
 
                 // 弹出while循环语句设置窗口
-                toolsView.whileWindow.show();
+                BDWindowsManager.whileWindow.show();
             }
         });
        
@@ -78,10 +80,10 @@ public class BDToolsCtrl
             {   
                 //forWindow = new BDForWindow();
                 
-                BDForWindowCtrl forWindowCtrl = new BDForWindowCtrl(toolsView.forWindow, workspaceCtrl);
+                BDForWindowCtrl forWindowCtrl = new BDForWindowCtrl(BDWindowsManager.forWindow, workspaceCtrl);
 
                 // 弹出循环语句设置窗口
-                toolsView.forWindow.show();
+                BDWindowsManager.forWindow.show();
             }
         });
        
@@ -92,10 +94,10 @@ public class BDToolsCtrl
             public void handle(ActionEvent event) 
             {   
 
-                BDSwitchWindowCtrl switchWindowCtrl = new BDSwitchWindowCtrl(toolsView.switchWindow, workspaceCtrl);
+                BDSwitchWindowCtrl switchWindowCtrl = new BDSwitchWindowCtrl(BDWindowsManager.switchWindow, workspaceCtrl);
 
                 // 弹出循环语句设置窗口
-                toolsView.switchWindow.show();
+                BDWindowsManager.switchWindow.show();
             }
         });
        
@@ -107,9 +109,9 @@ public class BDToolsCtrl
             {
                 //ifWindow = new BDIfWindow();
                 
-                BDDrWindowCtrl drWindowCtrl = new BDDrWindowCtrl(toolsView.drWindow, workspaceCtrl);
+                BDDrWindowCtrl drWindowCtrl = new BDDrWindowCtrl(BDWindowsManager.drWindow, workspaceCtrl);
                 
-                toolsView.drWindow.show();
+                BDWindowsManager.drWindow.show();
             }
         });
        
@@ -119,9 +121,9 @@ public class BDToolsCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-                BDArWindowCtrl arWindowCtrl = new BDArWindowCtrl(toolsView.arWindow, workspaceCtrl);
+                BDArWindowCtrl arWindowCtrl = new BDArWindowCtrl(BDWindowsManager.arWindow, workspaceCtrl);
                 
-                toolsView.arWindow.show();
+                BDWindowsManager.arWindow.show();
             }
         });
        
@@ -131,9 +133,9 @@ public class BDToolsCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-                BDDwWindowCtrl dwWindowCtrl = new BDDwWindowCtrl(toolsView.dwWindow, workspaceCtrl);
+                BDDwWindowCtrl dwWindowCtrl = new BDDwWindowCtrl(BDWindowsManager.dwWindow, workspaceCtrl);
                 
-                toolsView.dwWindow.show();
+                BDWindowsManager.dwWindow.show();
             }
         });
        
@@ -143,9 +145,9 @@ public class BDToolsCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-                BDAwWindowCtrl awWindowCtrl = new BDAwWindowCtrl(toolsView.awWindow, workspaceCtrl);
+                BDAwWindowCtrl awWindowCtrl = new BDAwWindowCtrl(BDWindowsManager.awWindow, workspaceCtrl);
                 
-                toolsView.awWindow.show();
+                BDWindowsManager.awWindow.show();
             }
         });
        
@@ -158,10 +160,10 @@ public class BDToolsCtrl
                 //delayWindow = new BDDelayWindow();
                 
                 // 设置延时函数控制器
-                BDDelayWindowCtrl delayWindowCtrl = new BDDelayWindowCtrl(toolsView.delayWindow, workspaceCtrl);
+                BDDelayWindowCtrl delayWindowCtrl = new BDDelayWindowCtrl(BDWindowsManager.delayWindow, workspaceCtrl);
 
                 // 弹出延时设置窗口
-                toolsView.delayWindow.show();
+                BDWindowsManager.delayWindow.show();
             }
         });
        
@@ -172,10 +174,10 @@ public class BDToolsCtrl
             public void handle(ActionEvent event) 
             {
                 // 创建串口模版生成控制器
-                BDSerialWindowCtrl comtWindowCtrl = new BDSerialWindowCtrl(toolsView.serialWindow, workspaceCtrl);
+                BDSerialWindowCtrl comtWindowCtrl = new BDSerialWindowCtrl(BDWindowsManager.serialWindow, workspaceCtrl);
                 
                 // 显示串口通讯模板
-                toolsView.serialWindow.show();
+                BDWindowsManager.serialWindow.show();
             }
         });
        
