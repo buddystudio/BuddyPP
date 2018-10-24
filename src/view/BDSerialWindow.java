@@ -18,15 +18,15 @@ import javafx.stage.StageStyle;
  * @author gsh
  */
 public class BDSerialWindow extends BDWindow
-{
-    public Button submitBtn = new Button("确定");
+{   
+	public Button submitBtn = new Button("确定");
     
     public ComboBox<String> value1CmbBox = new ComboBox<String>();
     public ComboBox<String> value2CmbBox = new ComboBox<String>();
     
     public BDSerialWindow()
     {
-        // 窗口初始化
+    	// 窗口初始化
         super.init(550, 60);
         
         // 总在最前方

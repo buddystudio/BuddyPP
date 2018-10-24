@@ -30,7 +30,7 @@ public class BDToolsView extends VBox
     //public BDSwitchWindow switchWindow      = new BDSwitchWindow();             // SwitchCase条件分支设置窗口
     //public BDLEDsWindow ledsWindow          = new BDLEDsWindow();
     
-    public BDPluginWindow pluginWindow      = new BDPluginWindow();             // 工具插件窗口
+    //public BDPluginWindow pluginWindow      = new BDPluginWindow();             // 工具插件窗口
     
     public Button toolsDe      = new Button();  // 变量定义按钮
     public Button toolsIF      = new Button();  // If条件判断按钮

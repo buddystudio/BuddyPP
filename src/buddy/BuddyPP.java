@@ -41,6 +41,7 @@ public class BuddyPP extends Application
     @Override
     public void start(Stage primaryStage) 
     {
+
         // 判断系统类型
         String arch = System.getProperty("os.arch");
         String os   = System.getProperty("os.name");

@@ -22,7 +22,7 @@ import util.debug.BDSerial;
 import util.debug.BDUploader;
 import util.io.BDCodeReader;
 import util.io.BDCodeWriter;
-
+import util.io.BDFileProc;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -34,9 +34,13 @@ import javafx.stage.WindowEvent;
 import model.BDCodeModel;
 import model.BDParameters;
 import model.BDWindowsManager;
+import view.BDCompileAndUploadWindow;
 import view.BDExampleWindow;
+import view.BDHintDialogWindow;
 import view.BDLibWindow;
 import view.BDMenuView;
+import view.BDSerialHelperWindow;
+import view.BDSerialWindow;
 import view.BDWindow;
 
 /**
@@ -330,9 +334,21 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
+				/*new BDSerialHelperWindow().show();
+
+				// 启用新的串口调试助手
+				if(true)
+				{
+					return;
+				}*/
+				
+				
+				// ============================================================
+				
 				BDParameters.serialports = BDSerial.list();
 
-				if (BDParameters.serialports.isEmpty() || menuView.lbCom.getText().equals("当前串口：未连接")) {
+				if (BDParameters.serialports.isEmpty() || menuView.lbCom.getText().equals("当前串口：未连接"))
+				{
 					menuView.lbCom.setText("当前串口：未连接");
 
 					// 弹出对话框提示用户未接入开发板
@@ -455,6 +471,9 @@ public class BDMenuCtrl
 	        	 }
 	         }
 	     });
+		
+		BDCompileAndUploadWindow cauwView = new BDCompileAndUploadWindow();
+		BDCompileAndUploadCtrl cauwCtrl = new BDCompileAndUploadCtrl(cauwView);
 
 		// 编译
 		menuView.menuVerifyBtn.setOnAction(new EventHandler<ActionEvent>() 
@@ -463,6 +482,59 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
+
+				// 显示编译功能窗口
+				cauwView.show();
+				
+				// 获取临时文件
+				String tempPath = System.getProperty("java.io.tmpdir") + "BDTmpPath";
+				String builtPath = tempPath + File.separator + "Built";
+				String codePath = tempPath + File.separator + "Code";
+
+				System.out.println("builtPath: " + builtPath);
+				System.out.println("codePath: " + codePath);
+				
+				// 保存临时源码文件
+				String code = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode();
+				workspaceCtrl.workspaceView.workspaceModel.curTab.code.setCodeText(code);
+
+				cauwCtrl.openFileFromCode(builtPath + File.separator, codePath + File.separator);
+				
+				try 
+				{
+					// 清除已经存在的目录
+					BDFileProc.deleteDir(tempPath);
+					BDFileProc.deleteDir(builtPath);
+					BDFileProc.deleteDir(codePath);
+					
+					// 创建源码临时目录
+					File file01 = new File(tempPath);
+					File file02 = new File(builtPath);
+					File file03 = new File(codePath);
+
+			        // Create temporary directory.
+			        file01.mkdir();
+			        file02.mkdir();
+			        file03.mkdir();
+			        
+			        System.out.println(codePath + "Code.ino");
+			        
+					// 写入文件
+					BDCodeWriter.fileWriter(codePath + File.separator + "Code.ino", code);
+					
+					// 更改保存状态
+					//workspaceCtrl.workspaceView.workspaceModel.curTab.code.isSaved = true;
+				} 
+				catch (IOException ex) 
+				{
+					logger.error(this.toString(), ex);
+				}
+				
+				if(true)
+				{
+					return;
+				}
+				
 				//BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(menuView.consoleWindow);
 				BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(BDWindowsManager.consoleWindow);
 				// consoleWindowCtrl.setUploadProgressVisable(false);

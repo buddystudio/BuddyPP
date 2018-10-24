@@ -26,6 +26,7 @@ import view.BDWhileWindow;
 public class BDWindowsManager
 {
 	public static BDHintDialogWindow hintDialogWindow = new BDHintDialogWindow("", "");	// 提示窗口
+	public static BDHintDialogWindow alertWindow = new BDHintDialogWindow("", "");	// 提示窗口
 	
 	public static BDSearchWindow searchWindow 	= new BDSearchWindow();     // 搜索窗口
 	public static BDLibWindow libWindow     	= new BDLibWindow();        // 添加库窗口

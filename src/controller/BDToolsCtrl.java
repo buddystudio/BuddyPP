@@ -188,9 +188,9 @@ public class BDToolsCtrl
             public void handle(ActionEvent event) 
             {
             	// 弹出扩展工具窗口
-            	BDPluginWindowCtrl pluginWindowVtrl = new BDPluginWindowCtrl(toolsView.pluginWindow, workspaceCtrl);
+            	BDPluginWindowCtrl pluginWindowVtrl = new BDPluginWindowCtrl(BDWindowsManager.pluginWindow, workspaceCtrl);
             	
-            	toolsView.pluginWindow.show();
+            	BDWindowsManager.pluginWindow.show();
             }
         });
        
