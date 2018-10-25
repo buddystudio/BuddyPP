@@ -188,13 +188,15 @@ public class BDGUIView
         BDWebView refView = new BDWebView(refUrl);
         BDWebView docView = new BDWebView(docUrl);
         
-        BDMsgTabModel msgTabModel = new BDMsgTabModel(consoleMsgPanel);
+        //BDMsgTabModel msgTabModel = new BDMsgTabModel(consoleMsgPanel);
         BDRefTabModel refTabModel = new BDRefTabModel(refView);
         BDDocTabModel docTabModel = new BDDocTabModel(docView);
         
         TabPane msgTab = new TabPane();
 
-        msgTab.getTabs().add(msgTabModel.tab);
+        // 屏蔽控制台标签
+        //msgTab.getTabs().add(msgTabModel.tab);
+        
         msgTab.getTabs().add(refTabModel.tab);
         msgTab.getTabs().add(docTabModel.tab);
         
@@ -229,9 +231,10 @@ public class BDGUIView
         consoleTxt.gui = this;
         
         // 为控制台添加右键菜单
-        menu.getItems().addAll(clearMenuItem, copyMenuItem, selectAllMenuItem);
+        //menu.getItems().addAll(clearMenuItem, copyMenuItem, selectAllMenuItem);
         
-        msgArea.setParagraphGraphicFactory(LineNumberFactory.get(msgArea));
+        // 屏蔽原来控制台信息的功能
+        /*msgArea.setParagraphGraphicFactory(LineNumberFactory.get(msgArea));
         msgArea.setEditable(false);
         //msgArea.setPrefHeight(535);
         msgArea.setAutoScrollOnDragDesired(true);
@@ -261,7 +264,7 @@ public class BDGUIView
         	
         	// 光标跟随
         	msgArea.setEstimatedScrollY(msgArea.getCaretPosition());
-		});
+		});*/
    
         //consoleMsgPanel.setTop(consoleTitlePanel);
         consoleMsgPanel.setCenter(msgArea);
@@ -275,6 +278,7 @@ public class BDGUIView
         // 初始化主窗口并设置尺寸
         //Scene scene = new Scene(this.root, 1024 - 110, 640 + 10 + 10);
         Scene scene = new Scene(window, 940, 640 + 10 + 10);
+        //Scene scene = new Scene(window, 680, 740 + 10 + 10);
         
         this.root.setFocusTraversable(true);
 

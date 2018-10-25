@@ -27,9 +27,9 @@ public class BDLibWindow extends BDWindow
     public BDLibWindow()
     {
         // 窗口初始化
-        super.init(400, 300);
+        super.init(450, 450);
         
-        scene.getStylesheets().add("style/listViewStyle.css");
+        //scene.getStylesheets().add("style/listViewStyle.css");
         
         // 总在最前方
         this.setAlwaysOnTop(true);
@@ -43,14 +43,14 @@ public class BDLibWindow extends BDWindow
        
         VBox contain  = new VBox();
        
-        contain.setPadding(new Insets(0,0,5,0));  // 设置边距
-        contain.setSpacing(5);                    // 设置间距
+        contain.setPadding(new Insets(0, 0, 10, 0));  	// 设置边距
+        contain.setSpacing(10);                    		// 设置间距
         contain.setAlignment(Pos.CENTER);
         
         contain.getChildren().add(listView);
         contain.getChildren().add(importBtn);
         
-        listView.setPrefSize(400, 300);
+        listView.setPrefSize(400, 450);
         listView.getStyleClass().add("mylistview"); 
         listView.setStyle("-fx-font-size: 16;");
 

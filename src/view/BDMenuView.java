@@ -222,7 +222,10 @@ public class BDMenuView extends HBox
         //this.getChildren().add(menuForumBtn);
 
         this.getChildren().add(settingPanel);
-        this.getChildren().add(rightLables);
+        
+        // 屏蔽提示标签
+        //this.getChildren().add(rightLables);
+        
         //this.getChildren().add(menuAboutBtn);
         
         //HBox forumPanel = new HBox();

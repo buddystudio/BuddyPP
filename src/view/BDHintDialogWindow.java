@@ -38,6 +38,8 @@ public class BDHintDialogWindow extends BDWindow
         // 窗口初始化
         super.init(360, 132);
         
+        rootPanel.getStylesheets().clear();
+
         // 总在最前方
         this.setAlwaysOnTop(true);
         

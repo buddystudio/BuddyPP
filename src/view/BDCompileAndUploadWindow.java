@@ -57,7 +57,7 @@ public class BDCompileAndUploadWindow extends BDWindow
 	public BDCompileAndUploadWindow()
 	{
 		// 窗口初始化
-        super.init(865, 760);
+        super.init(750, 760);
         
         // 总在最前方
         //this.setAlwaysOnTop(true);
@@ -86,7 +86,8 @@ public class BDCompileAndUploadWindow extends BDWindow
         	//this.menuBar.setVisible(false);
         	this.menuBar.setDisable(true);
 
-			this.btnsBar.setMinWidth(865);
+			//this.btnsBar.setMinWidth(865);
+        	this.btnsBar.setMinWidth(750);
 			this.btnsBar.setPadding(new Insets(20, 20, 20, 20));
 			this.btnsBar.setSpacing(10);
 			
@@ -109,11 +110,10 @@ public class BDCompileAndUploadWindow extends BDWindow
 			
 			boardListCombox.getSelectionModel().select(0);
 			boardListCombox.setMaxWidth(250);
-			
 		
 			this.btnsBar.getChildren().addAll(/*openBtn,*/ 
 											  compileBtn, 
-											  uploadBtn, 
+											  /*uploadBtn,*/ 
 											  compileAndUploadBtn, 
 											  stopBtn, 
 											  clearBtn, 
@@ -122,7 +122,7 @@ public class BDCompileAndUploadWindow extends BDWindow
 											  boardListCombox);
 		
 			this.acvView.setPrefHeight(610);
-			this.progressBar.setPrefSize(900, 40);
+			this.progressBar.setPrefSize(750, 40);
 			
 			topPanel.getChildren().add(this.menuBar);
 			topPanel.getChildren().add(this.btnsBar);

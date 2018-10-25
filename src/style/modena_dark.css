@@ -23,7 +23,8 @@
 
     /* A bright blue for highlighting/accenting objects.  For example: selected
      * text; selected items in menus, lists, trees, and tables; progress bars */
-    -fx-accent: rgb(0, 80, 100);
+    /*-fx-accent: rgb(0, 80, 100);*/
+    -fx-accent: rgb(66, 178, 228);
 
     /* color of non-focused yet selected elements */
     -fx-selection-bar-non-focused: rgb(50, 50, 50);

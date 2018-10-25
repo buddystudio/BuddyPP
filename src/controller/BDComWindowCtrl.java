@@ -8,6 +8,7 @@ package controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import util.base.Preferences;
 import util.debug.BDMessageConsumer;
 import util.debug.BDSerial;
 
@@ -57,11 +58,14 @@ public class BDComWindowCtrl implements BDMessageConsumer
 		});
 
 		// 发送信息
-		bdComWindow.sendMsgBtn.setOnAction(new EventHandler<ActionEvent>() {
+		bdComWindow.sendMsgBtn.setOnAction(new EventHandler<ActionEvent>() 
+		{
 			@Override
-			public void handle(ActionEvent event) {
+			public void handle(ActionEvent event) 
+			{
 				// 发送信息
 				String s = comWindow.sendMsgTxt.getText();
+				
 				message(String.format("Send:%s\n", comWindow.sendMsgTxt.getText()));
 				s = s + "\0";
 				send(s);
@@ -70,26 +74,26 @@ public class BDComWindowCtrl implements BDMessageConsumer
 		});
 		
 		// 开始接收信息
-				bdComWindow.ctrlBtn.setOnAction(new EventHandler<ActionEvent>() 
+		bdComWindow.ctrlBtn.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			@Override
+			public void handle(ActionEvent event) 
+			{
+				if(bdComWindow.ctrlBtn.getText().equals("开始"))
 				{
-					@Override
-					public void handle(ActionEvent event) 
-					{
-						if(bdComWindow.ctrlBtn.getText().equals("开始"))
-						{
-							bdComWindow.ctrlBtn.setText("暂停");
-							
-							stopSerialPort();
-							openSerialPort();
-						}
-						else
-						{
-							bdComWindow.ctrlBtn.setText("开始");
-							
-							stopSerialPort();
-						}
-					}
-				});
+					bdComWindow.ctrlBtn.setText("暂停");
+					
+					stopSerialPort();
+					openSerialPort();
+				}
+				else
+				{
+					bdComWindow.ctrlBtn.setText("开始");
+					
+					stopSerialPort();
+				}
+			}
+		});
 
 		// 选择波特率
 		bdComWindow.rateComoBox.valueProperty().addListener(new ChangeListener<String>() {

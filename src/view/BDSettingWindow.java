@@ -32,9 +32,9 @@ public class BDSettingWindow extends BDWindow
     public BDSettingWindow()
     {
         // 窗口初始化
-        super.init(400, 300);
+        super.init(400, 355);
         
-        scene.getStylesheets().add("style/listViewStyle.css");
+        //scene.getStylesheets().add("style/listViewStyle.css");
         
         // 总在最前方
         this.setAlwaysOnTop(true);
@@ -49,8 +49,8 @@ public class BDSettingWindow extends BDWindow
         VBox contain  = new VBox();
         HBox subContain = new HBox();
        
-        contain.setPadding(new Insets(0,0,5,0));  // 设置边距
-        contain.setSpacing(5);                    // 设置间距
+        contain.setPadding(new Insets(10, 0, 10, 0));  // 设置边距
+        contain.setSpacing(10);                    // 设置间距
         contain.setAlignment(Pos.CENTER);
         
         subContain.getChildren().add(themeList);
@@ -68,7 +68,7 @@ public class BDSettingWindow extends BDWindow
         sizeList.setStyle("-fx-font-size: 16;");
 
         importBtn.setStyle("-fx-background-radius: 0, 0;");
-        importBtn.setPrefSize(150, 70);
+        importBtn.setPrefSize(150, 30);
 
         rootPanel.getChildren().add(contain);
     }

@@ -12,6 +12,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.StageStyle;
@@ -33,7 +34,8 @@ public final class BDAboutWindow extends BDWindow
         // 窗口初始化
         super.init(500, 365);
 
-        scene.getStylesheets().add("style/settingStyle.css");
+        //scene.getStylesheets().add("style/settingStyle.css");
+        rootPanel.getStylesheets().clear();
        
         // 定义无边框窗体
         //this.initStyle(StageStyle.UNDECORATED);
@@ -78,14 +80,22 @@ public final class BDAboutWindow extends BDWindow
         Label line02Txt = new Label();
         Label line03Txt = new Label();
         
-        Hyperlink linkTxt = new Hyperlink();  
+        Hyperlink linkTxt = new Hyperlink();
+        Hyperlink linkTxt2 = new Hyperlink();  
         
-        linkTxt.setText("http://buddy.studio"); 
+        linkTxt.setText("http://buddy.studio");
+        linkTxt2.setText("http://buddy.org.cn");
         
         linkTxt.setOnAction((ActionEvent e) -> 
         {  
         	// Visit buddyStudio webSite.
         	this.browserUrl("http://buddy.studio");
+        });
+        
+        linkTxt2.setOnAction((ActionEvent e) -> 
+        {  
+        	// Visit buddyStudio webSite.
+        	this.browserUrl("http://buddy.org.cn");
         });  
        
         //copyrightTxt.setTextFill(Color.web("#ff0000"));  
@@ -119,7 +129,16 @@ public final class BDAboutWindow extends BDWindow
         //contain.getChildren().add(authorTxt);
         contain.getChildren().add(line02Txt);
         contain.getChildren().add(line03Txt);
-        contain.getChildren().add(linkTxt);
+        //contain.getChildren().add(linkTxt);
+        //contain.getChildren().add(linkTxt2);
+        
+        HBox links = new HBox();
+        
+        links.setAlignment(Pos.CENTER);
+        links.setSpacing(10);
+        links.getChildren().addAll(linkTxt, linkTxt2);
+        
+        contain.getChildren().add(links);
        
         rootPanel.getChildren().add(contain);
     }

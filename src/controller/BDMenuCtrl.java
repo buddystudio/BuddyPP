@@ -15,6 +15,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import util.base.Base;
+import util.base.Preferences;
 import util.debug.BDAvrdudeUploader;
 import util.debug.BDCompiler;
 import util.debug.BDRunnerException;
@@ -347,12 +348,31 @@ public class BDMenuCtrl
 				
 				BDParameters.serialports = BDSerial.list();
 
-				if (BDParameters.serialports.isEmpty() || menuView.lbCom.getText().equals("当前串口：未连接"))
+				/*if (BDParameters.serialports.isEmpty() || menuView.lbCom.getText().equals("当前串口：未连接"))
 				{
 					menuView.lbCom.setText("当前串口：未连接");
 
 					// 弹出对话框提示用户未接入开发板
 					//menuView.hintDialogWindow.show();
+					BDWindowsManager.hintDialogWindow.show();
+					
+					if(BDParameters.os.equals("Mac OS X"))
+					{
+						return;
+					}
+					
+					// 弹出子窗口与主窗口居中
+					showInTheMiddle(BDWindowsManager.hintDialogWindow);
+
+					// 如果未连接则返回
+					return;
+				}*/
+				
+				if (BDParameters.serialports.isEmpty() || 
+					BDParameters.connectCom.equals("未连接") ||
+					BDParameters.connectCom.equals(""))
+				{
+					// 弹出对话框提示用户未接入开发板
 					BDWindowsManager.hintDialogWindow.show();
 					
 					if(BDParameters.os.equals("Mac OS X"))
@@ -482,17 +502,23 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
-
 				// 显示编译功能窗口
 				cauwView.show();
+				
+				// 更新串口号
+				cauwCtrl.updateSerialPorts();
+				
+				// 获取当前串口号
+				Preferences.set("serial.port", cauwView.getSerialListCombox().getSelectionModel().getSelectedItem().toString());
+				BDParameters.connectCom = cauwView.getSerialListCombox().getSelectionModel().getSelectedItem().toString();
 				
 				// 获取临时文件
 				String tempPath = System.getProperty("java.io.tmpdir") + "BDTmpPath";
 				String builtPath = tempPath + File.separator + "Built";
 				String codePath = tempPath + File.separator + "Code";
 
-				System.out.println("builtPath: " + builtPath);
-				System.out.println("codePath: " + codePath);
+				//System.out.println("builtPath: " + builtPath);
+				//System.out.println("codePath: " + codePath);
 				
 				// 保存临时源码文件
 				String code = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode();
@@ -517,7 +543,7 @@ public class BDMenuCtrl
 			        file02.mkdir();
 			        file03.mkdir();
 			        
-			        System.out.println(codePath + "Code.ino");
+			        //System.out.println(codePath + "Code.ino");
 			        
 					// 写入文件
 					BDCodeWriter.fileWriter(codePath + File.separator + "Code.ino", code);
@@ -589,6 +615,65 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
+				// 显示编译功能窗口
+				cauwView.show();
+				
+				// 更新串口号
+				cauwCtrl.updateSerialPorts();
+				
+				// 获取当前串口号
+				Preferences.set("serial.port", cauwView.getSerialListCombox().getSelectionModel().getSelectedItem().toString());
+				BDParameters.connectCom = cauwView.getSerialListCombox().getSelectionModel().getSelectedItem().toString();
+				
+				// 获取临时文件
+				String tempPath = System.getProperty("java.io.tmpdir") + "BDTmpPath";
+				String builtPath = tempPath + File.separator + "Built";
+				String codePath = tempPath + File.separator + "Code";
+
+				//System.out.println("builtPath: " + builtPath);
+				//System.out.println("codePath: " + codePath);
+				
+				// 保存临时源码文件
+				String code = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode();
+				workspaceCtrl.workspaceView.workspaceModel.curTab.code.setCodeText(code);
+
+				cauwCtrl.openFileFromCode(builtPath + File.separator, codePath + File.separator);
+				
+				try 
+				{
+					// 清除已经存在的目录
+					BDFileProc.deleteDir(tempPath);
+					BDFileProc.deleteDir(builtPath);
+					BDFileProc.deleteDir(codePath);
+					
+					// 创建源码临时目录
+					File file01 = new File(tempPath);
+					File file02 = new File(builtPath);
+					File file03 = new File(codePath);
+
+			        // Create temporary directory.
+			        file01.mkdir();
+			        file02.mkdir();
+			        file03.mkdir();
+			        
+			        //System.out.println(codePath + "Code.ino");
+			        
+					// 写入文件
+					BDCodeWriter.fileWriter(codePath + File.separator + "Code.ino", code);
+					
+					// 更改保存状态
+					//workspaceCtrl.workspaceView.workspaceModel.curTab.code.isSaved = true;
+				} 
+				catch (IOException ex) 
+				{
+					logger.error(this.toString(), ex);
+				}
+				
+				if(true)
+				{
+					return;
+				}
+				
 				BDParameters.serialports = BDSerial.list();
 
 				if (BDParameters.serialports.isEmpty() || menuView.lbCom.getText().equals("当前串口：未连接")) 

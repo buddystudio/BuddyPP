@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.FileChooser;
 import model.BDMessage;
+import model.BDParameters;
 import model.BDSerialManager2;
 import view.BDCompileAndUploadWindow;
 
@@ -91,10 +92,10 @@ public class BDCompileAndUploadCtrl
 		compileAndUploadWindow.getCompileAndUploadBtn().setDisable(false);
 		compileAndUploadWindow.getStopBtn().setDisable(false);
 		
-		System.out.println("this.bd_built_path: " + this.bd_built_path);
-		System.out.println("this.bd_code_path: " + this.bd_code_path);
+		//System.out.println("this.bd_built_path: " + this.bd_built_path);
+		//System.out.println("this.bd_code_path: " + this.bd_code_path);
 	}
-	
+
 	public BDCompileAndUploadCtrl(BDCompileAndUploadWindow compileAndUploadWindow)
 	{
 		this.compileAndUploadWindow = compileAndUploadWindow;
@@ -246,8 +247,11 @@ public class BDCompileAndUploadCtrl
 		    	@Override
 		        public void handle(ActionEvent event) 
 		        {
-		        	compileAndUploadWindow.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
-		            compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(0);
+		        	/*compileAndUploadWindow.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
+		            compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(0);*/
+		    		
+		    		// 更新串口列表
+		    		updateSerialPorts();
 		        }
 		    });
 	        
@@ -324,6 +328,9 @@ public class BDCompileAndUploadCtrl
 	            {
 	            	// Stop all threads.
 					stopAllThreads();
+					
+					// 恢复功能按钮
+            		setFuncEnable(true);
 	            }
 	        });
 			
@@ -529,6 +536,9 @@ public class BDCompileAndUploadCtrl
 
 	public void compileAndUpload()
 	{
+		// 屏蔽功能按钮
+		this.setFuncEnable(false);
+		
 		bd_com = this.compileAndUploadWindow.getSerialListCombox().getSelectionModel().getSelectedItem();
 		
 		String boardName = this.compileAndUploadWindow.getBoardListCombox().getSelectionModel().getSelectedItem();
@@ -744,6 +754,9 @@ public class BDCompileAndUploadCtrl
 			                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> Buddy++：请确认主控板已经连接计算机并选择了正确的串口序号！</b>");
 			                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> ===================================================================</b>");
 			                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
+                        	
+			                	// 恢复功能按钮
+			                	setFuncEnable(true);
                         	}
                         }
             		});
@@ -791,6 +804,9 @@ public class BDCompileAndUploadCtrl
         			            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
                                 }
                     		});
+                        	
+                        	// 恢复功能按钮
+	                		setFuncEnable(true);
 
                         	this.cancel();
                         }
@@ -910,6 +926,9 @@ public class BDCompileAndUploadCtrl
 	                		uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：上传操作已经结束！");
 	                		uploadMessage.setMessage("msg_" + ">>>>>>> ===================================================================");
 			    		
+	                		// 恢复功能按钮
+	                		setFuncEnable(true);
+	                		
 	                		// 关闭计时器
 	                		timer.cancel();
 			    		}
@@ -936,44 +955,6 @@ public class BDCompileAndUploadCtrl
 		};
 		
 		timer = new Timer();
-
-		Task<String> timingTask = new Task<String>() 
-		{
-            @Override
-            protected String call() throws Exception 
-            {
-            	/*Timer timer = new Timer();
-            	
-	           	timer.schedule(new TimerTask()
-	           	{   
-	               	public void run()
-	               	{   
-		                	System.out.println("上传操作超时...");
-
-		                	// 中断上传操作
-		                	uploadThread.stop();
-		                	
-		                	Platform.runLater(new Runnable() 
-		            		{
-		            		    @Override
-		            		    public void run() 
-		            		    {
-			            	    	compileAndUploadWindow.getAcvView().setColorMsgFont("#FF0000");
-					            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-					            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> Buddy++：上传操作已超时，所有操作已终止！</b>");
-					            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> ===================================================================</b>");
-					            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-		                        }
-		            		});
-	
-		                	this.cancel();
-		                }
-	               	
-	           	}, 5000);// 5秒
-*/	           	 
-            	return null;
-            }
-		};
 		
 		dumpThread 		= new Thread(dumpTask);
 		compileThread 	= new Thread(compileTask);
@@ -1064,6 +1045,9 @@ public class BDCompileAndUploadCtrl
 		                	// 只编译不上传
 		                	if(compileMode.equals(CompileMode.COMPILE))
 		                	{
+		                		// 恢复功能按钮
+		                		setFuncEnable(true);
+		                		
 		                		return;
 		                	}
 		                	
@@ -1158,6 +1142,31 @@ public class BDCompileAndUploadCtrl
 				});
 			}
 		});
+	}
+	
+	public void setFuncEnable(boolean isEnable)
+	{
+		if(isEnable == true)
+		{
+			compileAndUploadWindow.getCompileBtn().setDisable(false);
+			compileAndUploadWindow.getUploadBtn().setDisable(false);
+			compileAndUploadWindow.getCompileAndUploadBtn().setDisable(false);
+		}
+		else
+		{
+			compileAndUploadWindow.getCompileBtn().setDisable(true);
+			compileAndUploadWindow.getUploadBtn().setDisable(true);
+			compileAndUploadWindow.getCompileAndUploadBtn().setDisable(true);
+		}
+		
+	}
+	
+	public void updateSerialPorts()
+	{
+		compileAndUploadWindow.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
+        compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(0);
+        
+        BDParameters.connectCom = this.compileAndUploadWindow.getSerialListCombox().getSelectionModel().getSelectedItem().toString();
 	}
 	
 	public void stopAllThreads()

@@ -33,9 +33,9 @@ public final class BDExampleWindow extends BDWindow
     public BDExampleWindow()
     {
         // 窗口初始化
-        super.init(400, 400);
+        super.init(450, 400);
         
-        scene.getStylesheets().add("style/listViewStyle.css");
+        //scene.getStylesheets().add("style/listViewStyle.css");
         
         // 总在最前方
         this.setAlwaysOnTop(true);
@@ -49,8 +49,8 @@ public final class BDExampleWindow extends BDWindow
         
         importBtn.setStyle("-fx-background-radius: 0, 0;");
        
-        contain.setPadding(new Insets(0, 0, 5, 0));  	// 设置边距
-        contain.setSpacing(5);                    		// 设置间距
+        contain.setPadding(new Insets(0, 0, 10, 0));  	// 设置边距
+        contain.setSpacing(10);                    		// 设置间距
         contain.setAlignment(Pos.CENTER);
 
         tree.setPrefSize(400, 300);

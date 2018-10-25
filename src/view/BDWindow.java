@@ -34,6 +34,8 @@ public class BDWindow extends Stage
         
         // 模态窗口
         this.initModality(Modality.APPLICATION_MODAL);
+        
+        rootPanel.getStylesheets().add("style/modena_dark.css");
 
         //rootPanel.getChildren().add(titlePanel);
         
