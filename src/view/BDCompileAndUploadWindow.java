@@ -57,7 +57,9 @@ public class BDCompileAndUploadWindow extends BDWindow
 	public BDCompileAndUploadWindow()
 	{
 		// 窗口初始化
-        super.init(750, 760);
+        //super.init(750, 760);
+		// 隐藏菜单栏后的尺寸
+		super.init(750, 720);
         
         // 总在最前方
         //this.setAlwaysOnTop(true);
@@ -124,7 +126,8 @@ public class BDCompileAndUploadWindow extends BDWindow
 			this.acvView.setPrefHeight(610);
 			this.progressBar.setPrefSize(750, 40);
 			
-			topPanel.getChildren().add(this.menuBar);
+			// 隐藏菜单栏
+			//topPanel.getChildren().add(this.menuBar);
 			topPanel.getChildren().add(this.btnsBar);
 			
 			root.setTop(topPanel);

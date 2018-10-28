@@ -44,11 +44,17 @@ public class BDParameters
     static public int    txtAreafontSize = 15;       		// 编辑区字体大小
     static public boolean guiIsSimple    = false;    		// 是否简约界面模式
     
-    static public double minWidth		 = 940;
+    /*static public double minWidth		 = 940;
     static public double minHeight	     = 660;
     
     static public double curWidth		 = 940;
-    static public double curHeight	     = 660;
+    static public double curHeight	     = 660;*/
+    
+    static public double minWidth		 = 900;
+    static public double minHeight	     = 690;
+    
+    static public double curWidth		 = 900;
+    static public double curHeight	     = 690;
     
     static public java.util.List<String> serialports;
     

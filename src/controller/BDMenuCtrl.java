@@ -226,29 +226,17 @@ public class BDMenuCtrl
 				saveAsFile();
 			}
 		});
-
+		
 		// 打开例子程序
 		menuView.menuExampleBtn.setOnAction(new EventHandler<ActionEvent>() 
 		{
 			@Override
 			public void handle(ActionEvent event) 
 			{
-
-				// 打开例子
-				/*if (menuView.expWindow.isShowing()) 
-				{
-					menuView.expWindow.close();
-				}*/
-				
-				/*if (BDWindowsManager.expWindow.isShowing()) 
-				{
-					BDWindowsManager.expWindow.close();
-				}*/
-
 				BDWindowsManager.expWindow = new BDExampleWindow();
-				BDExampleWindowCtrl exampleWindowCtrl = new BDExampleWindowCtrl(BDWindowsManager.expWindow, workspaceCtrl);
-
-				// 添加代码标签页
+				new BDExampleWindowCtrl(BDWindowsManager.expWindow, workspaceCtrl);
+				
+				// 打开例程窗口
 				BDWindowsManager.expWindow.show();
 				
 				if(BDParameters.os.equals("Mac OS X"))
@@ -343,32 +331,11 @@ public class BDMenuCtrl
 					return;
 				}*/
 				
-				
 				// ============================================================
 				
 				BDParameters.serialports = BDSerial.list();
-
-				/*if (BDParameters.serialports.isEmpty() || menuView.lbCom.getText().equals("当前串口：未连接"))
-				{
-					menuView.lbCom.setText("当前串口：未连接");
-
-					// 弹出对话框提示用户未接入开发板
-					//menuView.hintDialogWindow.show();
-					BDWindowsManager.hintDialogWindow.show();
-					
-					if(BDParameters.os.equals("Mac OS X"))
-					{
-						return;
-					}
-					
-					// 弹出子窗口与主窗口居中
-					showInTheMiddle(BDWindowsManager.hintDialogWindow);
-
-					// 如果未连接则返回
-					return;
-				}*/
 				
-				if (BDParameters.serialports.isEmpty() || 
+				/*if (BDParameters.serialports.isEmpty() || 
 					BDParameters.connectCom.equals("未连接") ||
 					BDParameters.connectCom.equals(""))
 				{
@@ -385,7 +352,7 @@ public class BDMenuCtrl
 
 					// 如果未连接则返回
 					return;
-				}
+				}*/
 
 				// 串口通讯
 				BDComWindowCtrl comWindowCtrl = new BDComWindowCtrl(BDWindowsManager.comWindow);

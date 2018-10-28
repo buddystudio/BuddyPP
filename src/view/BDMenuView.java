@@ -216,12 +216,12 @@ public class BDMenuView extends HBox
         this.getChildren().add(sp02);
         this.getChildren().add(menuLibBtn);
         this.getChildren().add(menuComBtn);
-        this.getChildren().add(menuVerifyBtn);
+        //this.getChildren().add(menuVerifyBtn);
         this.getChildren().add(menuUploadBtn);
         //this.getChildren().add(menuSettingBtn);
         //this.getChildren().add(menuForumBtn);
 
-        this.getChildren().add(settingPanel);
+        //this.getChildren().add(settingPanel);
         
         // 屏蔽提示标签
         //this.getChildren().add(rightLables);

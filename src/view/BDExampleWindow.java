@@ -33,7 +33,7 @@ public final class BDExampleWindow extends BDWindow
     public BDExampleWindow()
     {
         // 窗口初始化
-        super.init(450, 400);
+        super.init(480, 550);
         
         //scene.getStylesheets().add("style/listViewStyle.css");
         
@@ -53,9 +53,10 @@ public final class BDExampleWindow extends BDWindow
         contain.setSpacing(10);                    		// 设置间距
         contain.setAlignment(Pos.CENTER);
 
-        tree.setPrefSize(400, 300);
+        //tree.setPrefSize(400, 1000);
+        tree.setPrefHeight(800);
        
-        importBtn.setPrefSize(100, 70);
+        importBtn.setPrefSize(100, 30);
        
         rootPanel.getChildren().add(contain);
     }

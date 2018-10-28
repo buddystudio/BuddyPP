@@ -277,8 +277,8 @@ public class BDGUIView
         
         // 初始化主窗口并设置尺寸
         //Scene scene = new Scene(this.root, 1024 - 110, 640 + 10 + 10);
-        Scene scene = new Scene(window, 940, 640 + 10 + 10);
-        //Scene scene = new Scene(window, 680, 740 + 10 + 10);
+        //Scene scene = new Scene(window, 940, 640 + 10 + 10);
+        Scene scene = new Scene(window, 900, 670 + 10 + 10);
         
         this.root.setFocusTraversable(true);
 

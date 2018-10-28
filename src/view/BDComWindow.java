@@ -25,18 +25,20 @@ public class BDComWindow extends BDWindow
     public BorderPane rootContain = new BorderPane();
     
     public TextField sendMsgTxt = new TextField();              	// 发送信息文本
-    public Button sendMsgBtn = new Button("发送");              		// 发送信息按钮
-    public Button ctrlBtn = new Button("开始");						// 控制按钮
-
-    public CheckBox isAutoScroll = new CheckBox("自动滚屏");    		// 是否自动滚屏
-    public CheckBox lineChkBox = new CheckBox("自动换行");      		// 是否自动换行
+    public Button sendMsgBtn 	= new Button("发送");              	// 发送信息按钮
+    public Button updateBtn 	= new Button("刷新");					// 刷新按钮
+    public Button ctrlBtn 		= new Button("开始");					// 控制按钮
+    public Button clearBtn		= new Button("清屏");					// 清屏按钮
+    public CheckBox timeChkBox = new CheckBox("时间");    			// 是否显示时间
+    public CheckBox lineChkBox = new CheckBox("换行");      			// 是否自动换行
+    public ComboBox<String> portComoBox = new ComboBox<String>();  	// 波特率
     public ComboBox<String> rateComoBox = new ComboBox<String>();  	// 波特率
     public TextArea recMsgtxt = new TextArea();                		// 接受信息文本
 
     public BDComWindow() 
     {
         // 窗口初始化
-        super.init(500, 550);
+        super.init(505, 700);
         
         //scene.getStylesheets().add("style/listViewStyle.css");
 
@@ -49,7 +51,7 @@ public class BDComWindow extends BDWindow
         this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
 
-        this.setTitle("  串口通讯");
+        this.setTitle("  串口通讯工具");
         this.setScene(scene);
 
         HBox topPanel = new HBox();
@@ -58,22 +60,26 @@ public class BDComWindow extends BDWindow
         sendMsgTxt.setPrefWidth(400);
         sendMsgBtn.setPrefWidth(80);
 
-        topPanel.setPadding(new Insets(5, 5, 5, 7));    // 设置边距
-        topPanel.setSpacing(5);                       	// 设置间距
+        topPanel.setPadding(new Insets(10, 5, 10, 7));    // 设置边距
+        topPanel.setSpacing(10);                       	// 设置间距
 
-        bottomPanel.setPadding(new Insets(5, 5, 5, 5)); // 设置边距
-        bottomPanel.setSpacing(5);                    	// 设置间距
+        bottomPanel.setPadding(new Insets(10, 5, 10, 5)); // 设置边距
+        bottomPanel.setSpacing(10);                    	// 设置间距
 
         bottomPanel.setAlignment(Pos.CENTER);
 
-        //CheckBox isAutoScroll = new CheckBox("自动滚屏");
-        //CheckBox lineChkBox = new CheckBox("自动换行");
-        //ComboBox rateComoBox = new ComboBox();
-        lineChkBox.setPrefWidth(150);
-        rateComoBox.setPrefWidth(150);
+        lineChkBox.setPrefWidth(80);
+        rateComoBox.setPrefWidth(80);
         rateComoBox.getItems().clear();
         
+        updateBtn.setPrefWidth(80);
+        clearBtn.setPrefWidth(80);
+        sendMsgBtn.setPrefWidth(80);
         ctrlBtn.setPrefWidth(80);
+        
+        sendMsgTxt.setPrefWidth(395);
+        rateComoBox.setPrefWidth(100);
+        
         ctrlBtn.setStyle("-fx-background-radius: 0, 0;");
         
         String[] rates = {"300", "1200", "2400", "4800", "9600", "14400",
@@ -83,17 +89,20 @@ public class BDComWindow extends BDWindow
         rateComoBox.getSelectionModel().select(4);
         rateComoBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
 
-        bottomPanel.getChildren().add(isAutoScroll);
-        bottomPanel.getChildren().add(lineChkBox);
-        bottomPanel.getChildren().add(ctrlBtn);
+        //bottomPanel.getChildren().add(timeChkBox);
+        //bottomPanel.getChildren().add(lineChkBox);
+        bottomPanel.getChildren().add(portComoBox);
+        bottomPanel.getChildren().add(updateBtn);
         bottomPanel.getChildren().add(rateComoBox);
+        bottomPanel.getChildren().add(ctrlBtn);
+        bottomPanel.getChildren().add(clearBtn);
         
         // Disable two checkbox.
-        isAutoScroll.setDisable(true);
-        lineChkBox.setDisable(true);
         
-        sendMsgTxt.setStyle("-fx-text-fill: black; -fx-font-size: 15;-fx-background-radius: 0, 0; -fx-text-inner-color:#ffffff");
+        
+        sendMsgTxt.setStyle("-fx-text-fill: white; -fx-font-size: 15;-fx-background-radius: 0, 0; -fx-text-inner-color:#ffffff");
         sendMsgTxt.setPromptText("输入发送的信息...");
+        
         topPanel.getChildren().add(sendMsgTxt);
         topPanel.getChildren().add(sendMsgBtn);
         
@@ -107,9 +116,13 @@ public class BDComWindow extends BDWindow
         recMsgtxt.setEditable(false);
 
         //TextArea recMsgtxt = new TextArea();
-        rootContain.setTop(topPanel);
+        /*rootContain.setTop(topPanel);
         rootContain.setCenter(recMsgtxt);
-        rootContain.setBottom(bottomPanel);
+        rootContain.setBottom(bottomPanel);*/
+        
+        rootContain.setTop(bottomPanel);
+        rootContain.setCenter(recMsgtxt);
+        rootContain.setBottom(topPanel);
 
     }
 }

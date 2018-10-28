@@ -1151,12 +1151,18 @@ public class BDCompileAndUploadCtrl
 			compileAndUploadWindow.getCompileBtn().setDisable(false);
 			compileAndUploadWindow.getUploadBtn().setDisable(false);
 			compileAndUploadWindow.getCompileAndUploadBtn().setDisable(false);
+			compileAndUploadWindow.getUpdateBtn().setDisable(false);
+			compileAndUploadWindow.getSerialListCombox().setDisable(false);
+			compileAndUploadWindow.getBoardListCombox().setDisable(false);
 		}
 		else
 		{
 			compileAndUploadWindow.getCompileBtn().setDisable(true);
 			compileAndUploadWindow.getUploadBtn().setDisable(true);
 			compileAndUploadWindow.getCompileAndUploadBtn().setDisable(true);
+			compileAndUploadWindow.getUpdateBtn().setDisable(true);
+			compileAndUploadWindow.getSerialListCombox().setDisable(true);
+			compileAndUploadWindow.getBoardListCombox().setDisable(true);
 		}
 		
 	}

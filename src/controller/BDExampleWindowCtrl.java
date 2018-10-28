@@ -137,7 +137,9 @@ public class BDExampleWindowCtrl
         exampleWindow.contain.getChildren().add(exampleWindow.tree);
         exampleWindow.contain.getChildren().add(exampleWindow.importBtn);
         
-        exampleWindow.tree.getStyleClass().add("mylistview"); 
+        exampleWindow.tree.getStyleClass().add("mylistview");
+        
+        exampleWindow.tree.setMinHeight(500);
         
         // Click import button and import the source code file.
         exampleWindow.importBtn.setOnAction(new EventHandler<ActionEvent>() 
