@@ -36,6 +36,9 @@ public class BDGUICtrl
 
     private double xOffset = 0;
     private double yOffset = 0;
+    
+    boolean isDragging = false;
+    boolean isEdged	= false;
 
     private static final Logger logger = LogManager.getLogger();
     //private BDDialogWindow saveWindow = new BDDialogWindow("保存提示", "是否保存当前文件");
@@ -123,7 +126,7 @@ public class BDGUICtrl
             }
         });
 
-        // 点击最大化按钮
+        // 点击最大化按钮(与恢复)
         gui.titlePanel.maxBtn.setOnAction(new EventHandler<ActionEvent>() 
         {
             @Override
@@ -213,7 +216,6 @@ public class BDGUICtrl
                 	
                 	BDParameters.guiIsSimple = false;
             	}
-            	
             }
         });
 
@@ -225,6 +227,115 @@ public class BDGUICtrl
             {
                 xOffset = event.getSceneX();
                 yOffset = event.getSceneY();
+                
+                if(gui.guiModel.isMaximized == false)
+                {
+                	// 记录窗体当前的位置
+                    gui.guiModel.preX = gui.primaryStage.getX();
+                    gui.guiModel.preY = gui.primaryStage.getY();
+                }
+            }
+        });
+        
+        gui.titlePanel.setOnMouseReleased(new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent event) 
+            {
+            	double screenWidth = gui.visualBounds.getWidth();
+            	double screenHeight = gui.visualBounds.getHeight();
+            	
+            	double screenX = event.getScreenX();
+            	double screenY = event.getScreenY();
+            	
+            	double offset = 10;
+
+            	if(isDragging == true)
+            	{
+            		System.out.println("mouse released");
+            		System.out.println("Screen Width: " + screenWidth);
+            		System.out.println("Screen Heigh: " + screenHeight);
+            		System.out.println("y: " + screenY);
+            		System.out.println("x: " + screenX);
+            		
+            		// 记录窗体当前的位置
+                    //gui.guiModel.preX = gui.primaryStage.getX();
+                    //gui.guiModel.preY = gui.primaryStage.getY();
+                    
+                    //BDParameters.curWidth = gui.primaryStage.getWidth();
+                    //BDParameters.curHeight = gui.primaryStage.getHeight();
+            		
+            		// 左边缘
+            		if((screenX < offset) && (screenY > offset))
+            		{
+                        // 窗体依附左边缘
+                        if(BDParameters.os.equals("Mac OS X"))
+                        {
+                        	gui.primaryStage.setX(0);
+                            gui.primaryStage.setY(22);
+                            gui.primaryStage.setWidth(gui.visualBounds.getWidth() / 2);
+                            gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 4);
+                        }
+                        else
+                        {
+                        	gui.primaryStage.setX(-1);
+                            gui.primaryStage.setY(-1);
+                            gui.primaryStage.setWidth(gui.visualBounds.getWidth() / 2 + 2);
+                            gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 2);
+                        }
+                        
+                        isEdged = true;
+            		}
+            		else if((screenX > screenWidth - offset) && (screenY > offset))
+            		{
+            			// 窗体依附右边缘
+                        if(BDParameters.os.equals("Mac OS X"))
+                        {
+                        	gui.primaryStage.setX(gui.visualBounds.getWidth() / 2);
+                            gui.primaryStage.setY(22);
+                            gui.primaryStage.setWidth(gui.visualBounds.getWidth() / 2);
+                            gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 4);
+                        }
+                        else
+                        {
+                        	gui.primaryStage.setX(-1 + gui.visualBounds.getWidth() / 2 + 2);
+                            gui.primaryStage.setY(-1);
+                            gui.primaryStage.setWidth(gui.visualBounds.getWidth() / 2 + 2);
+                            gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 2);
+                        }
+                        
+                        isEdged = true;
+            		}
+            		else if(screenY < offset)
+            		{
+            			// 自定义最大化
+                        if(BDParameters.os.equals("Mac OS X"))
+                        {
+                        	BDParameters.curWidth = gui.primaryStage.getWidth();
+                            BDParameters.curHeight = gui.primaryStage.getHeight();
+                            
+                        	gui.primaryStage.setX(0);
+                            gui.primaryStage.setY(22);
+                            gui.primaryStage.setWidth(gui.visualBounds.getWidth());
+                            gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 4);
+                        }
+                        else
+                        {
+                        	BDParameters.curWidth = gui.primaryStage.getWidth();
+                            BDParameters.curHeight = gui.primaryStage.getHeight();
+                            
+                        	gui.primaryStage.setX(-1);
+                            gui.primaryStage.setY(-1);
+                            gui.primaryStage.setWidth(gui.visualBounds.getWidth() + 2);
+                            gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 2);
+                        }
+                        
+                        // 更新状态标签
+                        gui.guiModel.isMaximized = true;
+            		}
+            		
+            		isDragging = false;
+            	}
             }
         });
 
@@ -234,18 +345,32 @@ public class BDGUICtrl
             @Override
             public void handle(MouseEvent event) 
             {
-                // 如果是最大化则不能拖动（或恢复窗口）
-                if(gui.guiModel.isMaximized == false)
+            	isDragging = true;
+            	
+            	gui.primaryStage.setX(event.getScreenX() - xOffset);
+                gui.primaryStage.setY(event.getScreenY() - yOffset);
+                
+                if(gui.guiModel.isMaximized == true)
                 {
-                	// 不能拖动
-                    gui.primaryStage.setX(event.getScreenX() - xOffset);
+                	/*//gui.primaryStage.setX(event.getScreenX() - gui.primaryStage.getWidth() / 2);
+                    //gui.primaryStage.setY(event.getScreenY() - 20);
+                	
+                	gui.primaryStage.setX(event.getScreenX() - xOffset);
                     gui.primaryStage.setY(event.getScreenY() - yOffset);
-                }
-                else
-                {
-                	// 恢复窗口
+                    
+                    // 恢复原来的尺寸
+                    gui.primaryStage.setWidth(BDParameters.curWidth);
+                    gui.primaryStage.setHeight(BDParameters.curHeight);
+
+                    gui.guiModel.isMaximized = false;*/
+                    
                     setResizeWindow();
-                }   
+                }
+                
+                if(isEdged == true)
+                {
+                	setResizeWindow();
+                }
             }
         });
         
@@ -425,7 +550,19 @@ public class BDGUICtrl
 
             // 更新状态标签
             gui.guiModel.isMaximized = false;
-        } 
+        }
+        else if(isEdged == true)
+        {
+        	// 恢复原来的位置
+            gui.primaryStage.setX(gui.guiModel.preX);
+            gui.primaryStage.setY(gui.guiModel.preY);
+
+            // 恢复原来的尺寸
+            gui.primaryStage.setWidth(BDParameters.curWidth);
+            gui.primaryStage.setHeight(BDParameters.curHeight);
+            
+            isEdged = false;
+        }
         else 
         {
             // 获取分割位置信息
