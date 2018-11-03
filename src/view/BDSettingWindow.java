@@ -231,22 +231,50 @@ public class BDSettingWindow extends BDWindow
     	Label lbl13 = new Label("注释代码");
     	Label lbl14 = new Label("解除注释");
     	
-    	Button btn01 = new Button("保存文件");
-    	Button btn02 = new Button("文本搜索");
-    	Button btn03 = new Button("搜索替换");
-    	Button btn04 = new Button("复制文本");
-    	Button btn05 = new Button("粘贴文本");
-    	Button btn06 = new Button("剪切文本");
-    	Button btn07 = new Button("全选文本");
-    	Button btn08 = new Button("恢复操作");
-    	Button btn09 = new Button("重复操作");
-    	Button btn10 = new Button("整行删除");
-    	Button btn11 = new Button("查找空格");
-    	Button btn12 = new Button("当前参数");
-    	Button btn13 = new Button("注释代码");
-    	Button btn14 = new Button("解除注释");
+    	Button btn01 = new Button("CTRL + S");			// 保存文件
+    	Button btn02 = new Button("CTRL + F");			// 文本搜索
+    	Button btn03 = new Button("CTRL + H");			// 搜索替换
+    	Button btn04 = new Button("CRTL + C");			// 复制文本
+    	Button btn05 = new Button("CTRL + V");			// 粘贴文本
+    	Button btn06 = new Button("CTRL + X");			// 剪切文本
+    	Button btn07 = new Button("CTRL + A");			// 全选文本
+    	Button btn08 = new Button("CTRL + Z");			// 恢复操作
+    	Button btn09 = new Button("CTRL + R");			// 重复操作
+    	Button btn10 = new Button("CTRL + D");			// 整行删除
+    	Button btn11 = new Button("CTRL + K");			// 查找空格
+    	Button btn12 = new Button("CTRL + <");			// 当前参数
+    	Button btn13 = new Button("SHITF + CTRL + /"); 	// 注释代码
+    	Button btn14 = new Button("SHITF + CTRL + \\");	// 注释代码
+    	
+    	btn01.setPrefWidth(200);
+    	btn02.setPrefWidth(200);
+    	btn03.setPrefWidth(200);
+    	btn04.setPrefWidth(200);
+    	btn05.setPrefWidth(200);
+    	btn06.setPrefWidth(200);
+    	btn07.setPrefWidth(200);
+    	btn08.setPrefWidth(200);
+    	btn09.setPrefWidth(200);
+    	btn10.setPrefWidth(200);
+    	btn11.setPrefWidth(200);
+    	btn12.setPrefWidth(200);
+    	btn13.setPrefWidth(200);
+    	btn14.setPrefWidth(200);
     	
     	subContain01.setSpacing(35);
+    	subContain02.setSpacing(35);
+    	subContain03.setSpacing(35);
+    	subContain04.setSpacing(35);
+    	subContain05.setSpacing(35);
+    	subContain06.setSpacing(35);
+    	subContain07.setSpacing(35);
+    	subContain08.setSpacing(35);
+    	subContain09.setSpacing(35);
+    	subContain10.setSpacing(35);
+    	subContain11.setSpacing(35);
+    	subContain12.setSpacing(35);
+    	subContain13.setSpacing(35);
+    	subContain14.setSpacing(35);
     	
     	subContain01.getChildren().addAll(lbl01, btn01);
     	subContain02.getChildren().addAll(lbl02, btn02);
@@ -264,6 +292,7 @@ public class BDSettingWindow extends BDWindow
     	subContain14.getChildren().addAll(lbl14, btn14);
     	
     	ScrollPane scrollPane = new ScrollPane();
+    	
         scrollPane.setContent(contain);
 
     	contain.getChildren().addAll(subContain01, 
@@ -280,6 +309,17 @@ public class BDSettingWindow extends BDWindow
     								 subContain12,
     								 subContain13,
     								 subContain14);
+    	contain.setSpacing(15);
+    	contain.setPadding(new Insets(40, 0, 40, 50));
+    	
+    	for(int i = 0; i < contain.getChildren().size(); i ++)
+    	{
+    		HBox c = (HBox) contain.getChildren().get(i);
+    		
+    		c.setAlignment(Pos.CENTER_LEFT);
+    	}
+    	
+    	
     	
     	return scrollPane;
     }
