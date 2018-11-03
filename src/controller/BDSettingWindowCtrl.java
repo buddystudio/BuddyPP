@@ -89,7 +89,7 @@ public class BDSettingWindowCtrl
     		}
     	}
     	
-    	settingWindow.importBtn.setOnAction(new EventHandler<ActionEvent>() 
+    	settingWindow.submitBtn.setOnAction(new EventHandler<ActionEvent>() 
     	{    
             @Override
             public void handle(ActionEvent event) 

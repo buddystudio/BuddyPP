@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.BDLang;
 import model.BDParameters;
 import model.BDWindowsManager;
 
@@ -91,6 +92,7 @@ public class BDMenuView extends HBox
         ImageView sp01 = new ImageView(image);
         ImageView sp02 = new ImageView(image);
         
+        /*
         Tooltip menuPreSetBtnTip = new Tooltip("预设值");
         
         menuPreSetBtnTip.getStyleClass().add("tip");
@@ -125,7 +127,7 @@ public class BDMenuView extends HBox
         settingPanel.setAlignment(Pos.CENTER_LEFT);
         
         // 设定设置面板的宽度
-        rightLables.setPrefWidth(300);
+        rightLables.setPrefWidth(300);*/
 
         menuOpenBtn.setPrefSize(50, 50);
         menuNewBtn.setPrefSize(50, 50);
@@ -142,22 +144,22 @@ public class BDMenuView extends HBox
         menuSettingBtn.setPrefSize(50, 50);
         menuAboutBtn.setPrefSize(50, 50);
         
-        Tooltip menuOpenBtnTip = new Tooltip("打开");
-        Tooltip menuNewBtnTip = new Tooltip("新建");
-        Tooltip menuSaveBtnTip = new Tooltip("保存");
-        Tooltip menuSaveAsBtnTip = new Tooltip("另存为");
-        Tooltip menuExampleBtnTip = new Tooltip("示例");
-        Tooltip menuUndoBtnTip = new Tooltip("恢复");
-        Tooltip menuRedoBtnTip = new Tooltip("重做");
-        Tooltip menuSearchBtnTip = new Tooltip("搜索");
-        Tooltip menuLibBtnTip = new Tooltip("添加库");
-        Tooltip menuVerifyBtnTip = new Tooltip("编译");
-        Tooltip menuUploadBtnTip = new Tooltip("烧录");
-        Tooltip menuComBtnTip = new Tooltip("串口通讯");
-        Tooltip menuSettingBtnTip = new Tooltip("工具");
-        Tooltip menuForumBtnTip = new Tooltip("关于");
-        //Tooltip menuSettingBtnTip = new Tooltip("设置");
-        //Tooltip menuForumBtnTip = new Tooltip("社区");
+        Tooltip menuOpenBtnTip = new Tooltip(BDLang.rb.getString("打开"));
+        Tooltip menuNewBtnTip = new Tooltip(BDLang.rb.getString("新建"));
+        Tooltip menuSaveBtnTip = new Tooltip(BDLang.rb.getString("保存"));
+        Tooltip menuSaveAsBtnTip = new Tooltip(BDLang.rb.getString("另存为"));
+        Tooltip menuExampleBtnTip = new Tooltip(BDLang.rb.getString("示例"));
+        Tooltip menuUndoBtnTip = new Tooltip(BDLang.rb.getString("恢复"));
+        Tooltip menuRedoBtnTip = new Tooltip(BDLang.rb.getString("重做"));
+        Tooltip menuSearchBtnTip = new Tooltip(BDLang.rb.getString("搜索"));
+        Tooltip menuLibBtnTip = new Tooltip(BDLang.rb.getString("添加库"));
+        Tooltip menuVerifyBtnTip = new Tooltip(BDLang.rb.getString("编译"));
+        Tooltip menuUploadBtnTip = new Tooltip(BDLang.rb.getString("烧录"));
+        Tooltip menuComBtnTip = new Tooltip(BDLang.rb.getString("串口通讯"));
+        Tooltip menuSettingBtnTip = new Tooltip(BDLang.rb.getString("工具"));
+        Tooltip menuForumBtnTip = new Tooltip(BDLang.rb.getString("关于"));
+        //Tooltip menuSettingBtnTip = new Tooltip(BDLang.rb.getString("设置"));
+        //Tooltip menuForumBtnTip = new Tooltip(BDLang.rb.getString("社区"));
 
         menuOpenBtnTip.getStyleClass().add("tip");
         menuNewBtnTip.getStyleClass().add("tip");

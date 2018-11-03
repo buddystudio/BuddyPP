@@ -226,9 +226,9 @@ public class BDGUIView
         window.setTop(this.titlePanel);
         window.setCenter(this.root);
         
-        BDTextAreaConsole consoleTxt = BDTextAreaConsole.getTextAreaConsoleInstance();
+        //BDTextAreaConsole consoleTxt = BDTextAreaConsole.getTextAreaConsoleInstance();
         
-        consoleTxt.gui = this;
+        //consoleTxt.gui = this;
         
         // 为控制台添加右键菜单
         //menu.getItems().addAll(clearMenuItem, copyMenuItem, selectAllMenuItem);

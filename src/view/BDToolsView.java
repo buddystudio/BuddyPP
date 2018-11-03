@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
+import model.BDLang;
 
 /**
  *
@@ -88,7 +89,7 @@ public class BDToolsView extends VBox
         toolsPlugs.getStyleClass().add("ledsBtn");
         
         // 设置弹出的提示信息
-        Tooltip toolsDeTip = new Tooltip("定义变量");
+        /*Tooltip toolsDeTip = new Tooltip("定义变量");
         Tooltip toolsIFTip = new Tooltip("If（条件判断）");
         Tooltip toolsForTip = new Tooltip("For（条件循环）");
         Tooltip toolsWhileTip = new Tooltip("While（条件循环）");
@@ -100,7 +101,21 @@ public class BDToolsView extends VBox
         Tooltip toolsAWTip = new Tooltip("AnalogWrite（模拟端口读取）");
         Tooltip toolsDelayTip = new Tooltip("Delay（延时设置）");
         Tooltip toolsComTip = new Tooltip("Serial（串口通讯）");
-        Tooltip toolsPlugsTip = new Tooltip("扩展工具");
+        Tooltip toolsPlugsTip = new Tooltip("扩展工具");*/
+        
+        Tooltip toolsDeTip = new Tooltip(BDLang.rb.getString("定义变量"));
+        Tooltip toolsIFTip = new Tooltip(BDLang.rb.getString("If（条件判断）"));
+        Tooltip toolsForTip = new Tooltip(BDLang.rb.getString("For（条件循环）"));
+        Tooltip toolsWhileTip = new Tooltip(BDLang.rb.getString("While（条件循环）"));
+        Tooltip toolsSwitchTip = new Tooltip(BDLang.rb.getString("Switch-Case（条件分支）"));
+        Tooltip toolsPinModeTip = new Tooltip(BDLang.rb.getString("PinMode（端口设置）"));
+        Tooltip toolsDRTip = new Tooltip(BDLang.rb.getString("DigitalRead（数字端口读取）"));
+        Tooltip toolsDWTip = new Tooltip(BDLang.rb.getString("DigitalWrite（数字端口写入）"));
+        Tooltip toolsARTip = new Tooltip(BDLang.rb.getString("AnalogRead（模拟端口读取）"));
+        Tooltip toolsAWTip = new Tooltip(BDLang.rb.getString("AnalogWrite（模拟端口读取）"));
+        Tooltip toolsDelayTip = new Tooltip(BDLang.rb.getString("Delay（延时设置）"));
+        Tooltip toolsComTip = new Tooltip(BDLang.rb.getString("Serial（串口通讯）"));
+        Tooltip toolsPlugsTip = new Tooltip(BDLang.rb.getString("扩展工具"));
         
         // 绑定提示信息
         toolsDe.setTooltip(toolsDeTip);

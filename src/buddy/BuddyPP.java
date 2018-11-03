@@ -23,10 +23,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import util.base.Base;
-import util.base.Preferences;
-import util.debug.BDSerial;
-
 import controller.BDGUICtrl;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -45,25 +41,45 @@ public class BuddyPP extends Application
     @Override
     public void start(Stage primaryStage) 
     {
-    	// 返回Java所支持的全部国家和语言的数组
-    	Locale[] localeList = Locale.getAvailableLocales();
-
-    	//遍历数组的每个元素，依次获取所支持的国家和语言
-    	for (int i = 0; i < localeList.length ; i++ )
-    	{
-    		//打印出所支持的国家和语言
-    		//System.out.println(localeList[i].getDisplayCountry() + "=" + localeList[i].getCountry()+ " " + localeList[i].getDisplayLanguage() + "=" + localeList[i].getLanguage());
-    	}
+    	// 设定界面语言
+    	this.setLanguage();
     	
-    	// 取得系统默认的国家/语言环境
-    	Locale myLocale = Locale.getDefault();
-
-    	//BDLang.locale = new Locale("zh", "CN");
-    	BDLang.locale = new Locale("en", "US");
-    	BDLang.rb = ResourceBundle.getBundle("resources.lang.lang", BDLang.locale);
-        System.out.println(BDLang.rb.getString("我们"));
+    	// 设置窗体风格
+        this.setStyle();
     	
-        // 判断系统类型
+    	// 获取系统信息
+    	this.getSysInfo();
+        
+        // 初始化基本配置参数
+        //Base base = new Base(null);
+        
+        //Preferences.init(null);
+        //Preferences.set("upload.verbose", "true");
+        
+        // 获取所有可用的COM端口
+        //java.util.List<String> serialports = BDSerial.list();  
+        
+        //BDParameters.serialports = serialports;
+       
+        /*if(!serialports.isEmpty())
+        {
+        	// 指定串口
+            Preferences.set("serial.port", serialports.get(serialports.size() - 1)); 
+            BDParameters.connectCom = Preferences.get("serial.port");
+        }*/
+
+        // Preferences.save();
+
+        // 初始化界面视图
+        BDGUIView gui = new BDGUIView(primaryStage);
+        
+        // 初始化界面控制器
+        BDGUICtrl guiCtrl = new BDGUICtrl(gui);
+    }
+    
+    private void getSysInfo()
+    {
+    	// 判断系统类型
         String arch = System.getProperty("os.arch");
         String os   = System.getProperty("os.name");
         
@@ -82,35 +98,27 @@ public class BuddyPP extends Application
         else
         {System.out.println("32 bit");}
          */
-        
-        // 初始化基本配置参数
-        Base base = new Base(null);
-        
-        Preferences.init(null);
-        Preferences.set("upload.verbose", "true");
-        
-        // 获取所有可用的COM端口
-        java.util.List<String> serialports = BDSerial.list();  
-        
-        BDParameters.serialports = serialports;
-       
-        if(!serialports.isEmpty())
-        {
-        	// 指定串口
-            Preferences.set("serial.port", serialports.get(serialports.size() - 1)); 
-            BDParameters.connectCom = Preferences.get("serial.port");
-        }
+    }
+    
+    private void setLanguage()
+    {
+    	// 返回Java所支持的全部国家和语言的数组
+    	Locale[] localeList = Locale.getAvailableLocales();
 
-        // Preferences.save();
-        
-        // 设置窗体风格
-        this.setStyle();
+    	//遍历数组的每个元素，依次获取所支持的国家和语言
+    	for (int i = 0; i < localeList.length ; i++ )
+    	{
+    		//打印出所支持的国家和语言
+    		//System.out.println(localeList[i].getDisplayCountry() + "=" + localeList[i].getCountry()+ " " + localeList[i].getDisplayLanguage() + "=" + localeList[i].getLanguage());
+    	}
+    	
+    	// 取得系统默认的国家/语言环境
+    	//Locale myLocale = Locale.getDefault();
 
-        // 初始化界面视图
-        BDGUIView gui = new BDGUIView(primaryStage);
-        
-        // 初始化界面控制器
-        BDGUICtrl guiCtrl = new BDGUICtrl(gui);
+    	//BDLang.locale = new Locale("zh", "CN");
+    	BDLang.locale = new Locale("en", "US");
+    	BDLang.rb = ResourceBundle.getBundle("resources.lang.lang", BDLang.locale);
+        //System.out.println(BDLang.rb.getString("打开"));
     }
     
     private void setStyle()

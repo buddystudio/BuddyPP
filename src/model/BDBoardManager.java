@@ -263,7 +263,7 @@ public class BDBoardManager
 		{
 			boardList.add(boards.get(i).getName());
 			
-			System.out.println(boards.get(i).getName());
+			//System.out.println(boards.get(i).getName());
 		}
 		
 		return boardList;

@@ -284,11 +284,11 @@ public class BDGUICtrl
 
             	if(isDragging == true)
             	{
-            		System.out.println("mouse released");
+            		/*System.out.println("mouse released");
             		System.out.println("Screen Width: " + screenWidth);
             		System.out.println("Screen Heigh: " + screenHeight);
             		System.out.println("y: " + screenY);
-            		System.out.println("x: " + screenX);
+            		System.out.println("x: " + screenX);*/
             		
             		// 记录窗体当前的位置
                     //gui.guiModel.preX = gui.primaryStage.getX();

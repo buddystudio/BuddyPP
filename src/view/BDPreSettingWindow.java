@@ -61,7 +61,8 @@ public class BDPreSettingWindow extends BDWindow
 		combMode.getItems().add(new BoardMap("Buddy LEO", "leonardo"));
 		combMode.getItems().add(new BoardMap("Buddy UNO", "uno"));
 		
-		Map<String, Map<String, String>> mapFile = Base.getMapFile();
+		//Map<String, Map<String, String>> mapFile = Base.getMapFile();
+		Map<String, Map<String, String>> mapFile = null;
 		
 		try
 		{
