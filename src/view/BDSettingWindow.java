@@ -35,7 +35,7 @@ public class BDSettingWindow extends BDWindow
     public BDSettingWindow()
     {
         // 窗口初始化
-        super.init(500, 350);
+        super.init(500, 500);
         
         //scene.getStylesheets().add("style/listViewStyle.css");
         
@@ -46,7 +46,7 @@ public class BDSettingWindow extends BDWindow
         this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
        
-        this.setTitle("  设置主题与字体大小");
+        this.setTitle("  设置");
         this.setScene(scene);
         
         TabPane tabPane = new TabPane();
@@ -66,11 +66,11 @@ public class BDSettingWindow extends BDWindow
         contain.getChildren().add(subContain);
         //contain.getChildren().add(importBtn);
         
-        themeList.setPrefSize(350, 300);
+        themeList.setPrefSize(350, 450);
         themeList.getStyleClass().add("mylistview"); 
         themeList.setStyle("-fx-font-size: 16;");
         
-        sizeList.setPrefSize(150, 300);
+        sizeList.setPrefSize(150, 450);
         sizeList.getStyleClass().add("mylistview"); 
         sizeList.setStyle("-fx-font-size: 16;");
 

@@ -529,6 +529,7 @@ public class BDMenuCtrl
 				}
 				
 				//BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(menuView.consoleWindow);
+				@SuppressWarnings("unused")
 				BDConsoleWindowCtrl consoleWindowCtrl = new BDConsoleWindowCtrl(BDWindowsManager.consoleWindow);
 				// consoleWindowCtrl.setUploadProgressVisable(false);
 

@@ -110,6 +110,7 @@ public class BDSettingWindowCtrl
             	tSize = tSize.replace(" ", "");
             	
             	BDParameters.editorFontSize = tSize;
+            	BDParameters.txtAreafontSize = size;
 
             	for(int i = 0; i < workspaceCtrl.workspaceView.workspaceModel.tabList.size(); i++)
             	{

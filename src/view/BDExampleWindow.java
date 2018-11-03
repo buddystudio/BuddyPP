@@ -23,7 +23,7 @@ public final class BDExampleWindow extends BDWindow
 {
     public ObservableList<String> strList = FXCollections.observableArrayList();
 
-    public Button importBtn = new Button("打开例程");
+    public Button importBtn = new Button("打开文件");
     
     public TreeItem<String> rootItem;
     public TreeView<String> tree = new TreeView<String> ();
@@ -44,7 +44,7 @@ public final class BDExampleWindow extends BDWindow
         this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
        
-        this.setTitle("  请选择例程");
+        this.setTitle("  请选择示例");
         this.setScene(scene);
         
         importBtn.setStyle("-fx-background-radius: 0, 0;");

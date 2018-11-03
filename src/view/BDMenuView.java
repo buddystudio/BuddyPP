@@ -49,7 +49,7 @@ public class BDMenuView extends HBox
     public Button menuSaveBtn      = new Button(); // 保存按钮
     public Button menuSaveAsBtn    = new Button(); // 另存为按钮
     
-    public Button menuExampleBtn   = new Button(); // 例程按钮
+    public Button menuExampleBtn   = new Button(); // 示例按钮
         
     public Button menuUndoBtn      = new Button(); // 恢复按钮
     public Button menuRedoBtn      = new Button(); // 重做按钮
@@ -146,7 +146,7 @@ public class BDMenuView extends HBox
         Tooltip menuNewBtnTip = new Tooltip("新建");
         Tooltip menuSaveBtnTip = new Tooltip("保存");
         Tooltip menuSaveAsBtnTip = new Tooltip("另存为");
-        Tooltip menuExampleBtnTip = new Tooltip("例子");
+        Tooltip menuExampleBtnTip = new Tooltip("示例");
         Tooltip menuUndoBtnTip = new Tooltip("恢复");
         Tooltip menuRedoBtnTip = new Tooltip("重做");
         Tooltip menuSearchBtnTip = new Tooltip("搜索");

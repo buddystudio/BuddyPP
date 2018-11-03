@@ -16,6 +16,7 @@ import util.io.BDCodeWriter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitPane;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseButton;
@@ -52,8 +53,8 @@ public class BDGUICtrl
         //pos = gui.splitPanel.getDividers().get(0).getPosition();
         
         // 获取编辑器参数
-        BDParameters.getEditorProfile();
-        
+        //BDParameters.getEditorProfile();
+
         // 添加菜单操作侦听器
         gui.clearItem.setOnAction(editHandler);
         gui.undoItem.setOnAction(editHandler);
@@ -89,16 +90,45 @@ public class BDGUICtrl
             {
             	// 获取分割位置信息
             	double pos = gui.splitPanel.getDividers().get(0).getPosition();
-            	
+            	            	
             	if(pos > 0.99)
             	{
+            		// 解除锁定右侧面板
+            		SplitPane.setResizableWithParent(gui.consolePanel, true);
+            		
+            		gui.primaryStage.setWidth(BDParameters.curWidth + 200);
+
             		gui.arrowBtn.setImage(gui.iconArrowLeftImg);
             		gui.splitPanel.setDividerPosition(0, 0.5);
             	}
             	else
             	{
-            		gui.arrowBtn.setImage(gui.iconArrowRightImg);
-            		gui.splitPanel.setDividerPosition(0, 1);
+            		Thread thread = new Thread() 
+            		{	 
+                        @Override
+                        public void run() 
+                        {
+                        	gui.primaryStage.setWidth(BDParameters.curWidth);
+                    		
+                    		gui.arrowBtn.setImage(gui.iconArrowRightImg);
+                    		gui.splitPanel.setDividerPosition(0, 1);
+                    		
+                    		try
+							{
+                    			// 稍作延时
+								Thread.sleep(50);
+								
+								// 锁定右侧面板
+	                    		SplitPane.setResizableWithParent(gui.consolePanel, false);
+								
+							} catch (InterruptedException e)
+							{
+								e.printStackTrace();
+							}
+                        }
+                    };
+                    
+                    thread.start();
             	}
             }
         });
@@ -234,6 +264,8 @@ public class BDGUICtrl
                     gui.guiModel.preX = gui.primaryStage.getX();
                     gui.guiModel.preY = gui.primaryStage.getY();
                 }
+                
+                SplitPane.setResizableWithParent(gui.consolePanel, false);
             }
         });
         
@@ -410,8 +442,18 @@ public class BDGUICtrl
     // 
     private void isClose(int index) 
     {
+    	// 关闭窗口时记录当前位置与尺寸
+    	BDParameters.editorPosX = String.valueOf(this.gui.primaryStage.getX());
+    	BDParameters.editorPosY = String.valueOf(this.gui.primaryStage.getY());
+    	
+    	BDParameters.editorWidth = String.valueOf(this.gui.primaryStage.getWidth());
+    	BDParameters.editorHeight = String.valueOf(this.gui.primaryStage.getHeight());
+    	
         if (index < 0) 
         {
+        	// 保存参数
+        	BDParameters.writeProfile();
+        	
             // 关闭窗口
             System.exit(0);
 
@@ -452,6 +494,9 @@ public class BDGUICtrl
                     {
                         // 关闭提示窗口
                         gui.saveWindow.close();
+                        
+                        // 保存参数
+                    	BDParameters.writeProfile();
 
                         // 关闭窗口
                         System.exit(0);
@@ -521,6 +566,9 @@ public class BDGUICtrl
         } 
         else 
         {
+        	// 保存参数
+        	BDParameters.writeProfile();
+        	
             // 关闭窗口
             System.exit(0);
         }

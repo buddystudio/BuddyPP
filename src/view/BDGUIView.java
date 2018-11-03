@@ -275,10 +275,38 @@ public class BDGUIView
         // 添加菜单
         this.addMenuBar();
         
+        BDParameters.getProfile();
+        
+        double edtWidth = BDParameters.defWidth;
+        double edtHeight = BDParameters.defHeight;
+        
+        double edtPosX = Double.parseDouble(BDParameters.editorPosX);
+        double edtPosY = Double.parseDouble(BDParameters.editorPosY);
+        
+        if(BDParameters.editorIsCustom.equals("1"))
+        {
+        	edtWidth = Double.parseDouble(BDParameters.editorWidth);
+            edtHeight = Double.parseDouble(BDParameters.editorHeight);
+            
+        	if(edtWidth < BDParameters.minWidth)
+        	{
+        		edtWidth = BDParameters.minWidth;
+        	}
+        	
+        	if(edtHeight < BDParameters.minHeight)
+        	{
+        		edtHeight = BDParameters.minHeight;
+        	}
+        	
+        	primaryStage.setX(edtPosX);
+            primaryStage.setY(edtPosY);
+        }
+        
         // 初始化主窗口并设置尺寸
         //Scene scene = new Scene(this.root, 1024 - 110, 640 + 10 + 10);
         //Scene scene = new Scene(window, 940, 640 + 10 + 10);
-        Scene scene = new Scene(window, 900, 670 + 10 + 10);
+        //Scene scene = new Scene(window, 900, 670 + 10 + 10);
+        Scene scene = new Scene(window, edtWidth, edtHeight);
         
         this.root.setFocusTraversable(true);
 

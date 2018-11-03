@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,7 +42,7 @@ public class BDParameters
     //static public String txtAreafont     = "Courier New";   // Consolas、Courier New、Courier
     //static public String txtAreafont     = "宋体";
     static public String txtAreafont     = "等线";
-    static public int    txtAreafontSize = 15;       		// 编辑区字体大小
+    static public int    txtAreafontSize = 16;       		// 编辑区字体大小
     static public boolean guiIsSimple    = false;    		// 是否简约界面模式
     
     /*static public double minWidth		 = 940;
@@ -50,8 +51,11 @@ public class BDParameters
     static public double curWidth		 = 940;
     static public double curHeight	     = 660;*/
     
-    static public double minWidth		 = 900;
-    static public double minHeight	     = 690;
+    static public double defWidth		 = 900;
+    static public double defHeight	     = 690;
+    
+    static public double minWidth		 = 800;
+    static public double minHeight	     = 660;
     
     static public double curWidth		 = 900;
     static public double curHeight	     = 690;
@@ -62,6 +66,13 @@ public class BDParameters
     
     static public String editorTheme = "";
     static public String editorFontSize = "";
+    
+    static public String editorIsCustom = "1";
+    static public String editorPosX	= "";
+    static public String editorPosY = "";
+    static public String editorWidth = "";
+    static public String editorHeight = "";
+    
     
     static public String editorProfilePath = "profile/editor.txt";
     
@@ -96,6 +107,130 @@ public class BDParameters
 		} 
 		catch (IOException e) 
 		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    static public void writeProfile()
+    {
+    	
+    	
+    	// 创建一个FileWriter对象
+        FileWriter fw;
+        
+		try 
+		{
+			fw = new FileWriter(editorProfilePath);
+			
+			String codeTxt = "";
+			
+			ArrayList<String> paraList = new ArrayList<String>();
+			
+			/*String line01 = "theme=" + editorTheme + "\n";
+			String line02 = "size=" + editorFontSize + "\n";
+			
+			String line03 = "isCustom=" + editorIsCustom + "\n";
+			String line04 = "posX=" + editorPosX + "\n";
+			String line05 = "posY=" + editorPosY + "\n";
+			String line06 = "width=" + editorWidth + "\n";
+			String line07 = "height=" + editorHeight + "\n";*/
+			
+			paraList.add("theme=" + editorTheme + "\n");
+			paraList.add("size=" + String.valueOf(txtAreafontSize) + "px\n");
+			paraList.add("isCustom=" + editorIsCustom + "\n");
+			paraList.add("posX=" + editorPosX + "\n");
+			paraList.add("posY=" + editorPosY + "\n");
+			paraList.add("width=" + editorWidth + "\n");
+			paraList.add("height=" + editorHeight + "\n");
+			
+			for(int i = 0; i < paraList.size(); i++)
+			{
+				codeTxt += paraList.get(i);
+			}
+	        
+	        fw.write(codeTxt);
+	        
+	        // 刷新缓冲区
+	        fw.flush();     
+	        
+	        // 关闭文件流对象
+	        fw.close();
+	        
+		} 
+		catch (IOException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    static public void getProfile()
+    {
+    	// 读取编辑器配置文件
+    	try 
+		{
+			BufferedReader br;
+			
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(editorProfilePath),"UTF-8"));
+			
+			String line = null;
+
+	        while ((line = br.readLine()) != null) 
+	        {   
+	            String codeTxt = line;
+	            
+	            int eqIndex = codeTxt.indexOf('=');
+	            
+	            if(eqIndex != -1)
+	            {
+	            	String attribute = codeTxt.substring(0, eqIndex);
+	            	String value	 = codeTxt.substring(eqIndex + 1, codeTxt.length());
+	            	
+	            	if(attribute.equals("theme"))
+	            	{
+	            		editorTheme = value;
+	            	}
+	            	
+	            	if(attribute.equals("size"))
+	            	{
+	            		editorFontSize = value.substring(0, value.length() - 2);
+	            	}
+	            	
+	            	if(attribute.equals("isCustom"))
+	            	{
+	            		editorIsCustom = value;
+	            	}
+	            	
+	            	if(attribute.equals("posX"))
+	            	{
+	            		editorPosX = value;
+	            	}
+	            	
+	            	if(attribute.equals("posY"))
+	            	{
+	            		editorPosY = value;
+	            	}
+	            	
+	            	if(attribute.equals("width"))
+	            	{
+	            		editorWidth = value;
+	            	}
+	            	
+	            	if(attribute.equals("height"))
+	            	{
+	            		editorHeight = value;
+	            	}
+	            }
+	        }
+
+	        br.close();
+		} 
+		catch (UnsupportedEncodingException | FileNotFoundException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

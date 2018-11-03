@@ -60,6 +60,8 @@ public class BDCompileAndUploadCtrl
 	private String bd_rate 			= "115200";
 	
 	private int timeOut				= 30000;		// 默认操作30秒超时
+	private String title			= "  编译与上传";	// 窗口标题
+	private double upLoadProgress 	= 0;			// 上传进度
 	
 	private enum WorkMode 
 	{
@@ -94,18 +96,31 @@ public class BDCompileAndUploadCtrl
 		
 		//System.out.println("this.bd_built_path: " + this.bd_built_path);
 		//System.out.println("this.bd_code_path: " + this.bd_code_path);
+		
+		if(compileAndUploadWindow.getSerialListCombox().getValue().equals("未连接"))
+		{
+			// 如果串口未连接屏蔽上传功能（编译且上传）
+			compileAndUploadWindow.getUploadBtn().setDisable(true);
+			compileAndUploadWindow.getCompileAndUploadBtn().setDisable(true);
+		}
+		else
+		{
+			// 恢复上传功能（编译且上传）
+			compileAndUploadWindow.getUploadBtn().setDisable(false);
+			compileAndUploadWindow.getCompileAndUploadBtn().setDisable(false);
+		}
 	}
 
 	public BDCompileAndUploadCtrl(BDCompileAndUploadWindow compileAndUploadWindow)
 	{
 		this.compileAndUploadWindow = compileAndUploadWindow;
-		
+
 		// 在选定文件之前功能按钮不能使用
 		this.compileAndUploadWindow.getCompileBtn().setDisable(true);
 		this.compileAndUploadWindow.getUploadBtn().setDisable(true);
 		this.compileAndUploadWindow.getCompileAndUploadBtn().setDisable(true);
 		this.compileAndUploadWindow.getStopBtn().setDisable(true);
-		
+
 		String user_root_path = System.getProperty("user.dir") + "\\";
 		
 		bd_root_path = user_root_path + "\\arduino-builder-windows\\";
@@ -118,14 +133,14 @@ public class BDCompileAndUploadCtrl
 		bd_avrdude_path 			= bd_root_path + "hardware\\tools\\avr\\bin\\";
 		bd_avrdude_conf 			= bd_root_path + "hardware\\tools\\avr\\etc\\avrdude.conf";
 		
-		System.out.println("你当前的工作目录为 :" + bd_root_path);
+		//System.out.println("你当前的工作目录为 :" + bd_root_path);
 		
 		try
         {
 			// update serial port info.
 			compileAndUploadWindow.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
             compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(0);
-            
+
             // open *.ino file.
 	        this.compileAndUploadWindow.getInoFileMenuItem().setOnAction(new EventHandler<ActionEvent>() 
 			{
@@ -343,6 +358,8 @@ public class BDCompileAndUploadCtrl
 					compileAndUploadWindow.getAcvCtrl().setLineCount(1);
 					compileAndUploadWindow.getAcvCtrl().clear();
 					compileAndUploadWindow.getProgressBar().setProgress(0);
+					
+					compileAndUploadWindow.setTitle(title);
 				}
 			});
 			
@@ -352,10 +369,8 @@ public class BDCompileAndUploadCtrl
 				@Override
 				public void handle(ActionEvent event) 
 				{		
-					
 				}
 			});
-		
         } 
 		catch(Exception e) 
 		{
@@ -363,7 +378,6 @@ public class BDCompileAndUploadCtrl
 		}
 		
 		this.addMessageListener();
-
 	}
 
 	public void executeCommand(String command)
@@ -613,9 +627,20 @@ public class BDCompileAndUploadCtrl
                         	int s = message.indexOf("[") + 1;
                         	int e = message.indexOf("]");
                         	
-                        	double progress = Double.parseDouble(message.substring(s, e)) / 100;
+                        	String value = message.substring(s, e);
+                        	
+                        	double progress = Double.parseDouble(value) / 100;
                         	
                         	compileAndUploadWindow.getProgressBar().setProgress(progress);
+                        	
+                        	Platform.runLater(new Runnable() 
+                        	{
+                        	    @Override
+                        	    public void run() 
+                        	    {
+                        	    	compileAndUploadWindow.setTitle(title + "   初始化：" + value + "%");
+                        	    }
+                        	});
                         }
                         
                         dumpMessage.setMessage(message);
@@ -678,9 +703,27 @@ public class BDCompileAndUploadCtrl
                         	int s = message.indexOf("[") + 1;
                         	int e = message.indexOf("]");
                         	
-                        	double progress = Double.parseDouble(message.substring(s, e)) / 100;
+                        	String value = message.substring(s, e);
+                        	
+                        	double progress = Double.parseDouble(value) / 100;
                         	
                         	compileAndUploadWindow.getProgressBar().setProgress(progress);
+                        	
+                        	Platform.runLater(new Runnable() 
+                        	{
+                        	    @Override
+                        	    public void run() 
+                        	    {
+                        	    	if(progress == 1)
+                        	    	{
+                        	    		compileAndUploadWindow.setTitle(title + "   编译操作已完成");
+                        	    	}
+                        	    	else
+                        	    	{
+                        	    		compileAndUploadWindow.setTitle(title + "   编译进度：" + value + "%");
+                        	    	}
+                        	    }
+                        	});
                         }
                         
                         compileMessage.setMessage("msg_" + message);
@@ -717,6 +760,15 @@ public class BDCompileAndUploadCtrl
                     
                     compileMessage.setMessage("ERROR");
                     //updateMessage("ERROR");
+                    
+                    Platform.runLater(new Runnable() 
+                	{
+                	    @Override
+                	    public void run() 
+                	    {
+                	    	compileAndUploadWindow.setTitle(title + "   编译过程出现错误！");
+                	    }
+                	});
                 }
                 
                 if(isSuccess.equals("SUCCESS"))
@@ -883,44 +935,62 @@ public class BDCompileAndUploadCtrl
                     InputStreamReader errorReader = new InputStreamReader(errorInStream);
                     BufferedReader br2 = new BufferedReader(errorReader);
                     
+                    upLoadProgress = 0;
+                    
                     while((message = br2.readLine()) != null) 
                     {
                     	System.out.println(message);
                     	
                     	uploadMessage.setMessage(message);
-                    	
+
                     	// get the process info.
 			    		if(message.indexOf("avrdude: Version") != -1)
 			    		{
-			    			compileAndUploadWindow.getProgressBar().setProgress(0.2);
+			    			upLoadProgress = 0.2;
+			    			
+			    			compileAndUploadWindow.getProgressBar().setProgress(upLoadProgress);
 			    		}
 			    		else if(message.indexOf("Connecting to programmer") != -1)
 			    		{
-			    			compileAndUploadWindow.getProgressBar().setProgress(0.3);
+			    			upLoadProgress = 0.3;
+			    			
+			    			compileAndUploadWindow.getProgressBar().setProgress(upLoadProgress);	
 			    		}
 			    		else if(message.indexOf("avrdude: AVR device initialized and ready to accept instructions") != -1)
 			    		{
-			    			compileAndUploadWindow.getProgressBar().setProgress(0.4);
+			    			upLoadProgress = 0.4;
+			    			
+			    			compileAndUploadWindow.getProgressBar().setProgress(upLoadProgress);
 			    		}
 			    		else if(message.indexOf("avrdude: Device signature") != -1)
 			    		{
-			    			compileAndUploadWindow.getProgressBar().setProgress(0.5);
+			    			upLoadProgress = 0.5;
+			    			
+			    			compileAndUploadWindow.getProgressBar().setProgress(upLoadProgress);
 			    		}
 			    		else if(message.indexOf("avrdude: writing flash") != -1)
 			    		{
-			    			compileAndUploadWindow.getProgressBar().setProgress(0.7);
+			    			upLoadProgress = 0.7;
+			    			
+			    			compileAndUploadWindow.getProgressBar().setProgress(upLoadProgress);
 			    		}
 			    		else if(message.indexOf("avrdude: verifying flash memory against") != -1)
 			    		{
-			    			compileAndUploadWindow.getProgressBar().setProgress(0.8);
+			    			upLoadProgress = 0.8;
+			    			
+			    			compileAndUploadWindow.getProgressBar().setProgress(upLoadProgress);
 			    		}
 			    		else if(message.indexOf("avrdude: verifying ...") != -1)
 			    		{
-			    			compileAndUploadWindow.getProgressBar().setProgress(0.9);
+			    			upLoadProgress = 0.9;
+			    			
+			    			compileAndUploadWindow.getProgressBar().setProgress(upLoadProgress);
 			    		}
 			    		else if(message.indexOf("avrdude done.  Thank you.") != -1)
 			    		{
-			    			compileAndUploadWindow.getProgressBar().setProgress(1);
+			    			upLoadProgress = 1;
+			    			
+			    			compileAndUploadWindow.getProgressBar().setProgress(upLoadProgress);
 			    			
 			    			uploadMessage.setMessage("msg_" + "");
 	                		uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：上传操作已经结束！");
@@ -932,6 +1002,22 @@ public class BDCompileAndUploadCtrl
 	                		// 关闭计时器
 	                		timer.cancel();
 			    		}
+			    		
+			    		Platform.runLater(new Runnable() 
+                    	{
+                    	    @Override
+                    	    public void run() 
+                    	    {
+                    	    	if(upLoadProgress == 1)
+                    	    	{
+                    	    		compileAndUploadWindow.setTitle(title + "   上传操作已完成");
+                    	    	}
+                    	    	else
+                    	    	{
+                    	    		compileAndUploadWindow.setTitle(title + "   上传进度：" + (upLoadProgress * 100) + "%");
+                    	    	}
+                    	    }
+                    	});
 
                     	//  设置延时
                         Thread.sleep(25);
@@ -946,6 +1032,15 @@ public class BDCompileAndUploadCtrl
                     e.printStackTrace();
                     
                     //updateMessage("ERROR");
+                    
+                    Platform.runLater(new Runnable() 
+                	{
+                	    @Override
+                	    public void run() 
+                	    {
+                	    	compileAndUploadWindow.setTitle(title + "   上传过程出现错误！");
+                	    }
+                	});
                 }
                 
                 //updateMessage("COMPLETE");
@@ -1173,6 +1268,21 @@ public class BDCompileAndUploadCtrl
         compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(0);
         
         BDParameters.connectCom = this.compileAndUploadWindow.getSerialListCombox().getSelectionModel().getSelectedItem().toString();
+        
+        //System.out.println(compileAndUploadWindow.getSerialListCombox().getValue());
+
+		if(compileAndUploadWindow.getSerialListCombox().getValue().equals("未连接"))
+		{
+			// 如果串口未连接屏蔽上传功能（编译且上传）
+			compileAndUploadWindow.getUploadBtn().setDisable(true);
+			compileAndUploadWindow.getCompileAndUploadBtn().setDisable(true);
+		}
+		else
+		{
+			// 恢复上传功能（编译且上传）
+			compileAndUploadWindow.getUploadBtn().setDisable(false);
+			compileAndUploadWindow.getCompileAndUploadBtn().setDisable(false);
+		}
 	}
 	
 	public void stopAllThreads()
@@ -1212,6 +1322,15 @@ public class BDCompileAndUploadCtrl
             	
         		// 关闭计时器
         		timer.cancel();
+        		
+        		Platform.runLater(new Runnable() 
+            	{
+            	    @Override
+            	    public void run() 
+            	    {
+            	    	compileAndUploadWindow.setTitle(title + "   用户已终止所有操作！");
+            	    }
+            	});
         	}
     	}
     	catch(Exception ex){}

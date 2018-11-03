@@ -14,6 +14,9 @@
  */
 package buddy;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -27,6 +30,7 @@ import util.debug.BDSerial;
 import controller.BDGUICtrl;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.BDLang;
 import model.BDParameters;
 import view.BDGUIView;
 
@@ -41,7 +45,24 @@ public class BuddyPP extends Application
     @Override
     public void start(Stage primaryStage) 
     {
+    	// 返回Java所支持的全部国家和语言的数组
+    	Locale[] localeList = Locale.getAvailableLocales();
 
+    	//遍历数组的每个元素，依次获取所支持的国家和语言
+    	for (int i = 0; i < localeList.length ; i++ )
+    	{
+    		//打印出所支持的国家和语言
+    		//System.out.println(localeList[i].getDisplayCountry() + "=" + localeList[i].getCountry()+ " " + localeList[i].getDisplayLanguage() + "=" + localeList[i].getLanguage());
+    	}
+    	
+    	// 取得系统默认的国家/语言环境
+    	Locale myLocale = Locale.getDefault();
+
+    	//BDLang.locale = new Locale("zh", "CN");
+    	BDLang.locale = new Locale("en", "US");
+    	BDLang.rb = ResourceBundle.getBundle("resources.lang.lang", BDLang.locale);
+        System.out.println(BDLang.rb.getString("我们"));
+    	
         // 判断系统类型
         String arch = System.getProperty("os.arch");
         String os   = System.getProperty("os.name");
