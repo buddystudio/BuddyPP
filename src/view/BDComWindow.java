@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 /**
  *
@@ -24,21 +25,21 @@ public class BDComWindow extends BDWindow
 {
     public BorderPane rootContain = new BorderPane();
     
-    public TextField sendMsgTxt = new TextField();              	// 发送信息文本
-    public Button sendMsgBtn 	= new Button("发送");              	// 发送信息按钮
-    public Button updateBtn 	= new Button("刷新");					// 刷新按钮
-    public Button ctrlBtn 		= new Button("开始");					// 控制按钮
-    public Button clearBtn		= new Button("清屏");					// 清屏按钮
-    public CheckBox timeChkBox = new CheckBox("时间");    			// 是否显示时间
-    public CheckBox lineChkBox = new CheckBox("换行");      			// 是否自动换行
-    public ComboBox<String> portComoBox = new ComboBox<String>();  	// 波特率
-    public ComboBox<String> rateComoBox = new ComboBox<String>();  	// 波特率
-    public TextArea recMsgtxt = new TextArea();                		// 接受信息文本
+    public TextField sendMsgTxt = new TextField();              			// 发送信息文本
+    public Button sendMsgBtn 	= new Button(BDLang.rb.getString("发送"));   // 发送信息按钮
+    public Button updateBtn 	= new Button(BDLang.rb.getString("刷新"));	// 刷新按钮
+    public Button ctrlBtn 		= new Button(BDLang.rb.getString("开始"));	// 控制按钮
+    public Button clearBtn		= new Button(BDLang.rb.getString("清屏"));	// 清屏按钮
+    public CheckBox timeChkBox = new CheckBox(BDLang.rb.getString("时间"));  // 是否显示时间
+    public CheckBox lineChkBox = new CheckBox(BDLang.rb.getString("换行"));  // 是否自动换行
+    public ComboBox<String> portComoBox = new ComboBox<String>();  			// 波特率
+    public ComboBox<String> rateComoBox = new ComboBox<String>();  			// 波特率
+    public TextArea recMsgtxt = new TextArea();                				// 接受信息文本
 
     public BDComWindow() 
     {
         // 窗口初始化
-        super.init(505, 700);
+        super.init(550, 700);
         
         //scene.getStylesheets().add("style/listViewStyle.css");
 
@@ -51,20 +52,17 @@ public class BDComWindow extends BDWindow
         this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
 
-        this.setTitle("  串口通讯工具");
+        this.setTitle("  " + BDLang.rb.getString("串口通讯工具"));
         this.setScene(scene);
 
         HBox topPanel = new HBox();
         HBox bottomPanel = new HBox();
 
-        sendMsgTxt.setPrefWidth(400);
-        sendMsgBtn.setPrefWidth(80);
+        topPanel.setPadding(new Insets(10, 5, 10, 7));    	// 设置边距
+        topPanel.setSpacing(10);                       		// 设置间距
 
-        topPanel.setPadding(new Insets(10, 5, 10, 7));    // 设置边距
-        topPanel.setSpacing(10);                       	// 设置间距
-
-        bottomPanel.setPadding(new Insets(10, 5, 10, 5)); // 设置边距
-        bottomPanel.setSpacing(10);                    	// 设置间距
+        bottomPanel.setPadding(new Insets(10, 5, 10, 5)); 	// 设置边距
+        bottomPanel.setSpacing(10);                    		// 设置间距
 
         bottomPanel.setAlignment(Pos.CENTER);
 
@@ -77,10 +75,12 @@ public class BDComWindow extends BDWindow
         sendMsgBtn.setPrefWidth(80);
         ctrlBtn.setPrefWidth(80);
         
-        sendMsgTxt.setPrefWidth(395);
+        sendMsgTxt.setPrefWidth(445);
         rateComoBox.setPrefWidth(100);
         
         ctrlBtn.setStyle("-fx-background-radius: 0, 0;");
+        
+        portComoBox.setPrefWidth(155);
         
         String[] rates = {"300", "1200", "2400", "4800", "9600", "14400",
             "19200", "28800", "38400", "57600", "115200"};
@@ -97,11 +97,8 @@ public class BDComWindow extends BDWindow
         bottomPanel.getChildren().add(ctrlBtn);
         bottomPanel.getChildren().add(clearBtn);
         
-        // Disable two checkbox.
-        
-        
         sendMsgTxt.setStyle("-fx-text-fill: white; -fx-font-size: 15;-fx-background-radius: 0, 0; -fx-text-inner-color:#ffffff");
-        sendMsgTxt.setPromptText("输入发送的信息...");
+        sendMsgTxt.setPromptText(BDLang.rb.getString("输入发送的信息") + "...");
         
         topPanel.getChildren().add(sendMsgTxt);
         topPanel.getChildren().add(sendMsgBtn);

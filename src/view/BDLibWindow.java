@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 /**
  *
@@ -22,7 +23,7 @@ public class BDLibWindow extends BDWindow
 { 
     public ObservableList<String> strList = FXCollections.observableArrayList();
     public ListView<String> listView = new ListView<>(strList);
-    public Button importBtn = new Button("导入");
+    public Button importBtn = new Button(BDLang.rb.getString("导入"));
     
     public BDLibWindow()
     {
@@ -38,7 +39,7 @@ public class BDLibWindow extends BDWindow
         this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
        
-        this.setTitle("  请选择导入库");
+        this.setTitle("  " + BDLang.rb.getString("请选择导入库"));
         this.setScene(scene);
        
         VBox contain  = new VBox();

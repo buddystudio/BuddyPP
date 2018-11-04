@@ -28,6 +28,9 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import model.BDLang;
 import model.BDParameters;
+import util.base.Base;
+import util.base.Preferences;
+import util.debug.BDSerial;
 import view.BDGUIView;
 
 /**
@@ -43,6 +46,9 @@ public class BuddyPP extends Application
     {
     	// 获取配置信息
     	BDParameters.getProfile();
+    	
+    	// 初始化基本配置参数
+        Preferences.init(null);
     	
     	// 获取系统信息
     	this.getSysInfo();

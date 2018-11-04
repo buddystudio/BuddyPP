@@ -20,7 +20,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
-
+import model.BDLang;
 import model.BDParameters;
 import view.BDComWindow;
 
@@ -60,7 +60,7 @@ public class BDComWindowCtrl implements BDMessageConsumer
 				serial.dispose();
 			}
 			
-			bdComWindow.ctrlBtn.setText("开始");
+			bdComWindow.ctrlBtn.setText(BDLang.rb.getString("开始"));
 			bdComWindow.recMsgtxt.setText("");
 			bdComWindow.close();			
 		});
@@ -109,7 +109,7 @@ public class BDComWindowCtrl implements BDMessageConsumer
 			@Override
 			public void handle(ActionEvent event) 
 			{
-				if(bdComWindow.ctrlBtn.getText().equals("开始"))
+				if(bdComWindow.ctrlBtn.getText().equals(BDLang.rb.getString("开始")))
 				{
 					// 设定波特率
 					curComRate = comWindow.rateComoBox.getValue().toString();
@@ -117,12 +117,12 @@ public class BDComWindowCtrl implements BDMessageConsumer
 					// 设定串口号
 					serialPort = comWindow.portComoBox.getValue().toString();
 					
-					if(serialPort == null || serialPort.equals("未连接"))
+					if(serialPort == null || serialPort.equals(BDLang.rb.getString("未连接")))
 					{
 						return;
 					}
 					
-					bdComWindow.ctrlBtn.setText("暂停");
+					bdComWindow.ctrlBtn.setText(BDLang.rb.getString("暂停"));
 					
 					stopSerialPort();
 					openSerialPort();
@@ -134,7 +134,7 @@ public class BDComWindowCtrl implements BDMessageConsumer
 				}
 				else
 				{
-					bdComWindow.ctrlBtn.setText("开始");
+					bdComWindow.ctrlBtn.setText(BDLang.rb.getString("开始"));
 					
 					stopSerialPort();
 					
@@ -250,7 +250,7 @@ public class BDComWindowCtrl implements BDMessageConsumer
 		}
 		else
 		{
-			bdComWindow.portComoBox.setValue("未连接");
+			bdComWindow.portComoBox.setValue(BDLang.rb.getString("未连接"));
 		}
 	}
 }

@@ -36,7 +36,7 @@ public class BDSerialManager2
         }
         else
         {
-        	serialList = FXCollections.observableArrayList("未连接");
+        	serialList = FXCollections.observableArrayList(BDLang.rb.getString("未连接"));
         }
         
         return serialList;
