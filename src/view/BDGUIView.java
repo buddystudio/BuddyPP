@@ -275,7 +275,7 @@ public class BDGUIView
         // 添加菜单
         this.addMenuBar();
         
-        BDParameters.getProfile();
+        //BDParameters.getProfile();
         
         double edtWidth = BDParameters.defWidth;
         double edtHeight = BDParameters.defHeight;

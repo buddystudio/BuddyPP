@@ -113,15 +113,25 @@ public class BDCompileAndUploadWindow extends BDWindow
 			boardListCombox.getSelectionModel().select(0);
 			boardListCombox.setMaxWidth(250);
 		
-			this.btnsBar.getChildren().addAll(/*openBtn,*/ 
+			/*this.btnsBar.getChildren().addAll(openBtn, 
 											  compileBtn, 
-											  /*uploadBtn,*/ 
+											  uploadBtn, 
 											  compileAndUploadBtn, 
 											  stopBtn, 
 											  clearBtn, 
 											  serialListCombox, 
 											  updateBtn, 
-											  boardListCombox);
+											  boardListCombox);*/
+			
+			this.btnsBar.getChildren().addAll( 
+											 serialListCombox, 
+											 updateBtn, 
+											 boardListCombox,
+											 compileBtn, 
+											 compileAndUploadBtn,
+											 stopBtn, 
+											 clearBtn
+											 );
 		
 			this.acvView.setPrefHeight(610);
 			this.progressBar.setPrefSize(750, 40);

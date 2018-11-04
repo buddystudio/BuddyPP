@@ -29,7 +29,7 @@ public class BDParameters
     static public int variableId         = 0;        		// 循环计数变量序号
     
     static public String version         = "1.2.0-beta";  	// 软件版本号
-    static public String langues         = "zh-cn";  		// 语言
+    static public String langues         = "简体中文";  		// 语言
     static public String organization	= "BuddyStudio";	// 开发组织
     static public String author			= "李宝智、郭少豪";		// 开发者署名
     
@@ -73,49 +73,12 @@ public class BDParameters
     static public String editorWidth = "";
     static public String editorHeight = "";
     
+    static public String tempPath = "";
     
     static public String editorProfilePath = "profile/editor.txt";
     
-    static public void setEditorProfile(String theme, String fontSize)
-    {
-    	// 去除字符串中的空格
-    	editorTheme = theme;
-    	editorFontSize = fontSize.replace(" ", "");
-    	
-    	// 创建一个FileWriter对象
-        FileWriter fw;
-        
-		try 
-		{
-			fw = new FileWriter(editorProfilePath);
-			
-			String codeTxt = "";
-			
-			String line1 = "theme=" + editorTheme + "\n";
-			String line2 = "size=" + editorFontSize + "\n";
-			
-			codeTxt = line1 + line2;
-	        
-	        fw.write(codeTxt);
-	        
-	        // 刷新缓冲区
-	        fw.flush();     
-	        
-	        // 关闭文件流对象
-	        fw.close();
-	        
-		} 
-		catch (IOException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
     static public void writeProfile()
     {
-    	
-    	
     	// 创建一个FileWriter对象
         FileWriter fw;
         
@@ -127,15 +90,6 @@ public class BDParameters
 			
 			ArrayList<String> paraList = new ArrayList<String>();
 			
-			/*String line01 = "theme=" + editorTheme + "\n";
-			String line02 = "size=" + editorFontSize + "\n";
-			
-			String line03 = "isCustom=" + editorIsCustom + "\n";
-			String line04 = "posX=" + editorPosX + "\n";
-			String line05 = "posY=" + editorPosY + "\n";
-			String line06 = "width=" + editorWidth + "\n";
-			String line07 = "height=" + editorHeight + "\n";*/
-			
 			paraList.add("theme=" + editorTheme + "\n");
 			paraList.add("size=" + String.valueOf(txtAreafontSize) + "px\n");
 			paraList.add("isCustom=" + editorIsCustom + "\n");
@@ -143,6 +97,8 @@ public class BDParameters
 			paraList.add("posY=" + editorPosY + "\n");
 			paraList.add("width=" + editorWidth + "\n");
 			paraList.add("height=" + editorHeight + "\n");
+			paraList.add("lang=" + langues + "\n");
+			paraList.add("tempPath=" + tempPath + "\n");
 			
 			for(int i = 0; i < paraList.size(); i++)
 			{
@@ -221,6 +177,17 @@ public class BDParameters
 	            	{
 	            		editorHeight = value;
 	            	}
+	            	
+	            	if(attribute.equals("lang"))
+	            	{
+	            		langues = value;
+	            	}
+	            	
+	            	if(attribute.equals("tempPath"))
+	            	{
+	            		//tempPath = value;
+	            		tempPath = System.getProperty("java.io.tmpdir");
+	            	}
 	            }
 	        }
 
@@ -228,11 +195,11 @@ public class BDParameters
 		} 
 		catch (UnsupportedEncodingException | FileNotFoundException e) 
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		} 
+    	catch (IOException e) 
+    	{
+			
 		}
     }
     

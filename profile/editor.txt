@@ -1,7 +1,9 @@
 theme=xcode
 size=16px
 isCustom=0
-posX=510.0
-posY=113.0
+posX=522.0
+posY=146.0
 width=900.0
 height=690.0
+lang=简体中文
+tempPath=C:\Users\gsh\AppData\Local\Temp\

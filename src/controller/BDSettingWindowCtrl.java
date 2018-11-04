@@ -6,13 +6,15 @@
 package controller;
 
 import java.io.File;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-
+import model.BDLang;
 import model.BDParameters;
 import view.BDSettingWindow;
 
@@ -89,6 +91,16 @@ public class BDSettingWindowCtrl
     		}
     	}
     	
+    	settingWindow.cancelBtn.setOnAction(new EventHandler<ActionEvent>() 
+    	{    
+            @Override
+            public void handle(ActionEvent event) 
+            {
+                // 关闭窗口
+            	settingWindow.close();
+            }
+        });
+    	
     	settingWindow.submitBtn.setOnAction(new EventHandler<ActionEvent>() 
     	{    
             @Override
@@ -98,7 +110,8 @@ public class BDSettingWindowCtrl
             	String fontSize = settingWindow.sizeList.getSelectionModel().getSelectedItem();
             	
             	// 写入新的编辑器参数
-            	BDParameters.setEditorProfile(theme, fontSize);
+            	BDParameters.editorTheme = theme;
+            	BDParameters.editorFontSize = fontSize.replace(" ", "");
 
             	int size = Integer.parseInt(BDParameters.editorFontSize.substring(0, BDParameters.editorFontSize.length() - 2));
             	
@@ -117,6 +130,36 @@ public class BDSettingWindowCtrl
             		workspaceCtrl.workspaceView.workspaceModel.tabList.get(i).editorCtrl.setTheme(BDParameters.editorTheme);
             		workspaceCtrl.workspaceView.workspaceModel.tabList.get(i).editorCtrl.setFontSize(size);
             	}
+            	
+            	// 更新语言
+            	String lang = settingWindow.langList.getSelectionModel().getSelectedItem().toString();
+            	
+            	if(lang.equals("简体中文"))
+            	{
+            		BDLang.locale = new Locale("zh", "CN");
+            	}
+            	else if(lang.equals("繁體中文"))
+            	{
+            		BDLang.locale = new Locale("zh", "HK");
+            	}
+            	else if(lang.equals("English"))
+            	{
+            		BDLang.locale = new Locale("en", "US");
+            	}
+            	
+            	BDParameters.langues = lang;
+            	
+            	if(settingWindow.isCustomChk.isSelected() == true)
+            	{
+            		BDParameters.editorIsCustom = "1";
+            	}
+            	else
+            	{
+            		BDParameters.editorIsCustom = "0";
+            	}
+            	
+            	// 把新的参数写入配置文件
+            	BDParameters.writeProfile();
 
                 // 关闭窗口
             	settingWindow.close();

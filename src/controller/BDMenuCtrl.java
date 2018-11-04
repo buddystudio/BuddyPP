@@ -480,7 +480,8 @@ public class BDMenuCtrl
 				BDParameters.connectCom = cauwView.getSerialListCombox().getSelectionModel().getSelectedItem().toString();
 				
 				// 获取临时文件
-				String tempPath = System.getProperty("java.io.tmpdir") + "BDTmpPath";
+				//String tempPath = System.getProperty("java.io.tmpdir") + "BDTmpPath";
+				String tempPath = BDParameters.tempPath + "BDTmpPath";
 				String builtPath = tempPath + File.separator + "Built";
 				String codePath = tempPath + File.separator + "Code";
 
@@ -491,6 +492,7 @@ public class BDMenuCtrl
 				String code = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode();
 				workspaceCtrl.workspaceView.workspaceModel.curTab.code.setCodeText(code);
 
+				
 				cauwCtrl.openFileFromCode(builtPath + File.separator, codePath + File.separator);
 				
 				try 

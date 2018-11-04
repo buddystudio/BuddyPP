@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.util.Locale;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -25,6 +27,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.StageStyle;
+import model.BDLang;
+import model.BDParameters;
 
 /**
  *
@@ -40,6 +44,10 @@ public class BDSettingWindow extends BDWindow
     
     public Button submitBtn = new Button("确定");
     public Button cancelBtn = new Button("取消");
+    
+    public ComboBox<String> langList;
+    
+    public CheckBox isCustomChk;
     
     public BDSettingWindow()
     {
@@ -61,11 +69,7 @@ public class BDSettingWindow extends BDWindow
         TabPane tabPane = new TabPane();
         
         //tabPane.setSide(Side.LEFT);
-        
-        // 编辑器----
 
-        
-        
         Tab tabBase 	= new Tab("  通用  ");
         Tab tabEditor 	= new Tab("  编辑器  ");
         Tab tabHotKey 	= new Tab("  快捷键  ");
@@ -116,27 +120,50 @@ public class BDSettingWindow extends BDWindow
     	HBox subContain03 	= new HBox();
     	
     	Label lbl01 = new Label("选择语言");
-    	ComboBox<String> langList = new ComboBox<String>(FXCollections.observableArrayList("简体中文", "繁體中文", "English"));
+    	
+    	langList = new ComboBox<String>(FXCollections.observableArrayList("简体中文", "繁體中文", "English"));
     	
     	langList.setPrefWidth(180);
-    	langList.getSelectionModel().select(0);
+
+    	if(BDParameters.langues.equals("简体中文"))
+    	{
+    		langList.getSelectionModel().select("简体中文");
+    	}
+    	else if(BDParameters.langues.equals("繁體中文"))
+    	{
+    		langList.getSelectionModel().select("繁體中文");
+    	}
+    	else if(BDParameters.langues.equals("English"))
+    	{
+    		langList.getSelectionModel().select("English");
+    	}
+    	else
+    	{
+    		langList.getSelectionModel().select(0);
+    	}
+    	
+    	Label lbl_lan = new Label("重启后生效");
+    	
+    	lbl_lan.setStyle("-fx-text-fill: #777777;");
     	
     	subContain01.setSpacing(35);
-    	subContain01.setPadding(new Insets(40, 0, 10, 50));  // 设置边距
+    	subContain01.setPadding(new Insets(40, 0, 30, 50));  // 设置边距
     	subContain01.setAlignment(Pos.CENTER_LEFT);
     	
-    	subContain01.getChildren().addAll(lbl01, langList);
+    	subContain01.getChildren().addAll(lbl01, langList, lbl_lan);
     	
     	Label lbl02 = new Label("临时目录");
     	
     	VBox pathContain = new VBox();
-    	
+
     	TextField pathTxt = new TextField();
     	Button changeBtn	= new Button("更改目录");
     	Label lbl = new Label("编译过程中所产生文件的放置目录");
     	
+    	pathTxt.setText(BDParameters.tempPath);
     	pathTxt.setPrefWidth(300);
     	changeBtn.setPrefWidth(120);
+    	changeBtn.setDisable(true);
     	lbl.setStyle("-fx-text-fill: #777777;");
     	
     	pathContain.setPadding(new Insets(-5, 0, 0, 0));  // 设置边距
@@ -148,12 +175,22 @@ public class BDSettingWindow extends BDWindow
     	subContain02.getChildren().addAll(lbl02, pathContain);
     	
     	Label lbl03 = new Label("通用选项");
-    	CheckBox isCustomChk = new CheckBox("启动时恢复上一次窗口状态");
+    	isCustomChk = new CheckBox("启动时恢复上一次窗口状态");
     	CheckBox isUpdateNoticeChk = new CheckBox("有版本更新时通知我");
     	
     	// 默认选项
     	isCustomChk.setSelected(true);
     	isUpdateNoticeChk.setSelected(true);
+    	
+    	// 是否选中恢复上一次窗口状态
+    	if(BDParameters.editorIsCustom.equals("1"))
+    	{
+    		isCustomChk.setSelected(true);
+    	}
+    	else
+    	{
+    		isCustomChk.setSelected(false);
+    	}
     	
     	VBox optsContain = new VBox();
     	
@@ -246,6 +283,21 @@ public class BDSettingWindow extends BDWindow
     	Button btn13 = new Button("SHITF + CTRL + /"); 	// 注释代码
     	Button btn14 = new Button("SHITF + CTRL + \\");	// 注释代码
     	
+    	btn01.setDisable(true);
+    	btn02.setDisable(true);
+    	btn03.setDisable(true);
+    	btn04.setDisable(true);
+    	btn05.setDisable(true);
+    	btn06.setDisable(true);
+    	btn07.setDisable(true);
+    	btn08.setDisable(true);
+    	btn09.setDisable(true);
+    	btn10.setDisable(true);
+    	btn11.setDisable(true);
+    	btn12.setDisable(true);
+    	btn13.setDisable(true);
+    	btn14.setDisable(true);
+    	
     	btn01.setPrefWidth(200);
     	btn02.setPrefWidth(200);
     	btn03.setPrefWidth(200);
@@ -310,7 +362,7 @@ public class BDSettingWindow extends BDWindow
     								 subContain13,
     								 subContain14);
     	contain.setSpacing(15);
-    	contain.setPadding(new Insets(40, 0, 40, 50));
+    	contain.setPadding(new Insets(15, 0, 15, 50));
     	
     	for(int i = 0; i < contain.getChildren().size(); i ++)
     	{

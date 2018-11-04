@@ -8,7 +8,7 @@
  * 
  * @author gsh
  * @version 1.0
- * @date 2015.12.1
+ * @date 2018.11.4
  *
  *************************************************************************
  */
@@ -41,34 +41,17 @@ public class BuddyPP extends Application
     @Override
     public void start(Stage primaryStage) 
     {
-    	// 设定界面语言
-    	this.setLanguage();
-    	
-    	// 设置窗体风格
-        this.setStyle();
+    	// 获取配置信息
+    	BDParameters.getProfile();
     	
     	// 获取系统信息
     	this.getSysInfo();
-        
-        // 初始化基本配置参数
-        //Base base = new Base(null);
-        
-        //Preferences.init(null);
-        //Preferences.set("upload.verbose", "true");
-        
-        // 获取所有可用的COM端口
-        //java.util.List<String> serialports = BDSerial.list();  
-        
-        //BDParameters.serialports = serialports;
-       
-        /*if(!serialports.isEmpty())
-        {
-        	// 指定串口
-            Preferences.set("serial.port", serialports.get(serialports.size() - 1)); 
-            BDParameters.connectCom = Preferences.get("serial.port");
-        }*/
+    	
+    	// 设置窗体风格
+        this.setStyle();
 
-        // Preferences.save();
+    	// 设定界面语言
+    	this.setLanguage();
 
         // 初始化界面视图
         BDGUIView gui = new BDGUIView(primaryStage);
@@ -115,10 +98,24 @@ public class BuddyPP extends Application
     	// 取得系统默认的国家/语言环境
     	//Locale myLocale = Locale.getDefault();
 
-    	//BDLang.locale = new Locale("zh", "CN");
-    	BDLang.locale = new Locale("en", "US");
+    	BDLang.locale = new Locale("zh", "CN");
+    	//BDLang.locale = new Locale("en", "US");
+
+    	if(BDParameters.langues.equals("简体中文"))
+    	{
+    		BDLang.locale = new Locale("zh", "CN");
+    	}
+    	else if(BDParameters.langues.equals("繁體中文"))
+    	{
+    		BDLang.locale = new Locale("zh", "HK");
+    	}
+    	else if(BDParameters.langues.equals("English"))
+    	{
+    		BDLang.locale = new Locale("en", "US");
+    	}
+
+    	// 绑定语言资源
     	BDLang.rb = ResourceBundle.getBundle("resources.lang.lang", BDLang.locale);
-        //System.out.println(BDLang.rb.getString("打开"));
     }
     
     private void setStyle()
