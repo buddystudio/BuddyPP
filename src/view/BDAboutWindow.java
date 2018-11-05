@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.StageStyle;
+import model.BDLang;
 import model.BDParameters;
 
 import java.awt.Desktop;
@@ -58,7 +59,7 @@ public final class BDAboutWindow extends BDWindow
         	bitTxt = "x86";
         }
        
-        this.setTitle("  关于");
+        this.setTitle("  " + BDLang.rb.getString("关于"));
         this.setScene(scene);
        
         VBox contain  = new VBox();
@@ -121,9 +122,9 @@ public final class BDAboutWindow extends BDWindow
             //linkTxt.setPadding(new Insets(10, 0, 0, 0));
         }
 
-        line01Txt.setText("本软件由 " + BDParameters.organization + " 开发、调试及发布。");
-        line02Txt.setText("本软件遵从GPL协议开放源代码，在遵照指定约束条件下您");
-        line03Txt.setText("可以自由传播和修改。  当前版本：" + bitTxt + "-" + BDParameters.version);
+        line01Txt.setText(BDLang.rb.getString("本软件由") + " " + BDParameters.organization + " " + BDLang.rb.getString("开发、调试及发布。"));
+        line02Txt.setText(BDLang.rb.getString("本软件遵从GPL协议开放源代码，在遵照指定约束条件下您"));
+        line03Txt.setText(BDLang.rb.getString("可以自由传播和修改。当前版本：") + bitTxt + "-" + BDParameters.version);
        
         contain.getChildren().add(line01Txt);
         //contain.getChildren().add(authorTxt);

@@ -72,7 +72,7 @@ public class BDSerialWindowCtrl
                 
                 String code  = "Serial.begin(" + rate + ");  ";
                 
-                code += "// 建议将该行代码剪贴到setup()函数内。 \\n\\n";
+                code += "// " + BDLang.rb.getString("建议将该行代码剪贴到setup()函数内。") + " \\n\\n";
                 
                 // 如果字符变量为空则返回
                 if(comtWindow.value1CmbBox.getValue() == null)

@@ -35,7 +35,7 @@ public class BDCodeModel
         // 设置新建文件的命名
     	setName("sketch_" + BDParameters.codeIdCount);
     	
-    	String baseCode = "\\nvoid setup()\\n{\\n\\t// 初始化代码\\n\\n}\\n\\nvoid loop()\\n{\\n\\t// 主程序代码\\n\\n}\\n";
+    	String baseCode = "\\nvoid setup()\\n{\\n\\t// " + BDLang.rb.getString("初始化代码") + "\\n\\n}\\n\\nvoid loop()\\n{\\n\\t// " + BDLang.rb.getString("主程序代码") + "\\n\\n}\\n";
     	String code = createCodeNotes() + baseCode;
     	
     	// 新建文件默认内容
