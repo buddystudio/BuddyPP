@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 /**
  *
@@ -20,7 +21,7 @@ import javafx.stage.StageStyle;
 public class BDDelayWindow extends BDWindow
 {
     public TextField timeTxt  = new TextField();
-    public Button submitBtn = new Button("确定");
+    public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     
     public BDDelayWindow()
     {
@@ -38,7 +39,7 @@ public class BDDelayWindow extends BDWindow
        this.setFullScreen(false);
        this.setIconified(false);
        
-       this.setTitle("  设置延时");
+       this.setTitle("  " + BDLang.rb.getString("设置延时"));
        this.setScene(scene);
        
        HBox contain  = new HBox();
@@ -48,7 +49,7 @@ public class BDDelayWindow extends BDWindow
        
        contain.setAlignment(Pos.CENTER);            // 居中排列
        
-       Label hintLbl      = new Label("延时(1s=1000ms)：");
+       Label hintLbl      = new Label(BDLang.rb.getString("延时") + "(1s=1000ms)：");
        Label unitLbl      = new Label("ms");
        
        timeTxt.setPrefWidth(120);

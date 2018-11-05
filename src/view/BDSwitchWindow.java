@@ -15,6 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
+import model.BDParameters;
 
 /**
  *
@@ -27,7 +29,7 @@ public class BDSwitchWindow extends BDWindow
     @SuppressWarnings("rawtypes")
 	public ComboBox value2CmbBox = new ComboBox();
     
-    public Button submitBtn = new Button("确定");
+    public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     
     private HBox topPanel   = new HBox();
     public VBox bottomPanel = new VBox();
@@ -40,7 +42,14 @@ public class BDSwitchWindow extends BDWindow
 	public BDSwitchWindow()
     {
         // 窗口初始化
-    	super.init(500, 250);
+    	if(BDParameters.langues.equals("English"))
+    	{
+    		super.init(520, 250);
+    	}
+    	else
+    	{
+    		super.init(500, 250);
+    	}
         
         // 总在最前方
     	this.setAlwaysOnTop(true);
@@ -49,17 +58,17 @@ public class BDSwitchWindow extends BDWindow
     	this.initStyle(StageStyle.UTILITY);
     	this.setResizable(false);
        
-    	this.setTitle("  Switch-Case语句");
+    	this.setTitle("  " + BDLang.rb.getString("Switch-Case语句"));
     	this.setScene(scene);
 
     	VBox contain  = new VBox();
        
     	//HBox topPanel = new HBox();
        
-    	topPanel.getChildren().add(new Label("表达式："));
+    	topPanel.getChildren().add(new Label(BDLang.rb.getString("表达式") + "："));
        
     	value1CmbBox.setEditable(true);
-    	value1CmbBox.setPromptText("整形表达式");
+    	value1CmbBox.setPromptText(BDLang.rb.getString("整型表达式"));
     	value1CmbBox.setPrefWidth(200);
        
     	value2CmbBox.getItems().add("1");
@@ -77,7 +86,7 @@ public class BDSwitchWindow extends BDWindow
     	value2CmbBox.getSelectionModel().select(2);
        
     	topPanel.getChildren().add(value1CmbBox);
-    	topPanel.getChildren().add(new Label("数量："));
+    	topPanel.getChildren().add(new Label(BDLang.rb.getString("数量") + "："));
     	topPanel.getChildren().add(value2CmbBox);
        
     	submitBtn.setPrefSize(80, 30);
@@ -96,7 +105,15 @@ public class BDSwitchWindow extends BDWindow
     	topPanel.setSpacing(10);                          	// 设置间距
     	topPanel.setAlignment(Pos.CENTER_LEFT);           	// 居中排列
        
-    	bottomPanel.setPadding(new Insets(-15, 15, 15, 85)); // 设置边距
+    	if(BDParameters.langues.equals("English"))
+    	{
+    		bottomPanel.setPadding(new Insets(-15, 15, 15, 117)); // 设置边距
+    	}
+    	else
+    	{
+    		bottomPanel.setPadding(new Insets(-15, 15, 15, 85)); // 设置边距
+    	}
+    	
     	bottomPanel.setSpacing(10);                          // 设置间距
     	//bottomPanel.setAlignment(Pos.CENTER_LEFT);         // 居中排列
        

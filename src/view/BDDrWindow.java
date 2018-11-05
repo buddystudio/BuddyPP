@@ -12,6 +12,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
+import model.BDParameters;
 
 /**
  *
@@ -19,7 +21,7 @@ import javafx.stage.StageStyle;
  */
 public class BDDrWindow extends BDWindow
 {
-    public Button submitBtn = new Button("确定");
+    public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     
     public ComboBox<String> value1CmbBox = new ComboBox<String>();
     public ComboBox<String> value2CmbBox = new ComboBox<String>();
@@ -27,7 +29,14 @@ public class BDDrWindow extends BDWindow
     public BDDrWindow()
     {
         // 窗口初始化
-        super.init(580, 60);
+    	if(BDParameters.langues.equals("English"))
+    	{
+    		super.init(600, 60);
+    	}
+    	else
+    	{
+    		super.init(580, 60);
+    	}
         
         // 总在最前方
        this.setAlwaysOnTop(true);
@@ -36,18 +45,18 @@ public class BDDrWindow extends BDWindow
        this.initStyle(StageStyle.UTILITY);
        this.setResizable(false);
        
-       this.setTitle("  读取数字端口");
+       this.setTitle("  " + BDLang.rb.getString("读取数字端口"));
        this.setScene(scene);
 
        HBox contain  = new HBox();
        
-       contain.getChildren().add(new Label("赋值："));
+       contain.getChildren().add(new Label(BDLang.rb.getString("赋值") + "："));
        
        value1CmbBox.setEditable(true);
        value2CmbBox.setEditable(true);
        
-       value1CmbBox.setPromptText("变量");
-       value2CmbBox.setPromptText("端口 / 变量");
+       value1CmbBox.setPromptText(BDLang.rb.getString("变量"));
+       value2CmbBox.setPromptText(BDLang.rb.getString("端口") + " / " + BDLang.rb.getString("变量"));
        
        submitBtn.setPrefSize(80, 30);
        
@@ -63,7 +72,7 @@ public class BDDrWindow extends BDWindow
        contain.setAlignment(Pos.CENTER);                // 居中排列
        
        contain.getChildren().add(value1CmbBox);
-       contain.getChildren().add(new Label("端口："));
+       contain.getChildren().add(new Label(BDLang.rb.getString("端口") + "："));
        contain.getChildren().add(value2CmbBox);
        contain.getChildren().add(submitBtn);
 

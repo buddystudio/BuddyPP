@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 /**
  *
@@ -19,8 +20,8 @@ import javafx.stage.StageStyle;
  */
 public class BDColorWindow extends BDWindow
 {
-    public Button submitBtn = new Button("生成颜色数值");
-    public Button submitBtn2 = new Button("生成颜色分量");
+    public Button submitBtn = new Button(BDLang.rb.getString("生成颜色数值"));
+    public Button submitBtn2 = new Button(BDLang.rb.getString("生成颜色分量"));
     
     public final ColorPicker colorPicker = new ColorPicker();
 
@@ -37,7 +38,7 @@ public class BDColorWindow extends BDWindow
        
         this.setResizable(false);
        
-        this.setTitle("  颜色生成工具");
+        this.setTitle("  " + BDLang.rb.getString("调色工具"));
         this.setScene(scene);
 
         VBox contain  = new VBox();

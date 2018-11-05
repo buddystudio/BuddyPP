@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 /**
  *
@@ -19,7 +20,7 @@ import javafx.stage.StageStyle;
  */
 public class BDSerialWindow extends BDWindow
 {   
-	public Button submitBtn = new Button("确定");
+	public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     
     public ComboBox<String> value1CmbBox = new ComboBox<String>();
     public ComboBox<String> value2CmbBox = new ComboBox<String>();
@@ -36,15 +37,15 @@ public class BDSerialWindow extends BDWindow
        this.initStyle(StageStyle.UTILITY);
        this.setResizable(false);
        
-       this.setTitle("  串口通讯模板");
+       this.setTitle("  " + BDLang.rb.getString("串口通讯模板"));
        this.setScene(scene);
 
        HBox contain  = new HBox();
        
-       contain.getChildren().add(new Label("变量："));
+       contain.getChildren().add(new Label(BDLang.rb.getString("变量") + "："));
        
        value1CmbBox.setEditable(true);
-       value1CmbBox.setPromptText("变量名");
+       value1CmbBox.setPromptText(BDLang.rb.getString("变量名"));
        
        submitBtn.setPrefSize(80, 50);
        
@@ -59,7 +60,7 @@ public class BDSerialWindow extends BDWindow
        contain.setAlignment(Pos.CENTER);                // 居中排列
 
        contain.getChildren().add(value1CmbBox);
-       contain.getChildren().add(new Label("波特率："));
+       contain.getChildren().add(new Label(BDLang.rb.getString("波特率") + "："));
        contain.getChildren().add(value2CmbBox);
        contain.getChildren().add(submitBtn);
 

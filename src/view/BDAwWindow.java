@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 /**
  *
@@ -19,7 +20,7 @@ import javafx.stage.StageStyle;
  */
 public class BDAwWindow extends BDWindow
 {   
-    public Button submitBtn = new Button("确定");
+    public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     
     public ComboBox<String> value1CmbBox = new ComboBox<String>();
     public ComboBox<String> value2CmbBox = new ComboBox<String>();
@@ -36,12 +37,12 @@ public class BDAwWindow extends BDWindow
        this.initStyle(StageStyle.UTILITY);
        this.setResizable(false);
        
-       this.setTitle("  写入模拟端口");
+       this.setTitle("  " + BDLang.rb.getString("写入模拟端口"));
        this.setScene(scene);
 
        HBox contain  = new HBox();
        
-       contain.getChildren().add(new Label("端口："));
+       contain.getChildren().add(new Label(BDLang.rb.getString("端口") + "："));
        
        submitBtn.setStyle("-fx-background-radius: 0, 0;");
        value1CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
@@ -53,13 +54,13 @@ public class BDAwWindow extends BDWindow
        value1CmbBox.setPrefWidth(160);
        value2CmbBox.setPrefWidth(160);
        
-       value1CmbBox.setPromptText("端口 / 变量");
+       value1CmbBox.setPromptText(BDLang.rb.getString("端口") + " / " + BDLang.rb.getString("变量"));
        value2CmbBox.setPromptText("0-255");
        
        submitBtn.setPrefSize(80, 30);
 
        contain.getChildren().add(value1CmbBox);
-       contain.getChildren().add(new Label("变量："));
+       contain.getChildren().add(new Label(BDLang.rb.getString("变量") + "："));
        contain.getChildren().add(value2CmbBox);
        contain.getChildren().add(submitBtn);
        

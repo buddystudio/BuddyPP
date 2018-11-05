@@ -16,6 +16,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
+import model.BDParameters;
 
 /**
  *
@@ -23,9 +25,9 @@ import javafx.stage.StageStyle;
  */
 public final class BDForWindow extends BDWindow
 {
-    public Button submitBtn = new Button("确定");
-    public RadioButton norRB = new RadioButton("基本");
-    public RadioButton advRB = new RadioButton("高级");
+    public Button submitBtn = new Button(BDLang.rb.getString("确定"));
+    public RadioButton norRB = new RadioButton(BDLang.rb.getString("基本"));
+    public RadioButton advRB = new RadioButton(BDLang.rb.getString("高级"));
     
     public TextField countTxt = new TextField();        // 循环次数
     
@@ -45,7 +47,14 @@ public final class BDForWindow extends BDWindow
     public BDForWindow()
     {
         // 窗口初始化
-        super.init(755, 165);
+    	if(BDParameters.langues.equals("English"))
+    	{
+    		super.init(900, 165);
+    	}
+    	else
+    	{
+    		super.init(755, 165);
+    	}
         
         // 总在最前方
         this.setAlwaysOnTop(true);
@@ -54,7 +63,7 @@ public final class BDForWindow extends BDWindow
         this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
        
-        this.setTitle("  循环语句");
+        this.setTitle("  " + BDLang.rb.getString("循环语句"));
         this.setScene(scene);
        
         HBox contain  = new HBox();
@@ -80,9 +89,9 @@ public final class BDForWindow extends BDWindow
         countTxt.setPrefWidth(50);
         countTxt.setText("10");
 
-        norPanel.getChildren().add(new Label("循环次数："));
+        norPanel.getChildren().add(new Label(BDLang.rb.getString("循环次数") + "："));
         norPanel.getChildren().add(countTxt);
-        norPanel.getChildren().add(new Label("次"));
+        norPanel.getChildren().add(new Label(BDLang.rb.getString("次")));
        
         initValueTxt.setText("0");
         initValueTxt.setPrefWidth(50);
@@ -100,20 +109,20 @@ public final class BDForWindow extends BDWindow
        
         operaCmbBox.getSelectionModel().select(0);
        
-        opera2CmbBox.getItems().add("自增");
-        opera2CmbBox.getItems().add("自减");
+        opera2CmbBox.getItems().add(BDLang.rb.getString("自增"));
+        opera2CmbBox.getItems().add(BDLang.rb.getString("自减"));
        
         opera2CmbBox.getSelectionModel().select(0);
        
-        advPanel.getChildren().add(new Label("初始值："));
+        advPanel.getChildren().add(new Label(BDLang.rb.getString("初始值") + "："));
         advPanel.getChildren().add(initValueTxt);
-        advPanel.getChildren().add(new Label("条件："));
+        advPanel.getChildren().add(new Label(BDLang.rb.getString("条件") + "："));
         advPanel.getChildren().add(operaCmbBox);
-        advPanel.getChildren().add(new Label("界限值："));
+        advPanel.getChildren().add(new Label(BDLang.rb.getString("界限值") + "："));
         advPanel.getChildren().add(limitValueTxt);
-        advPanel.getChildren().add(new Label("条件："));
+        advPanel.getChildren().add(new Label(BDLang.rb.getString("条件") + "："));
         advPanel.getChildren().add(opera2CmbBox);
-        advPanel.getChildren().add(new Label("步长："));
+        advPanel.getChildren().add(new Label(BDLang.rb.getString("步长") + "："));
         advPanel.getChildren().add(stepValueTxt);
        
         submitBtn.setPrefSize(80, 30);

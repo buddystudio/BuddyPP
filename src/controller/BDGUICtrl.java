@@ -23,6 +23,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import model.BDCodeTabModel;
+import model.BDLang;
 import model.BDParameters;
 import view.BDDialogWindow;
 import view.BDGUIView;
@@ -64,7 +65,8 @@ public class BDGUICtrl
         gui.pasteItem.setOnAction(editHandler);
         gui.searchItem.setOnAction(editHandler);
         
-        this.gui.saveWindow = new BDDialogWindow("  保存提示", "是否保存当前文件");
+        //this.gui.saveWindow = new BDDialogWindow("  保存提示", "是否保存当前文件");
+        this.gui.saveWindow = new BDDialogWindow("  " + BDLang.rb.getString("保存提示"), BDLang.rb.getString("是否保存当前文件"));
         
         // 检测分割面板尺寸变化
         gui.workspacePanel.widthProperty().addListener((obs, oldVal, newVal) -> 
@@ -469,7 +471,7 @@ public class BDGUICtrl
         if (!tab.code.isSaved) 
         {
             // 提示保存
-            this.gui.saveWindow.msgLbl.setText("是否保存对" + tab.code.getName() + "文件的修改？");
+            this.gui.saveWindow.msgLbl.setText(BDLang.rb.getString("是否保存对") + " " + tab.code.getName() + " " + BDLang.rb.getString("文件的修改？"));
 
             this.gui.saveWindow.show();
 
@@ -537,8 +539,11 @@ public class BDGUICtrl
                         // 保存文件
                         if (tab.code.path == "") 
                         {
-                            // 另存为文件
-                            saveAsFile(tab);
+                        	 // 另存为文件
+                            if(saveAsFile(tab) == false) 
+                            {
+                            	return;
+                            }
                         } 
                         else 
                         {
@@ -550,7 +555,10 @@ public class BDGUICtrl
                             catch (Exception ex) 
                             {
                                 // 另存为文件
-                                saveAsFile(tab);
+                                if(saveAsFile(tab) == false) 
+                                {
+                                	return;
+                                }
                             }
                         }
 
@@ -671,7 +679,7 @@ public class BDGUICtrl
     }
 
     // 另存为文件
-    private void saveAsFile(BDCodeTabModel tab) 
+    private boolean saveAsFile(BDCodeTabModel tab) 
     {
     	try 
         {
@@ -696,9 +704,10 @@ public class BDGUICtrl
 	        //file = fileChooser.showSaveDialog(null);
 	        file = fileChooser.showSaveDialog(gui.saveWindow);
 	        	
-	        if(file == null || !file.exists())
+	        //if(file == null || !file.exists())
+	        if(file == null)
 	        {
-	        	return;
+	        	return false;
 	        }
 
             // File write.
@@ -716,8 +725,11 @@ public class BDGUICtrl
         catch (IOException ex) 
         {
         	logger.error("",ex);
+        	return false;
             //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
+    	
+    	return true;
     }
     
     private EventHandler<ActionEvent> editHandler = new EventHandler<ActionEvent>()

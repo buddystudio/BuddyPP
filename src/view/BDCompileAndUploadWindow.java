@@ -15,6 +15,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
 //import jfxtras.styles.jmetro8.JMetro;
 import model.BDBoardManager;
+import model.BDLang;
+import model.BDParameters;
 import model.BDSerialManager2;
 
 public class BDCompileAndUploadWindow extends BDWindow
@@ -34,14 +36,14 @@ public class BDCompileAndUploadWindow extends BDWindow
 	private VBox topPanel = new VBox();
 	private HBox btnsBar = new HBox();
 	
-	private Button openBtn 				= new Button("打开");
-	private Button compileBtn 			= new Button("编译");
+	private Button openBtn 				= new Button(BDLang.rb.getString("打开"));
+	private Button compileBtn 			= new Button(BDLang.rb.getString("编译"));
 	
-	private Button uploadBtn 			= new Button("上传");
-	private Button compileAndUploadBtn 	= new Button("编译并上传");
-	private Button stopBtn				= new Button("停止");
-	private Button clearBtn				= new Button("清除");
-	private Button updateBtn			= new Button("更新");
+	private Button uploadBtn 			= new Button(BDLang.rb.getString("上传"));
+	private Button compileAndUploadBtn 	= new Button(BDLang.rb.getString("编译并上传"));
+	private Button stopBtn				= new Button(BDLang.rb.getString("停止"));
+	private Button clearBtn				= new Button(BDLang.rb.getString("清除"));
+	private Button updateBtn			= new Button(BDLang.rb.getString("更新"));
 	
 	private ProgressBar progressBar = new ProgressBar(0);
 	
@@ -54,12 +56,27 @@ public class BDCompileAndUploadWindow extends BDWindow
 	private BDAdvConsoleView acvView = new BDAdvConsoleView();
 	private BDAdvConsoleCtrl acvCtrl = new BDAdvConsoleCtrl(acvView);
 	
+	private double winWidth = 750;
+	
 	public BDCompileAndUploadWindow()
 	{
 		// 窗口初始化
         //super.init(750, 760);
 		// 隐藏菜单栏后的尺寸
-		super.init(750, 720);
+		//super.init(750, 720);
+		
+		if(BDParameters.langues.equals("English"))
+    	{
+			winWidth = 870;
+			
+    		super.init(winWidth, 720);
+    	}
+    	else
+    	{
+    		winWidth = 750;
+    		
+    		super.init(winWidth, 720);
+    	}
         
         // 总在最前方
         //this.setAlwaysOnTop(true);
@@ -72,7 +89,7 @@ public class BDCompileAndUploadWindow extends BDWindow
         this.setFullScreen(false);
         this.setIconified(false);
        
-        this.setTitle("  编译与上传");
+        this.setTitle("  " + BDLang.rb.getString("编译与上传"));
         this.setScene(scene);
 
         BorderPane root = new BorderPane();
@@ -89,21 +106,26 @@ public class BDCompileAndUploadWindow extends BDWindow
         	this.menuBar.setDisable(true);
 
 			//this.btnsBar.setMinWidth(865);
-        	this.btnsBar.setMinWidth(750);
+        	this.btnsBar.setMinWidth(winWidth);
 			this.btnsBar.setPadding(new Insets(20, 20, 20, 20));
 			this.btnsBar.setSpacing(10);
-			
-			this.openBtn.setPrefSize(60, 30);
-			this.compileBtn.setPrefSize(60, 30);
-			this.uploadBtn.setPrefSize(60, 30);
-			this.compileAndUploadBtn.setPrefSize(110, 30);
-			this.stopBtn.setPrefSize(60, 30);
-			this.clearBtn.setPrefSize(60, 30);
-			this.updateBtn.setPrefSize(60, 30);
 
+			if(!BDParameters.langues.equals("English"))
+	    	{
+				this.openBtn.setPrefSize(60, 30);
+				this.compileBtn.setPrefSize(60, 30);
+				this.uploadBtn.setPrefSize(60, 30);
+				this.stopBtn.setPrefSize(60, 30);
+				this.clearBtn.setPrefSize(60, 30);
+				this.updateBtn.setPrefSize(60, 30);
+				this.compileAndUploadBtn.setPrefSize(80, 30);
+	    	}
+			
 			options = new BDSerialManager2().getPortList();
 	
 			serialListCombox = new ComboBox<>(options);
+			
+			this.serialListCombox.setPrefSize(100, 30);
 	
 			serialListCombox.getSelectionModel().select(0);
 			serialListCombox.setMinWidth(110);
@@ -134,7 +156,7 @@ public class BDCompileAndUploadWindow extends BDWindow
 											 );
 		
 			this.acvView.setPrefHeight(610);
-			this.progressBar.setPrefSize(750, 40);
+			this.progressBar.setPrefSize(winWidth, 40);
 			
 			// 隐藏菜单栏
 			//topPanel.getChildren().add(this.menuBar);

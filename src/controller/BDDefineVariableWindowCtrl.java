@@ -7,7 +7,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-
+import model.BDLang;
 import view.BDDefineVariableWindow;
 
 /**
@@ -40,7 +40,7 @@ public class BDDefineVariableWindowCtrl
                 {
                     defineVariableWindow.txtName.setText("");
                         
-                    defineVariableWindow.txtName.setPromptText("请输入变量名");
+                    defineVariableWindow.txtName.setPromptText(BDLang.rb.getString("请输入变量名"));
                         
                     return;
                 }
@@ -51,7 +51,7 @@ public class BDDefineVariableWindowCtrl
                     {
                         defineVariableWindow.txtName.setText("");
                         
-                        defineVariableWindow.txtName.setPromptText("请输入正确的变量名");
+                        defineVariableWindow.txtName.setPromptText(BDLang.rb.getString("请输入正确的变量名"));
                         
                         return;
                     }
@@ -70,7 +70,7 @@ public class BDDefineVariableWindowCtrl
                                 {
                                     defineVariableWindow.txtValue.setText("");
                         
-                                    defineVariableWindow.txtValue.setPromptText("请输入字符");
+                                    defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入字符"));
                         
                                     return;
                                 }
@@ -79,7 +79,7 @@ public class BDDefineVariableWindowCtrl
                             {
                                 defineVariableWindow.txtValue.setText("");
 
-                                defineVariableWindow.txtValue.setPromptText("请输入字符");
+                                defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入字符"));
 
                                 return;
 
@@ -91,7 +91,7 @@ public class BDDefineVariableWindowCtrl
                             {
                                 defineVariableWindow.txtValue.setText("");
                         
-                                defineVariableWindow.txtValue.setPromptText("请输入字符");
+                                defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入字符"));
                         
                                 return;
                             }
@@ -117,7 +117,7 @@ public class BDDefineVariableWindowCtrl
                         {
                             defineVariableWindow.txtValue.setText("");
 
-                            defineVariableWindow.txtValue.setPromptText("请输入布尔值");
+                            defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入布尔值"));
 
                             return;
                         }
@@ -136,7 +136,7 @@ public class BDDefineVariableWindowCtrl
                             {
                                 defineVariableWindow.txtValue.setText("");
                         
-                                defineVariableWindow.txtValue.setPromptText("请输入无字符整型");
+                                defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入无字符整型"));
                         
                                 return;
                             }
@@ -148,7 +148,7 @@ public class BDDefineVariableWindowCtrl
                         {
                             defineVariableWindow.txtValue.setText("");
 
-                            defineVariableWindow.txtValue.setPromptText("请输入整型");
+                            defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入整型"));
 
                             return;
                         }
@@ -167,7 +167,7 @@ public class BDDefineVariableWindowCtrl
                             {
                                 defineVariableWindow.txtValue.setText("");
                         
-                                defineVariableWindow.txtValue.setPromptText("请输入无字符长整型");
+                                defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入无字符长整型"));
                         
                                 return;
                             }
@@ -179,7 +179,7 @@ public class BDDefineVariableWindowCtrl
                         {
                             defineVariableWindow.txtValue.setText("");
 
-                            defineVariableWindow.txtValue.setPromptText("请输入长整型");
+                            defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入长整型"));
 
                             return;
                         }
@@ -198,7 +198,7 @@ public class BDDefineVariableWindowCtrl
                         {
                             defineVariableWindow.txtValue.setText("");
 
-                            defineVariableWindow.txtValue.setPromptText("请输入浮点型");
+                            defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入浮点型"));
 
                             return;
                         }
@@ -217,7 +217,7 @@ public class BDDefineVariableWindowCtrl
                         {
                             defineVariableWindow.txtValue.setText("");
 
-                            defineVariableWindow.txtValue.setPromptText("请输入双精度浮点型");
+                            defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入双精度浮点型"));
 
                             return;
                         }
@@ -236,7 +236,7 @@ public class BDDefineVariableWindowCtrl
                         {
                             defineVariableWindow.txtValue.setText("");
 
-                            defineVariableWindow.txtValue.setPromptText("请输入短整型");
+                            defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入短整型"));
 
                             return;
                         }
@@ -255,7 +255,7 @@ public class BDDefineVariableWindowCtrl
                         {
                             defineVariableWindow.txtValue.setText("");
                         
-                            defineVariableWindow.txtValue.setPromptText("请输入字节型");
+                            defineVariableWindow.txtValue.setPromptText(BDLang.rb.getString("请输入字节型"));
                         
                             return;
                         }

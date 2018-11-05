@@ -7,7 +7,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-
+import model.BDLang;
 import view.BDDelayWindow;
 
 /**
@@ -35,7 +35,7 @@ public class BDDelayWindowCtrl
                     {
                         delayWindow.timeTxt.setText("");
                         
-                        delayWindow.timeTxt.setPromptText("输入正确的数据");
+                        delayWindow.timeTxt.setPromptText(BDLang.rb.getString("输入正确的数据"));
                         
                         return;
                     }   
@@ -44,7 +44,7 @@ public class BDDelayWindowCtrl
                 {
                     delayWindow.timeTxt.setText("");
                     
-                    delayWindow.timeTxt.setPromptText("输入正确的数据");
+                    delayWindow.timeTxt.setPromptText(BDLang.rb.getString("输入正确的数据"));
                         
                     return;
                 }

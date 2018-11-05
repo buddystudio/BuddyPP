@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import model.BDLang;
 import view.BDArWindow;
 
 /**
@@ -57,7 +58,7 @@ public class BDArWindowCtrl
             @Override
             public void handle(ActionEvent event) 
             {
-            	arWindow.value1CmbBox.setPromptText("选择或输入变量名称");
+            	arWindow.value1CmbBox.setPromptText(BDLang.rb.getString("选择或输入变量名称"));
             	
             	String valName = arWindow.value1CmbBox.getValue().toString();
             	
@@ -73,7 +74,7 @@ public class BDArWindowCtrl
 	                	// 清空文本框内容
 	                	arWindow.value1CmbBox.setValue(null);
 	                	
-	                	arWindow.value1CmbBox.setPromptText("请输入正确的变量名");
+	                	arWindow.value1CmbBox.setPromptText(BDLang.rb.getString("请输入正确的变量名"));
 	                	
 	                	return;
                 }

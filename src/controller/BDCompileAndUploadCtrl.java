@@ -20,6 +20,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.FileChooser;
+import model.BDLang;
 import model.BDMessage;
 import model.BDParameters;
 import model.BDSerialManager2;
@@ -60,7 +61,7 @@ public class BDCompileAndUploadCtrl
 	private String bd_rate 			= "115200";
 	
 	private int timeOut				= 30000;		// 默认操作30秒超时
-	private String title			= "  编译与上传";	// 窗口标题
+	private String title			= "  " + BDLang.rb.getString("编译与上传");	// 窗口标题
 	private double upLoadProgress 	= 0;			// 上传进度
 	
 	private enum WorkMode 
@@ -97,7 +98,7 @@ public class BDCompileAndUploadCtrl
 		//System.out.println("this.bd_built_path: " + this.bd_built_path);
 		//System.out.println("this.bd_code_path: " + this.bd_code_path);
 		
-		if(compileAndUploadWindow.getSerialListCombox().getValue().equals("未连接"))
+		if(compileAndUploadWindow.getSerialListCombox().getValue().equals(BDLang.rb.getString("未连接")))
 		{
 			// 如果串口未连接屏蔽上传功能（编译且上传）
 			compileAndUploadWindow.getUploadBtn().setDisable(true);
@@ -603,7 +604,7 @@ public class BDCompileAndUploadCtrl
                 try 
                 {
                 	dumpMessage.setMessage("msg_" + "");
-                	dumpMessage.setMessage("msg_" + ">>>>>>> Buddy++：初始化操作即将开始...");
+                	dumpMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("初始化操作即将开始") + "...");
                 	dumpMessage.setMessage("msg_" + ">>>>>>> ===================================================================");
                 	dumpMessage.setMessage("msg_" + "");
             		
@@ -638,7 +639,7 @@ public class BDCompileAndUploadCtrl
                         	    @Override
                         	    public void run() 
                         	    {
-                        	    	compileAndUploadWindow.setTitle(title + "   初始化：" + value + "%");
+                        	    	compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("初始化") + "：" + value + "%");
                         	    }
                         	});
                         }
@@ -679,7 +680,7 @@ public class BDCompileAndUploadCtrl
                 try 
                 {
                 	//compileMessage.setMessage("inf_" + "");
-                	compileMessage.setMessage("inf_" + ">>>>>>> Buddy++：编译操作即将开始...");
+                	compileMessage.setMessage("inf_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("编译操作即将开始") + "...");
                 	compileMessage.setMessage("inf_" + ">>>>>>> ===================================================================");
                 	compileMessage.setMessage("inf_" + "");
                 	
@@ -716,11 +717,11 @@ public class BDCompileAndUploadCtrl
                         	    {
                         	    	if(progress == 1)
                         	    	{
-                        	    		compileAndUploadWindow.setTitle(title + "   编译操作已完成");
+                        	    		compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("编译操作已完成"));
                         	    	}
                         	    	else
                         	    	{
-                        	    		compileAndUploadWindow.setTitle(title + "   编译进度：" + value + "%");
+                        	    		compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("编译进度") + "：" + value + "%");
                         	    	}
                         	    }
                         	});
@@ -766,7 +767,7 @@ public class BDCompileAndUploadCtrl
                 	    @Override
                 	    public void run() 
                 	    {
-                	    	compileAndUploadWindow.setTitle(title + "   编译过程出现错误！");
+                	    	compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("编译过程出现错误") +"！");
                 	    }
                 	});
                 }
@@ -792,18 +793,18 @@ public class BDCompileAndUploadCtrl
             protected String call() throws Exception 
             {
             	// 上传前更新并验证串口连接
-            	if(bd_com.equals("") || bd_com.equals("未连接"))
+            	if(bd_com.equals("") || bd_com.equals(BDLang.rb.getString("未连接")))
             	{
             		Platform.runLater(new Runnable() 
             		{
             		    @Override
             		    public void run() 
             		    {
-            	            if(bd_com.equals("") || bd_com.equals("未连接"))
+            	            if(bd_com.equals("") || bd_com.equals(BDLang.rb.getString("未连接")))
                         	{
 	            	            compileAndUploadWindow.getAcvView().setColorMsgFont("#FF0000");
 			            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-			                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> Buddy++：请确认主控板已经连接计算机并选择了正确的串口序号！</b>");
+			                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> Buddy++：" + BDLang.rb.getString("请确认主控板已经连接计算机并选择了正确的串口序号") + "！</b>");
 			                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> ===================================================================</b>");
 			                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
                         	
@@ -830,7 +831,7 @@ public class BDCompileAndUploadCtrl
             	String uploadCmd_new = uploadCmd;
 
             	uploadMessage.setMessage("msg_" + "");
-        		uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：上传操作即将开始...");
+        		uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("上传操作即将开始") + "...");
         		uploadMessage.setMessage("msg_" + ">>>>>>> ===================================================================");
         		uploadMessage.setMessage("msg_" + "");
         		
@@ -839,7 +840,7 @@ public class BDCompileAndUploadCtrl
                	{   
                    	public void run()
                    	{   
-                        	System.out.println("上传操作超时...");
+                        	//System.out.println("上传操作超时...");
 
                         	// 中断上传操作
                         	uploadThread.stop();
@@ -851,7 +852,7 @@ public class BDCompileAndUploadCtrl
                     		    {
         	            	    	compileAndUploadWindow.getAcvView().setColorMsgFont("#FF0000");
         			            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-        			            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> Buddy++：上传操作已超时，所有操作已终止！</b>");
+        			            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> Buddy++：" + BDLang.rb.getString("上传操作已超时，所有操作已终止") + "！</b>");
         			            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> ===================================================================</b>");
         			            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
                                 }
@@ -876,14 +877,14 @@ public class BDCompileAndUploadCtrl
                 	   boardName.equals("Arduino Yún Mini"))
                 	{
                 		uploadMessage.setMessage("msg_" + "");
-                		uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：准备重置串口...");
+                		uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("准备重置串口") + "...");
                 		
                 		// Reboot Arduino Leonardo.
                     	BDSerialManager2 serialmangeer = new BDSerialManager2();
                     	
                     	serialmangeer.serialPortOpen(bd_com);
                     	Thread.sleep(1000);
-                    	uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：正在重置串口...");
+                    	uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("正在重置串口") + "...");
                     	serialmangeer.serialPortClose();
                     	Thread.sleep(1000);
                     	
@@ -891,7 +892,7 @@ public class BDCompileAndUploadCtrl
                     	
                     	ObservableList<String> list = serialmangeer.getPortList();
                     	
-                    	uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：串口从 <b>" + bd_com + "</b> 重置为 <b>" + list.get(0) + "</b>");
+                    	uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("串口从") + " <b>" + bd_com + "</b> " + BDLang.rb.getString("重置为") + " <b>" + list.get(0) + "</b>");
                     	uploadMessage.setMessage("msg_" + ">>>>>>> ===================================================================");
                     	uploadMessage.setMessage("msg_" + "");
                     	
@@ -993,7 +994,7 @@ public class BDCompileAndUploadCtrl
 			    			compileAndUploadWindow.getProgressBar().setProgress(upLoadProgress);
 			    			
 			    			uploadMessage.setMessage("msg_" + "");
-	                		uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：上传操作已经结束！");
+	                		uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("上传操作已经结束") + "！");
 	                		uploadMessage.setMessage("msg_" + ">>>>>>> ===================================================================");
 			    		
 	                		// 恢复功能按钮
@@ -1010,11 +1011,11 @@ public class BDCompileAndUploadCtrl
                     	    {
                     	    	if(upLoadProgress == 1)
                     	    	{
-                    	    		compileAndUploadWindow.setTitle(title + "   上传操作已完成");
+                    	    		compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("上传操作已完成"));
                     	    	}
                     	    	else
                     	    	{
-                    	    		compileAndUploadWindow.setTitle(title + "   上传进度：" + (upLoadProgress * 100) + "%");
+                    	    		compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("上传进度") + "：" + (upLoadProgress * 100) + "%");
                     	    	}
                     	    }
                     	});
@@ -1038,7 +1039,7 @@ public class BDCompileAndUploadCtrl
                 	    @Override
                 	    public void run() 
                 	    {
-                	    	compileAndUploadWindow.setTitle(title + "   上传过程出现错误！");
+                	    	compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("上传过程出现错误") + "！");
                 	    }
                 	});
                 }
@@ -1087,7 +1088,7 @@ public class BDCompileAndUploadCtrl
 				    		
 				    		compileAndUploadWindow.getAcvView().setColorMsgFont("#000000");
 				    		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> Buddy++：初始化操作已结束！");
+		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> Buddy++：" + BDLang.rb.getString("初始化操作已结束") + "！");
 		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> ===================================================================");
 		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
 		                	
@@ -1133,7 +1134,7 @@ public class BDCompileAndUploadCtrl
 		                {
 				    		compileAndUploadWindow.getAcvView().setColorMsgFont("#000000");
 				    		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> Buddy++：编译操作已结束！");
+		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> Buddy++：" + BDLang.rb.getString("编译操作已结束") + "！");
 		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> ===================================================================");
 		                	//compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
 		                	
@@ -1154,7 +1155,7 @@ public class BDCompileAndUploadCtrl
 		            	{
 		            		compileAndUploadWindow.getAcvView().setColorMsgFont("#FF0000");
 		            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-		            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> Buddy++：编译过程出现错误！");
+		            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> Buddy++：" + BDLang.rb.getString("编译过程出现错误") + "！");
 		            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> ===================================================================");
 		            		//compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
 		            		
@@ -1226,7 +1227,7 @@ public class BDCompileAndUploadCtrl
 				    		compileAndUploadWindow.getAcvCtrl().updateMessageByLine(message);
 				    		compileAndUploadWindow.getAcvView().setColorMsgFont("#FF0000");
 				    		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-		            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> Buddy++：请确认主控板已经连接计算机并选择了正确的串口序号！" + "</b>");
+		            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> Buddy++：" + BDLang.rb.getString("请确认主控板已经连接计算机并选择了正确的串口序号") + "！" + "</b>");
 				    	}
 				    	else
 				    	{
@@ -1271,7 +1272,7 @@ public class BDCompileAndUploadCtrl
         
         //System.out.println(compileAndUploadWindow.getSerialListCombox().getValue());
 
-		if(compileAndUploadWindow.getSerialListCombox().getValue().equals("未连接"))
+		if(compileAndUploadWindow.getSerialListCombox().getValue().equals(BDLang.rb.getString("未连接")))
 		{
 			// 如果串口未连接屏蔽上传功能（编译且上传）
 			compileAndUploadWindow.getUploadBtn().setDisable(true);
@@ -1317,7 +1318,7 @@ public class BDCompileAndUploadCtrl
         	{
         		compileAndUploadWindow.getAcvView().setColorMsgFont("#FF0000");
         		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> Buddy++：所有操作已经终止！</b>");
+            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> Buddy++：" + BDLang.rb.getString("所有操作已经终止") + "！</b>");
             	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> ===================================================================</b>");
             	
         		// 关闭计时器
@@ -1328,7 +1329,7 @@ public class BDCompileAndUploadCtrl
             	    @Override
             	    public void run() 
             	    {
-            	    	compileAndUploadWindow.setTitle(title + "   用户已终止所有操作！");
+            	    	compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("用户已终止所有操作") + "！");
             	    }
             	});
         	}

@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 /**
  *
@@ -19,7 +20,7 @@ import javafx.stage.StageStyle;
  */
 public final class BDArWindow extends BDWindow
 {
-    public Button submitBtn = new Button("确定");
+    public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     
     public ComboBox<String> value1CmbBox = new ComboBox<String>();
     public ComboBox<String> value2CmbBox = new ComboBox<String>();
@@ -36,18 +37,18 @@ public final class BDArWindow extends BDWindow
        this.initStyle(StageStyle.UTILITY);
        this.setResizable(false);
        
-       this.setTitle("  读取模拟端口");
+       this.setTitle("  " + BDLang.rb.getString("读取模拟端口"));
        this.setScene(scene);
 
        HBox contain  = new HBox();
        
-       contain.getChildren().add(new Label("赋值："));
+       contain.getChildren().add(new Label(BDLang.rb.getString("赋值") + "："));
        
        value1CmbBox.setEditable(true);
        value2CmbBox.setEditable(true);
        
-       value1CmbBox.setPromptText("变量");
-       value2CmbBox.setPromptText("端口 / 变量");
+       value1CmbBox.setPromptText(BDLang.rb.getString("变量"));
+       value2CmbBox.setPromptText(BDLang.rb.getString("端口") + " / " + BDLang.rb.getString("变量"));
 
        submitBtn.setStyle("-fx-background-radius: 0, 0;");
        value1CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
@@ -59,7 +60,7 @@ public final class BDArWindow extends BDWindow
        submitBtn.setPrefSize(80, 30);
        
        contain.getChildren().add(value1CmbBox);
-       contain.getChildren().add(new Label("端口："));
+       contain.getChildren().add(new Label(BDLang.rb.getString("端口") + "："));
        contain.getChildren().add(value2CmbBox);
        contain.getChildren().add(submitBtn);
        

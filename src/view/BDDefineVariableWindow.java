@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.StageStyle;
 import model.BDDefineVariableWindowModel;
+import model.BDLang;
 import model.BDParameters;
 
 /**
@@ -22,7 +23,7 @@ import model.BDParameters;
  */
 public class BDDefineVariableWindow extends BDWindow
 {
-    public Button submitBtn = new Button("确定");
+    public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     public ComboBox combType = new ComboBox();
     public TextField txtName = new TextField();
     public TextField txtValue = new TextField();
@@ -30,7 +31,7 @@ public class BDDefineVariableWindow extends BDWindow
     public BDDefineVariableWindow()
     {
     	// 窗口初始化
-    	super.init(600, 60);
+    	super.init(630, 60);
         
     	// 总在最前方
     	this.setAlwaysOnTop(true);
@@ -43,14 +44,14 @@ public class BDDefineVariableWindow extends BDWindow
     	this.setFullScreen(false);
     	this.setIconified(false);
        
-    	this.setTitle("  定义变量");
+    	this.setTitle("  " + BDLang.rb.getString("定义变量"));
     	this.setScene(scene);
        
     	HBox contain  = new HBox();
        
-    	Label lbType     = new Label("类型：");
-    	Label lbName     = new Label("名称：");
-       	Label lbValue    = new Label("数值：");
+    	Label lbType     = new Label(BDLang.rb.getString("类型") + "：");
+    	Label lbName     = new Label(BDLang.rb.getString("名称") + "：");
+       	Label lbValue    = new Label(BDLang.rb.getString("数值") + "：");
 
        	combType.setPrefWidth(90);
            

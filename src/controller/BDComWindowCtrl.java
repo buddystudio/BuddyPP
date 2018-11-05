@@ -77,7 +77,6 @@ public class BDComWindowCtrl implements BDMessageConsumer
 				message(String.format("Send:%s\n", comWindow.sendMsgTxt.getText()));
 				s = s + "\0";
 				send(s);
-
 			}
 		});
 		

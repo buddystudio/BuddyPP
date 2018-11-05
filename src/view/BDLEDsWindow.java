@@ -18,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 /**
  *
@@ -25,8 +26,8 @@ import javafx.stage.StageStyle;
  */
 public class BDLEDsWindow extends BDWindow
 {
-    public Button submitBtn = new Button("生成");
-    public Button cleanBtn = new Button("清空");
+    public Button submitBtn = new Button(BDLang.rb.getString("生成"));
+    public Button cleanBtn = new Button(BDLang.rb.getString("清空"));
     
     public ObservableList<ImageView> btnList = FXCollections.observableArrayList();
     
@@ -46,7 +47,7 @@ public class BDLEDsWindow extends BDWindow
        
         this.setResizable(false);
        
-        this.setTitle("  LED阵列图案生成工具");
+        this.setTitle("  " + BDLang.rb.getString("LED阵列工具"));
         this.setScene(scene);
        
         GridPane grid = new GridPane();

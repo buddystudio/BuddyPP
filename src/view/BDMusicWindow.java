@@ -12,12 +12,13 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 public class BDMusicWindow extends BDWindow
 {
-	public Button submitBtn = new Button("生成");
-    public Button cleanBtn = new Button("清空");
-    public Button deleteBtn = new Button("删除");
+	public Button submitBtn = new Button(BDLang.rb.getString("生成"));
+    public Button cleanBtn = new Button(BDLang.rb.getString("清空"));
+    public Button deleteBtn = new Button(BDLang.rb.getString("删除"));
     
     public ObservableList<BDMusicNoteCtrl> noteList = FXCollections.observableArrayList();
     
@@ -145,7 +146,7 @@ public class BDMusicWindow extends BDWindow
        
         this.setResizable(false);
        
-        this.setTitle("  谱曲工具");
+        this.setTitle("  " + BDLang.rb.getString("谱曲工具"));
         this.setScene(scene);
 
         contain.setPadding(new Insets(0, 0, 5, 0));  // 设置边距

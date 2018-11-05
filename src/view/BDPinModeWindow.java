@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
 import model.BDPinModeWindowModel;
 
 /**
@@ -20,7 +21,7 @@ import model.BDPinModeWindowModel;
  */
 public class BDPinModeWindow extends BDWindow
 {
-    public Button submitBtn = new Button("确定");
+    public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     
     public ComboBox<String> combPin = new ComboBox<String>();
     public ComboBox<String> combMode = new ComboBox<String>();
@@ -37,13 +38,13 @@ public class BDPinModeWindow extends BDWindow
        this.initStyle(StageStyle.UTILITY);
        this.setResizable(false);
        
-       this.setTitle("  定义端口");
+       this.setTitle("  " + BDLang.rb.getString("定义端口"));
        this.setScene(scene);
        
        HBox contain  = new HBox();
 
-       Label lbPin     = new Label("端口：");
-       Label lbMode    = new Label("模式：");
+       Label lbPin     = new Label(BDLang.rb.getString("端口") + "：");
+       Label lbMode    = new Label(BDLang.rb.getString("模式") + "：");
        
        combPin.setPrefWidth(90);
        combMode.setPrefWidth(220);

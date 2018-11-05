@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 /**
  *
@@ -26,9 +27,9 @@ public class BDDialogWindow extends BDWindow
     public Image image;
     public Label msgLbl;
     
-    public Button okBtn = new Button("确定");
-    public Button giveupBtn = new Button("放弃");
-    public Button cancleBtn = new Button("取消");
+    public Button okBtn = new Button(BDLang.rb.getString("确定"));
+    public Button giveupBtn = new Button(BDLang.rb.getString("放弃"));
+    public Button cancleBtn = new Button(BDLang.rb.getString("取消"));
     
     public BDDialogWindow(String title, String msg)
     {

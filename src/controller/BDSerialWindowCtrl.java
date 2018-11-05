@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-
+import model.BDLang;
 import view.BDSerialWindow;
 
 /**
@@ -89,7 +89,7 @@ public class BDSerialWindowCtrl
                 	comtWindow.value1CmbBox.setValue(null);
                 	
                 	// 更新提示内容
-                	comtWindow.value1CmbBox.setPromptText("请输入正确变量名");
+                	comtWindow.value1CmbBox.setPromptText(BDLang.rb.getString("请输入正确的变量名"));
                 	
                 	return;
                 }

@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 /**
  *
@@ -45,7 +46,7 @@ public class BDPluginWindow extends BDWindow
        
        //BDTitleView  titlePanel  = new BDTitleView();
        
-       this.setTitle("  工具");
+       this.setTitle("  " + BDLang.rb.getString("工具"));
        this.setScene(scene);
        
        HBox contain  = new HBox();
@@ -60,9 +61,9 @@ public class BDPluginWindow extends BDWindow
        magMusicBtn.setPrefSize(100, 100);
        magColorBtn.setPrefSize(100, 100);
        
-       Tooltip magLedsTip = new Tooltip("LED阵列工具");
-       Tooltip magMusicTip = new Tooltip("谱曲工具");
-       Tooltip magColorTip = new Tooltip("调色工具");
+       Tooltip magLedsTip = new Tooltip(BDLang.rb.getString("LED阵列工具"));
+       Tooltip magMusicTip = new Tooltip(BDLang.rb.getString("谱曲工具"));
+       Tooltip magColorTip = new Tooltip(BDLang.rb.getString("调色工具"));
        
        magLedsBtn.getStyleClass().add("mgaLEDsBtn");
        magMusicBtn.getStyleClass().add("mgaMusicBtn");

@@ -1,9 +1,88 @@
 package util.io;
 
 import java.io.File;
+import java.io.IOException;
+
+import controller.BDWorkspaceCtrl;
+import javafx.stage.FileChooser;
 
 public class BDFileProc
 {
+	// 保存文件
+	public static boolean saveFile(BDWorkspaceCtrl workspaceCtrl) 
+	{
+		String code = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode();
+		workspaceCtrl.workspaceView.workspaceModel.curTab.code.setCodeText(code);
+		
+		try 
+		{
+			// 写入文件
+			BDCodeWriter.fileWriter(workspaceCtrl.workspaceView.workspaceModel.curTab.code.path, code);
+			
+			// 更改保存状态
+			workspaceCtrl.workspaceView.workspaceModel.curTab.code.isSaved = true;
+
+		} 
+		catch (IOException ex) 
+		{
+			//logger.error(this.toString(), ex);
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean saveAsFile(BDWorkspaceCtrl workspaceCtrl) 
+	{
+		try 
+		{
+			File file = null;
+			FileChooser fileChooser = new FileChooser();
+	
+			// Set extension filter
+			FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("Text  (*.txt)", "*.txt");
+			FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("Arduino  (*.ino)", "*.ino");
+			FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++  (*.cpp)", "*.cpp");
+			FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C  (*.c)", "*.c");
+			FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("Head Files (*.h)", "*.h");
+	
+			fileChooser.getExtensionFilters().add(extFilterINO);
+			fileChooser.getExtensionFilters().add(extFilterTXT);
+			fileChooser.getExtensionFilters().add(extFilterCPP);
+			fileChooser.getExtensionFilters().add(extFilterC);
+			fileChooser.getExtensionFilters().add(extFilterH);
+
+			try
+			{
+				// Show open file dialog
+				file = fileChooser.showSaveDialog(null);
+			}
+			catch(Exception ex){}
+
+			if(file == null)
+			{
+				return false;
+			}
+		
+			// Write file
+			BDCodeWriter.fileWriter(file.getPath(),
+				//workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getText());
+				workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode());
+				// Update the file name.
+				workspaceCtrl.workspaceView.workspaceModel.curTab.code.path = file.getPath();
+				// Update the tab name.
+				workspaceCtrl.workspaceView.workspaceModel.curTab.tab.setText(file.getName());
+				// Update the tab state
+				workspaceCtrl.workspaceView.workspaceModel.curTab.code.isSaved = true;
+		} 
+		catch (IOException ex) 
+		{
+			//logger.error(this.toString(), ex);
+		}
+		
+		return true;
+	}
+	
 	public static boolean deleteDir(String path)
 	{
 		File file = new File(path);
@@ -11,7 +90,7 @@ public class BDFileProc
 		if(!file.exists())
 		{
 			//判断是否待删除目录是否存在
-			System.err.println("The dir are not exists!");
+			//System.err.println("The dir are not exists!");
 			
 			return false;
 		}

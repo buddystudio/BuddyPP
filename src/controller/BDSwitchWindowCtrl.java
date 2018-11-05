@@ -16,7 +16,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
-
+import model.BDLang;
 import view.BDSwitchWindow;
 
 /**
@@ -201,7 +201,7 @@ public class BDSwitchWindowCtrl
             
             valueCmbBox.setEditable(true);
 
-            valueCmbBox.setPromptText("整型表达式" + (i + 1));
+            valueCmbBox.setPromptText(BDLang.rb.getString("整型表达式") + " " + (i + 1));
 
             Matcher Variables;
             
