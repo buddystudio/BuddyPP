@@ -162,6 +162,16 @@ public class BDTabCtrl
 		// 判断文件是否已经保存
 		if (workspaceView.workspaceModel.curTab.code.isSaved) 
 		{
+        	// 如果文件不存在(保存后文件被删除的情况)
+        	if(!new File(tab.code.path).exists())
+        	{
+        		// 另存为文件
+        		if(BDFileProc.saveFile(workspaceCtrl) == false) 
+                {
+                	return;
+                }
+        	}
+
 			// 文件已保存之前关闭标签页
 			workspaceView.workspaceModel.tabList.remove(tab);
 

@@ -47,7 +47,7 @@ public class BDCodeReader
             CodeTxt += (line + "\\n");
         }  
 
-        br.close();  
+        br.close();
 
         return CodeTxt;
     }

@@ -12,7 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import util.io.BDCodeWriter;
-
+import util.io.BDFileProc;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
@@ -536,11 +536,12 @@ public class BDGUICtrl
                         // 关闭提示窗口
                         gui.saveWindow.close();
 
-                        // 保存文件
+                        // 保存文件(文件路径为空)
                         if (tab.code.path == "") 
                         {
-                        	 // 另存为文件
-                            if(saveAsFile(tab) == false) 
+                        	// 另存为文件
+                            //if(saveAsFile(tab) == false)
+                        	if(BDFileProc.saveAsFile(gui.workspaceCtrl) == false) 
                             {
                             	return;
                             }
@@ -550,12 +551,13 @@ public class BDGUICtrl
                             try 
                             {
                                 // 保存文件
-                                saveFile(tab);
+                            	BDFileProc.saveFile(gui.workspaceCtrl);
                             } 
                             catch (Exception ex) 
                             {
                                 // 另存为文件
-                                if(saveAsFile(tab) == false) 
+                                //if(saveAsFile(tab) == false) 
+                            	if(BDFileProc.saveAsFile(gui.workspaceCtrl) == false)
                                 {
                                 	return;
                                 }
@@ -574,6 +576,17 @@ public class BDGUICtrl
         } 
         else 
         {
+        	// 如果文件不存在(保存后文件被删除的情况)
+        	if(!new File(tab.code.path).exists())
+        	{
+        		// 另存为文件
+                //if(saveAsFile(tab) == false)
+        		if(BDFileProc.saveFile(gui.workspaceCtrl) == false) 
+                {
+                	return;
+                }
+        	}
+        	
         	// 保存参数
         	BDParameters.writeProfile();
         	
@@ -653,83 +666,6 @@ public class BDGUICtrl
             // 更新状态标签
             gui.guiModel.isMaximized = true;
         }
-    }
-
-    // 保存文件
-    private void saveFile(BDCodeTabModel tab) 
-    {
-        try 
-        {
-            String code = tab.editorCtrl.getCode();
-
-            // 写入文件
-            BDCodeWriter.fileWriter(tab.code.path, code);
-
-            tab.code.setCodeText(code);
-
-            // 更改保存状态
-            tab.code.isSaved = true;
-
-        } 
-        catch (IOException ex) 
-        {
-        	logger.error("",ex);
-            //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    // 另存为文件
-    private boolean saveAsFile(BDCodeTabModel tab) 
-    {
-    	try 
-        {
-    		File file;
-
-	    	FileChooser fileChooser = new FileChooser();
-	
-	    	// 设置文件后缀过滤
-	    	FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("文本文档  (*.txt)", "*.txt");
-	    	FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("程序源码  (*.ino)", "*.ino");
-	    	FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++程序源码  (*.cpp)", "*.cpp");
-	    	FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C程序源码  (*.c)", "*.c");
-	    	FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("头文件  (*.h)", "*.h");
-	
-	    	fileChooser.getExtensionFilters().add(extFilterINO);
-	    	fileChooser.getExtensionFilters().add(extFilterTXT);
-	    	fileChooser.getExtensionFilters().add(extFilterCPP);
-	    	fileChooser.getExtensionFilters().add(extFilterC);
-	    	fileChooser.getExtensionFilters().add(extFilterH);
-
-	        // Show open file dialog
-	        //file = fileChooser.showSaveDialog(null);
-	        file = fileChooser.showSaveDialog(gui.saveWindow);
-	        	
-	        //if(file == null || !file.exists())
-	        if(file == null)
-	        {
-	        	return false;
-	        }
-
-            // File write.
-            BDCodeWriter.fileWriter(file.getPath(), tab.editorCtrl.getCode());
-
-            // Update the file path.
-            tab.code.path = file.getPath();
-
-            // Update the tab name.
-            tab.tab.setText(file.getName());
-
-            // Update the tab state.
-            tab.code.isSaved = true;
-        } 
-        catch (IOException ex) 
-        {
-        	logger.error("",ex);
-        	return false;
-            //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    	
-    	return true;
     }
     
     private EventHandler<ActionEvent> editHandler = new EventHandler<ActionEvent>()

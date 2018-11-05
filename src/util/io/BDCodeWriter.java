@@ -39,7 +39,7 @@ public class BDCodeWriter
         
         fw.write(codeTxt);
         // 刷新缓冲区
-        fw.flush();        
+        fw.flush(); 
         // 关闭文件流对象
         fw.close();
         */
@@ -50,7 +50,10 @@ public class BDCodeWriter
         
         osw.write(codeTxt);   
         
-        osw.flush(); 
+        osw.flush();
+        
+        // 释放资源
+        osw.close();
     }
     
     public static void preparePath(String path)
