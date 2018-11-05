@@ -6,24 +6,21 @@
 package controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import util.io.BDCodeReader;
-import util.io.BDCodeWriter;
-
+import util.io.BDFileProc;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
-import javafx.stage.FileChooser;
 import model.BDCodeModel;
 import model.BDCodeTabModel;
-
+import model.BDLang;
 import view.BDDialogWindow;
 import view.BDWorkspaceView;
 
@@ -34,14 +31,20 @@ import view.BDWorkspaceView;
 public class BDTabCtrl 
 {
 	public BDWorkspaceView workspaceView;
+	
+	private BDWorkspaceCtrl workspaceCtrl;
 	private BDCodeTabModel tab;
+	
 	private static final Logger logger = LogManager.getLogger(BDTabCtrl.class);
 
 	public BDTabCtrl(BDCodeTabModel newTab, BDWorkspaceCtrl workspaceCtrl) 
 	{
 		this.tab = (BDCodeTabModel)newTab;
+		
+		this.workspaceCtrl = workspaceCtrl;
 
-		if (!newTab.tab.isSelected()) {
+		if (!newTab.tab.isSelected()) 
+		{
 			newTab.tab.setGraphic(newTab.hlink2);
 		}
 
@@ -51,9 +54,12 @@ public class BDTabCtrl
 			public void handle(javafx.event.Event e) 
 			{
 				// 删除标签页
-				try {
+				try 
+				{
 					removeTab();
-				} catch (Exception ex) {
+				} 
+				catch (Exception ex) 
+				{
 					logger.error(ex.getStackTrace());
 				}
 			}
@@ -170,7 +176,7 @@ public class BDTabCtrl
 		} 
 		else 
 		{
-			dialogWindow = new BDDialogWindow("  保存", "     是否保存对" + tab.tab.getText() + "文件的修改？");
+			dialogWindow = new BDDialogWindow("  " + BDLang.rb.getString("保存提示"), "     " + BDLang.rb.getString("是否保存对") + tab.tab.getText() + BDLang.rb.getString("文件的修改？"));
 
 			// 显示提示窗口
 			dialogWindow.show();
@@ -189,19 +195,26 @@ public class BDTabCtrl
 				if (workspaceView.workspaceModel.curTab.code.path == "") 
 				{
 					// 另存为文件
-					saveAsFile();
+					//saveAsFile();
+					if(!BDFileProc.saveAsFile(workspaceCtrl))
+					{
+						return;
+					}
 				} 
 				else 
 				{
 					try 
 					{
 						// 保存文件
-						saveFile();
+						BDFileProc.saveFile(workspaceCtrl);
 					} 
 					catch (Exception ex) 
 					{
 						// 另存为文件
-						saveAsFile();
+						if(!BDFileProc.saveAsFile(workspaceCtrl))
+						{
+							return;
+						}
 					}
 				}
 
@@ -252,70 +265,5 @@ public class BDTabCtrl
 				dialogWindow.close();
 			}
 		});
-	}
-
-	// 保存文件
-	private void saveFile() 
-	{
-		try 
-		{
-			String code = workspaceView.workspaceModel.curTab.editorCtrl.getCode();
-
-			// 写入文件
-			BDCodeWriter.fileWriter(workspaceView.workspaceModel.curTab.code.path, code);
-
-			workspaceView.workspaceModel.curTab.code.setCodeText(code);
-
-			// 更改保存状态
-			workspaceView.workspaceModel.curTab.code.isSaved = true;
-
-		} 
-		catch (IOException ex) 
-		{
-			logger.error("", ex);
-		}
-	}
-
-	// 另存为文件
-	private void saveAsFile() 
-	{
-		File file;
-
-		FileChooser fileChooser = new FileChooser();
-
-		// 设置文件类型过滤
-		FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("文本文档  (*.txt)", "*.txt");
-		FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("程序源码  (*.ino)", "*.ino");
-		FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++程序源码  (*.cpp)", "*.cpp");
-		FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C程序源码  (*.c)", "*.c");
-		FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("头文件  (*.h)", "*.h");
-
-		fileChooser.getExtensionFilters().add(extFilterINO);
-		fileChooser.getExtensionFilters().add(extFilterTXT);
-		fileChooser.getExtensionFilters().add(extFilterCPP);
-		fileChooser.getExtensionFilters().add(extFilterC);
-		fileChooser.getExtensionFilters().add(extFilterH);
-
-		// 显示文件选择器
-		file = fileChooser.showSaveDialog(null);
-
-		try 
-		{
-			// 写入文件
-			BDCodeWriter.fileWriter(file.getPath(), workspaceView.workspaceModel.curTab.editorCtrl.getCode());
-
-			// 更新文件路径
-			workspaceView.workspaceModel.curTab.code.path = file.getPath();
-
-			// 更新标签名
-			workspaceView.workspaceModel.curTab.tab.setText(file.getName());
-
-			// 更改保存状态
-			workspaceView.workspaceModel.curTab.code.isSaved = true;
-		} 
-		catch (IOException ex) 
-		{
-			logger.error("", ex);
-		}
 	}
 }

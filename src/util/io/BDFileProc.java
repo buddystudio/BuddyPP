@@ -1,13 +1,69 @@
 package util.io;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import controller.BDWorkspaceCtrl;
 import javafx.stage.FileChooser;
+import model.BDCodeModel;
 
 public class BDFileProc
 {
+	public static BDCodeModel openFile()
+	{
+		BDCodeModel code = null;
+		
+		// 打开文件
+		File file;
+		FileChooser fileChooser = new FileChooser();
+
+		// Set extension filter
+		FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("Text  (*.txt)", "*.txt");
+		FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("Arduino  (*.ino)", "*.ino");
+		FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++  (*.cpp)", "*.cpp");
+		FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C  (*.c)", "*.c");
+		FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("Head Files  (*.h)", "*.h");
+		FileChooser.ExtensionFilter extFilterAll = new FileChooser.ExtensionFilter("All Files  (*.*)", "*.*");
+
+		fileChooser.getExtensionFilters().add(extFilterINO);
+		fileChooser.getExtensionFilters().add(extFilterTXT);
+		fileChooser.getExtensionFilters().add(extFilterCPP);
+		fileChooser.getExtensionFilters().add(extFilterC);
+		fileChooser.getExtensionFilters().add(extFilterH);
+		fileChooser.getExtensionFilters().add(extFilterAll);
+
+		// Show open file dialog
+		file = fileChooser.showOpenDialog(null);
+		
+		if(file == null)
+		{
+			return code;
+		}
+		
+		code = new BDCodeModel();
+			
+		code.setName(file.getName());
+
+		try 
+		{
+			//code.setCodeText(BDCodeReader.readFileByLines2(file.getPath()));
+			code.setCodeText(BDCodeReader.readFileByLines(file.getPath()));
+
+			// 写入文件路径
+			code.path = file.getPath();
+		} 
+		catch (FileNotFoundException ex) 
+		{
+			//logger.error(ex.getMessage());
+		} 
+		catch (IOException ex) 
+		{
+			//logger.error(ex.getMessage());
+		}
+		
+		return code;
+	}
 	// 保存文件
 	public static boolean saveFile(BDWorkspaceCtrl workspaceCtrl) 
 	{

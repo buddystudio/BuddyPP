@@ -40,8 +40,8 @@ public class BDMenuCtrl
 {
 	public BDWorkspaceCtrl workspaceCtrl;
 	
-	public Thread compileThread = null;
-	public Thread uploadThread 	= null;
+	public Thread compileThread 	= null;
+	public Thread uploadThread 		= null;
 	public Thread subUploadThread 	= null;
 	
 	private BDMenuView menuView;
@@ -89,57 +89,16 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
-				// 打开文件
-				File file;
-				FileChooser fileChooser = new FileChooser();
-
-				// Set extension filter
-				FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("Text  (*.txt)", "*.txt");
-				FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("Arduino  (*.ino)", "*.ino");
-				FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++  (*.cpp)", "*.cpp");
-				FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C  (*.c)", "*.c");
-				FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("Head Files  (*.h)", "*.h");
-				FileChooser.ExtensionFilter extFilterAll = new FileChooser.ExtensionFilter("All Files  (*.*)", "*.*");
-
-				fileChooser.getExtensionFilters().add(extFilterINO);
-				fileChooser.getExtensionFilters().add(extFilterTXT);
-				fileChooser.getExtensionFilters().add(extFilterCPP);
-				fileChooser.getExtensionFilters().add(extFilterC);
-				fileChooser.getExtensionFilters().add(extFilterH);
-				fileChooser.getExtensionFilters().add(extFilterAll);
-
-				// Show open file dialog
-				file = fileChooser.showOpenDialog(null);
-				
-				if(file == null)
-					return;
-				
-				BDCodeModel code = new BDCodeModel();
-				
-				code.setName(file.getName());
+				// 读取源码文件
+				BDCodeModel code = BDFileProc.openFile();
 
 				try 
 				{
-					//code.setCodeText(BDCodeReader.readFileByLines2(file.getPath()));
-					code.setCodeText(BDCodeReader.readFileByLines(file.getPath()));
-
-					// 写入文件路径
-					code.path = file.getPath();
-				} 
-				catch (FileNotFoundException ex) 
-				{
-					logger.error(ex.getMessage());
-				} 
-				catch (IOException ex) 
-				{
-					logger.error(ex.getMessage());
-				}
-
-				try 
-				{
-					// 添加代码标签页
-					workspaceCtrl.addTab(code);
-					
+					if(code != null)
+					{
+						// 添加代码标签页
+						workspaceCtrl.addTab(code);
+					}
 				} 
 				catch (AWTException ex) 
 				{
@@ -202,7 +161,6 @@ public class BDMenuCtrl
 			public void handle(ActionEvent event) 
 			{
 				// 另存文件
-				//saveAsFile();
 				BDFileProc.saveAsFile(workspaceCtrl);
 			}
 		});
@@ -214,6 +172,7 @@ public class BDMenuCtrl
 			public void handle(ActionEvent event) 
 			{
 				BDWindowsManager.expWindow = new BDExampleWindow();
+				
 				new BDExampleWindowCtrl(BDWindowsManager.expWindow, workspaceCtrl);
 				
 				// 打开例程窗口
