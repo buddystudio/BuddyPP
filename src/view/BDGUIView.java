@@ -182,8 +182,13 @@ public class BDGUIView
         //consolePanel.setCenter(consoleMsgPanel);
         
         String curPath = this.getClass().getResource("/").getPath();
-    	String refUrl = "file://" + curPath + "resources/reference/index.html";
+    	String refUrl = "file://" + curPath + "resources/reference/cn/index.html";
     	String docUrl = "file://" + curPath + "resources/doc/index.html";
+    	
+    	if(BDParameters.langues.equals("English"))
+    	{
+    		refUrl = "file://" + curPath + "resources/reference/en/HomePage.html";
+    	}
 
         BDWebView refView = new BDWebView(refUrl);
         BDWebView docView = new BDWebView(docUrl);

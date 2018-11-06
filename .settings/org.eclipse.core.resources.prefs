@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/controller/BDSerialHelperCtrl.java=UTF-8
 encoding//src/model/BDMessage.java=UTF-8
+encoding//src/resources/lang/lang_zh_HK.properties=ISO-8859-1
 encoding//src/view/BDCompileAndUploadWindow.java=GBK
 encoding/<project>=UTF-8
 separateDerivedEncodings=true
