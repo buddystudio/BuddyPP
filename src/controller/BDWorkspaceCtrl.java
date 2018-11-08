@@ -7,8 +7,8 @@ package controller;
 
 import java.awt.AWTException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -27,7 +27,7 @@ public final class BDWorkspaceCtrl
 {
     public BDWorkspaceView workspaceView;
     
-    private static final Logger logger = LogManager.getLogger();
+    //private static final Logger logger = LogManager.getLogger();
     
     public BDWorkspaceCtrl(BDWorkspaceView workspaceView)
     {
@@ -43,7 +43,7 @@ public final class BDWorkspaceCtrl
         } 
         catch (AWTException ex) 
         {
-        	logger.error("",ex);
+        	//logger.error("",ex);
             //Logger.getLogger(BDWorkspaceCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

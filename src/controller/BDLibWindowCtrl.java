@@ -7,8 +7,8 @@ package controller;
 
 import java.io.File;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,8 +20,10 @@ import view.BDLibWindow;
  *
  * @author gsh
  */
-public class BDLibWindowCtrl{
-	private static final Logger logger=LogManager.getLogger();
+public class BDLibWindowCtrl
+{
+	//private static final Logger logger=LogManager.getLogger();
+	
     public BDLibWindowCtrl(BDLibWindow libWindow, BDWorkspaceCtrl workspaceCtrl)
     {
         BDParameters.libsList.clear();
@@ -69,7 +71,7 @@ public class BDLibWindowCtrl{
         }
         catch(Exception ex)
         {
-        	logger.error("",ex);
+        	//logger.error("",ex);
         }
        
        libWindow.listView.setItems(libWindow.strList);

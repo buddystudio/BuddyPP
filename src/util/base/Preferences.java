@@ -13,8 +13,8 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 public class Preferences 
 {
@@ -23,7 +23,7 @@ public class Preferences
 	static Hashtable<String, String> table = new Hashtable<String, String>();
 	static File preferencesFile;
 
-	private static final Logger logger = LogManager.getLogger(Preferences.class);
+	//private static final Logger logger = LogManager.getLogger(Preferences.class);
 
 	static public String[] loadStrings(InputStream input) {
 		try {
@@ -56,8 +56,10 @@ public class Preferences
 			System.arraycopy(lines, 0, output, 0, lineCount);
 			return output;
 
-		} catch (IOException e) {
-			logger.error("", e);
+		} 
+		catch (IOException e) 
+		{
+			//logger.error("", e);
 			// e.printStackTrace();
 			// throw new RuntimeException("Error inside loadStrings()");
 		}
@@ -113,8 +115,9 @@ public class Preferences
 
 			writer.flush();
 			writer.close();
-		} catch (FileNotFoundException e) {
-			// TODO 自动生成�? catch �?
+		} 
+		catch (FileNotFoundException e) 
+		{
 			e.printStackTrace();
 		}
 	}

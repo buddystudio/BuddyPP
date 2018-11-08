@@ -347,6 +347,9 @@ public class BDCompileAndUploadCtrl
 					
 					// 恢复功能按钮
             		setFuncEnable(true);
+            		
+            		// 更新按钮状态
+                	updateSerialPorts();
 	            }
 	        });
 			
@@ -810,6 +813,9 @@ public class BDCompileAndUploadCtrl
                         	
 			                	// 恢复功能按钮
 			                	setFuncEnable(true);
+			                	
+			                	// 更新按钮状态
+			                	updateSerialPorts();
                         	}
                         }
             		});
@@ -860,6 +866,9 @@ public class BDCompileAndUploadCtrl
                         	
                         	// 恢复功能按钮
 	                		setFuncEnable(true);
+	                		
+	                		// 更新按钮状态
+		                	updateSerialPorts();
 
                         	this.cancel();
                         }
@@ -1143,6 +1152,9 @@ public class BDCompileAndUploadCtrl
 		                	{
 		                		// 恢复功能按钮
 		                		setFuncEnable(true);
+		                		
+		                		// 更新按钮状态
+			                	updateSerialPorts();
 		                		
 		                		return;
 		                	}

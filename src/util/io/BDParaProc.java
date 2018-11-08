@@ -10,27 +10,32 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+
 /**
  *
  * @author gsh
  */
-public class BDParaProc {
-	private static final Logger logger = LogManager.getLogger(BDParaProc.class);
+public class BDParaProc 
+{
+	//private static final Logger logger = LogManager.getLogger(BDParaProc.class);
 
 	/**
 	 * 以行为单位读取文件
 	 */
-	public static String readPara(String fileName) {
+	public static String readPara(String fileName) 
+	{
 		File file = new File(fileName);
 
 		BufferedReader reader = null;
 
 		String codeTxt = "";
 
-		try {
-			System.out.println("以行为单位读取文件内容，一次读一整行：");
+		try 
+		{
+			//System.out.println("以行为单位读取文件内容，一次读一整行：");
+			
 			reader = new BufferedReader(new FileReader(file));
 
 			String tempString = null;
@@ -58,14 +63,22 @@ public class BDParaProc {
 			}
 
 			reader.close();
-		} catch (IOException e) {
-			logger.error("", e);
-		} finally {
-			if (reader != null) {
-				try {
+		} 
+		catch (IOException e) 
+		{
+			//logger.error("", e);
+		} 
+		finally 
+		{
+			if (reader != null) 
+			{
+				try 
+				{
 					reader.close();
-				} catch (IOException ex) {
-					logger.error("", ex);
+					
+				} catch (IOException ex) 
+				{
+					//logger.error("", ex);
 				}
 			}
 		}

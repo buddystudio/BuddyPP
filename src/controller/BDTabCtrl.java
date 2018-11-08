@@ -8,8 +8,8 @@ package controller;
 import java.io.File;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import util.io.BDCodeReader;
 import util.io.BDFileProc;
@@ -35,7 +35,7 @@ public class BDTabCtrl
 	private BDWorkspaceCtrl workspaceCtrl;
 	private BDCodeTabModel tab;
 	
-	private static final Logger logger = LogManager.getLogger(BDTabCtrl.class);
+	//private static final Logger logger = LogManager.getLogger(BDTabCtrl.class);
 
 	public BDTabCtrl(BDCodeTabModel newTab, BDWorkspaceCtrl workspaceCtrl) 
 	{
@@ -60,7 +60,7 @@ public class BDTabCtrl
 				} 
 				catch (Exception ex) 
 				{
-					logger.error(ex.getStackTrace());
+					//logger.error(ex.getStackTrace());
 				}
 			}
 		});
@@ -77,7 +77,7 @@ public class BDTabCtrl
 				} 
 				catch (Exception ex) 
 				{
-					logger.error(ex.getStackTrace());
+					//logger.error(ex.getStackTrace());
 				}
 			}
 		});
@@ -148,7 +148,7 @@ public class BDTabCtrl
 					} 
 					catch (Exception ex) 
 					{
-						logger.error(ex.getStackTrace());
+						//logger.error(ex.getStackTrace());
 					}
 				}
 			}

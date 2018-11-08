@@ -7,10 +7,9 @@ package controller;
 
 import java.io.File;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,7 +23,7 @@ import view.BDSettingWindow;
  */
 public class BDSettingWindowCtrl
 {
-	private static final Logger logger = LogManager.getLogger();
+	//private static final Logger logger = LogManager.getLogger();
 	private String acePath = "/resources/ace-builds-master/src-noconflict";
 	
     public BDSettingWindowCtrl(BDSettingWindow settingWindow, BDWorkspaceCtrl workspaceCtrl)

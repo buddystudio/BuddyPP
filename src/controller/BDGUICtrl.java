@@ -6,22 +6,17 @@
 package controller;
 
 import java.io.File;
-import java.io.IOException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
-import util.io.BDCodeWriter;
 import util.io.BDFileProc;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.FileChooser;
 import model.BDCodeTabModel;
 import model.BDLang;
 import model.BDParameters;
@@ -42,7 +37,7 @@ public class BDGUICtrl
     boolean isDragging = false;
     boolean isEdged	= false;
 
-    private static final Logger logger = LogManager.getLogger();
+    //private static final Logger logger = LogManager.getLogger();
     //private BDDialogWindow saveWindow = new BDDialogWindow("保存提示", "是否保存当前文件");
     
     private double pos = 0;

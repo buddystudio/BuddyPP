@@ -7,8 +7,8 @@ package controller;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import util.base.Preferences;
 import util.debug.BDMessageConsumer;
@@ -35,7 +35,7 @@ public class BDComWindowCtrl implements BDMessageConsumer
 	private String curComRate;
 	private BDComWindow bdComWindow;
 	
-	private final static Logger logger = LogManager.getLogger();
+	//private final static Logger logger = LogManager.getLogger();
 
 	public BDComWindowCtrl(BDComWindow comWindow) 
 	{
@@ -184,7 +184,7 @@ public class BDComWindowCtrl implements BDMessageConsumer
 		} 
 		catch (Exception e) 
 		{
-			logger.error("", e);
+			//logger.error("", e);
 		}
 		
 		// 设置监听，收到信息后由message方法处理

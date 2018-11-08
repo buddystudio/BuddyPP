@@ -4,15 +4,15 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 public class BDMessageSiphon implements Runnable 
 {
 	BufferedReader streamReader;
 	Thread thread;
 	BDMessageConsumer consumer;
-	private Logger logger = LogManager.getLogger();
+	//private Logger logger = LogManager.getLogger();
 	BDProgressStatusListener progressListener; // 进度侦听
 
 	public BDMessageSiphon(InputStream stream, BDMessageConsumer consumer) {
@@ -72,7 +72,7 @@ public class BDMessageSiphon implements Runnable
 			} 
 			else 
 			{
-				logger.error("Output Message", e);
+				//logger.error("Output Message", e);
 			}
 			
 			thread = null;

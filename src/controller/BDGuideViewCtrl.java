@@ -8,8 +8,8 @@ package controller;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -24,7 +24,8 @@ import view.BDMenuView;
  */
 public class BDGuideViewCtrl 
 {
-	private final static Logger logger=LogManager.getLogger();
+	//private final static Logger logger=LogManager.getLogger();
+	
     public BDGuideViewCtrl(BDGuideView consoleView, BDWorkspaceCtrl workspaceCtrl, BDMenuView menuView)
     {
         consoleView.consoleTitle.setText("");
@@ -109,10 +110,10 @@ public class BDGuideViewCtrl
                 } 
                 catch (URISyntaxException ex) 
                 {
-                	logger.error("",ex);
+                	//logger.error("",ex);
                     //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
-                	logger.error("",ex);
+                	//logger.error("",ex);
                     //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -134,10 +135,10 @@ public class BDGuideViewCtrl
                 } 
                 catch (URISyntaxException ex) 
                 {
-                	logger.error("",ex);
+                	//logger.error("",ex);
                     //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
-                    logger.error("",ex);
+                    //logger.error("",ex);
                 	//Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -159,10 +160,10 @@ public class BDGuideViewCtrl
                 } 
                 catch (URISyntaxException ex) 
                 {
-                	logger.error("",ex);
+                	//logger.error("",ex);
                     //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
-                    logger.error("",ex);
+                    //logger.error("",ex);
                 	//Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -184,10 +185,10 @@ public class BDGuideViewCtrl
                 } 
                 catch (URISyntaxException ex) 
                 {
-                	logger.error("",ex);
+                	//logger.error("",ex);
                     //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
-                    logger.error("",ex);
+                    //logger.error("",ex);
                 	//Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

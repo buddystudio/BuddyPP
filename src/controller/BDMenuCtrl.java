@@ -7,22 +7,19 @@ package controller;
 
 import java.awt.AWTException;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import util.base.Preferences;
-import util.debug.BDCompiler;
 import util.debug.BDSerial;
-import util.io.BDCodeReader;
 import util.io.BDCodeWriter;
 import util.io.BDFileProc;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
-import javafx.stage.FileChooser;
 import model.BDCodeModel;
 import model.BDParameters;
 import model.BDWindowsManager;
@@ -46,7 +43,7 @@ public class BDMenuCtrl
 	
 	private BDMenuView menuView;
 	
-	private static final Logger logger = LogManager.getLogger(BDCompiler.class);
+	//private static final Logger logger = LogManager.getLogger(BDCompiler.class);
 
 	public void setHotKey() 
 	{
@@ -102,7 +99,7 @@ public class BDMenuCtrl
 				} 
 				catch (AWTException ex) 
 				{
-					logger.error(ex.getMessage());
+					//logger.error(ex.getMessage());
 				}
 			}
 		});
@@ -121,7 +118,7 @@ public class BDMenuCtrl
 				} 
 				catch (AWTException ex) 
 				{
-					logger.error(ex.getMessage());
+					//logger.error(ex.getMessage());
 				}
 			}
 		});
@@ -342,7 +339,7 @@ public class BDMenuCtrl
 				} 
 				catch (IOException ex) 
 				{
-					logger.error(this.toString(), ex);
+					//logger.error(this.toString(), ex);
 				}
 			}
 		});
@@ -404,7 +401,7 @@ public class BDMenuCtrl
 				} 
 				catch (IOException ex) 
 				{
-					logger.error(this.toString(), ex);
+					//logger.error(this.toString(), ex);
 				}
 			}
 		});

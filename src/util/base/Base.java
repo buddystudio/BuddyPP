@@ -23,8 +23,8 @@ import java.util.Set;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import util.debug.BDCompiler;
 import util.debug.BDTarget;
@@ -34,7 +34,8 @@ import util.debug.BDTarget;
  *
  * @author Boniz
  */
-public class Base {
+public class Base 
+{
 
     static private boolean commandLine;
     static File buildFolder;
@@ -47,7 +48,7 @@ public class Base {
     static public HashMap<String, File> importToLibraryTable;
     static public String REVISION="1040";
 
-    private static final Logger logger = LogManager.getLogger(Base.class);
+    //private static final Logger logger = LogManager.getLogger(Base.class);
     
     public Base(String[] args) {
         // platform.init(this);
@@ -102,13 +103,17 @@ public class Base {
             // being passed in with 8.3 syntax, which makes the sketch loader code
             // unhappy, since the sketch folder naming doesn't match up correctly.
             // http://dev.processing.org/bugs/show_bug.cgi?id=1089
-            if (isWindows()) {
-                try {
+            if (isWindows()) 
+            {
+                try 
+                {
                     File file = new File(args[i]);
 
                     file.getCanonicalPath();
-                } catch (IOException e) {
-                	logger.error(this.getClass().toString(),e);                   
+                } 
+                catch (IOException e) 
+                {
+                	//logger.error(this.getClass().toString(),e);                   
                 }
             }
             // if (handleOpen(path) != null) {
@@ -118,13 +123,19 @@ public class Base {
 
         //添加函数�?
         libraries = new HashSet<File>();
+        
         importToLibraryTable=new HashMap<String, File>();
-        try {
+        
+        try 
+        {
             File sketchbookLibraries = getSketchbookLibrariesFolder();
+            
             addLibraries(librariesFolder);
             addLibraries(sketchbookLibraries);
-        } catch (IOException ex) {
-        	logger.error(this.getClass().toString(),ex);         	
+            
+        } catch (IOException ex) 
+        {
+        	//logger.error(this.getClass().toString(),ex);         	
         }
     }
 
@@ -262,20 +273,27 @@ public class Base {
     static public File getSketchbookLibrariesFolder() {
         File libdir = new File(getSketchbookFolder(), "libraries");
 
-        if (!libdir.exists()) {
-            try {
+        if (!libdir.exists()) 
+        {
+            try 
+            {
                 libdir.mkdirs();
+                
                 File readme = new File(libdir, "readme.txt");
                 FileWriter freadme = new FileWriter(readme);
 
                 freadme.write(
                         "For information on installing libraries, see: "
                         + "http://arduino.cc/en/Guide/Libraries\n");
+                
                 freadme.close();
-            } catch (Exception e) {
-            	logger.error("",e);
+            } 
+            catch (Exception e) 
+            {
+            	//logger.error("",e);
             }
         }
+        
         return libdir;
     }
 
@@ -284,69 +302,93 @@ public class Base {
      * error that can't be recovered. Use showWarning() for errors that allow P5
      * to continue running.
      */
-    static public void showError(String title, String message, Throwable e) {
-        if (title == null) {
+    static public void showError(String title, String message, Throwable e) 
+    {
+        if (title == null) 
+        {
             title = "Error";
         }
 
-        if (commandLine) {
+        if (commandLine) 
+        {
             System.err.println(title + ": " + message);
-
-        } else {// JOptionPane.showMessageDialog(new Frame(), message, title,JOptionPane.ERROR_MESSAGE);
+        } 
+        else 
+        {
+        	// JOptionPane.showMessageDialog(new Frame(), message, title,JOptionPane.ERROR_MESSAGE);
         }
-        if (e != null) {
+        
+        if (e != null) 
+        {
             e.printStackTrace();
         }
+        
         System.exit(1);
     }
 
     /**
      * Non-fatal error message with optional stack trace side dish.
      */
-    static public void showWarning(String title, String message, Exception e) {
-        if (title == null) {
+    static public void showWarning(String title, String message, Exception e) 
+    {
+        if (title == null) 
+        {
             title = "Warning";
         }
 
-        if (commandLine) {
+        if (commandLine) 
+        {
             System.out.println(title + ": " + message);
-
-        } else {// JOptionPane.showMessageDialog(new Frame(), message, title,JOptionPane.WARNING_MESSAGE);
+        } 
+        else 
+        {
+        	// JOptionPane.showMessageDialog(new Frame(), message, title,JOptionPane.WARNING_MESSAGE);
         }
-        if (e != null) {
-           logger.error("",e);
+        if (e != null) 
+        {
+           //logger.error("",e);
         }
     }
 
-    static protected boolean isCommandLine() {
+    static protected boolean isCommandLine() 
+    {
         return commandLine;
     }
 
-    static public File getSettingsFolder() {
+    static public File getSettingsFolder() 
+    {
         File settingsFolder = null;
 
         String preferencesPath = Preferences.get("settings.path");
 
-        if (preferencesPath != null) {
+        if (preferencesPath != null) 
+        {
             settingsFolder = new File(preferencesPath);
 
-        } else {
-            try {
+        } 
+        else 
+        {
+            try 
+            {
                 File home = new File(System.getProperty("user.home"));
 
                 settingsFolder = new File(home, ".arduino");
-            } catch (Exception e) {
-            	logger.error("Problem getting data folder",
-                        "Error getting the Arduino data folder.".toString(),e);                
+            } 
+            catch (Exception e) 
+            {
+            	//logger.error("Problem getting data folder",
+                        //"Error getting the Arduino data folder.".toString(),e);                
             }
         }
 
         // create the folder if it doesn't exist already
-        if (!settingsFolder.exists()) {
-            if (!settingsFolder.mkdirs()) {                
-                logger.info("Settings issues",
+        if (!settingsFolder.exists()) 
+        {
+            if (!settingsFolder.mkdirs()) 
+            {                
+                /*logger.info("Settings issues",
                         "Arduino cannot run because it could not\n"
-                        + "create a folder to store your settings.");
+                        + "create a folder to store your settings.");*/
                 
             }
         }

@@ -73,7 +73,8 @@ public class BDCompileAndUploadWindow extends BDWindow
     	}
     	else
     	{
-    		winWidth = 750;
+    		//winWidth = 750;
+    		winWidth = 810;
     		
     		super.init(winWidth, 720);
     	}
@@ -106,7 +107,7 @@ public class BDCompileAndUploadWindow extends BDWindow
         	this.menuBar.setDisable(true);
 
 			//this.btnsBar.setMinWidth(865);
-        	this.btnsBar.setMinWidth(winWidth);
+        	//this.btnsBar.setMinWidth(winWidth);
 			this.btnsBar.setPadding(new Insets(20, 20, 20, 20));
 			this.btnsBar.setSpacing(10);
 
@@ -120,6 +121,8 @@ public class BDCompileAndUploadWindow extends BDWindow
 				this.updateBtn.setPrefSize(60, 30);
 				this.compileAndUploadBtn.setPrefSize(80, 30);
 	    	}
+			
+			this.compileAndUploadBtn.setPrefSize(110, 30);
 			
 			options = new BDSerialManager2().getPortList();
 	

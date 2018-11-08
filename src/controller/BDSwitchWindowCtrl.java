@@ -8,8 +8,8 @@ package controller;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,7 +25,8 @@ import view.BDSwitchWindow;
  */
 public class BDSwitchWindowCtrl 
 {
-	private static final Logger logger = LogManager.getLogger();
+	//private static final Logger logger = LogManager.getLogger();
+	
     BDSwitchWindow switchWindow;
     BDWorkspaceCtrl workspaceCtrl;
             
@@ -184,7 +185,7 @@ public class BDSwitchWindowCtrl
                 }
                 catch(Exception e)
                 {
-                	logger.error("",e);
+                	//logger.error("",e);
                 }
             }
         });

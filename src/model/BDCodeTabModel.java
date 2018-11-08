@@ -5,9 +5,8 @@
  */
 package model;
 
-import java.awt.AWTException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import controller.BDEditorCtrl;
 import controller.BDWorkspaceCtrl;
 import javafx.scene.Cursor;
@@ -26,9 +25,9 @@ public class BDCodeTabModel extends BDTabModel
 	public BDEditorView editorView;
 	public BDEditorCtrl editorCtrl;
 	
-	private static final Logger logger = LogManager.getLogger();
+	//private static final Logger logger = LogManager.getLogger();
     
-    public BDCodeTabModel(BDCodeModel code, BDWorkspaceCtrl workspaceCtrl) throws AWTException
+    public BDCodeTabModel(BDCodeModel code, BDWorkspaceCtrl workspaceCtrl)
     {
         this.code = code;
 

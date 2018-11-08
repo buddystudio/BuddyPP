@@ -8,8 +8,8 @@ package controller;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,7 +22,8 @@ import view.BDAwWindow;
  */
 public class BDAwWindowCtrl 
 {
-	private static final Logger logger=LogManager.getLogger(BDAwWindowCtrl.class);
+	//private static final Logger logger=LogManager.getLogger(BDAwWindowCtrl.class);
+	
     public BDAwWindowCtrl(BDAwWindow awWindow, BDWorkspaceCtrl workspaceCtrl)
     {
         Matcher Variables;
@@ -87,7 +88,7 @@ public class BDAwWindowCtrl
                 }
                 catch (NumberFormatException e)
                 {
-                	logger.error("",e);
+                	//logger.error("",e);
                     //return;
                 }
 

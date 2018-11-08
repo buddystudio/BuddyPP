@@ -20,8 +20,8 @@ import java.util.ResourceBundle;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import controller.BDGUICtrl;
 import javafx.application.Application;
@@ -39,7 +39,7 @@ import view.BDGUIView;
  */
 public class BuddyPP extends Application
 { 
-	private static final Logger logger = LogManager.getLogger(BuddyPP.class);
+	//private static final Logger logger = LogManager.getLogger(BuddyPP.class);
 	
     @Override
     public void start(Stage primaryStage) 
@@ -133,7 +133,7 @@ public class BuddyPP extends Application
         } 
         catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) 
         {
-            logger.error(this.getClass().toString(),ex);
+            //logger.error(this.getClass().toString(),ex);
         }
     }
 

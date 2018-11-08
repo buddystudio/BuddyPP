@@ -11,8 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import util.base.Base;
 import util.base.Preferences;
@@ -23,7 +23,7 @@ import util.base.Preferences;
  */
 public class BDCompiler implements BDMessageConsumer 
 {
-	private static final Logger logger = LogManager.getLogger(BDCompiler.class);
+	//private static final Logger logger = LogManager.getLogger(BDCompiler.class);
 
 	String buildPath; 							// 生成路径
 	String primaryClassName;
@@ -679,7 +679,7 @@ public class BDCompiler implements BDMessageConsumer
 			}
 			reader.close();
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			//logger.error(e.getMessage());
 			return false; // any error reading dep file = recompile it
 		}
 		if (ret && (verbose || Preferences.getBoolean("build.verbose"))) {
@@ -733,7 +733,7 @@ public class BDCompiler implements BDMessageConsumer
 				file.delete();
 			}
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			//logger.error(e.getMessage());
 		}
 		
 		return true;

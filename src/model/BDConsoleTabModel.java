@@ -6,8 +6,8 @@
 package model;
 
 import java.awt.AWTException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import controller.BDWorkspaceCtrl;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
@@ -18,7 +18,7 @@ import javafx.scene.layout.HBox;
  */
 public class BDConsoleTabModel extends BDTabModel
 {
-	private static final Logger logger = LogManager.getLogger();
+	//private static final Logger logger = LogManager.getLogger();
 	
     public Tab tab = new Tab();
     public BDCodeModel code = new BDCodeModel();

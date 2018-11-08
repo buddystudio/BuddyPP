@@ -10,8 +10,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import util.io.BDCodeReader;
 
@@ -35,7 +35,7 @@ import view.BDExampleWindow;
  */
 public class BDExampleWindowCtrl 
 {
-	private static final Logger logger = LogManager.getLogger();
+	//private static final Logger logger = LogManager.getLogger();
 	
 	public BDExampleWindow rootWindow;
 	public BDWorkspaceCtrl rootWorkspaceCtrl;
@@ -185,12 +185,12 @@ public class BDExampleWindowCtrl
             } 
             catch (FileNotFoundException ex) 
             {
-            	logger.error("",ex);
+            	//logger.error("",ex);
                 //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
             } 
             catch (IOException ex) 
             {
-            	logger.error("",ex);
+            	//logger.error("",ex);
                 //Logger.getLogger(BDMenuCtrl.class.getName()).log(Level.SEVERE, null, ex);
             }
 
@@ -201,7 +201,7 @@ public class BDExampleWindowCtrl
             } 
             catch (AWTException ex) 
             {
-            	logger.error("",ex);
+            	//logger.error("",ex);
                 //Logger.getLogger(BDExampleWindowCtrl.class.getName()).log(Level.SEVERE, null, ex);
             }
 

@@ -5,14 +5,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import util.base.Base;
 
 public class BDInoCode 
 {
-	private static final Logger logger = LogManager.getLogger();
+	//private static final Logger logger = LogManager.getLogger();
 
 	public String codeText 	= ""; 				// 程序代码文本
 	public String name 		= ""; 				// 程序代码源文件名称
@@ -56,7 +56,7 @@ public class BDInoCode
 		} 
 		catch (FileNotFoundException fnfe) 
 		{
-			logger.error("", fnfe);
+			//logger.error("", fnfe);
 			String msg = "Build folder disappeared or could not be written";
 			throw new BDRunnerException(msg);
 		}
@@ -80,7 +80,7 @@ public class BDInoCode
 		} 
 		catch (FileNotFoundException fnfe) 
 		{
-			logger.error("", fnfe);
+			//logger.error("", fnfe);
 			String msg = "Build folder disappeared or could not be written";
 			throw new BDRunnerException(msg);
 		} 
@@ -90,7 +90,7 @@ public class BDInoCode
 		} 
 		catch (Exception ex) 
 		{			
-			logger.error("", ex);
+			//logger.error("", ex);
 			throw new BDRunnerException(ex.toString());
 		}
 
