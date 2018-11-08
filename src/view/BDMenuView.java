@@ -7,8 +7,6 @@ package view;
 
 import util.base.Preferences;
 
-import org.fxmisc.richtext.CodeArea;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -39,7 +37,7 @@ public class BDMenuView extends HBox
     //public BDPluginWindow pluginWindow      = new BDPluginWindow();     // 工具插件窗口
     //public BDAboutWindow aboutWindow        = new BDAboutWindow();      // 关于我们窗口
     
-    public CodeArea consloeArea				= null;
+    //public CodeArea consloeArea				= null;
     public SplitPane splitPanel 			= null;
     public Stage primaryStage				= null;
     

@@ -30,7 +30,7 @@ public class BDConsoleWindow extends BDWindow
 	public HBox msgBtnBar = new HBox();
 	
 	//public BDConsoleMsgWindow msgWindow = new BDConsoleMsgWindow();
-	public BDConsoleMsgWindow msgWindow;
+	//public BDConsoleMsgWindow msgWindow;
 	public Button okBtn = new Button("确定");
     public Button detailBtn = new Button("查看详情");
     

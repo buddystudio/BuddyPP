@@ -5,9 +5,6 @@
  */
 package view;
 
-import org.fxmisc.richtext.CodeArea;
-import org.fxmisc.richtext.LineNumberFactory;
-
 import controller.BDGuideViewCtrl;
 import controller.BDMenuCtrl;
 import controller.BDSettingWindowCtrl;
@@ -62,7 +59,7 @@ public class BDGUIView
     
     public SplitPane splitPanel 			= new SplitPane();
     public BorderPane consolePanel 			= new BorderPane();
-    public CodeArea msgArea					= new CodeArea();
+    //public CodeArea msgArea					= new CodeArea();
     public VBox dividerPanel 				= new VBox();
     
     public BDMenuCtrl menuCtrl              = new BDMenuCtrl(menuPanel);
@@ -108,7 +105,7 @@ public class BDGUIView
         menuCtrl.workspaceCtrl = this.workspaceCtrl;
         
         // 把控制台信息组件传入菜单视图
-        menuPanel.consloeArea = this.msgArea;
+        //menuPanel.consloeArea = this.msgArea;
         menuPanel.splitPanel = this.splitPanel;
         menuPanel.primaryStage = primaryStage;
         
@@ -272,7 +269,7 @@ public class BDGUIView
 		});*/
    
         //consoleMsgPanel.setTop(consoleTitlePanel);
-        consoleMsgPanel.setCenter(msgArea);
+        //consoleMsgPanel.setCenter(msgArea);
 
         // 右侧栏暂时屏蔽
         //this.root.setRight(this.guidePanel); 

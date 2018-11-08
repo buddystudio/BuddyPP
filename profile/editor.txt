@@ -1,8 +1,8 @@
 theme=xcode
 size=16px
 isCustom=0
-posX=595.0
-posY=118.0
+posX=560.0
+posY=139.0
 width=900.0
 height=690.0
 lang=简体中文

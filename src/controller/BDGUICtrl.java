@@ -407,38 +407,6 @@ public class BDGUICtrl
                 }
             }
         });
-        
-        // 点击菜单清除选项
-        gui.clearMenuItem.setOnAction(new EventHandler<ActionEvent>() 
-        {
-            @Override public void handle(ActionEvent e) 
-            {
-                gui.msgArea.clear();
-            }
-        });
-        
-        // 点击菜单复制选项
-        gui.copyMenuItem.setOnAction(new EventHandler<ActionEvent>() 
-        {
-            @Override public void handle(ActionEvent e) 
-            {
-            	// 把控制台信息复制到剪贴板
-            	Clipboard clipboard = Clipboard.getSystemClipboard();
-            	ClipboardContent cc = new ClipboardContent();
-            	
-            	cc.putString(gui.msgArea.getText());
-            	clipboard.setContent(cc);
-            }
-        });
-        
-        // 点击菜单全选选项
-        gui.selectAllMenuItem.setOnAction(new EventHandler<ActionEvent>() 
-        {
-            @Override public void handle(ActionEvent e) 
-            {
-            	gui.msgArea.selectAll();
-            }
-        });
     }
 
     // 
