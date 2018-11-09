@@ -48,7 +48,7 @@ public class BDSerialHelperWindow extends BDWindow
         try
 		{
         	String curPath = this.getClass().getResource("/").getPath();
-        	System.out.println(curPath + "style/serialHelper.fxml");
+        	System.out.println(curPath + "resources/style/serialHelper.fxml");
         	Parent root = FXMLLoader.load(getClass().getResource("BDSerialHelperView.fxml"));
 		
 			contain.getChildren().add(root);

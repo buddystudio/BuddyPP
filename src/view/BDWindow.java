@@ -35,14 +35,14 @@ public class BDWindow extends Stage
         // 模态窗口
         this.initModality(Modality.APPLICATION_MODAL);
         
-        rootPanel.getStylesheets().add("style/modena_dark.css");
+        rootPanel.getStylesheets().add("resources/style/modena_dark.css");
 
         //rootPanel.getChildren().add(titlePanel);
         
         // 定义无边框窗体
         //root.initStyle(StageStyle.UNDECORATED);
         
-        //scene.getStylesheets().add("style/titleStyle.css"); 
+        //scene.getStylesheets().add("resources/style/titleStyle.css"); 
     
     };
 }

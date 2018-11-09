@@ -32,7 +32,7 @@ public class BDPluginWindow extends BDWindow
        // 窗口初始化
        super.init(500, 350);
        
-       scene.getStylesheets().add("style/settingStyle.css");
+       scene.getStylesheets().add("resources/style/settingStyle.css");
 
        // 定义无边框窗体
        //this.initStyle(StageStyle.UNDECORATED);
@@ -77,7 +77,7 @@ public class BDPluginWindow extends BDWindow
        magMusicBtn.setTooltip(magMusicTip);
        magColorBtn.setTooltip(magColorTip);
 
-       this.rootPanel.getStylesheets().add("style/pluginStyle.css"); 
+       this.rootPanel.getStylesheets().add("resources/style/pluginStyle.css"); 
 
        contain.setPadding(new Insets(10, 10, 10, 10));
        contain.setSpacing(5);

@@ -74,9 +74,9 @@ public class BDGuideView extends BorderPane
         
         //Button hideBtn = new Button();
         
-        spRightIco = new Image("images/spRight.png");
-        spLeftIco = new Image("images/spLeft.png");
-        consoleIco = new Image("images/iconConsole18.png");
+        spRightIco = new Image("resources/images/spRight.png");
+        spLeftIco = new Image("resources/images/spLeft.png");
+        consoleIco = new Image("resources/images/iconConsole18.png");
         
         hideBtn = new ImageView(spRightIco);
         consoleBtn = new ImageView(consoleIco);

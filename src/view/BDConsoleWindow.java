@@ -41,10 +41,10 @@ public class BDConsoleWindow extends BDWindow
 	{
 		super.init(420, 150);
 		
-		scene.getStylesheets().add("style/consoleStyle.css");
-		scene.getStylesheets().add("style/progressbarStyle.css");
-		scene.getStylesheets().add("style/compileStyle.css");
-		scene.getStylesheets().add("style/msgWindowStyle.css");
+		scene.getStylesheets().add("resources/style/consoleStyle.css");
+		scene.getStylesheets().add("resources/style/progressbarStyle.css");
+		scene.getStylesheets().add("resources/style/compileStyle.css");
+		scene.getStylesheets().add("resources/style/msgWindowStyle.css");
 
 		// 总在最前方
 		this.setAlwaysOnTop(true);

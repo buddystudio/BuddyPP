@@ -53,8 +53,8 @@ public class BDExampleWindowCtrl
         
         File[] exRootList = file.listFiles();
 
-        Image icon = new Image(getClass().getResourceAsStream("/images/iconDoc.png"));
-        Image icon2 = new Image(getClass().getResourceAsStream("/images/iconDoc2.png"));
+        Image icon = new Image(getClass().getResourceAsStream("/resources/images/iconDoc.png"));
+        Image icon2 = new Image(getClass().getResourceAsStream("/resources/images/iconDoc2.png"));
 
         ImageView iv = new ImageView(icon);
 

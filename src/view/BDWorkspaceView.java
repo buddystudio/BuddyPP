@@ -18,7 +18,7 @@ public class BDWorkspaceView extends TabPane
     
     public BDWorkspaceView()
     {
-        //this.getStylesheets().add("style/workspaceStyle.css");
+        //this.getStylesheets().add("resources/style/workspaceStyle.css");
         
         // 屏蔽动画效果
         this.setStyle("-fx-open-tab-animation: NONE; -fx-close-tab-animation: NONE;");

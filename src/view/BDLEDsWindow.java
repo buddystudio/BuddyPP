@@ -31,8 +31,8 @@ public class BDLEDsWindow extends BDWindow
     
     public ObservableList<ImageView> btnList = FXCollections.observableArrayList();
     
-    public Image ledOn = new Image("images/ledOn.png");
-    public Image ledOff = new Image("images/ledOff.png");
+    public Image ledOn = new Image("resources/images/ledOn.png");
+    public Image ledOff = new Image("resources/images/ledOff.png");
     
     public BDLEDsWindow()
     {

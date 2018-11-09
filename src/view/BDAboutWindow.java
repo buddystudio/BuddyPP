@@ -35,7 +35,7 @@ public final class BDAboutWindow extends BDWindow
         // 窗口初始化
         super.init(500, 365);
 
-        //scene.getStylesheets().add("style/settingStyle.css");
+        //scene.getStylesheets().add("resources/style/settingStyle.css");
         rootPanel.getStylesheets().clear();
        
         // 定义无边框窗体
@@ -66,7 +66,7 @@ public final class BDAboutWindow extends BDWindow
        
         contain.setAlignment(Pos.TOP_CENTER);
        
-        Image imgAboutUs = new Image("/images/about_us.jpg");
+        Image imgAboutUs = new Image("resources/images/about_us.jpg");
        
         ImageView iv2 = new ImageView(imgAboutUs);
        

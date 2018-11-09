@@ -80,14 +80,14 @@ public class BDGUIView
     
     public MenuBar menuBar = new MenuBar();
     
-    public Image iconArrowRightImg = new Image("images/arrow_right.png");
-    public Image iconArrowLeftImg = new Image("images/arrow_left.png");
+    public Image iconArrowRightImg = new Image("resources/images/arrow_right.png");
+    public Image iconArrowLeftImg = new Image("resources/images/arrow_left.png");
     
-    public Image iconClear01Img = new Image("images/console_clear_icon_01.jpg");
-    public Image iconClear02Img = new Image("images/console_clear_icon_02.jpg");
+    public Image iconClear01Img = new Image("resources/images/console_clear_icon_01.jpg");
+    public Image iconClear02Img = new Image("resources/images/console_clear_icon_02.jpg");
     
-    public Image iconCopy01Img = new Image("images/console_copy_icon_01.jpg");
-    public Image iconCopy02Img = new Image("images/console_copy_icon_02.jpg");
+    public Image iconCopy01Img = new Image("resources/images/console_copy_icon_01.jpg");
+    public Image iconCopy02Img = new Image("resources/images/console_copy_icon_02.jpg");
     
     public ImageView arrowBtn = new ImageView(iconArrowLeftImg);
     public ImageView clearBtn = new ImageView(iconClear01Img);
@@ -125,7 +125,7 @@ public class BDGUIView
         this.visualBounds = Screen.getPrimary().getVisualBounds();
         
         // Set application icon.
-        this.primaryStage.getIcons().add(new Image("/images/icon_64.png"));
+        this.primaryStage.getIcons().add(new Image("resources/images/icon_64.png"));
         
         // Set main panel style
         String panelStyle = "";
@@ -243,7 +243,7 @@ public class BDGUIView
         //msgArea.setWrapText(true);
         //msgArea.autosize();
 		msgArea.setContextMenu(menu);
-        msgArea.getStylesheets().add("style/compileStyle.css");
+        msgArea.getStylesheets().add("resources/style/compileStyle.css");
         
         // 设置控制台信息高亮
         msgArea.richChanges().filter(ch -> !ch.getInserted().equals(ch.getRemoved())).subscribe(change -> 
@@ -313,13 +313,13 @@ public class BDGUIView
         this.root.setFocusTraversable(true);
 
         // 引用界面CSS样式
-        scene.getStylesheets().add("style/titleStyle.css"); 
-        scene.getStylesheets().add("style/menuStyle.css");
-        scene.getStylesheets().add("style/workspaceStyle.css");
-        scene.getStylesheets().add("style/toolsStyle.css");
-        scene.getStylesheets().add("style/consoleStyle.css");
-        scene.getStylesheets().add("style/magnetStyle.css");
-        scene.getStylesheets().add("style/msgWindowStyle.css");
+        scene.getStylesheets().add("resources/style/titleStyle.css"); 
+        scene.getStylesheets().add("resources/style/menuStyle.css");
+        scene.getStylesheets().add("resources/style/workspaceStyle.css");
+        scene.getStylesheets().add("resources/style/toolsStyle.css");
+        scene.getStylesheets().add("resources/style/consoleStyle.css");
+        scene.getStylesheets().add("resources/style/magnetStyle.css");
+        scene.getStylesheets().add("resources/style/msgWindowStyle.css");
         
         // Set panel background transparent.
         scene.setFill(Color.TRANSPARENT);

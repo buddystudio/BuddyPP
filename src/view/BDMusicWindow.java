@@ -22,84 +22,84 @@ public class BDMusicWindow extends BDWindow
     
     public ObservableList<BDMusicNoteCtrl> noteList = FXCollections.observableArrayList();
     
-    public Image msc_0_normal_img = new Image("images/musicBtn/music_0_btn_normal.jpg");
-    public Image msc_0_press_img = new Image("images/musicBtn/music_0_btn_press.jpg");
+    public Image msc_0_normal_img = new Image("resources/images/musicBtn/music_0_btn_normal.jpg");
+    public Image msc_0_press_img = new Image("resources/images/musicBtn/music_0_btn_press.jpg");
     
-	public Image msc_1L_normal_img = new Image("images/musicBtn/music_1L_btn_normal.jpg");
-	public Image msc_2L_normal_img = new Image("images/musicBtn/music_2L_btn_normal.jpg");
-	public Image msc_3L_normal_img = new Image("images/musicBtn/music_3L_btn_normal.jpg");
-	public Image msc_4L_normal_img = new Image("images/musicBtn/music_4L_btn_normal.jpg");
-	public Image msc_5L_normal_img = new Image("images/musicBtn/music_5L_btn_normal.jpg");
-	public Image msc_6L_normal_img = new Image("images/musicBtn/music_6L_btn_normal.jpg");
-	public Image msc_7L_normal_img = new Image("images/musicBtn/music_7L_btn_normal.jpg");
+	public Image msc_1L_normal_img = new Image("resources/images/musicBtn/music_1L_btn_normal.jpg");
+	public Image msc_2L_normal_img = new Image("resources/images/musicBtn/music_2L_btn_normal.jpg");
+	public Image msc_3L_normal_img = new Image("resources/images/musicBtn/music_3L_btn_normal.jpg");
+	public Image msc_4L_normal_img = new Image("resources/images/musicBtn/music_4L_btn_normal.jpg");
+	public Image msc_5L_normal_img = new Image("resources/images/musicBtn/music_5L_btn_normal.jpg");
+	public Image msc_6L_normal_img = new Image("resources/images/musicBtn/music_6L_btn_normal.jpg");
+	public Image msc_7L_normal_img = new Image("resources/images/musicBtn/music_7L_btn_normal.jpg");
 	
-	public Image msc_1_normal_img = new Image("images/musicBtn/music_1_btn_normal.jpg");
-	public Image msc_2_normal_img = new Image("images/musicBtn/music_2_btn_normal.jpg");
-	public Image msc_3_normal_img = new Image("images/musicBtn/music_3_btn_normal.jpg");
-	public Image msc_4_normal_img = new Image("images/musicBtn/music_4_btn_normal.jpg");
-	public Image msc_5_normal_img = new Image("images/musicBtn/music_5_btn_normal.jpg");
-	public Image msc_6_normal_img = new Image("images/musicBtn/music_6_btn_normal.jpg");
-	public Image msc_7_normal_img = new Image("images/musicBtn/music_7_btn_normal.jpg");
+	public Image msc_1_normal_img = new Image("resources/images/musicBtn/music_1_btn_normal.jpg");
+	public Image msc_2_normal_img = new Image("resources/images/musicBtn/music_2_btn_normal.jpg");
+	public Image msc_3_normal_img = new Image("resources/images/musicBtn/music_3_btn_normal.jpg");
+	public Image msc_4_normal_img = new Image("resources/images/musicBtn/music_4_btn_normal.jpg");
+	public Image msc_5_normal_img = new Image("resources/images/musicBtn/music_5_btn_normal.jpg");
+	public Image msc_6_normal_img = new Image("resources/images/musicBtn/music_6_btn_normal.jpg");
+	public Image msc_7_normal_img = new Image("resources/images/musicBtn/music_7_btn_normal.jpg");
 	
-	public Image msc_1H_normal_img = new Image("images/musicBtn/music_1H_btn_normal.jpg");
-	public Image msc_2H_normal_img = new Image("images/musicBtn/music_2H_btn_normal.jpg");
-	public Image msc_3H_normal_img = new Image("images/musicBtn/music_3H_btn_normal.jpg");
-	public Image msc_4H_normal_img = new Image("images/musicBtn/music_4H_btn_normal.jpg");
-	public Image msc_5H_normal_img = new Image("images/musicBtn/music_5H_btn_normal.jpg");
-	public Image msc_6H_normal_img = new Image("images/musicBtn/music_6H_btn_normal.jpg");
-	public Image msc_7H_normal_img = new Image("images/musicBtn/music_7H_btn_normal.jpg");
+	public Image msc_1H_normal_img = new Image("resources/images/musicBtn/music_1H_btn_normal.jpg");
+	public Image msc_2H_normal_img = new Image("resources/images/musicBtn/music_2H_btn_normal.jpg");
+	public Image msc_3H_normal_img = new Image("resources/images/musicBtn/music_3H_btn_normal.jpg");
+	public Image msc_4H_normal_img = new Image("resources/images/musicBtn/music_4H_btn_normal.jpg");
+	public Image msc_5H_normal_img = new Image("resources/images/musicBtn/music_5H_btn_normal.jpg");
+	public Image msc_6H_normal_img = new Image("resources/images/musicBtn/music_6H_btn_normal.jpg");
+	public Image msc_7H_normal_img = new Image("resources/images/musicBtn/music_7H_btn_normal.jpg");
 	
-	public Image msc_1L_press_img = new Image("images/musicBtn/music_1L_btn_press.jpg");
-	public Image msc_2L_press_img = new Image("images/musicBtn/music_2L_btn_press.jpg");
-	public Image msc_3L_press_img = new Image("images/musicBtn/music_3L_btn_press.jpg");
-	public Image msc_4L_press_img = new Image("images/musicBtn/music_4L_btn_press.jpg");
-	public Image msc_5L_press_img = new Image("images/musicBtn/music_5L_btn_press.jpg");
-	public Image msc_6L_press_img = new Image("images/musicBtn/music_6L_btn_press.jpg");
-	public Image msc_7L_press_img = new Image("images/musicBtn/music_7L_btn_press.jpg");
+	public Image msc_1L_press_img = new Image("resources/images/musicBtn/music_1L_btn_press.jpg");
+	public Image msc_2L_press_img = new Image("resources/images/musicBtn/music_2L_btn_press.jpg");
+	public Image msc_3L_press_img = new Image("resources/images/musicBtn/music_3L_btn_press.jpg");
+	public Image msc_4L_press_img = new Image("resources/images/musicBtn/music_4L_btn_press.jpg");
+	public Image msc_5L_press_img = new Image("resources/images/musicBtn/music_5L_btn_press.jpg");
+	public Image msc_6L_press_img = new Image("resources/images/musicBtn/music_6L_btn_press.jpg");
+	public Image msc_7L_press_img = new Image("resources/images/musicBtn/music_7L_btn_press.jpg");
 	
-	public Image msc_1_press_img = new Image("images/musicBtn/music_1_btn_press.jpg");
-	public Image msc_2_press_img = new Image("images/musicBtn/music_2_btn_press.jpg");
-	public Image msc_3_press_img = new Image("images/musicBtn/music_3_btn_press.jpg");
-	public Image msc_4_press_img = new Image("images/musicBtn/music_4_btn_press.jpg");
-	public Image msc_5_press_img = new Image("images/musicBtn/music_5_btn_press.jpg");
-	public Image msc_6_press_img = new Image("images/musicBtn/music_6_btn_press.jpg");
-	public Image msc_7_press_img = new Image("images/musicBtn/music_7_btn_press.jpg");
+	public Image msc_1_press_img = new Image("resources/images/musicBtn/music_1_btn_press.jpg");
+	public Image msc_2_press_img = new Image("resources/images/musicBtn/music_2_btn_press.jpg");
+	public Image msc_3_press_img = new Image("resources/images/musicBtn/music_3_btn_press.jpg");
+	public Image msc_4_press_img = new Image("resources/images/musicBtn/music_4_btn_press.jpg");
+	public Image msc_5_press_img = new Image("resources/images/musicBtn/music_5_btn_press.jpg");
+	public Image msc_6_press_img = new Image("resources/images/musicBtn/music_6_btn_press.jpg");
+	public Image msc_7_press_img = new Image("resources/images/musicBtn/music_7_btn_press.jpg");
 	
-	public Image msc_1H_press_img = new Image("images/musicBtn/music_1H_btn_press.jpg");
-	public Image msc_2H_press_img = new Image("images/musicBtn/music_2H_btn_press.jpg");
-	public Image msc_3H_press_img = new Image("images/musicBtn/music_3H_btn_press.jpg");
-	public Image msc_4H_press_img = new Image("images/musicBtn/music_4H_btn_press.jpg");
-	public Image msc_5H_press_img = new Image("images/musicBtn/music_5H_btn_press.jpg");
-	public Image msc_6H_press_img = new Image("images/musicBtn/music_6H_btn_press.jpg");
-	public Image msc_7H_press_img = new Image("images/musicBtn/music_7H_btn_press.jpg");
+	public Image msc_1H_press_img = new Image("resources/images/musicBtn/music_1H_btn_press.jpg");
+	public Image msc_2H_press_img = new Image("resources/images/musicBtn/music_2H_btn_press.jpg");
+	public Image msc_3H_press_img = new Image("resources/images/musicBtn/music_3H_btn_press.jpg");
+	public Image msc_4H_press_img = new Image("resources/images/musicBtn/music_4H_btn_press.jpg");
+	public Image msc_5H_press_img = new Image("resources/images/musicBtn/music_5H_btn_press.jpg");
+	public Image msc_6H_press_img = new Image("resources/images/musicBtn/music_6H_btn_press.jpg");
+	public Image msc_7H_press_img = new Image("resources/images/musicBtn/music_7H_btn_press.jpg");
 	
-	public Image icon_1L_img = new Image("images/musicBtn/icon_1L.jpg");
-	public Image icon_2L_img = new Image("images/musicBtn/icon_2L.jpg");
-	public Image icon_3L_img = new Image("images/musicBtn/icon_3L.jpg");
-	public Image icon_4L_img = new Image("images/musicBtn/icon_4L.jpg");
-	public Image icon_5L_img = new Image("images/musicBtn/icon_5L.jpg");
-	public Image icon_6L_img = new Image("images/musicBtn/icon_6L.jpg");
-	public Image icon_7L_img = new Image("images/musicBtn/icon_7L.jpg");
+	public Image icon_1L_img = new Image("resources/images/musicBtn/icon_1L.jpg");
+	public Image icon_2L_img = new Image("resources/images/musicBtn/icon_2L.jpg");
+	public Image icon_3L_img = new Image("resources/images/musicBtn/icon_3L.jpg");
+	public Image icon_4L_img = new Image("resources/images/musicBtn/icon_4L.jpg");
+	public Image icon_5L_img = new Image("resources/images/musicBtn/icon_5L.jpg");
+	public Image icon_6L_img = new Image("resources/images/musicBtn/icon_6L.jpg");
+	public Image icon_7L_img = new Image("resources/images/musicBtn/icon_7L.jpg");
 	
-	public Image icon_0_img = new Image("images/musicBtn/icon_0.jpg");
-	public Image icon_1_img = new Image("images/musicBtn/icon_1.jpg");
-	public Image icon_2_img = new Image("images/musicBtn/icon_2.jpg");
-	public Image icon_3_img = new Image("images/musicBtn/icon_3.jpg");
-	public Image icon_4_img = new Image("images/musicBtn/icon_4.jpg");
-	public Image icon_5_img = new Image("images/musicBtn/icon_5.jpg");
-	public Image icon_6_img = new Image("images/musicBtn/icon_6.jpg");
-	public Image icon_7_img = new Image("images/musicBtn/icon_7.jpg");
+	public Image icon_0_img = new Image("resources/images/musicBtn/icon_0.jpg");
+	public Image icon_1_img = new Image("resources/images/musicBtn/icon_1.jpg");
+	public Image icon_2_img = new Image("resources/images/musicBtn/icon_2.jpg");
+	public Image icon_3_img = new Image("resources/images/musicBtn/icon_3.jpg");
+	public Image icon_4_img = new Image("resources/images/musicBtn/icon_4.jpg");
+	public Image icon_5_img = new Image("resources/images/musicBtn/icon_5.jpg");
+	public Image icon_6_img = new Image("resources/images/musicBtn/icon_6.jpg");
+	public Image icon_7_img = new Image("resources/images/musicBtn/icon_7.jpg");
 	
-	public Image icon_1H_img = new Image("images/musicBtn/icon_1H.jpg");
-	public Image icon_2H_img = new Image("images/musicBtn/icon_2H.jpg");
-	public Image icon_3H_img = new Image("images/musicBtn/icon_3H.jpg");
-	public Image icon_4H_img = new Image("images/musicBtn/icon_4H.jpg");
-	public Image icon_5H_img = new Image("images/musicBtn/icon_5H.jpg");
-	public Image icon_6H_img = new Image("images/musicBtn/icon_6H.jpg");
-	public Image icon_7H_img = new Image("images/musicBtn/icon_7H.jpg");
+	public Image icon_1H_img = new Image("resources/images/musicBtn/icon_1H.jpg");
+	public Image icon_2H_img = new Image("resources/images/musicBtn/icon_2H.jpg");
+	public Image icon_3H_img = new Image("resources/images/musicBtn/icon_3H.jpg");
+	public Image icon_4H_img = new Image("resources/images/musicBtn/icon_4H.jpg");
+	public Image icon_5H_img = new Image("resources/images/musicBtn/icon_5H.jpg");
+	public Image icon_6H_img = new Image("resources/images/musicBtn/icon_6H.jpg");
+	public Image icon_7H_img = new Image("resources/images/musicBtn/icon_7H.jpg");
 	
-	public Image icon_durt_1_img = new Image("images/musicBtn/msc_durt_1.jpg");
-	public Image icon_durt_2_img = new Image("images/musicBtn/msc_durt_2.jpg");
+	public Image icon_durt_1_img = new Image("resources/images/musicBtn/msc_durt_1.jpg");
+	public Image icon_durt_2_img = new Image("resources/images/musicBtn/msc_durt_2.jpg");
 	
 	public ImageView msc_0_btn = new ImageView(msc_0_normal_img);
 	

@@ -48,7 +48,7 @@ public class BDCompileAndUploadCtrl
 	// Get the filename from path.
 	private File tempFile = new File(bd_code_path.trim());
 
-	private String bd_hex_path = bd_built_path + "\\" + tempFile.getName() + ".hex";
+	private String bd_hex_path = bd_built_path + "\\" + tempFile.getName() + ".ino.hex";
 	
 	/*private String bd_avrdude_path 	= bd_root_path + "hardware\\tools\\avr\\bin\\";
 	private String bd_avrdude_conf 	= bd_root_path + "hardware\\tools\\avr\\etc\\avrdude.conf";*/
@@ -375,6 +375,15 @@ public class BDCompileAndUploadCtrl
 				{		
 				}
 			});
+	        
+	        this.compileAndUploadWindow.getBoardListCombox().getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>()
+	        {
+	            @Override
+	            public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) 
+	            {
+	                BDParameters.boardType = compileAndUploadWindow.getBoardListCombox().getSelectionModel().getSelectedItem().toString();
+	            }
+	        });
         } 
 		catch(Exception e) 
 		{
@@ -827,7 +836,7 @@ public class BDCompileAndUploadCtrl
             	{
             		tempFile = new File(bd_code_path.trim());
 
-            		bd_hex_path = bd_built_path + "\\" + tempFile.getName() + ".hex";
+            		bd_hex_path = bd_built_path + "\\" + tempFile.getName() + ".ino.hex";
             	}
 
             	Runtime run = Runtime.getRuntime();

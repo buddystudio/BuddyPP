@@ -36,7 +36,7 @@ public final class BDExampleWindow extends BDWindow
         // 窗口初始化
         super.init(480, 550);
         
-        //scene.getStylesheets().add("style/listViewStyle.css");
+        //scene.getStylesheets().add("resources/style/listViewStyle.css");
         
         // 总在最前方
         this.setAlwaysOnTop(true);

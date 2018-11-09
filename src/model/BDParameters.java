@@ -97,6 +97,7 @@ public class BDParameters
 			paraList.add("posY=" + editorPosY + "\n");
 			paraList.add("width=" + editorWidth + "\n");
 			paraList.add("height=" + editorHeight + "\n");
+			paraList.add("board=" + boardType + "\n");
 			paraList.add("lang=" + langues + "\n");
 			paraList.add("tempPath=" + tempPath + "\n");
 			
@@ -187,6 +188,10 @@ public class BDParameters
 	            	{
 	            		//tempPath = value;
 	            		tempPath = System.getProperty("java.io.tmpdir");
+	            	}
+	            	if(attribute.equals("board"))
+	            	{
+	            		boardType = value;
 	            	}
 	            }
 	        }

@@ -33,7 +33,7 @@ public class BDTitleView extends BorderPane
     	
         this.setStyle("-fx-background-color: #333333;"); 
         
-        Image imageICON = new Image("/images/title.png");
+        Image imageICON = new Image("resources/images/title.png");
         ImageView icon = new ImageView(imageICON);
         
         this.setLeft(icon);

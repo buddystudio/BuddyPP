@@ -135,7 +135,16 @@ public class BDCompileAndUploadWindow extends BDWindow
 			
 			boardListCombox = new ComboBox<>(boardManager.getBoardsList());
 			
-			boardListCombox.getSelectionModel().select(0);
+			// 恢复上一次的选择
+			if(!BDParameters.boardType.equals(""))
+			{
+				boardListCombox.getSelectionModel().select(BDParameters.boardType);
+			}
+			else
+			{
+				boardListCombox.getSelectionModel().select(0);
+			}
+			
 			boardListCombox.setMaxWidth(250);
 		
 			/*this.btnsBar.getChildren().addAll(openBtn, 
@@ -174,7 +183,7 @@ public class BDCompileAndUploadWindow extends BDWindow
 	        //new JMetro(JMetro.Style.LIGHT).applyTheme(rootPanel);
 	        //new JMetro(JMetro.Style.DARK).applyTheme(rootPanel);
 	        
-	        rootPanel.getStylesheets().add("style/modena_dark.css");
+	        rootPanel.getStylesheets().add("resources/style/modena_dark.css");
 
         } 
 		catch(Exception e) 

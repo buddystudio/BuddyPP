@@ -78,7 +78,7 @@ public class BDDialogWindow extends BDWindow
        topPanel.setAlignment(Pos.CENTER);
        bottomPanel.setAlignment(Pos.CENTER);
        
-       image = new Image("images/iconIsSave.png");
+       image = new Image("resources/images/iconIsSave.png");
        
        ImageView iv = new ImageView(image);
        
@@ -90,7 +90,7 @@ public class BDDialogWindow extends BDWindow
        //topPanel.getChildren().add(iv);
        topPanel.getChildren().add(msgLbl);
        
-       this.scene.getStylesheets().add("style/msgWindowStyle.css");
+       this.scene.getStylesheets().add("resources/style/msgWindowStyle.css");
        
        //okBtn.setStyle("-fx-background-color: #c2c2c2;");
        

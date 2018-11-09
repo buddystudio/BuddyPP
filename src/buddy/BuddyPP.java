@@ -28,9 +28,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import model.BDLang;
 import model.BDParameters;
-import util.base.Base;
 import util.base.Preferences;
-import util.debug.BDSerial;
 import view.BDGUIView;
 
 /**
@@ -40,6 +38,14 @@ import view.BDGUIView;
 public class BuddyPP extends Application
 { 
 	//private static final Logger logger = LogManager.getLogger(BuddyPP.class);
+	
+	/**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args)
+    {
+        launch(args); 
+    }
 	
     @Override
     public void start(Stage primaryStage) 
@@ -54,7 +60,7 @@ public class BuddyPP extends Application
     	this.getSysInfo();
     	
     	// 设置窗体风格
-        this.setStyle();
+        //this.setStyle();
 
     	// 设定界面语言
     	this.setLanguage();
@@ -77,16 +83,20 @@ public class BuddyPP extends Application
         
         // 获取操作系统指令长度（32bit/64bit）
         BDParameters.arch = arch;
-        
-        //logger.debug("buddy启动");
+
         /*
         System.out.println(arch);
         System.out.println(os);
+        
         if(arch.contains("64"))
-        {System.out.println("64 bit");}
+        {
+        	System.out.println("64 bit");
+        }
         else
-        {System.out.println("32 bit");}
-         */
+        {
+        	System.out.println("32 bit");
+        }
+        */
     }
     
     private void setLanguage()
@@ -135,13 +145,5 @@ public class BuddyPP extends Application
         {
             //logger.error(this.getClass().toString(),ex);
         }
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args)
-    {
-        launch(args); 
     }
 }

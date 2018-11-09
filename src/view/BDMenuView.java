@@ -85,7 +85,7 @@ public class BDMenuView extends HBox
         
         this.setAlignment(Pos.CENTER_LEFT);  // 居中排列
         
-        Image image = new Image("/images/sp.png");
+        Image image = new Image("resources/images/sp.png");
         
         ImageView sp01 = new ImageView(image);
         ImageView sp02 = new ImageView(image);
