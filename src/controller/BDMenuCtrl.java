@@ -161,13 +161,14 @@ public class BDMenuCtrl
 				BDFileProc.saveAsFile(workspaceCtrl);
 			}
 		});
-		
+
 		// 打开例子程序
 		menuView.menuExampleBtn.setOnAction(new EventHandler<ActionEvent>() 
 		{
 			@Override
 			public void handle(ActionEvent event) 
 			{
+				
 				BDWindowsManager.expWindow = new BDExampleWindow();
 				
 				new BDExampleWindowCtrl(BDWindowsManager.expWindow, workspaceCtrl);
@@ -308,7 +309,6 @@ public class BDMenuCtrl
 				// 保存临时源码文件
 				String code = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode();
 				workspaceCtrl.workspaceView.workspaceModel.curTab.code.setCodeText(code);
-
 				
 				cauwCtrl.openFileFromCode(builtPath + File.separator, codePath + File.separator);
 				
@@ -412,7 +412,7 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
-				BDPluginWindowCtrl pluginWindowVtrl = new BDPluginWindowCtrl(BDWindowsManager.pluginWindow, workspaceCtrl);
+				BDPluginWindowCtrl pluginWindowCtrl = new BDPluginWindowCtrl(BDWindowsManager.pluginWindow, workspaceCtrl);
 
 				// 设置
 				BDWindowsManager.pluginWindow.show();

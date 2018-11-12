@@ -22,6 +22,7 @@ import model.BDLang;
 public class BDLibWindow extends BDWindow
 { 
     public ObservableList<String> strList = FXCollections.observableArrayList();
+    
     public ListView<String> listView = new ListView<>(strList);
     public Button importBtn = new Button(BDLang.rb.getString("导入"));
     

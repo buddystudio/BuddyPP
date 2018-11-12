@@ -93,7 +93,7 @@ public class BDCompileAndUploadCtrl
 		compileAndUploadWindow.getCompileBtn().setDisable(false);
 		compileAndUploadWindow.getUploadBtn().setDisable(false);
 		compileAndUploadWindow.getCompileAndUploadBtn().setDisable(false);
-		compileAndUploadWindow.getStopBtn().setDisable(false);
+		//compileAndUploadWindow.getStopBtn().setDisable(false);
 		
 		//System.out.println("this.bd_built_path: " + this.bd_built_path);
 		//System.out.println("this.bd_code_path: " + this.bd_code_path);
@@ -174,7 +174,7 @@ public class BDCompileAndUploadCtrl
 					compileAndUploadWindow.getCompileBtn().setDisable(false);
 					compileAndUploadWindow.getUploadBtn().setDisable(false);
 					compileAndUploadWindow.getCompileAndUploadBtn().setDisable(false);
-					compileAndUploadWindow.getStopBtn().setDisable(false);
+					//compileAndUploadWindow.getStopBtn().setDisable(false);
 					
 					workMode = WorkMode.FROM_INO;
 				}
@@ -213,7 +213,7 @@ public class BDCompileAndUploadCtrl
 					compileAndUploadWindow.getCompileBtn().setDisable(true);
 					compileAndUploadWindow.getUploadBtn().setDisable(false);
 					compileAndUploadWindow.getCompileAndUploadBtn().setDisable(true);
-					compileAndUploadWindow.getStopBtn().setDisable(false);
+					//compileAndUploadWindow.getStopBtn().setDisable(false);
 					
 					workMode = WorkMode.FROM_HEX;
 				}
@@ -615,10 +615,23 @@ public class BDCompileAndUploadCtrl
 
                 try 
                 {
-                	dumpMessage.setMessage("msg_" + "");
+                	/*dumpMessage.setMessage("msg_" + "");
                 	dumpMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("初始化操作即将开始") + "...");
                 	dumpMessage.setMessage("msg_" + ">>>>>>> ===================================================================");
-                	dumpMessage.setMessage("msg_" + "");
+                	dumpMessage.setMessage("msg_" + "");*/
+                	
+                	Platform.runLater(new Runnable() 
+            		{
+            		    @Override
+            		    public void run() 
+            		    {
+            		    	compileAndUploadWindow.getAcvView().setColorMsgFont("#000000");
+			            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
+			                compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> Buddy++：" + BDLang.rb.getString("初始化操作即将开始") + "..." + "</b>");
+			                compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> ===================================================================" + "</b>");
+			                compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
+                        }
+            		});
             		
                 	// display command.
                 	dumpMessage.setMessage("cmd_" + dumpCmd);
@@ -691,10 +704,23 @@ public class BDCompileAndUploadCtrl
 
                 try 
                 {
-                	//compileMessage.setMessage("inf_" + "");
+                	/*//compileMessage.setMessage("inf_" + "");
                 	compileMessage.setMessage("inf_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("编译操作即将开始") + "...");
                 	compileMessage.setMessage("inf_" + ">>>>>>> ===================================================================");
-                	compileMessage.setMessage("inf_" + "");
+                	compileMessage.setMessage("inf_" + "");*/
+                	
+                	Platform.runLater(new Runnable() 
+            		{
+            		    @Override
+            		    public void run() 
+            		    { 
+            		    	compileAndUploadWindow.getAcvView().setColorMsgFont("#000000");
+			            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
+			                compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> Buddy++：" + BDLang.rb.getString("编译操作即将开始") + "..." + "</b>");
+			                compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> ===================================================================</b>");
+			                compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
+                        }
+            		});
                 	
                 	// display command.
                 	compileMessage.setMessage("cmd_" + compileCmd);
@@ -845,10 +871,23 @@ public class BDCompileAndUploadCtrl
             	
             	String uploadCmd_new = uploadCmd;
 
-            	uploadMessage.setMessage("msg_" + "");
+            	/*uploadMessage.setMessage("msg_" + "");
         		uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("上传操作即将开始") + "...");
         		uploadMessage.setMessage("msg_" + ">>>>>>> ===================================================================");
-        		uploadMessage.setMessage("msg_" + "");
+        		uploadMessage.setMessage("msg_" + "");*/
+            	
+            	Platform.runLater(new Runnable() 
+        		{
+        		    @Override
+        		    public void run() 
+        		    {
+            	    	compileAndUploadWindow.getAcvView().setColorMsgFont("#000000");
+		            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
+		            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> Buddy++：" + BDLang.rb.getString("上传操作即将开始") + "..." + "</b>");
+		            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> ===================================================================</b>");
+		            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
+                    }
+        		});
         		
         		// 开始计时（超时后关闭操作）
         		timer.schedule(new TimerTask()
@@ -1011,10 +1050,24 @@ public class BDCompileAndUploadCtrl
 			    			
 			    			compileAndUploadWindow.getProgressBar().setProgress(upLoadProgress);
 			    			
-			    			uploadMessage.setMessage("msg_" + "");
+			    			/*uploadMessage.setMessage("msg_" + "");
 	                		uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("上传操作已经结束") + "！");
 	                		uploadMessage.setMessage("msg_" + ">>>>>>> ===================================================================");
-			    		
+			    			*/
+			    			
+			    			Platform.runLater(new Runnable() 
+		            		{
+		            		    @Override
+		            		    public void run() 
+		            		    {
+		            		    	compileAndUploadWindow.getAcvView().setColorMsgFont("#000000");
+					            	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
+					                compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> Buddy++：" +  BDLang.rb.getString("上传操作已经结束") + "</b>");
+					                compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> ===================================================================</b>");
+					                //compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
+		                        }
+		            		});
+			    			
 	                		// 恢复功能按钮
 	                		setFuncEnable(true);
 	                		
@@ -1106,8 +1159,8 @@ public class BDCompileAndUploadCtrl
 				    		
 				    		compileAndUploadWindow.getAcvView().setColorMsgFont("#000000");
 				    		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> Buddy++：" + BDLang.rb.getString("初始化操作已结束") + "！");
-		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> ===================================================================");
+		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> Buddy++：" + BDLang.rb.getString("初始化操作已结束") + "！" + "</b>");
+		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>>>>>>>> ===================================================================</b>");
 		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
 		                	
 		                	compileThread.start();
@@ -1152,8 +1205,8 @@ public class BDCompileAndUploadCtrl
 		                {
 				    		compileAndUploadWindow.getAcvView().setColorMsgFont("#000000");
 				    		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> Buddy++：" + BDLang.rb.getString("编译操作已结束") + "！");
-		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> ===================================================================");
+		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> Buddy++：" + BDLang.rb.getString("编译操作已结束") + "！" + "</b>");
+		                	compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> ===================================================================" + "</b>");
 		                	//compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
 		                	
 		                	// 只编译不上传
@@ -1176,8 +1229,8 @@ public class BDCompileAndUploadCtrl
 		            	{
 		            		compileAndUploadWindow.getAcvView().setColorMsgFont("#FF0000");
 		            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
-		            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> Buddy++：" + BDLang.rb.getString("编译过程出现错误") + "！");
-		            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine(">>>>>>> ===================================================================");
+		            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> Buddy++：" + BDLang.rb.getString("编译过程出现错误") + "！" + "</b>");
+		            		compileAndUploadWindow.getAcvCtrl().updateMessageByLine("<b>" + ">>>>>>> ===================================================================" + "</b>");
 		            		//compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
 		            		
 		            		return;
@@ -1271,6 +1324,8 @@ public class BDCompileAndUploadCtrl
 			compileAndUploadWindow.getUpdateBtn().setDisable(false);
 			compileAndUploadWindow.getSerialListCombox().setDisable(false);
 			compileAndUploadWindow.getBoardListCombox().setDisable(false);
+			
+			compileAndUploadWindow.getStopBtn().setDisable(true);
 		}
 		else
 		{
@@ -1280,6 +1335,8 @@ public class BDCompileAndUploadCtrl
 			compileAndUploadWindow.getUpdateBtn().setDisable(true);
 			compileAndUploadWindow.getSerialListCombox().setDisable(true);
 			compileAndUploadWindow.getBoardListCombox().setDisable(true);
+			
+			compileAndUploadWindow.getStopBtn().setDisable(false);
 		}
 		
 	}

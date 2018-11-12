@@ -39,7 +39,7 @@ public class BDComWindow extends BDWindow
     public BDComWindow() 
     {
         // 窗口初始化
-        super.init(550, 700);
+        super.init(550, 600);
         
         //scene.getStylesheets().add("resources/style/listViewStyle.css");
 

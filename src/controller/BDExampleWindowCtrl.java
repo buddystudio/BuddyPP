@@ -58,7 +58,7 @@ public class BDExampleWindowCtrl
 
         ImageView iv = new ImageView(icon);
 
-        exampleWindow.rootItem = new TreeItem<String> ("例子程序", iv);
+        exampleWindow.rootItem = new TreeItem<String> ("Examples", iv);
         exampleWindow.rootItem.setExpanded(true);
         
         for (int i = 0; i < exRootList.length; i++) 
@@ -87,9 +87,9 @@ public class BDExampleWindowCtrl
                        
                     		if (exSubList2[0].isDirectory()) 
                     		{
-                         	iv3 = new ImageView(icon);
-                           
-                         	iv3.setId(null);
+	                         	iv3 = new ImageView(icon);
+	                           
+	                         	iv3.setId(null);
                     		}
 
                     		TreeItem<String> item2 = new TreeItem<String> (exSubList[j].getName(), iv3);
@@ -103,6 +103,7 @@ public class BDExampleWindowCtrl
                     				iv4.setId(exSubList[j].getPath());
 
                     				TreeItem<String> item3 = new TreeItem<String> (exSubList2[k].getName(), iv4);
+                    				
                     				item2.getChildren().add(item3);
                     			}
                     		}

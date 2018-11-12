@@ -64,7 +64,7 @@ void BD_LED::FlashLEDs(int interval)
 
 void BD_LED::FadeIn(uint8_t interval)
 {
-	for (int a = 0; a <= 255; a++)
+	for (int a = 10; a <= 255; a++)
 	{
 		analogWrite(ledPin, a);
 		delay(interval);
@@ -73,7 +73,7 @@ void BD_LED::FadeIn(uint8_t interval)
 
 void BD_LED::FadeInLEDs(uint8_t interval)
 {
-	for (int a = 0; a <= 255; a++)
+	for (int a = 10; a <= 255; a++)
 	{
 		for(uint8_t i = 0; i <= len; i++)
 		{
@@ -86,7 +86,7 @@ void BD_LED::FadeInLEDs(uint8_t interval)
 
 void BD_LED::FadeOut(uint8_t interval)
 {
-	for (int a = 255; a >= 0; a--)
+	for (int a = 255; a >= 10; a--)
 	{
 		analogWrite(ledPin, a);
 		delay(interval);
@@ -95,7 +95,7 @@ void BD_LED::FadeOut(uint8_t interval)
 
 void BD_LED::FadeOutLEDs(uint8_t interval)
 {
-	for (int a = 255; a >= 0; a--)
+	for (int a = 255; a >= 10; a--)
 	{
 		for(uint8_t i = 0; i <= len; i++)
 		{
