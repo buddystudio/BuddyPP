@@ -10,7 +10,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Toggle;
-
+import model.BDLang;
 import model.BDParameters;
 
 import view.BDForWindow;
@@ -211,11 +211,11 @@ public class BDForWindowCtrl
                     
                     String opt = "";
                     
-                    if(forWindow.opera2CmbBox.getValue() == "自增")
+                    if(forWindow.opera2CmbBox.getValue().equals(BDLang.rb.getString("自增")))
                     {
                         opt = "+=";
                     }
-                    else if(forWindow.opera2CmbBox.getValue() == "自减")
+                    else if(forWindow.opera2CmbBox.getValue().equals(BDLang.rb.getString("自减")))
                     {
                         opt = "-=";
                     }                    

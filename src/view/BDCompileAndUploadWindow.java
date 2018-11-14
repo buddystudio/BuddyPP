@@ -23,27 +23,27 @@ public class BDCompileAndUploadWindow extends BDWindow
 {
 	private MenuBar menuBar = new MenuBar();
 	
-	private Menu fileMenu = new Menu("ÎÄ¼ş");
+	private Menu fileMenu = new Menu("æ–‡ä»¶");
     
-	private MenuItem InoFileMenuItem = new MenuItem("´ò¿ªInoÎÄ¼ş");
-	private MenuItem HexFileMenuItem = new MenuItem("´ò¿ªHexÎÄ¼ş");
+	private MenuItem InoFileMenuItem = new MenuItem("æ‰“å¼€Inoæ–‡ä»¶");
+	private MenuItem HexFileMenuItem = new MenuItem("æ‰“å¼€Hexæ–‡ä»¶");
 	
-	private Menu paraMenu = new Menu("²ÎÊı");
+	private Menu paraMenu = new Menu("å‚æ•°");
 	
-	private MenuItem displayMenuItem = new MenuItem("ÏÔÊ¾");
-	private MenuItem setMenuItem = new MenuItem("ÉèÖÃ");
+	private MenuItem displayMenuItem = new MenuItem("æ˜¾ç¤º");
+	private MenuItem setMenuItem = new MenuItem("è®¾ç½®");
     
 	private VBox topPanel = new VBox();
 	private HBox btnsBar = new HBox();
 	
-	private Button openBtn 				= new Button(BDLang.rb.getString("´ò¿ª"));
-	private Button compileBtn 			= new Button(BDLang.rb.getString("±àÒë"));
+	private Button openBtn 				= new Button(BDLang.rb.getString("æ‰“å¼€"));
+	private Button compileBtn 			= new Button(BDLang.rb.getString("ç¼–è¯‘"));
 	
-	private Button uploadBtn 			= new Button(BDLang.rb.getString("ÉÏ´«"));
-	private Button compileAndUploadBtn 	= new Button(BDLang.rb.getString("±àÒë²¢ÉÏ´«"));
-	private Button stopBtn				= new Button(BDLang.rb.getString("Í£Ö¹"));
-	private Button clearBtn				= new Button(BDLang.rb.getString("Çå³ı"));
-	private Button updateBtn			= new Button(BDLang.rb.getString("¸üĞÂ"));
+	private Button uploadBtn 			= new Button(BDLang.rb.getString("ä¸Šä¼ "));
+	private Button compileAndUploadBtn 	= new Button(BDLang.rb.getString("ç¼–è¯‘å¹¶ä¸Šä¼ "));
+	private Button stopBtn				= new Button(BDLang.rb.getString("åœæ­¢"));
+	private Button clearBtn				= new Button(BDLang.rb.getString("æ¸…é™¤"));
+	private Button updateBtn			= new Button(BDLang.rb.getString("æ›´æ–°"));
 	
 	private ProgressBar progressBar = new ProgressBar(0);
 	
@@ -60,9 +60,9 @@ public class BDCompileAndUploadWindow extends BDWindow
 	
 	public BDCompileAndUploadWindow()
 	{
-		// ´°¿Ú³õÊ¼»¯
+		// çª—å£åˆå§‹åŒ–
         //super.init(750, 760);
-		// Òş²Ø²Ëµ¥À¸ºóµÄ³ß´ç
+		// éšè—èœå•æ åçš„å°ºå¯¸
 		//super.init(750, 720);
 		
 		if(BDParameters.langues.equals("English"))
@@ -79,10 +79,10 @@ public class BDCompileAndUploadWindow extends BDWindow
     		super.init(winWidth, 720);
     	}
         
-        // ×ÜÔÚ×îÇ°·½
+        // æ€»åœ¨æœ€å‰æ–¹
         //this.setAlwaysOnTop(true);
        
-        // Ö»ÓĞ¹Ø±Õ°´Å¥µÄ´°¿Ú
+        // åªæœ‰å…³é—­æŒ‰é’®çš„çª—å£
         this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
                 
@@ -90,7 +90,7 @@ public class BDCompileAndUploadWindow extends BDWindow
         this.setFullScreen(false);
         this.setIconified(false);
        
-        this.setTitle("  " + BDLang.rb.getString("±àÒëÓëÉÏ´«"));
+        this.setTitle("  " + BDLang.rb.getString("ç¼–è¯‘ä¸ä¸Šä¼ "));
         this.setScene(scene);
 
         BorderPane root = new BorderPane();
@@ -102,7 +102,7 @@ public class BDCompileAndUploadWindow extends BDWindow
         	
         	this.menuBar.getMenus().addAll(this.fileMenu, this.paraMenu);
         	
-        	// ÆÁ±Î²Ëµ¥¹¦ÄÜ
+        	// å±è”½èœå•åŠŸèƒ½
         	//this.menuBar.setVisible(false);
         	this.menuBar.setDisable(true);
 
@@ -135,7 +135,7 @@ public class BDCompileAndUploadWindow extends BDWindow
 			
 			boardListCombox = new ComboBox<>(boardManager.getBoardsList());
 			
-			// »Ö¸´ÉÏÒ»´ÎµÄÑ¡Ôñ
+			// æ¢å¤ä¸Šä¸€æ¬¡çš„é€‰æ‹©
 			if(!BDParameters.boardType.equals(""))
 			{
 				boardListCombox.getSelectionModel().select(BDParameters.boardType);
@@ -170,7 +170,7 @@ public class BDCompileAndUploadWindow extends BDWindow
 			this.acvView.setPrefHeight(610);
 			this.progressBar.setPrefSize(winWidth, 40);
 			
-			// Òş²Ø²Ëµ¥À¸
+			// éšè—èœå•æ 
 			//topPanel.getChildren().add(this.menuBar);
 			topPanel.getChildren().add(this.btnsBar);
 			

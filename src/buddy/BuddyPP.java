@@ -50,8 +50,6 @@ public class BuddyPP extends Application
     @Override
     public void start(Stage primaryStage) 
     {
-    	//System.load("C://Users//gsh//Desktop//新建文件夹//rxtxSerial.dll"); //绝对路径
-    	
     	// 获取配置信息
     	BDParameters.getProfile();
     	
