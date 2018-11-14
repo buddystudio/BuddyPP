@@ -145,7 +145,8 @@ public class BDCompileAndUploadWindow extends BDWindow
 				boardListCombox.getSelectionModel().select(0);
 			}
 			
-			boardListCombox.setMaxWidth(250);
+			this.boardListCombox.setPrefSize(250, 30);
+			this.boardListCombox.setMaxWidth(250);
 		
 			/*this.btnsBar.getChildren().addAll(openBtn, 
 											  compileBtn, 
