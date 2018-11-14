@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-
+import model.BDParameters;
 import view.BDDwWindow;
 
 /**
@@ -55,20 +55,19 @@ public class BDDwWindowCtrl
             dwWindow.value2CmbBox.getItems().add(Variables2.group(3));
         }
         
-        dwWindow.value1CmbBox.getItems().add("D0");
-        dwWindow.value1CmbBox.getItems().add("D1");
-        dwWindow.value1CmbBox.getItems().add("D2");
-        dwWindow.value1CmbBox.getItems().add("D3");
-        dwWindow.value1CmbBox.getItems().add("D4");
-        dwWindow.value1CmbBox.getItems().add("D5");
-        dwWindow.value1CmbBox.getItems().add("D6");
-        dwWindow.value1CmbBox.getItems().add("D7");
-        dwWindow.value1CmbBox.getItems().add("D8");
-        dwWindow.value1CmbBox.getItems().add("D9");
-        dwWindow.value1CmbBox.getItems().add("D10");
-        dwWindow.value1CmbBox.getItems().add("D11");
-        dwWindow.value1CmbBox.getItems().add("D12");
-        dwWindow.value1CmbBox.getItems().add("D13");
+        for(int i = 0; i < 14; i++)
+    	{
+        	dwWindow.value1CmbBox.getItems().add("D" + i);
+    	}
+        
+        if(BDParameters.boardType.equals("Arduino/Genuino Mega w/ ATmega2560") || 
+           BDParameters.boardType.equals("Arduino Mega w/ ATmega1280"))
+        {
+        	for(int i = 14; i < 54; i++)
+        	{
+        		dwWindow.value1CmbBox.getItems().add("D" + i);
+        	}
+        }
         
         dwWindow.value2CmbBox.getItems().add("HIGH");
         dwWindow.value2CmbBox.getItems().add("LOW");

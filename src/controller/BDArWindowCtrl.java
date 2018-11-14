@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import model.BDLang;
+import model.BDParameters;
 import view.BDArWindow;
 
 /**
@@ -46,12 +47,19 @@ public class BDArWindowCtrl
             arWindow.value2CmbBox.getItems().add(Variables.group(3));
         }
         
-        arWindow.value2CmbBox.getItems().add("A0");
-        arWindow.value2CmbBox.getItems().add("A1");
-        arWindow.value2CmbBox.getItems().add("A2");
-        arWindow.value2CmbBox.getItems().add("A3");
-        arWindow.value2CmbBox.getItems().add("A4");
-        arWindow.value2CmbBox.getItems().add("A5");
+        for(int i = 0; i < 6; i++)
+    	{
+    		arWindow.value2CmbBox.getItems().add("A" + i);
+    	}
+        
+        if(BDParameters.boardType.equals("Arduino/Genuino Mega w/ ATmega2560") || 
+           BDParameters.boardType.equals("Arduino Mega w/ ATmega1280"))
+        {
+        	for(int i = 6; i < 16; i++)
+        	{
+        		arWindow.value2CmbBox.getItems().add("A" + i);
+        	}
+        }
         
         arWindow.submitBtn.setOnAction(new EventHandler<ActionEvent>() 
         {    
