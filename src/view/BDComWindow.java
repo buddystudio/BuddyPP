@@ -67,20 +67,20 @@ public class BDComWindow extends BDWindow
         bottomPanel.setAlignment(Pos.CENTER);
 
         lineChkBox.setPrefWidth(80);
-        rateComoBox.setPrefWidth(80);
+        rateComoBox.setPrefSize(80, 30);
         rateComoBox.getItems().clear();
         
-        updateBtn.setPrefWidth(80);
-        clearBtn.setPrefWidth(80);
-        sendMsgBtn.setPrefWidth(80);
-        ctrlBtn.setPrefWidth(80);
+        updateBtn.setPrefSize(80, 30);
+        clearBtn.setPrefSize(80, 30);
+        sendMsgBtn.setPrefSize(80, 30);
+        ctrlBtn.setPrefSize(80, 30);
         
         sendMsgTxt.setPrefWidth(445);
-        rateComoBox.setPrefWidth(100);
+        rateComoBox.setPrefSize(100, 30);
         
         ctrlBtn.setStyle("-fx-background-radius: 0, 0;");
         
-        portComoBox.setPrefWidth(155);
+        portComoBox.setPrefSize(155, 30);
         
         String[] rates = {"300", "1200", "2400", "4800", "9600", "14400",
             "19200", "28800", "38400", "57600", "115200"};
