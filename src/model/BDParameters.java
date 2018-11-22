@@ -98,8 +98,24 @@ public class BDParameters
 			paraList.add("width=" + editorWidth + "\n");
 			paraList.add("height=" + editorHeight + "\n");
 			paraList.add("board=" + boardType + "\n");
-			paraList.add("lang=" + langues + "\n");
 			paraList.add("tempPath=" + tempPath + "\n");
+			
+			if(BDParameters.langues.equals("简体中文"))
+			{
+				paraList.add("lang=" + "zh-CN" + "\n");
+			}
+			else if(BDParameters.langues.equals("繁體中文"))
+			{
+				paraList.add("lang=" + "zh-HK" + "\n");
+			}
+			else if(BDParameters.langues.equals("English"))
+			{
+				paraList.add("lang=" + "en-US" + "\n");
+			}
+			else
+			{
+				paraList.add("lang=" + "zh-CN" + "\n");
+			}
 			
 			for(int i = 0; i < paraList.size(); i++)
 			{
@@ -181,7 +197,24 @@ public class BDParameters
 	            	
 	            	if(attribute.equals("lang"))
 	            	{
-	            		langues = value;
+	            		//langues = value;
+	            		
+	            		if(value.equals("zh-CN"))
+	        			{
+	            			langues = "简体中文";
+	        			}
+	        			else if(value.equals("zh-HK"))
+	        			{
+	        				langues = "繁體中文";
+	        			}
+	        			else if(value.equals("en-US"))
+	        			{
+	        				langues = "English";
+	        			}
+	        			else
+	        			{
+	        				langues = "简体中文";
+	        			}
 	            	}
 	            	
 	            	if(attribute.equals("tempPath"))

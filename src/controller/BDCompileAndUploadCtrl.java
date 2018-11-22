@@ -40,7 +40,8 @@ public class BDCompileAndUploadCtrl
 	private String bd_tools01_path 				= "";
 	private String bd_tools02_path 				= "";
 	private String bd_built_in_libraries_path 	= "";
-	private String bd_libraries_path 			= "C:\\Users\\gsh\\Documents\\Arduino\\libraries";
+	//private String bd_libraries_path 			= "C:\\Users\\gsh\\Documents\\Arduino\\libraries";
+	private String bd_libraries_path 			= "";
 	//private String bd_fqbn 						= "arduino:avr:uno";
 	private String bd_fqbn 						= "arduino:avr:uno";
 	private String bd_ide_version 				= "10805";
@@ -130,6 +131,7 @@ public class BDCompileAndUploadCtrl
 		bd_tools01_path 			= bd_root_path + "tools-builder";
 		bd_tools02_path 			= bd_root_path + "hardware\\tools\\avr";
 		bd_built_in_libraries_path 	= user_root_path + "libraries";
+		bd_libraries_path			= bd_built_in_libraries_path;
 		
 		bd_avrdude_path 			= bd_root_path + "hardware\\tools\\avr\\bin\\";
 		bd_avrdude_conf 			= bd_root_path + "hardware\\tools\\avr\\etc\\avrdude.conf";
