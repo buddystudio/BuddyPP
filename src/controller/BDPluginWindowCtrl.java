@@ -7,6 +7,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import util.base.BDDrawUtil;
 import view.BDPluginWindow;
 
 /**
@@ -28,6 +29,8 @@ public class BDPluginWindowCtrl
                 // 显示工具窗口
                 pluginWindow.ledsWindow.show();
                 
+                BDDrawUtil.showInTheMiddle(pluginWindow.ledsWindow);
+                
                 // 关闭窗口
                 pluginWindow.root.close();
             }
@@ -45,6 +48,8 @@ public class BDPluginWindowCtrl
                 // 显示工具窗口
                 pluginWindow.musicWindow.show();
                 
+                BDDrawUtil.showInTheMiddle(pluginWindow.musicWindow);
+                
                 // 关闭窗口
                 pluginWindow.root.close();
             }
@@ -61,6 +66,8 @@ public class BDPluginWindowCtrl
                 
                 // 显示工具窗口
                 pluginWindow.colorWindow.show();
+                
+                BDDrawUtil.showInTheMiddle(pluginWindow.colorWindow);
                 
                 // 关闭窗口
                 pluginWindow.root.close();

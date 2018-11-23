@@ -5,8 +5,6 @@
  */
 package view;
 
-import util.base.Preferences;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -19,7 +17,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.BDLang;
-import model.BDParameters;
 import model.BDWindowsManager;
 
 /**
@@ -28,21 +25,9 @@ import model.BDWindowsManager;
  */
 public class BDMenuView extends HBox
 {
-    //public BDSearchWindow searchWindow      = new BDSearchWindow();     // 搜索窗口
-    //public BDLibWindow libWindow            = new BDLibWindow();        // 添加库窗口
-    //public BDComWindow comWindow            = new BDComWindow();        // 串口通讯窗口
-    //public BDPreSettingWindow psw           = new BDPreSettingWindow(); // 预设置窗口
-    //public BDExampleWindow expWindow        = new BDExampleWindow();    // 例程窗口
-    //public BDConsoleWindow consoleWindow    = new BDConsoleWindow();    // 编译信息窗口
-    //public BDPluginWindow pluginWindow      = new BDPluginWindow();     // 工具插件窗口
-    //public BDAboutWindow aboutWindow        = new BDAboutWindow();      // 关于我们窗口
-    
-    //public CodeArea consloeArea				= null;
     public SplitPane splitPanel 			= null;
     public Stage primaryStage				= null;
-    
-    //public BDHintDialogWindow hintDialogWindow = new BDHintDialogWindow("  提示", "请先确定计算机已经连接开发板！");
-    
+
     public Button menuOpenBtn      = new Button(); // 打开按钮
     public Button menuNewBtn       = new Button(); // 新建按钮
     public Button menuSaveBtn      = new Button(); // 保存按钮
@@ -89,43 +74,6 @@ public class BDMenuView extends HBox
         
         ImageView sp01 = new ImageView(image);
         ImageView sp02 = new ImageView(image);
-        
-        /*
-        Tooltip menuPreSetBtnTip = new Tooltip("预设值");
-        
-        menuPreSetBtnTip.getStyleClass().add("tip");
-
-        menuPreSetBtn.setPrefSize(50, 50);
-        menuPreSetBtn.setTooltip(menuPreSetBtnTip);
-        menuPreSetBtn.getStyleClass().add("preSetBtn");
-        
-        settingPanel.getChildren().add(menuPreSetBtn);
-        
-        rightLables = new VBox();
-        
-        lbBoard.setText("当前板型：Buddy LEO");
-        
-        if(BDParameters.serialports.isEmpty())
-        {
-            lbCom.setText("当前串口：未连接");
-        }
-        else
-        {
-            lbCom.setText("当前串口："+Preferences.get("serial.port"));
-        }
-        
-        lbBoard.setStyle("-fx-text-fill: #ffffff;-fx-font-size:13px;"); 
-        lbCom.setStyle("-fx-text-fill: #ffffff;-fx-font-size:13px;"); 
-        
-        rightLables.getChildren().add(lbBoard);
-        rightLables.getChildren().add(lbCom);
-        rightLables.setAlignment(Pos.CENTER_LEFT);
-        rightLables.setPadding(new Insets(0, 0, 0, 12));
-        
-        settingPanel.setAlignment(Pos.CENTER_LEFT);
-        
-        // 设定设置面板的宽度
-        rightLables.setPrefWidth(300);*/
 
         menuOpenBtn.setPrefSize(50, 50);
         menuNewBtn.setPrefSize(50, 50);

@@ -8,6 +8,8 @@ package controller;
 import java.io.File;
 import java.util.List;
 
+import util.base.BDDrawUtil;
+
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
 
@@ -190,6 +192,8 @@ public class BDTabCtrl
 
 			// 显示提示窗口
 			dialogWindow.show();
+			
+			BDDrawUtil.showInTheMiddle(dialogWindow);
 		}
 
 		// 点击确定按钮

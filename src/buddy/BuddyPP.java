@@ -14,6 +14,7 @@
  */
 package buddy;
 
+import java.awt.GraphicsEnvironment;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -53,6 +54,8 @@ public class BuddyPP extends Application
     	// 获取配置信息
     	BDParameters.getProfile();
     	
+    	BDParameters.primaryStage = primaryStage;
+    	
     	// 初始化基本配置参数
         Preferences.init(null);
     	
@@ -84,19 +87,9 @@ public class BuddyPP extends Application
         // 获取操作系统指令长度（32bit/64bit）
         BDParameters.arch = arch;
 
-        /*
-        System.out.println(arch);
-        System.out.println(os);
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         
-        if(arch.contains("64"))
-        {
-        	System.out.println("64 bit");
-        }
-        else
-        {
-        	System.out.println("32 bit");
-        }
-        */
+        BDParameters.gds = ge.getScreenDevices();
     }
     
     private void setLanguage()

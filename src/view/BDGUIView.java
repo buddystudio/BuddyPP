@@ -36,7 +36,7 @@ import model.BDGUIModel;
 import model.BDMsgTabModel;
 import model.BDParameters;
 import model.BDRefTabModel;
-import util.base.DrawUtil;
+import util.base.BDDrawUtil;
 
 /**
  *
@@ -156,7 +156,7 @@ public class BDGUIView
         consolePanel.setStyle("-fx-background-color: #ffffff;");
         
         // 添加窗体拉伸效果
-        DrawUtil.addDrawFunc(primaryStage, root);
+        BDDrawUtil.addDrawFunc(primaryStage, root);
         
         // 横向菜单（清除 / 复制 / 帮助）
         HBox consoleTitlePanel = new HBox();

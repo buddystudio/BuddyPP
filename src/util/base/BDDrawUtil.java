@@ -8,12 +8,13 @@ import javafx.scene.layout.BorderPane;
 
 import javafx.stage.Stage;
 import model.BDParameters;
+import view.BDWindow;
 
 /**
  * 拉伸工具类
  * @author gsh
  */
-public class DrawUtil 
+public class BDDrawUtil 
 {
     //窗体拉伸属性
     private static boolean isRight;					// 是否处于右边界调整窗口状态
@@ -111,4 +112,14 @@ public class DrawUtil
             stage.setHeight(nextHeight);
         });
     }
+    
+    // 实现子窗体居中于主窗体
+  	static public void showInTheMiddle(BDWindow win)
+  	{
+  		double posX = BDParameters.primaryStage.getX() + (BDParameters.curWidth - win.getWidth()) / 2;
+  		double posY = BDParameters.primaryStage.getY() + (BDParameters.curHeight - win.getHeight()) / 2;
+  		
+  		win.setX(posX);
+  		win.setY(posY);
+  	}
 }

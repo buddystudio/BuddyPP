@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.awt.GraphicsDevice;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.Stage;
 
 /**
  *
@@ -30,8 +32,8 @@ public class BDParameters
     
     static public String version         = "1.2.0-beta";  	// 软件版本号
     static public String langues         = "简体中文";  		// 语言
-    static public String organization	= "BuddyStudio";	// 开发组织
-    static public String author			= "李宝智、郭少豪";		// 开发者署名
+    static public String organization	 = "BuddyStudio";	// 开发组织
+    static public String author			 = "李宝智、郭少豪";	// 开发者署名
     
     static public String boardType       = "";       		// 开发板型号
     static public String connectCom      = "";       		// 串口序号
@@ -76,6 +78,10 @@ public class BDParameters
     static public String tempPath = "";
     
     static public String editorProfilePath = "profile/editor.txt";
+    
+    static public GraphicsDevice[] gds;
+    
+    static public Stage primaryStage;
     
     static public void writeProfile()
     {
@@ -274,10 +280,10 @@ public class BDParameters
 		} 
 		catch (UnsupportedEncodingException | FileNotFoundException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} 
+    	catch (IOException e) 
+    	{
 			e.printStackTrace();
 		} 
     }

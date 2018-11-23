@@ -17,22 +17,6 @@ import model.BDLang;
  */
 public class BDToolsView extends VBox
 {
-    //public BDDefineVariableWindow dfvWindow = new BDDefineVariableWindow();     // 变量定义窗口
-    //public BDPinModeWindow pinModeWindow    = new BDPinModeWindow();            // pinMode端口设置窗口
-    //public BDDelayWindow delayWindow        = new BDDelayWindow();              // Delay延时设置窗口
-    //public BDForWindow forWindow            = new BDForWindow();                // For条件循环设置窗口
-    //public BDWhileWindow whileWindow        = new BDWhileWindow();              // While条件循环设置窗口
-    //public BDIfWindow ifWindow              = new BDIfWindow();                 // If条件循环设置窗口
-    //public BDDrWindow drWindow              = new BDDrWindow();                 // DigitalRead数字端口读取设置窗口
-    //public BDDwWindow dwWindow              = new BDDwWindow();                 // DigitalWrite数字端口写入设置窗口
-    //public BDArWindow arWindow              = new BDArWindow();                 // AnalogRead模拟端口读取设置窗口
-    //public BDAwWindow awWindow              = new BDAwWindow();                 // AnalogWrite模拟端口写入设置窗口
-    //public BDSerialWindow serialWindow      = new BDSerialWindow();             // Serial串口通讯模板设置窗口
-    //public BDSwitchWindow switchWindow      = new BDSwitchWindow();             // SwitchCase条件分支设置窗口
-    //public BDLEDsWindow ledsWindow          = new BDLEDsWindow();
-    
-    //public BDPluginWindow pluginWindow      = new BDPluginWindow();             // 工具插件窗口
-    
     public Button toolsDe      = new Button();  // 变量定义按钮
     public Button toolsIF      = new Button();  // If条件判断按钮
     public Button toolsFor     = new Button();  // For条件循环按钮
@@ -88,21 +72,7 @@ public class BDToolsView extends VBox
         toolsLEDs.getStyleClass().add("ledsBtn");
         toolsPlugs.getStyleClass().add("ledsBtn");
         
-        // 设置弹出的提示信息
-        /*Tooltip toolsDeTip = new Tooltip("定义变量");
-        Tooltip toolsIFTip = new Tooltip("If（条件判断）");
-        Tooltip toolsForTip = new Tooltip("For（条件循环）");
-        Tooltip toolsWhileTip = new Tooltip("While（条件循环）");
-        Tooltip toolsSwitchTip = new Tooltip("Switch-Case（条件分支）");
-        Tooltip toolsPinModeTip = new Tooltip("PinMode（端口设置）");
-        Tooltip toolsDRTip = new Tooltip("DigitalRead（数字端口读取）");
-        Tooltip toolsDWTip = new Tooltip("DigitalWrite（数字端口写入）");
-        Tooltip toolsARTip = new Tooltip("AnalogRead（模拟端口读取）");
-        Tooltip toolsAWTip = new Tooltip("AnalogWrite（模拟端口读取）");
-        Tooltip toolsDelayTip = new Tooltip("Delay（延时设置）");
-        Tooltip toolsComTip = new Tooltip("Serial（串口通讯）");
-        Tooltip toolsPlugsTip = new Tooltip("扩展工具");*/
-        
+        // 设置弹出的提示信息     
         Tooltip toolsDeTip = new Tooltip(BDLang.rb.getString("定义变量"));
         Tooltip toolsIFTip = new Tooltip(BDLang.rb.getString("If（条件判断）"));
         Tooltip toolsForTip = new Tooltip(BDLang.rb.getString("For（条件循环）"));

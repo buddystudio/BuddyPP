@@ -9,6 +9,8 @@ import java.awt.AWTException;
 import java.io.File;
 import java.io.IOException;
 
+import util.base.BDDrawUtil;
+
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
 
@@ -182,7 +184,7 @@ public class BDMenuCtrl
 				}
 				
 				// 弹出子窗口与主窗口居中
-				showInTheMiddle(BDWindowsManager.expWindow);
+				BDDrawUtil.showInTheMiddle(BDWindowsManager.expWindow);
 			}
 		});
 
@@ -239,7 +241,7 @@ public class BDMenuCtrl
 				}
 				
 				// 弹出子窗口与主窗口居中
-				showInTheMiddle(BDWindowsManager.libWindow);
+				BDDrawUtil.showInTheMiddle(BDWindowsManager.libWindow);
 			}
 		});
 
@@ -273,7 +275,7 @@ public class BDMenuCtrl
 				}
 				
 				// 弹出子窗口与主窗口居中
-				showInTheMiddle(BDWindowsManager.comWindow);
+				BDDrawUtil.showInTheMiddle(BDWindowsManager.comWindow);
 			}
 		});
 
@@ -353,6 +355,8 @@ public class BDMenuCtrl
 				// 显示编译功能窗口
 				cauwView.show();
 				
+				BDDrawUtil.showInTheMiddle(cauwView);
+				
 				// 更新串口号
 				cauwCtrl.updateSerialPorts();
 				
@@ -423,7 +427,7 @@ public class BDMenuCtrl
 				}
 				
 				// 弹出子窗口与主窗口居中
-				showInTheMiddle(BDWindowsManager.pluginWindow);
+				BDDrawUtil.showInTheMiddle(BDWindowsManager.pluginWindow);
 			}
 		});
 
@@ -435,25 +439,15 @@ public class BDMenuCtrl
 			{
 				// 弹出关于我们的窗口
 				BDWindowsManager.aboutWindow.show();
-				
+
 				if(BDParameters.os.equals("Mac OS X"))
 				{
 					return;
 				}
 				
 				// 弹出子窗口与主窗口居中
-				showInTheMiddle(BDWindowsManager.aboutWindow);
+				BDDrawUtil.showInTheMiddle(BDWindowsManager.aboutWindow);
 			}
 		});
-	}
-	
-	// 实现子窗体居中于主窗体
-	private void showInTheMiddle(BDWindow win)
-	{
-		double posX = menuView.primaryStage.getX() + (menuView.primaryStage.getWidth() - win.getWidth()) / 2;
-		double posY = menuView.primaryStage.getY() + (menuView.primaryStage.getHeight() - win.getHeight()) / 2;
-		
-		win.setX(posX);
-		win.setY(posY);
 	}
 }
