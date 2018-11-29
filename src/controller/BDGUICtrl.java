@@ -140,7 +140,7 @@ public class BDGUICtrl
             public void handle(ActionEvent event) 
             {
             	gui.settingWindow.show();
-            	
+
             	BDDrawUtil.showInTheMiddle(gui.settingWindow);
             }
         });
@@ -451,7 +451,10 @@ public class BDGUICtrl
 
             this.gui.saveWindow.show();
             
-            BDDrawUtil.showInTheMiddle(this.gui.saveWindow);
+            if(BDParameters.gds.length != 1)
+        	{
+            	BDDrawUtil.showInTheMiddle(this.gui.saveWindow);
+        	}
 
             // 点击取消按钮
             this.gui.saveWindow.cancleBtn.setOnMouseClicked(new EventHandler<MouseEvent>() 

@@ -116,6 +116,16 @@ public class BDDrawUtil
     // 实现子窗体居中于主窗体
   	static public void showInTheMiddle(BDWindow win)
   	{
+  		if(BDParameters.os.equals("Mac OS X"))
+		{
+			return;
+		}
+
+  		if(BDParameters.gds.length == 1)
+    	{
+    		return;
+    	}
+
   		double posX = BDParameters.primaryStage.getX() + (BDParameters.curWidth - win.getWidth()) / 2;
   		double posY = BDParameters.primaryStage.getY() + (BDParameters.curHeight - win.getHeight()) / 2;
   		

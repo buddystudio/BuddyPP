@@ -178,11 +178,6 @@ public class BDMenuCtrl
 				// 打开例程窗口
 				BDWindowsManager.expWindow.show();
 				
-				if(BDParameters.os.equals("Mac OS X"))
-				{
-					return;
-				}
-				
 				// 弹出子窗口与主窗口居中
 				BDDrawUtil.showInTheMiddle(BDWindowsManager.expWindow);
 			}
@@ -235,11 +230,6 @@ public class BDMenuCtrl
 				// 显示添加库窗口
 				BDWindowsManager.libWindow.show();
 				
-				if(BDParameters.os.equals("Mac OS X"))
-				{
-					return;
-				}
-				
 				// 弹出子窗口与主窗口居中
 				BDDrawUtil.showInTheMiddle(BDWindowsManager.libWindow);
 			}
@@ -268,11 +258,6 @@ public class BDMenuCtrl
 
 				// 显示串口通讯窗口
 				BDWindowsManager.comWindow.show();
-				
-				if(BDParameters.os.equals("Mac OS X"))
-				{
-					return;
-				}
 				
 				// 弹出子窗口与主窗口居中
 				BDDrawUtil.showInTheMiddle(BDWindowsManager.comWindow);
@@ -355,8 +340,11 @@ public class BDMenuCtrl
 				// 显示编译功能窗口
 				cauwView.show();
 				
-				BDDrawUtil.showInTheMiddle(cauwView);
-				
+				if(BDParameters.gds.length != 1)
+            	{
+					BDDrawUtil.showInTheMiddle(cauwView);
+            	}
+
 				// 更新串口号
 				cauwCtrl.updateSerialPorts();
 				
@@ -421,11 +409,6 @@ public class BDMenuCtrl
 				// 设置
 				BDWindowsManager.pluginWindow.show();
 				
-				if(BDParameters.os.equals("Mac OS X"))
-				{
-					return;
-				}
-				
 				// 弹出子窗口与主窗口居中
 				BDDrawUtil.showInTheMiddle(BDWindowsManager.pluginWindow);
 			}
@@ -439,11 +422,6 @@ public class BDMenuCtrl
 			{
 				// 弹出关于我们的窗口
 				BDWindowsManager.aboutWindow.show();
-
-				if(BDParameters.os.equals("Mac OS X"))
-				{
-					return;
-				}
 				
 				// 弹出子窗口与主窗口居中
 				BDDrawUtil.showInTheMiddle(BDWindowsManager.aboutWindow);
