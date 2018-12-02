@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.StageStyle;
+import model.BDLang;
 
 /**
  *
@@ -29,14 +30,14 @@ public class BDHintDialogWindow extends BDWindow
     public Image image;
     public Label msgLbl;
     
-    public Button okBtn = new Button("确定");
+    public Button okBtn = new Button(BDLang.rb.getString("确定"));
     
     private BDHintDialogWindow root = this;
     
     public BDHintDialogWindow(String title, String msg)
     {
         // 窗口初始化
-        super.init(360, 132);
+        super.init(360, 132 + 30);
         
         rootPanel.getStylesheets().clear();
 

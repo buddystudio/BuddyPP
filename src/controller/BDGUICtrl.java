@@ -145,9 +145,9 @@ public class BDGUICtrl
             @Override
             public void handle(ActionEvent event) 
             {
-            	gui.settingWindow.show();
-
             	BDDrawUtil.showInTheMiddle(gui.settingWindow);
+            	
+            	gui.settingWindow.show();
             }
         });
         
@@ -218,10 +218,10 @@ public class BDGUICtrl
             @Override
             public void handle(ActionEvent event) 
             {
-                // 弹出关于我们按钮
-            	gui.aboutWindow.show();
-            	
             	BDDrawUtil.showInTheMiddle(gui.aboutWindow);
+            	
+            	// 弹出关于我们按钮
+            	gui.aboutWindow.show();
             }
         });
         
@@ -365,6 +365,104 @@ public class BDGUICtrl
                             gui.guiModel.isMaximized = true;
                 		}
             		}
+            		else if(BDParameters.gds.length == 2)
+            		{
+            			// 继续屏蔽
+            			if(true)
+            			{
+            				return;
+            			}
+            			
+            			// 两个屏幕
+                		GraphicsConfiguration gc0 = BDParameters.gds[0].getDefaultConfiguration();
+                		GraphicsConfiguration gc1 = BDParameters.gds[1].getDefaultConfiguration();
+                		
+                		int w0 = BDParameters.gds[0].getDisplayMode().getWidth();
+            			int h0 = BDParameters.gds[0].getDisplayMode().getHeight();
+            			
+            			int w1 = BDParameters.gds[1].getDisplayMode().getWidth();
+            			int h1 = BDParameters.gds[1].getDisplayMode().getHeight();
+                		
+                		//System.out.println(gc0.getBounds().x);
+                		//System.out.println(gc1.getBounds().x);
+                		
+                		BDParameters.curWidth = gui.primaryStage.getWidth();
+                        BDParameters.curHeight = gui.primaryStage.getHeight();
+                		
+                		if(gc1.getBounds().x > -1)
+                		{
+                			// 左边缘
+                    		if((screenX < offset) && (screenY > offset))
+                    		{
+                    			gui.primaryStage.setX(-1);
+                                gui.primaryStage.setY(-1);
+                                gui.primaryStage.setWidth(gui.visualBounds.getWidth() / 2 + 2);
+                                gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 2);
+                                
+                                isEdged = true;
+                                
+                                System.out.println("左边为主屏幕-左边-左边缘");
+                    		}
+                    		else if((screenX > (w0 + w1 - offset)) && (screenY > offset))
+                    		{
+                    			// 右边缘
+                    			gui.primaryStage.setX(-1 + gui.visualBounds.getWidth() / 2 + 2 + w0);
+                                gui.primaryStage.setY(-1);
+                                gui.primaryStage.setWidth(gui.visualBounds.getWidth() / 2 + 2);
+                                gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 2);
+                                
+                                isEdged = true;
+                                
+                                System.out.println("左边为主屏幕-左边-右边缘");
+                    		}
+                    		else if(screenY < offset)
+                    		{
+                    			// 左边为主屏幕
+                    			if(screenX + BDParameters.curWidth / 2 < w0)
+                    			{
+                    				BDParameters.curWidth = gui.primaryStage.getWidth();
+                                    BDParameters.curHeight = gui.primaryStage.getHeight();
+                                    
+                                	gui.primaryStage.setX(-1);
+                                    gui.primaryStage.setY(-1);
+                                    gui.primaryStage.setWidth(gui.visualBounds.getWidth() + 2);
+                                    gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 2);
+                    			}
+                    			else
+                    			{
+                    				BDParameters.curWidth = gui.primaryStage.getWidth();
+                                    BDParameters.curHeight = gui.primaryStage.getHeight();
+                                    
+                                	gui.primaryStage.setX(-1 + w0);
+                                    gui.primaryStage.setY(-1);
+                                    gui.primaryStage.setWidth(gui.visualBounds.getWidth() + 2);
+                                    gui.primaryStage.setHeight(gui.visualBounds.getHeight() + 2);
+                    			}
+                    		}
+                    		
+                    		// 更新状态标签
+                            gui.guiModel.isMaximized = true;
+                		}
+                		else
+                		{
+                			// 右边为主屏幕
+                			
+                			// 当前窗口在主屏幕
+                			if(gui.guiModel.preX + BDParameters.curWidth / 2 > 0)
+                			{
+                				//System.out.println("右边为主屏幕-右边");
+
+                            	
+                			}
+                			else
+                			{
+                				// 当前窗口在次屏幕
+                				//System.out.println("右边为主屏幕-左边");
+                                
+                            	
+                			}
+                		}
+            		}
             		
             		isDragging = false;
             	}
@@ -438,13 +536,10 @@ public class BDGUICtrl
         {
             // 提示保存
             this.gui.saveWindow.msgLbl.setText(BDLang.rb.getString("是否保存对") + " " + tab.code.getName() + " " + BDLang.rb.getString("文件的修改？"));
-
-            this.gui.saveWindow.show();
             
-            if(BDParameters.gds.length != 1)
-        	{
-            	BDDrawUtil.showInTheMiddle(this.gui.saveWindow);
-        	}
+            BDDrawUtil.showInTheMiddle(this.gui.saveWindow);
+            
+            this.gui.saveWindow.show();
 
             // 点击取消按钮
             this.gui.saveWindow.cancleBtn.setOnMouseClicked(new EventHandler<MouseEvent>() 
@@ -646,13 +741,6 @@ public class BDGUICtrl
     			int w1 = BDParameters.gds[1].getDisplayMode().getWidth();
     			int h1 = BDParameters.gds[1].getDisplayMode().getHeight();
         		
-        		Boolean isLeft = true;
-        		
-        		System.out.println("测试");
-        		
-        		System.out.println(gc0.getBounds().x);
-        		System.out.println(gc1.getBounds().x);
-        		
         		BDParameters.curWidth = gui.primaryStage.getWidth();
                 BDParameters.curHeight = gui.primaryStage.getHeight();
         		
@@ -661,13 +749,13 @@ public class BDGUICtrl
         			// 左边为主屏幕
         			if(gui.guiModel.preX + BDParameters.curWidth / 2 < w0)
         			{
-        				System.out.println("左边为主屏幕-左边");
+        				//System.out.println("左边为主屏幕-左边");
         				
         				gui.primaryStage.setX(-1);
         			}
         			else
         			{
-        				System.out.println("左边为主屏幕-右边");
+        				//System.out.println("左边为主屏幕-右边");
         				
         				gui.primaryStage.setX(-1 + gc0.getBounds().x);
         			}
@@ -679,14 +767,14 @@ public class BDGUICtrl
         			// 当前窗口在主屏幕
         			if(gui.guiModel.preX + BDParameters.curWidth / 2 > 0)
         			{
-        				System.out.println("右边为主屏幕-右边");
+        				//System.out.println("右边为主屏幕-右边");
 
                     	gui.primaryStage.setX(-1 + gc0.getBounds().x);
         			}
         			else
         			{
         				// 当前窗口在次屏幕
-        				System.out.println("右边为主屏幕-左边");
+        				//System.out.println("右边为主屏幕-左边");
                         
                     	gui.primaryStage.setX(-1 + gc1.getBounds().x);
         			}

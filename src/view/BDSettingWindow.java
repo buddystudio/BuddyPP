@@ -52,7 +52,7 @@ public class BDSettingWindow extends BDWindow
     public BDSettingWindow()
     {
         // 窗口初始化
-        super.init(500, 500);
+        super.init(500, 500 + 30);
         
         //scene.getStylesheets().add("resources/style/listViewStyle.css");
         

@@ -28,7 +28,7 @@ public class BDColorWindow extends BDWindow
     public BDColorWindow()
     {
         // 窗口初始化
-        super.init(200, 150);
+        super.init(200, 150 + 30);
         
         // 总在最前方
         this.setAlwaysOnTop(true);

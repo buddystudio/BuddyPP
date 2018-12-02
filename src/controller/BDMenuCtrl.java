@@ -175,11 +175,11 @@ public class BDMenuCtrl
 				
 				new BDExampleWindowCtrl(BDWindowsManager.expWindow, workspaceCtrl);
 				
-				// 打开例程窗口
-				BDWindowsManager.expWindow.show();
-				
 				// 弹出子窗口与主窗口居中
 				BDDrawUtil.showInTheMiddle(BDWindowsManager.expWindow);
+				
+				// 打开例程窗口
+				BDWindowsManager.expWindow.show();
 			}
 		});
 
@@ -227,11 +227,11 @@ public class BDMenuCtrl
 				
 				BDLibWindowCtrl libWindowCtrl = new BDLibWindowCtrl(BDWindowsManager.libWindow, workspaceCtrl);
 
-				// 显示添加库窗口
-				BDWindowsManager.libWindow.show();
-				
 				// 弹出子窗口与主窗口居中
 				BDDrawUtil.showInTheMiddle(BDWindowsManager.libWindow);
+				
+				// 显示添加库窗口
+				BDWindowsManager.libWindow.show();
 			}
 		});
 
@@ -256,11 +256,11 @@ public class BDMenuCtrl
 				// 串口通讯
 				BDComWindowCtrl comWindowCtrl = new BDComWindowCtrl(BDWindowsManager.comWindow);
 
-				// 显示串口通讯窗口
-				BDWindowsManager.comWindow.show();
-				
 				// 弹出子窗口与主窗口居中
 				BDDrawUtil.showInTheMiddle(BDWindowsManager.comWindow);
+				
+				// 显示串口通讯窗口
+				BDWindowsManager.comWindow.show();
 			}
 		});
 
@@ -337,13 +337,10 @@ public class BDMenuCtrl
 			@Override
 			public void handle(ActionEvent event) 
 			{
+				BDDrawUtil.showInTheMiddle(cauwView);
+				
 				// 显示编译功能窗口
 				cauwView.show();
-				
-				if(BDParameters.gds.length != 1)
-            	{
-					BDDrawUtil.showInTheMiddle(cauwView);
-            	}
 
 				// 更新串口号
 				cauwCtrl.updateSerialPorts();
@@ -406,11 +403,11 @@ public class BDMenuCtrl
 			{
 				BDPluginWindowCtrl pluginWindowCtrl = new BDPluginWindowCtrl(BDWindowsManager.pluginWindow, workspaceCtrl);
 
-				// 设置
-				BDWindowsManager.pluginWindow.show();
-				
 				// 弹出子窗口与主窗口居中
 				BDDrawUtil.showInTheMiddle(BDWindowsManager.pluginWindow);
+				
+				// 设置
+				BDWindowsManager.pluginWindow.show();
 			}
 		});
 

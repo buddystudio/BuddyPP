@@ -29,7 +29,7 @@ public class BDPinModeWindow extends BDWindow
     public BDPinModeWindow()
     {
         // 窗口初始化
-        super.init(570, 60);
+        super.init(570, 60 + 30);
         
        // 总在最前方
        this.setAlwaysOnTop(true);

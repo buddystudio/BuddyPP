@@ -26,7 +26,7 @@ public class BDDelayWindow extends BDWindow
     public BDDelayWindow()
     {
         // 窗口初始化
-        super.init(450, 60);
+        super.init(450, 60 + 30);
         
         // 总在最前方
        this.setAlwaysOnTop(true);

@@ -44,11 +44,11 @@ public class BDSwitchWindow extends BDWindow
         // 窗口初始化
     	if(BDParameters.langues.equals("English"))
     	{
-    		super.init(520, 250);
+    		super.init(520, 250 + 30);
     	}
     	else
     	{
-    		super.init(500, 250);
+    		super.init(500, 250 + 30);
     	}
         
         // 总在最前方

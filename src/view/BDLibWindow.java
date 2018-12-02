@@ -29,7 +29,7 @@ public class BDLibWindow extends BDWindow
     public BDLibWindow()
     {
         // 窗口初始化
-        super.init(450, 450);
+        super.init(450, 450 + 30);
         
         //scene.getStylesheets().add("resources/style/listViewStyle.css");
         

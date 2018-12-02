@@ -33,7 +33,7 @@ public class BDSearchWindow extends BDWindow
     public BDSearchWindow()
     {
         // 窗口初始化
-        super.init(400, 120);
+        super.init(400, 120 + 30);
         
         // 总在最前方
         this.setAlwaysOnTop(true);

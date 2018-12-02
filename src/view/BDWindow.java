@@ -32,6 +32,9 @@ public class BDWindow extends Stage
         scene       = new Scene(rootPanel, w, h);
         root        = this;
         
+        this.setWidth(w);
+        this.setHeight(h);
+        
         // 模态窗口
         this.initModality(Modality.APPLICATION_MODAL);
         

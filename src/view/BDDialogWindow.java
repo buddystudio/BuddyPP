@@ -34,7 +34,7 @@ public class BDDialogWindow extends BDWindow
     public BDDialogWindow(String title, String msg)
     {
         // 窗口初始化
-        super.init(360, 132);
+        super.init(360, 132 + 30);
         
         rootPanel.getStylesheets().clear();
         
