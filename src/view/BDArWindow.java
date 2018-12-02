@@ -28,7 +28,7 @@ public final class BDArWindow extends BDWindow
     public BDArWindow()
     {
         // 初始化窗口
-        super.init(585, 60);
+        super.init(585, 60 + 30);
         
         // 总在最前方
        this.setAlwaysOnTop(true);

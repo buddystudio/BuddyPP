@@ -34,7 +34,7 @@ public class BDPreSettingWindow extends BDWindow
 	public BDPreSettingWindow() 
 	{
 		// 窗口初始化
-		super.init(500, 50);
+		super.init(500, 50 + 30);
 
 		// 总在最前方
 		this.setAlwaysOnTop(true);

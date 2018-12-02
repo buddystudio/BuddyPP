@@ -39,7 +39,7 @@ public class BDConsoleWindow extends BDWindow
 
 	public BDConsoleWindow() 
 	{
-		super.init(420, 150);
+		super.init(420, 150 + 30);
 		
 		scene.getStylesheets().add("resources/style/consoleStyle.css");
 		scene.getStylesheets().add("resources/style/progressbarStyle.css");

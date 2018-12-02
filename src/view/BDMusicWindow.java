@@ -136,7 +136,7 @@ public class BDMusicWindow extends BDWindow
 	public BDMusicWindow()
     {
 		// 窗口初始化
-        super.init(640, 485);
+        super.init(640, 485 + 30);
         
         // 总在最前方
         this.setAlwaysOnTop(true);

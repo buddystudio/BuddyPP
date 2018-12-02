@@ -139,9 +139,9 @@ public class BDGUICtrl
             @Override
             public void handle(ActionEvent event) 
             {
-            	gui.settingWindow.show();
-
             	BDDrawUtil.showInTheMiddle(gui.settingWindow);
+            	
+            	gui.settingWindow.show();
             }
         });
         
@@ -212,10 +212,10 @@ public class BDGUICtrl
             @Override
             public void handle(ActionEvent event) 
             {
-                // 弹出关于我们按钮
-            	gui.aboutWindow.show();
-            	
             	BDDrawUtil.showInTheMiddle(gui.aboutWindow);
+            	
+            	// 弹出关于我们按钮
+            	gui.aboutWindow.show();
             }
         });
         
@@ -530,13 +530,10 @@ public class BDGUICtrl
         {
             // 提示保存
             this.gui.saveWindow.msgLbl.setText(BDLang.rb.getString("是否保存对") + " " + tab.code.getName() + " " + BDLang.rb.getString("文件的修改？"));
-
-            this.gui.saveWindow.show();
             
-            if(BDParameters.gds.length != 1)
-        	{
-            	BDDrawUtil.showInTheMiddle(this.gui.saveWindow);
-        	}
+            BDDrawUtil.showInTheMiddle(this.gui.saveWindow);
+            
+            this.gui.saveWindow.show();
 
             // 点击取消按钮
             this.gui.saveWindow.cancleBtn.setOnMouseClicked(new EventHandler<MouseEvent>() 

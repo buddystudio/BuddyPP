@@ -33,7 +33,7 @@ public final class BDAboutWindow extends BDWindow
     public BDAboutWindow()
     {
         // 窗口初始化
-        super.init(500, 365);
+        super.init(500, 365 + 10);
 
         //scene.getStylesheets().add("resources/style/settingStyle.css");
         rootPanel.getStylesheets().clear();

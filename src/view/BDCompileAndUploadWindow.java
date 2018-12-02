@@ -69,14 +69,14 @@ public class BDCompileAndUploadWindow extends BDWindow
     	{
 			winWidth = 870;
 			
-    		super.init(winWidth, 720);
+    		super.init(winWidth, 720 + 30);
     	}
     	else
     	{
     		//winWidth = 750;
     		winWidth = 810;
     		
-    		super.init(winWidth, 720);
+    		super.init(winWidth, 720 + 30);
     	}
         
         // 总在最前方

@@ -28,7 +28,7 @@ public class BDAwWindow extends BDWindow
     public BDAwWindow()
     {
         // 窗口初始化
-        super.init(585, 60);
+        super.init(585, 60 + 30);
         
         // 总在最前方
        this.setAlwaysOnTop(true);

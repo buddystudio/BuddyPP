@@ -31,7 +31,7 @@ public class BDSerialHelperWindow extends BDWindow
     public BDSerialHelperWindow()
     {
     	// 窗口初始化
-        super.init(800, 792);
+        super.init(800, 792 + 30);
         
         // 总在最前方
         //this.setAlwaysOnTop(true);

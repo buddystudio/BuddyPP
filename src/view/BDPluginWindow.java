@@ -30,7 +30,7 @@ public class BDPluginWindow extends BDWindow
     public BDPluginWindow()
     {
        // 窗口初始化
-       super.init(500, 350);
+       super.init(500, 350 + 30);
        
        scene.getStylesheets().add("resources/style/settingStyle.css");
 

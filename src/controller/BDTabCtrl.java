@@ -191,10 +191,10 @@ public class BDTabCtrl
 		{
 			dialogWindow = new BDDialogWindow("  " + BDLang.rb.getString("保存提示"), "     " + BDLang.rb.getString("是否保存对") + tab.tab.getText() + BDLang.rb.getString("文件的修改？"));
 
+			BDDrawUtil.showInTheMiddle(dialogWindow);
+			
 			// 显示提示窗口
 			dialogWindow.show();
-			
-			BDDrawUtil.showInTheMiddle(dialogWindow);
 		}
 
 		// 点击确定按钮

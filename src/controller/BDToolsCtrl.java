@@ -31,11 +31,11 @@ public class BDToolsCtrl
             {
                 BDDefineVariableWindowCtrl defineVariableWindowCtrl = new BDDefineVariableWindowCtrl(BDWindowsManager.dfvWindow, workspaceCtrl);
                 
+                BDDrawUtil.showInTheMiddle(BDWindowsManager.dfvWindow);
+                
                 // 弹出变量定义窗口
                 //toolsView.dfvWindow.show();
                 BDWindowsManager.dfvWindow.show();
-                
-                BDDrawUtil.showInTheMiddle(BDWindowsManager.dfvWindow);
             }
         });
        
@@ -46,10 +46,10 @@ public class BDToolsCtrl
             public void handle(ActionEvent event) 
             {
                 BDIfWindowCtrl ifWindowCtrl = new BDIfWindowCtrl(BDWindowsManager.ifWindow, workspaceCtrl);
+
+                BDDrawUtil.showInTheMiddle(BDWindowsManager.ifWindow);
                 
                 BDWindowsManager.ifWindow.show();
-                
-                BDDrawUtil.showInTheMiddle(BDWindowsManager.ifWindow);
             }
         });
        
@@ -61,10 +61,10 @@ public class BDToolsCtrl
             {
                 BDPinModeWindowCtrl pinModeWindowCtrl = new BDPinModeWindowCtrl(BDWindowsManager.pinModeWindow, workspaceCtrl);
                 
+                BDDrawUtil.showInTheMiddle(BDWindowsManager.pinModeWindow);
+                
                 // 弹出端口定义窗口
                 BDWindowsManager.pinModeWindow.show();
-                
-                BDDrawUtil.showInTheMiddle(BDWindowsManager.pinModeWindow);
             }
         });
        
@@ -76,10 +76,10 @@ public class BDToolsCtrl
             {   
                 BDWhileWindowCtrl whileWindowCtrl = new BDWhileWindowCtrl(BDWindowsManager.whileWindow, workspaceCtrl);
 
+                BDDrawUtil.showInTheMiddle(BDWindowsManager.whileWindow);
+                
                 // 弹出while循环语句设置窗口
                 BDWindowsManager.whileWindow.show();
-                
-                BDDrawUtil.showInTheMiddle(BDWindowsManager.whileWindow);
             }
         });
        
@@ -93,10 +93,10 @@ public class BDToolsCtrl
                 
                 BDForWindowCtrl forWindowCtrl = new BDForWindowCtrl(BDWindowsManager.forWindow, workspaceCtrl);
 
+                BDDrawUtil.showInTheMiddle(BDWindowsManager.forWindow);
+                
                 // 弹出循环语句设置窗口
                 BDWindowsManager.forWindow.show();
-                
-                BDDrawUtil.showInTheMiddle(BDWindowsManager.forWindow);
             }
         });
        
@@ -109,10 +109,10 @@ public class BDToolsCtrl
 
                 BDSwitchWindowCtrl switchWindowCtrl = new BDSwitchWindowCtrl(BDWindowsManager.switchWindow, workspaceCtrl);
 
+                BDDrawUtil.showInTheMiddle(BDWindowsManager.switchWindow);
+                
                 // 弹出循环语句设置窗口
                 BDWindowsManager.switchWindow.show();
-                
-                BDDrawUtil.showInTheMiddle(BDWindowsManager.switchWindow);
             }
         });
        
@@ -125,10 +125,10 @@ public class BDToolsCtrl
                 //ifWindow = new BDIfWindow();
                 
                 BDDrWindowCtrl drWindowCtrl = new BDDrWindowCtrl(BDWindowsManager.drWindow, workspaceCtrl);
+
+                BDDrawUtil.showInTheMiddle(BDWindowsManager.drWindow);
                 
                 BDWindowsManager.drWindow.show();
-                
-                BDDrawUtil.showInTheMiddle(BDWindowsManager.drWindow);
             }
         });
        
@@ -140,9 +140,9 @@ public class BDToolsCtrl
             {
                 BDArWindowCtrl arWindowCtrl = new BDArWindowCtrl(BDWindowsManager.arWindow, workspaceCtrl);
                 
-                BDWindowsManager.arWindow.show();
-                
                 BDDrawUtil.showInTheMiddle(BDWindowsManager.arWindow);
+                
+                BDWindowsManager.arWindow.show();
             }
         });
        
@@ -154,9 +154,10 @@ public class BDToolsCtrl
             {
                 BDDwWindowCtrl dwWindowCtrl = new BDDwWindowCtrl(BDWindowsManager.dwWindow, workspaceCtrl);
                 
-                BDWindowsManager.dwWindow.show();
-                
                 BDDrawUtil.showInTheMiddle(BDWindowsManager.dwWindow);
+                
+                BDWindowsManager.dwWindow.show();
+
             }
         });
        
@@ -168,9 +169,10 @@ public class BDToolsCtrl
             {
                 BDAwWindowCtrl awWindowCtrl = new BDAwWindowCtrl(BDWindowsManager.awWindow, workspaceCtrl);
                 
-                BDWindowsManager.awWindow.show();
-                
                 BDDrawUtil.showInTheMiddle(BDWindowsManager.awWindow);
+                
+                BDWindowsManager.awWindow.show();
+
             }
         });
        
@@ -185,10 +187,10 @@ public class BDToolsCtrl
                 // 设置延时函数控制器
                 BDDelayWindowCtrl delayWindowCtrl = new BDDelayWindowCtrl(BDWindowsManager.delayWindow, workspaceCtrl);
 
+                BDDrawUtil.showInTheMiddle(BDWindowsManager.delayWindow);
+                
                 // 弹出延时设置窗口
                 BDWindowsManager.delayWindow.show();
-                
-                BDDrawUtil.showInTheMiddle(BDWindowsManager.delayWindow);
             }
         });
        
@@ -201,10 +203,10 @@ public class BDToolsCtrl
                 // 创建串口模版生成控制器
                 BDSerialWindowCtrl comtWindowCtrl = new BDSerialWindowCtrl(BDWindowsManager.serialWindow, workspaceCtrl);
                 
+                BDDrawUtil.showInTheMiddle(BDWindowsManager.serialWindow);
+                
                 // 显示串口通讯模板
                 BDWindowsManager.serialWindow.show();
-                
-                BDDrawUtil.showInTheMiddle(BDWindowsManager.serialWindow);
             }
         });
        
@@ -217,9 +219,9 @@ public class BDToolsCtrl
             	// 弹出扩展工具窗口
             	BDPluginWindowCtrl pluginWindowVtrl = new BDPluginWindowCtrl(BDWindowsManager.pluginWindow, workspaceCtrl);
             	
-            	BDWindowsManager.pluginWindow.show();
-            	
             	BDDrawUtil.showInTheMiddle(BDWindowsManager.pluginWindow);
+            	
+            	BDWindowsManager.pluginWindow.show();
             }
         });
        

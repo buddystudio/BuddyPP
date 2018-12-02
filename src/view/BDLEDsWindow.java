@@ -37,7 +37,7 @@ public class BDLEDsWindow extends BDWindow
     public BDLEDsWindow()
     {
         // 窗口初始化
-        super.init(340, 380);
+        super.init(340, 380 + 30);
         
         // 总在最前方
         this.setAlwaysOnTop(true);

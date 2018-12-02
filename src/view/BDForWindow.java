@@ -49,11 +49,11 @@ public final class BDForWindow extends BDWindow
         // 窗口初始化
     	if(BDParameters.langues.equals("English"))
     	{
-    		super.init(900, 165);
+    		super.init(900, 165 + 30);
     	}
     	else
     	{
-    		super.init(755, 165);
+    		super.init(755, 165 + 30);
     	}
         
         // 总在最前方
