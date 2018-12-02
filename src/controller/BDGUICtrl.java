@@ -96,7 +96,10 @@ public class BDGUICtrl
             		// 解除锁定右侧面板
             		SplitPane.setResizableWithParent(gui.consolePanel, true);
             		
-            		gui.primaryStage.setWidth(BDParameters.curWidth + 200);
+            		if (gui.guiModel.isMaximized == false) 
+            		{
+            			gui.primaryStage.setWidth(BDParameters.curWidth + 200);
+            		}
 
             		gui.arrowBtn.setImage(gui.iconArrowLeftImg);
             		gui.splitPanel.setDividerPosition(0, 0.5);
@@ -108,7 +111,10 @@ public class BDGUICtrl
                         @Override
                         public void run() 
                         {
-                        	gui.primaryStage.setWidth(BDParameters.curWidth);
+                        	if (gui.guiModel.isMaximized == false) 
+                    		{
+                        		gui.primaryStage.setWidth(BDParameters.curWidth);
+                    		}
                     		
                     		gui.arrowBtn.setImage(gui.iconArrowRightImg);
                     		gui.splitPanel.setDividerPosition(0, 1);
