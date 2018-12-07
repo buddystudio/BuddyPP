@@ -36,3 +36,4 @@ hs_err_pid*
 
 /hardware/arduino
 /hardware/tools
+profile/editor.txt
