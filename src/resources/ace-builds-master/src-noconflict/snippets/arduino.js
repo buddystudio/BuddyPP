@@ -186,6 +186,36 @@ snippet Serial.serialEvent\n\
 	}\n\
 snippet pinMode\n\
 	pinMode(${1:PIN}, ${2:MODE});\n\
+snippet Keyboard.begin\n\
+	Keyboard.begin();\n\
+snippet Keyboard.end\n\
+	Keyboard.end();\n\
+snippet Keyboard.press\n\
+	Keyboard.press();\n\
+snippet Keyboard.print\n\
+	Keyboard.print();\n\
+snippet Keyboard.println\n\
+	Keyboard.println();\n\
+snippet Keyboard.release\n\
+	Keyboard.release();\n\
+snippet Keyboard.releaseAll\n\
+	Keyboard.releaseAll();\n\
+snippet Keyboard.write\n\
+	Keyboard.write();\n\
+snippet Mouse.begin\n\
+	Mouse.begin();\n\
+snippet Mouse.click\n\
+	Mouse.click();\n\
+snippet Mouse.end\n\
+	Mouse.end();\n\
+snippet Mouse.move\n\
+	Mouse.move();\n\
+snippet Mouse.press\n\
+	Mouse.press();\n\
+snippet Mouse.release\n\
+	Mouse.release();\n\
+snippet Mouse.isPressed\n\
+	Mouse.isPressed();\n\
 ## STL Collections\n\
 # std::array\n\
 snippet array\n\
