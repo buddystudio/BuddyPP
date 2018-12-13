@@ -33,6 +33,7 @@ public class BDCompileAndUploadWindow extends BDWindow
 	private MenuItem displayMenuItem = new MenuItem("显示");
 	private MenuItem setMenuItem = new MenuItem("设置");
     
+	private VBox mainPanel = new VBox();
 	private VBox topPanel = new VBox();
 	private HBox btnsBar = new HBox();
 	
@@ -69,14 +70,14 @@ public class BDCompileAndUploadWindow extends BDWindow
     	{
 			winWidth = 870;
 			
-    		super.init(winWidth, 720 + 30);
+    		super.init(winWidth, 600 + 30);
     	}
     	else
     	{
     		//winWidth = 750;
     		winWidth = 810;
     		
-    		super.init(winWidth, 720 + 30);
+    		super.init(winWidth, 600 + 30);
     	}
         
         // 总在最前方
@@ -84,12 +85,12 @@ public class BDCompileAndUploadWindow extends BDWindow
        
         // 只有关闭按钮的窗口
         this.initStyle(StageStyle.UTILITY);
-        this.setResizable(false);
-                
+        //this.setResizable(false);
+        this.setMaxWidth(winWidth);
+        this.setMinWidth(winWidth);
         this.setMaximized(false);
         this.setFullScreen(false);
         this.setIconified(false);
-       
         this.setTitle("  " + BDLang.rb.getString("编译与上传"));
         this.setScene(scene);
 
@@ -168,16 +169,22 @@ public class BDCompileAndUploadWindow extends BDWindow
 											 clearBtn
 											 );
 		
-			this.acvView.setPrefHeight(610);
+			//this.acvView.setPrefHeight(610);
+			this.acvView.autosize();
 			this.progressBar.setPrefSize(winWidth, 40);
 			
 			// 隐藏菜单栏
 			//topPanel.getChildren().add(this.menuBar);
 			topPanel.getChildren().add(this.btnsBar);
 			
-			root.setTop(topPanel);
+			/*root.setTop(topPanel);
 			root.setCenter(this.progressBar);
-	        root.setBottom(this.acvView);
+	        root.setBottom(this.acvView);*/
+			
+			root.setTop(mainPanel);
+			root.setCenter(this.acvView);
+	        
+	        mainPanel.getChildren().addAll(topPanel, this.progressBar);
 	        
 	        rootPanel.getChildren().add(root);
 	        
