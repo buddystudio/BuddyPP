@@ -88,6 +88,7 @@ public class BDCompileAndUploadWindow extends BDWindow
         //this.setResizable(false);
         this.setMaxWidth(winWidth);
         this.setMinWidth(winWidth);
+        this.setMinHeight(300);
         this.setMaximized(false);
         this.setFullScreen(false);
         this.setIconified(false);
