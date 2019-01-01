@@ -69,6 +69,9 @@ public class BDEditorCtrl
 	                        //setTheme("xcode");
 	                        setMode("arduino");
 	                        setCode(code);
+	                        
+	                        // 设置焦点
+	                        setFoucs();
 	                    }  
 	                    else if (newState == Worker.State.FAILED)
 	                    {
@@ -159,6 +162,16 @@ public class BDEditorCtrl
     {
 		//System.out.println("on change selection...");
     }
+	
+	// Set foucs.
+	public void setFoucs()
+	{
+		webView.getEngine().executeScript("editor.focus();");
+		
+		//把焦点移到内容的最后面
+		webView.getEngine().executeScript("let session = editor.getSession();let count = session.getLength();editor.gotoLine(count, session.getLine(count - 1).length);");
+
+	}
 	
 	// Set code font size.
 	public void setFontSize(int size)
