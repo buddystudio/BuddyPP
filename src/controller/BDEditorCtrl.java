@@ -70,6 +70,9 @@ public class BDEditorCtrl
 	                        setMode("arduino");
 	                        setCode(code);
 	                        
+	                        // 设置打印边界距离
+	                        webView.getEngine().executeScript("editor.setPrintMarginColumn(70);");
+	                        
 	                        // 设置焦点
 	                        setFoucs();
 	                    }  
