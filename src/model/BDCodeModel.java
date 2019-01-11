@@ -27,20 +27,39 @@ public class BDCodeModel
 	public String    path = ""; 			  // 文件保存路径
 	public String    compilePath = ""; 		  // 编译文件路径
     public BDInoCode code;
+    public String 	 type = "INO";			  // 默认为INO文件
 
-    public BDCodeModel() 
+    public BDCodeModel(String type) 
     {    	
+    	this.type = type;
+    	
     	code = new BDInoCode();
     	
-        // 设置新建文件的命名
-    	setName("sketch_" + BDParameters.codeIdCount);
+    	if(this.type.equals("INO"))
+    	{
+    		// 设置新建文件的命名
+        	setName("sketch_" + BDParameters.codeIdCount + ".ino");
+    	}
+    	else if(this.type.equals("PY"))
+    	{
+    		// 设置新建文件的命名
+        	setName("sketch_" + BDParameters.codeIdCount + ".py");
+    	}
     	
     	String baseCode = "\\nvoid setup()\\n{\\n\\t// " + BDLang.rb.getString("初始化代码") + "\\n\\n}\\n\\nvoid loop()\\n{\\n\\t// " + BDLang.rb.getString("主程序代码") + "\\n\\n}\\n";
     	String code = createCodeNotes() + baseCode;
     	
     	// 新建文件默认内容
     	//setCodeText("\nvoid setup()\n{\n\t// 初始化代码\n\n}\n\nvoid loop()\n{\n\t// 主程序代码\n\n}\n");
-    	setCodeText(code);  
+    	setCodeText(code);
+    	
+    	if(this.type.equals("PY"))
+    	{
+    		baseCode = "\\nfrom microbit import *\\nwhile True:\\n\\tdisplay.scroll(\"Hello, World!\")\\n";
+    		code = createPyCodeNotes() + baseCode;
+    	}
+    	
+    	setCodeText(code);
     }
     
     // 添加源码页首注释
@@ -58,7 +77,7 @@ public class BDCodeModel
     	notes += "/**\\n";
     	notes += " ************************************************\\n";
     	notes += " * \\n";
-    	notes += " * @file    : " + filename + ".ino\\n";
+    	notes += " * @file    : " + filename + "\\n";
     	notes += " * @brief   :  \\n";
     	notes += " * @author  :  \\n";
     	notes += " * @version : 1.0.0 \\n";
@@ -66,6 +85,31 @@ public class BDCodeModel
     	notes += " * \\n";
     	notes += " ************************************************\\n";
     	notes += "*/\\n";
+    	
+    	return notes;
+    }
+    
+    // 添加源码页首注释
+    public String createPyCodeNotes()
+    {
+    	Date day = new Date();    
+
+    	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+
+    	String date 	= df.format(day);
+    	String filename = code.getFileName();
+    	String notes 	= "";
+    	
+    	notes += "\\n";
+    	notes += "#  ************************************************\\n";
+    	notes += "#  * \\n";
+    	notes += "#  * @file    : " + filename + "\\n";
+    	notes += "#  * @brief   :  \\n";
+    	notes += "#  * @author  :  \\n";
+    	notes += "#  * @version : 1.0.0 \\n";
+    	notes += "#  * @date    : " + date + "\\n";
+    	notes += "#  * \\n";
+    	notes += "#  ************************************************\\n";
     	
     	return notes;
     }

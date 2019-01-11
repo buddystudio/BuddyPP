@@ -27,7 +27,7 @@ public class BDCodeTabModel extends BDTabModel
 	
 	//private static final Logger logger = LogManager.getLogger();
     
-    public BDCodeTabModel(BDCodeModel code, BDWorkspaceCtrl workspaceCtrl)
+    public BDCodeTabModel(BDCodeModel code, String type, BDWorkspaceCtrl workspaceCtrl)
     {
         this.code = code;
 
@@ -50,7 +50,7 @@ public class BDCodeTabModel extends BDTabModel
         String tmpCode = code.getCodeText().replaceAll("\"","\\\\\"");
         
         editorView = new BDEditorView(editorUrl);
-		editorCtrl = new BDEditorCtrl(editorView, tmpCode);
+		editorCtrl = new BDEditorCtrl(editorView, tmpCode, type);
 		
 		editorCtrl.codeModel = code;
 		

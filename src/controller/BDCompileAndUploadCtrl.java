@@ -112,6 +112,13 @@ public class BDCompileAndUploadCtrl
 			compileAndUploadWindow.getCompileAndUploadBtn().setDisable(false);
 		}
 	}
+	
+	public void openFileFromPyCode(String builtPath, String codePath)
+	{
+		workMode = WorkMode.FROM_CODE;
+		
+		this.setFuncEnable(false);
+	}
 
 	public BDCompileAndUploadCtrl(BDCompileAndUploadWindow compileAndUploadWindow)
 	{

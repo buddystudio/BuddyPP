@@ -21,7 +21,7 @@ public class BDConsoleTabModel extends BDTabModel
 	//private static final Logger logger = LogManager.getLogger();
 	
     public Tab tab = new Tab();
-    public BDCodeModel code = new BDCodeModel();
+    public BDCodeModel code = new BDCodeModel("INO");
 
     //public BDTextAreaConsole consoleTxt = BDTextAreaConsole.getTextAreaConsoleInstance();
 

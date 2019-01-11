@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 public class BDTabModel 
 {
 	public Tab tab = new Tab();
-    public BDCodeModel code = new BDCodeModel();
+    public BDCodeModel code = new BDCodeModel("INO");
     
     public Hyperlink hlink1 = new Hyperlink();
     public Hyperlink hlink2 = new Hyperlink();

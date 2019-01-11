@@ -30,6 +30,7 @@ public class BDMenuView extends HBox
 
     public Button menuOpenBtn      = new Button(); // 打开按钮
     public Button menuNewBtn       = new Button(); // 新建按钮
+    public Button menuNewPyBtn     = new Button(); // 新建按钮
     public Button menuSaveBtn      = new Button(); // 保存按钮
     public Button menuSaveAsBtn    = new Button(); // 另存为按钮
     
@@ -77,6 +78,7 @@ public class BDMenuView extends HBox
 
         menuOpenBtn.setPrefSize(50, 50);
         menuNewBtn.setPrefSize(50, 50);
+        menuNewPyBtn.setPrefSize(50, 50);
         menuSaveBtn.setPrefSize(50, 50);
         menuSaveAsBtn.setPrefSize(50, 50);
         menuExampleBtn.setPrefSize(50, 50);
@@ -91,7 +93,8 @@ public class BDMenuView extends HBox
         menuAboutBtn.setPrefSize(50, 50);
         
         Tooltip menuOpenBtnTip = new Tooltip(BDLang.rb.getString("打开"));
-        Tooltip menuNewBtnTip = new Tooltip(BDLang.rb.getString("新建"));
+        Tooltip menuNewBtnTip = new Tooltip(BDLang.rb.getString("新建") + " INO");
+        Tooltip menuNewPyBtnTip = new Tooltip(BDLang.rb.getString("新建") + " PY");
         Tooltip menuSaveBtnTip = new Tooltip(BDLang.rb.getString("保存"));
         Tooltip menuSaveAsBtnTip = new Tooltip(BDLang.rb.getString("另存为"));
         Tooltip menuExampleBtnTip = new Tooltip(BDLang.rb.getString("示例"));
@@ -109,6 +112,7 @@ public class BDMenuView extends HBox
 
         menuOpenBtnTip.getStyleClass().add("tip");
         menuNewBtnTip.getStyleClass().add("tip");
+        menuNewPyBtnTip.getStyleClass().add("tip");
         menuSaveBtnTip.getStyleClass().add("tip");
         menuSaveAsBtnTip.getStyleClass().add("tip");
         menuExampleBtnTip.getStyleClass().add("tip");
@@ -124,6 +128,7 @@ public class BDMenuView extends HBox
 
         menuOpenBtn.setTooltip(menuOpenBtnTip);
         menuNewBtn.setTooltip(menuNewBtnTip);
+        menuNewPyBtn.setTooltip(menuNewPyBtnTip);
         menuSaveBtn.setTooltip(menuSaveBtnTip);
         menuSaveAsBtn.setTooltip(menuSaveAsBtnTip);
         menuExampleBtn.setTooltip(menuExampleBtnTip);
@@ -139,6 +144,7 @@ public class BDMenuView extends HBox
         
         menuOpenBtn.getStyleClass().add("openBtn");
         menuNewBtn.getStyleClass().add("newBtn");
+        menuNewPyBtn.getStyleClass().add("newBtn");
         menuSaveBtn.getStyleClass().add("saveBtn");
         menuSaveAsBtn.getStyleClass().add("saveAsBtn");
         menuExampleBtn.getStyleClass().add("exampleBtn");
@@ -153,6 +159,7 @@ public class BDMenuView extends HBox
         menuAboutBtn.getStyleClass().add("forumBtn");
         
         this.getChildren().add(menuNewBtn);
+        this.getChildren().add(menuNewPyBtn);
         this.getChildren().add(menuOpenBtn);
         this.getChildren().add(menuSaveBtn);
         this.getChildren().add(menuSaveAsBtn);

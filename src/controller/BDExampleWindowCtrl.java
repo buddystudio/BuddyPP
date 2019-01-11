@@ -173,11 +173,11 @@ public class BDExampleWindowCtrl
         if(path != null)
         {
             // Create new code object.
-            BDCodeModel code = new BDCodeModel();
+            BDCodeModel code = new BDCodeModel("INO");
 
             try 
             {
-            	code.setName(name);
+            	code.setName(name + ".ino");
             	//code.setCodeText (BDCodeReader.readFileByLines2(path + File.separator + name + File.separator + name + ".ino"));
             	code.setCodeText (BDCodeReader.readFileByLines(path + File.separator + name + File.separator + name + ".ino"));
 
@@ -198,7 +198,7 @@ public class BDExampleWindowCtrl
             try 
             {
                 // Add new codeTab to workspace.
-            	rootWorkspaceCtrl.addTab(code);
+            	rootWorkspaceCtrl.addTab(code, "INO");
             } 
             catch (AWTException ex) 
             {

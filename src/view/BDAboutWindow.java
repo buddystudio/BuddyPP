@@ -12,6 +12,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -28,8 +29,11 @@ import java.net.URISyntaxException;
  *
  * @author gsh
  */
-public final class BDAboutWindow extends BDWindow
+public final class BDAboutWindow extends BDSubWindow
 {
+	public BDTitleView titlePanel = new BDTitleView();
+	private BorderPane root = new BorderPane();
+	
     public BDAboutWindow()
     {
         // 窗口初始化
@@ -37,6 +41,7 @@ public final class BDAboutWindow extends BDWindow
 
         //scene.getStylesheets().add("resources/style/settingStyle.css");
         rootPanel.getStylesheets().clear();
+        rootPanel.getStylesheets().add("resources/style/titleStyle.css"); 
        
         // 定义无边框窗体
         //this.initStyle(StageStyle.UNDECORATED);
@@ -141,7 +146,15 @@ public final class BDAboutWindow extends BDWindow
         
         contain.getChildren().add(links);
        
-        rootPanel.getChildren().add(contain);
+        //rootPanel.getChildren().add(contain);
+        
+        root.setTop(this.titlePanel);
+        root.setCenter(contain);
+        
+        rootPanel.getChildren().add(root);
+        
+        // 定义无边框窗体
+        this.initStyle(StageStyle.UNDECORATED);
     }
     
     public void browserUrl(String url)

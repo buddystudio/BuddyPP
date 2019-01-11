@@ -37,7 +37,7 @@ public final class BDWorkspaceCtrl
         {
             // 启动时至少有一个代码标签页
             //this.addConsoleTab();
-            this.addNewTab();
+            this.addNewTab("INO");
             
             // 启动时显示开始页面可新建打开文件
         } 
@@ -48,7 +48,7 @@ public final class BDWorkspaceCtrl
         }
     }
 
-    public void addTab(BDCodeModel newCode) throws AWTException
+    public void addTab(BDCodeModel newCode, String type) throws AWTException
     { 
     	// 获取编辑器参数
         BDParameters.getEditorProfile();
@@ -79,7 +79,7 @@ public final class BDWorkspaceCtrl
         }
         
         //BDCodeModel newCode = new BDCodeModel();
-        BDCodeTabModel newTab = new BDCodeTabModel(newCode, this);
+        BDCodeTabModel newTab = new BDCodeTabModel(newCode, "INO", this);
         
         newTab.code = newCode;
         
@@ -102,11 +102,11 @@ public final class BDWorkspaceCtrl
     }
     
     // 创建一个源码标签页
-    public void addNewTab() throws AWTException
+    public void addNewTab(String type) throws AWTException
     { 
-        BDCodeModel newCode = new BDCodeModel();
+        BDCodeModel newCode = new BDCodeModel(type);
         
-        BDCodeTabModel newTab = new BDCodeTabModel(newCode, this);
+        BDCodeTabModel newTab = new BDCodeTabModel(newCode, type, this);
         
         this.workspaceView.workspaceModel.tabList.add(newTab);
 

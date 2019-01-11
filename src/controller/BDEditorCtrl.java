@@ -22,10 +22,12 @@ public class BDEditorCtrl
 	public BDCodeModel codeModel;
 	
 	public WebView webView;
+	public String type = "";
 	
-	public BDEditorCtrl(BDEditorView editor, String code) 
+	public BDEditorCtrl(BDEditorView editor, String code, String type) 
 	{
 		this.webView = editor.webView;
+		this.type = type;
 		
 		// 获取编辑器参数
         //BDParameters.getEditorProfile();
@@ -68,6 +70,12 @@ public class BDEditorCtrl
 	                        //setTheme("chaos");
 	                        //setTheme("xcode");
 	                        setMode("arduino");
+	                        
+	                        if(type.equals("PY"))
+	                        {
+	                        	setMode("python");
+	                        }
+	                        
 	                        setCode(code);
 	                        
 	                        // 设置打印边界距离
