@@ -29,9 +29,9 @@ import java.net.URISyntaxException;
  *
  * @author gsh
  */
-public final class BDAboutWindow extends BDSubWindow
+public final class BDAboutWindow extends BDWindow
 {
-	public BDTitleView titlePanel = new BDTitleView();
+	//public BDSubTitleView titlePanel = new BDSubTitleView();
 	private BorderPane root = new BorderPane();
 	
     public BDAboutWindow()
@@ -147,14 +147,13 @@ public final class BDAboutWindow extends BDSubWindow
         contain.getChildren().add(links);
        
         //rootPanel.getChildren().add(contain);
-        
-        root.setTop(this.titlePanel);
+        //root.setTop(this.titlePanel);
         root.setCenter(contain);
         
         rootPanel.getChildren().add(root);
         
         // 定义无边框窗体
-        this.initStyle(StageStyle.UNDECORATED);
+        //this.initStyle(StageStyle.UNDECORATED);
     }
     
     public void browserUrl(String url)

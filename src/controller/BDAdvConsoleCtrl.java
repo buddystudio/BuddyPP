@@ -8,7 +8,10 @@ public class BDAdvConsoleCtrl
 	private int lineCount = 1;
 	private boolean isCounting = true;
 	private String html = "";
-	private String htmlHead = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"></head><body onload='window.scrollTo(0,document.body.scrollHeight);' style='margin:0;overflow-x:hidden;'><table onselectstart='return false' onselect='document.selection.empty()' border='0' cellpadding='10' cellspacing='0' style='overflow-y:hidden;'>";
+	// 不显示滚动条
+	//private String htmlHead = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"></head><body onload='window.scrollTo(0,document.body.scrollHeight);' style='margin:0;overflow-x:hidden;'><table onselectstart='return false' onselect='document.selection.empty()' border='0' cellpadding='10' cellspacing='0' style='overflow-y:hidden;'>";
+	// 显示滚动条
+	private String htmlHead = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"></head><body onload='window.scrollTo(0,document.body.scrollHeight);' style='margin:0;'><table onselectstart='return false' onselect='document.selection.empty()' border='0' cellpadding='10' cellspacing='0' style='overflow-y:hidden;'>";
 	private String htmlFoot = "</table></body></html>";
 
 	public BDAdvConsoleCtrl(BDAdvConsoleView acv)
@@ -22,13 +25,13 @@ public class BDAdvConsoleCtrl
         //String css = "style = 'font-size:18px;line-height:18px;color:blue;visibility:hidden;'";
         String css = "style = 'color:" + this.acv.getColorMsgFont()+ ";'";
         
-        // ������ʽ
+        
 		//html += "<tr><td  width='20px' align='middle' bgcolor='DDDDDD'><font color='#656565'><i>" + lineCount + "</i></td><td " + script + css + "><pre>" + msg + "</pre></td></tr>";
         
-        // ������ʽ���Զ����У�
+        
         //html += "<tr><td  width='20px' align='middle' bgcolor='DDDDDD'><font color='#656565'><i>" + lineCount + "</i></td><td " + script + css + "><pre style = 'white-space:pre-wrap;'>" + msg + "</pre></td></tr>";
 		
-        // ������ʽ�����Զ����У�
+        
         html += "<tr style='line-height:" + this.acv.getMsgLineHight() + "px;'><td width='20px' align='middle' bgcolor='" + this.acv.getColorLineBlockBg() + "'><font color='" + this.acv.getColorLineFont() + "'><i>" + lineCount + "</i></td><td " + script + css + "><pre style = 'font-size:" + this.acv.getMsgFontSize() + "px;'>" + msg + "</pre></td></tr>";
 		
         this.acv.getHtmlEditor().setHtmlText(htmlHead + html + htmlFoot);

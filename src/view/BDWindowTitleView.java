@@ -6,7 +6,9 @@
 package view;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
@@ -26,7 +28,7 @@ public class BDWindowTitleView extends BorderPane
         //this.setStyle("-fx-background-color: #333333;");
     	this.setStyle("-fx-background-color: #ffffff;"); 
     	
-    	//this.setPrefHeight(20);
+    	this.setMaxHeight(20);
         
         //this.setLeft(icon);
         
@@ -34,15 +36,20 @@ public class BDWindowTitleView extends BorderPane
 
         closeBtn.getStyleClass().add("closeBtn2"); 
         
-        closeBtn.setPrefSize(20, 20);
+        //closeBtn.setPrefSize(20, 20);
+        //closeBtn.setMaxSize(20, 20);
         
         titleBtns.getChildren().add(closeBtn);
         
         //titleBtns.setPadding(new Insets(2, 2, 2, 2));  // 设置边距
         
-        this.setPadding(new Insets(2, 2, 2, 2));  // 设置边距
+        //this.setPadding(new Insets(2, 2, 2, 2));  // 设置边距
         
         this.setRight(titleBtns);
+        
+        Label titleLbl = new Label("关于");
+        
+        this.setLeft(titleLbl);
     }
     
 }

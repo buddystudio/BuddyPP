@@ -28,6 +28,8 @@ public class BDCodeModel
 	public String    compilePath = ""; 		  // 编译文件路径
     public BDInoCode code;
     public String 	 type = "INO";			  // 默认为INO文件
+    
+    private String   suffix = "";			  // 文件后缀名
 
     public BDCodeModel(String type) 
     {    	
@@ -55,11 +57,18 @@ public class BDCodeModel
     	
     	if(this.type.equals("PY"))
     	{
-    		baseCode = "\\nfrom microbit import *\\nwhile True:\\n\\tdisplay.scroll(\"Hello, World!\")\\n";
+    		baseCode = "\\nfrom microbit import *\\n\\nwhile True:\\n\\tdisplay.scroll(\"Hello, World!\")\\n";
     		code = createPyCodeNotes() + baseCode;
     	}
     	
     	setCodeText(code);
+    }
+    
+    public String getSuffix()
+    {
+    	this.suffix = code.getFileName().substring(code.getFileName().lastIndexOf(".") + 1);
+    	
+    	return this.suffix;
     }
     
     // 添加源码页首注释
@@ -101,6 +110,7 @@ public class BDCodeModel
     	String notes 	= "";
     	
     	notes += "\\n";
+    	notes += "#  \\n";
     	notes += "#  ************************************************\\n";
     	notes += "#  * \\n";
     	notes += "#  * @file    : " + filename + "\\n";
@@ -110,6 +120,7 @@ public class BDCodeModel
     	notes += "#  * @date    : " + date + "\\n";
     	notes += "#  * \\n";
     	notes += "#  ************************************************\\n";
+    	notes += "#  \\n";
     	
     	return notes;
     }

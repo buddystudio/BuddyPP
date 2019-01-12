@@ -382,7 +382,8 @@ public class BDMenuCtrl
 				workspaceCtrl.workspaceView.workspaceModel.curTab.code.setCodeText(code);
 
 				// 如果当前为Python工程
-				if(workspaceCtrl.workspaceView.workspaceModel.curTab.code.type.equals("PY"))
+				//if(workspaceCtrl.workspaceView.workspaceModel.curTab.code.type.equals("PY"))
+				if(workspaceCtrl.workspaceView.workspaceModel.curTab.code.getSuffix().equals("py"))
 				{
 					cauwCtrl.openFileFromPyCode(builtPath + File.separator, codePath + File.separator);
 					

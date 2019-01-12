@@ -5,6 +5,8 @@
  */
 package view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -50,6 +52,18 @@ public class BDSubWindow extends BDWindow
         //root.initStyle(StageStyle.UNDECORATED);
         
         //scene.getStylesheets().add("resources/style/titleStyle.css"); 
+        
+        // 点击关闭按钮
+        this.titlePanel.closeBtn.setOnAction(new EventHandler<ActionEvent>() 
+        {
+            @Override
+            public void handle(ActionEvent event) 
+            {
+            	root.close();
+            }
+        });
     
     };
+    
+    
 }
