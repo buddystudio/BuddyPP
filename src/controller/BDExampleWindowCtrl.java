@@ -26,7 +26,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import model.BDCodeModel;
-import model.BDParameters;
 import view.BDExampleWindow;
 
 /**

@@ -34,7 +34,7 @@ public final class BDExampleWindow extends BDWindow
     public BDExampleWindow()
     {
         // 窗口初始化
-        super.init(480, 550 + 30);
+        super.init(480, 550 + 35);
         
         //scene.getStylesheets().add("resources/style/listViewStyle.css");
         

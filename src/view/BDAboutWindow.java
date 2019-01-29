@@ -37,7 +37,8 @@ public final class BDAboutWindow extends BDWindow
     public BDAboutWindow()
     {
         // 窗口初始化
-        super.init(500, 365 + 30);
+        //super.init(500, 365 + 30);
+    	super.init(500, 450);
 
         //scene.getStylesheets().add("resources/style/settingStyle.css");
         rootPanel.getStylesheets().clear();
@@ -154,6 +155,8 @@ public final class BDAboutWindow extends BDWindow
         
         // 定义无边框窗体
         //this.initStyle(StageStyle.UNDECORATED);
+        
+        rootPanel.getStylesheets().add("resources/style/modena_dark.css");
     }
     
     public void browserUrl(String url)
