@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.ComboBox;
 import javafx.stage.FileChooser;
 import model.BDLang;
 import model.BDMessage;
@@ -330,13 +331,16 @@ public class BDCompileAndUploadCtrl
 					// Stop all threads.
 					stopAllThreads();
 					
-					compileAndUploadWindow.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
+					/*compileAndUploadWindow.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
     	            compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(0);
     	            
     	            bd_com = compileAndUploadWindow.getSerialListCombox().getSelectionModel().getSelectedItem();
     	            
 					compileAndUploadWindow.getAcvCtrl().setLineCount(1);
-					compileAndUploadWindow.getAcvCtrl().clear();
+					compileAndUploadWindow.getAcvCtrl().clear();*/
+					
+					// 更新串口状态
+                	updateSerialPorts();
 					
 					compileMode = CompileMode.COMPILE_AND_UPLOAD;
 					
@@ -357,7 +361,7 @@ public class BDCompileAndUploadCtrl
 					// 恢复功能按钮
             		setFuncEnable(true);
             		
-            		// 更新按钮状态
+            		// 更新串口状态
                 	updateSerialPorts();
 	            }
 	        });
@@ -858,7 +862,7 @@ public class BDCompileAndUploadCtrl
 			                	// 恢复功能按钮
 			                	setFuncEnable(true);
 			                	
-			                	// 更新按钮状态
+			                	// 更新串口状态
 			                	updateSerialPorts();
                         	}
                         }
@@ -925,7 +929,7 @@ public class BDCompileAndUploadCtrl
 	                		setFuncEnable(true);
 	                		
 	                		// 更新按钮状态
-		                	updateSerialPorts();
+		                	//updateSerialPorts();
 
                         	this.cancel();
                         }
@@ -949,20 +953,24 @@ public class BDCompileAndUploadCtrl
                     	BDSerialManager2 serialmangeer = new BDSerialManager2();
                     	
                     	serialmangeer.serialPortOpen(bd_com);
-                    	Thread.sleep(1000);
+                    	Thread.sleep(4000);
                     	uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("正在重置串口") + "...");
+                    	
                     	serialmangeer.serialPortClose();
-                    	Thread.sleep(1000);
+                    	Thread.sleep(4000);
                     	
                     	serialmangeer = new BDSerialManager2();
                     	
+                    	String preCom = bd_com;
+                    	
                     	ObservableList<String> list = serialmangeer.getPortList();
                     	
-                    	uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("串口从") + " <b>" + bd_com + "</b> " + BDLang.rb.getString("重置为") + " <b>" + list.get(0) + "</b>");
+                    	// 寻觅新的串口（不能是COM1/COM2/COM3）
+                    	bd_com = list.get(list.size() - 1);
+                    	
+                    	uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("串口从") + " <b>" + preCom + "</b> " + BDLang.rb.getString("重置为") + " <b>" + bd_com + "</b>");
                     	uploadMessage.setMessage("msg_" + ">>>>>>> ===================================================================");
                     	uploadMessage.setMessage("msg_" + "");
-                    	
-                    	bd_com = list.get(0);
                     	
                     	compileAndUploadWindow.getProgressBar().setProgress(0.1);
                     	
@@ -1352,8 +1360,12 @@ public class BDCompileAndUploadCtrl
 	
 	public void updateSerialPorts()
 	{
+		String curSelected = compileAndUploadWindow.getSerialListCombox().getSelectionModel().getSelectedItem();
+		
 		compileAndUploadWindow.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
-        compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(0);
+        //compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(0);
+		// 更新后选中此前的选项
+        compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(curSelected);
         
         BDParameters.connectCom = this.compileAndUploadWindow.getSerialListCombox().getSelectionModel().getSelectedItem().toString();
         
