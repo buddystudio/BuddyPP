@@ -308,13 +308,16 @@ public class BDCompileAndUploadCtrl
 					// Stop all threads.
 					stopAllThreads();
 					
-					compileAndUploadWindow.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
+					/*compileAndUploadWindow.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
     	            compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(0);
     	            
     	            bd_com = compileAndUploadWindow.getSerialListCombox().getSelectionModel().getSelectedItem();
     	            
 					compileAndUploadWindow.getAcvCtrl().setLineCount(1);
-	            	compileAndUploadWindow.getAcvCtrl().clear();
+	            	compileAndUploadWindow.getAcvCtrl().clear();*/
+	            	
+	            	// 更新串口状态
+                	updateSerialPorts();
 	            	
 					compileMode = CompileMode.UPLOAD;
 					
@@ -946,15 +949,15 @@ public class BDCompileAndUploadCtrl
                 	   boardName.equals("Arduino Yún") ||
                 	   boardName.equals("Arduino Yún Mini"))
                 	{
-                		uploadMessage.setMessage("msg_" + "");
-                		uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("准备重置串口") + "...");
+                		//uploadMessage.setMessage("msg_" + "");
+                		uploadMessage.setMessage("msg_" + "<b>>>>>>>> Buddy++：" + BDLang.rb.getString("准备重置串口") + "...</b>");
                 		
                 		// Reboot Arduino Leonardo.
                     	BDSerialManager2 serialmangeer = new BDSerialManager2();
                     	
                     	serialmangeer.serialPortOpen(bd_com);
                     	Thread.sleep(4000);
-                    	uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("正在重置串口") + "...");
+                    	uploadMessage.setMessage("msg_" + "<b>>>>>>>> Buddy++：" + BDLang.rb.getString("正在重置串口") + "...</b>");
                     	
                     	serialmangeer.serialPortClose();
                     	Thread.sleep(4000);
@@ -968,8 +971,8 @@ public class BDCompileAndUploadCtrl
                     	// 寻觅新的串口（不能是COM1/COM2/COM3）
                     	bd_com = list.get(list.size() - 1);
                     	
-                    	uploadMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("串口从") + " <b>" + preCom + "</b> " + BDLang.rb.getString("重置为") + " <b>" + bd_com + "</b>");
-                    	uploadMessage.setMessage("msg_" + ">>>>>>> ===================================================================");
+                    	uploadMessage.setMessage("msg_" + "<b>>>>>>>> Buddy++：" + BDLang.rb.getString("串口从") + " " + preCom + " " + BDLang.rb.getString("重置为") + " " + bd_com + "</b>");
+                    	uploadMessage.setMessage("msg_" + "<b>>>>>>>> ===================================================================");
                     	uploadMessage.setMessage("msg_" + "");
                     	
                     	compileAndUploadWindow.getProgressBar().setProgress(0.1);

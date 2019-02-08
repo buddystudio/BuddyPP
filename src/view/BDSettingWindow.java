@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
 import javafx.collections.FXCollections;
@@ -73,16 +74,19 @@ public class BDSettingWindow extends BDWindow
         Tab tabBase 	= new Tab("  " + BDLang.rb.getString("通用") + "  ");
         Tab tabEditor 	= new Tab("  " + BDLang.rb.getString("编辑器") + "  ");
         Tab tabHotKey 	= new Tab("  " + BDLang.rb.getString("快捷键") + "  ");
+        Tab tabBoards 	= new Tab("  " + BDLang.rb.getString("主控板") + "  ");
         Tab tabNetwork 	= new Tab("  " + BDLang.rb.getString("网络") + " ");
         Tab tabUser 	= new Tab("  " + BDLang.rb.getString("账户") + "  ");
         
         tabBase.setClosable(false);
         tabEditor.setClosable(false);
         tabHotKey.setClosable(false);
+        tabBoards.setClosable(false);
         tabNetwork.setClosable(false);
         tabUser.setClosable(false);
         
         // 以下功能暂未开放
+        tabBoards.setDisable(true);
         tabNetwork.setDisable(true);
         tabUser.setDisable(true);
         
@@ -91,7 +95,7 @@ public class BDSettingWindow extends BDWindow
         tabHotKey.setContent(getHotKeyContent());
         
         
-        tabPane.getTabs().addAll(tabBase, tabEditor, tabHotKey, tabNetwork, tabUser);
+        tabPane.getTabs().addAll(tabBase, tabEditor, tabHotKey, tabBoards, tabNetwork, tabUser);
         
         VBox settingPane = new VBox();
         

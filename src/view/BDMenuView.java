@@ -159,7 +159,8 @@ public class BDMenuView extends HBox
         menuAboutBtn.getStyleClass().add("forumBtn");
         
         this.getChildren().add(menuNewBtn);
-        this.getChildren().add(menuNewPyBtn);
+        // 展示隐藏创建Python文件的功能
+        //this.getChildren().add(menuNewPyBtn);
         this.getChildren().add(menuOpenBtn);
         this.getChildren().add(menuSaveBtn);
         this.getChildren().add(menuSaveAsBtn);
