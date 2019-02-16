@@ -30,7 +30,7 @@ public class BDParameters
 	static public int codeIdCount        = 0;        		// 代码文档序号
     static public int variableId         = 0;        		// 循环计数变量序号
     
-    static public String version         = "1.2.0";  		// 软件版本号
+    static public String version         = "1.2.1";  		// 软件版本号
     static public String langues         = "简体中文";  		// 语言
     static public String organization	 = "BuddyStudio";	// 开发组织
     static public String author			 = "李宝智、郭少豪";	// 开发者署名
