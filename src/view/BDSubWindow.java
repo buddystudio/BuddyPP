@@ -5,11 +5,9 @@
  */
 package view;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import controller.BDSubWindowCtrl;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,9 +16,10 @@ import javafx.stage.StageStyle;
  *
  * @author gsh
  */
-public class BDSubWindow extends BDWindow
+public class BDSubWindow extends Stage
 {
-    public Pane rootPanel;
+	//public Pane rootPanel;
+	public VBox rootPanel;
     public Stage root;
     public Scene scene;
     
@@ -30,9 +29,9 @@ public class BDSubWindow extends BDWindow
     
     protected void init(double w, double h)
     {
-        rootPanel   = new StackPane();
-    	//rootPanel   = new VBox();
-        scene       = new Scene(rootPanel, w, h);
+        //rootPanel   = new StackPane();
+    	rootPanel   = new VBox();
+        scene       = new Scene(rootPanel, w, h + 26 + 6);
         root        = this;
         
         this.setWidth(w);
@@ -41,29 +40,28 @@ public class BDSubWindow extends BDWindow
         // 模态窗口
         this.initModality(Modality.APPLICATION_MODAL);
         
-        // 定义无边框窗体
-        //this.initStyle(StageStyle.UNDECORATED);
-        
-        rootPanel.getStylesheets().add("resources/style/modena_dark.css");
+        //rootPanel.getStylesheets().add("resources/style/modena_dark.css");
 
         //rootPanel.getChildren().add(titlePanel);
         
         // 定义无边框窗体
-        //root.initStyle(StageStyle.UNDECORATED);
+        root.initStyle(StageStyle.UNDECORATED);
         
-        //scene.getStylesheets().add("resources/style/titleStyle.css"); 
+        // Set main panel style
+        String panelStyle = "";
         
-        // 点击关闭按钮
-        this.titlePanel.closeBtn.setOnAction(new EventHandler<ActionEvent>() 
-        {
-            @Override
-            public void handle(ActionEvent event) 
-            {
-            	root.close();
-            }
-        });
+        // 设置主窗体边框
+        panelStyle += "-fx-background-radius:1px;";
+        panelStyle += "-fx-border-color: #333333;";
+        panelStyle += "-fx-border-width:1px;";
+        panelStyle += "-fx-border-radius:1px;";
+        
+        rootPanel.setStyle(panelStyle);
+        
+        // 添加标题栏
+        rootPanel.getChildren().add(titlePanel);
+        
+        new BDSubWindowCtrl(this);
     
     };
-    
-    
 }

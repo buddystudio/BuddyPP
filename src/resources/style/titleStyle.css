@@ -69,7 +69,7 @@
 {  
     /*-fx-background-color: #333333; */
     -fx-background-image: url("../images/windowTitleClose2.png");
-    /*-fx-padding: 5 5 5 5;*/
+    -fx-padding: 0 21 5 5;
     
 }
 

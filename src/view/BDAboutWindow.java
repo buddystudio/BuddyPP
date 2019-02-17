@@ -29,7 +29,7 @@ import java.net.URISyntaxException;
  *
  * @author gsh
  */
-public final class BDAboutWindow extends BDWindow
+public final class BDAboutWindow extends BDSubWindow
 {
 	//public BDSubTitleView titlePanel = new BDSubTitleView();
 	private BorderPane root = new BorderPane();
@@ -51,8 +51,8 @@ public final class BDAboutWindow extends BDWindow
         this.setAlwaysOnTop(true);
        
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
-        this.setResizable(false);
+        //this.initStyle(StageStyle.UTILITY);
+        //this.setResizable(false);
         
         String bitTxt = "";
 

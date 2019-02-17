@@ -23,6 +23,7 @@ import javafx.scene.input.MouseEvent;
 import model.BDCodeTabModel;
 import model.BDLang;
 import model.BDParameters;
+import model.BDWindowsManager;
 import view.BDDialogWindow;
 import view.BDGUIView;
 
@@ -218,10 +219,10 @@ public class BDGUICtrl
             @Override
             public void handle(ActionEvent event) 
             {
-            	BDDrawUtil.showInTheMiddle(gui.aboutWindow);
+            	BDDrawUtil.showInTheMiddle(BDWindowsManager.aboutWindow);
             	
             	// 弹出关于我们按钮
-            	gui.aboutWindow.show();
+            	BDWindowsManager.aboutWindow.show();
             }
         });
         

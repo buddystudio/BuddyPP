@@ -56,7 +56,6 @@ public class BDGUIView
     
     public SplitPane splitPanel 			= new SplitPane();
     public BorderPane consolePanel 			= new BorderPane();
-    //public CodeArea msgArea					= new CodeArea();
     public VBox dividerPanel 				= new VBox();
     
     public BDMenuCtrl menuCtrl              = new BDMenuCtrl(menuPanel);
@@ -66,8 +65,6 @@ public class BDGUIView
     
     public BDSettingWindow settingWindow	= new BDSettingWindow();
     public BDSettingWindowCtrl settingWindowCtrl = new BDSettingWindowCtrl(settingWindow, workspaceCtrl);
-    
-    public BDAboutWindow aboutWindow = new BDAboutWindow();	// 关于我们窗口
 
     public Rectangle2D visualBounds;
     
