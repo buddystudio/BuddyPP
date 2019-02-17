@@ -19,7 +19,7 @@ import model.BDParameters;
  *
  * @author gsh
  */
-public class BDDrWindow extends BDWindow
+public class BDDrWindow extends BDSubWindow
 {
     public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     
@@ -31,22 +31,24 @@ public class BDDrWindow extends BDWindow
         // 窗口初始化
     	if(BDParameters.langues.equals("English"))
     	{
-    		super.init(600, 60 + 30);
+    		super.init(600, 60 + 30 + 10);
     	}
     	else
     	{
-    		super.init(580, 60 + 30);
+    		super.init(580, 60 + 30 + 10);
     	}
         
         // 总在最前方
        this.setAlwaysOnTop(true);
        
        // 只有关闭按钮的窗口
-       this.initStyle(StageStyle.UTILITY);
+       //this.initStyle(StageStyle.UTILITY);
        this.setResizable(false);
        
        this.setTitle("  " + BDLang.rb.getString("读取数字端口"));
        this.setScene(scene);
+       
+       this.setNewTitle(BDLang.rb.getString("读取数字端口"));
 
        HBox contain  = new HBox();
        

@@ -7,10 +7,12 @@ package view;
 
 import controller.BDSubWindowCtrl;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import util.base.BDDrawUtil;
 
 /**
  *
@@ -22,16 +24,16 @@ public class BDSubWindow extends Stage
 	public VBox rootPanel;
     public Stage root;
     public Scene scene;
-    
+
     public BDWindowTitleView titlePanel = new BDWindowTitleView();
-    
+
     protected void init(){};
     
     protected void init(double w, double h)
     {
         //rootPanel   = new StackPane();
     	rootPanel   = new VBox();
-        scene       = new Scene(rootPanel, w, h + 26 + 6);
+        scene       = new Scene(rootPanel, w, h + 26);
         root        = this;
         
         this.setWidth(w);
@@ -40,7 +42,7 @@ public class BDSubWindow extends Stage
         // 模态窗口
         this.initModality(Modality.APPLICATION_MODAL);
         
-        //rootPanel.getStylesheets().add("resources/style/modena_dark.css");
+        rootPanel.getStylesheets().add("resources/style/modena_dark.css");
 
         //rootPanel.getChildren().add(titlePanel);
         
@@ -52,7 +54,8 @@ public class BDSubWindow extends Stage
         
         // 设置主窗体边框
         panelStyle += "-fx-background-radius:1px;";
-        panelStyle += "-fx-border-color: #333333;";
+        //panelStyle += "-fx-border-color: #333333;";
+        panelStyle += "-fx-border-color: #7a7a7a;";
         panelStyle += "-fx-border-width:1px;";
         panelStyle += "-fx-border-radius:1px;";
         
@@ -62,6 +65,16 @@ public class BDSubWindow extends Stage
         rootPanel.getChildren().add(titlePanel);
         
         new BDSubWindowCtrl(this);
-    
     };
+    
+    public void setResizeable()
+    {
+    	// 添加窗体拉伸效果
+        BDDrawUtil.addDrawSubFunc(root, rootPanel);
+    }
+
+	public void setNewTitle(String title)
+    {
+    	this.titlePanel.titleLbl.setText(title);
+    }
 }

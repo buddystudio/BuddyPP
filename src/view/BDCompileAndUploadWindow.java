@@ -19,7 +19,7 @@ import model.BDLang;
 import model.BDParameters;
 import model.BDSerialManager2;
 
-public class BDCompileAndUploadWindow extends BDWindow
+public class BDCompileAndUploadWindow extends BDSubWindow
 {
 	private MenuBar menuBar = new MenuBar();
 	
@@ -70,21 +70,21 @@ public class BDCompileAndUploadWindow extends BDWindow
     	{
 			winWidth = 870;
 			
-    		super.init(winWidth, 750);
+    		super.init(winWidth, 750 - 5);
     	}
     	else
     	{
     		//winWidth = 750;
     		winWidth = 810;
     		
-    		super.init(winWidth, 750);
+    		super.init(winWidth, 750 - 5);
     	}
         
         // 总在最前方
         //this.setAlwaysOnTop(true);
        
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
+        //this.initStyle(StageStyle.UTILITY);
         //this.setResizable(false);
         this.setMaxWidth(winWidth);
         this.setMinWidth(winWidth);
@@ -94,6 +94,12 @@ public class BDCompileAndUploadWindow extends BDWindow
         this.setIconified(false);
         this.setTitle("  " + BDLang.rb.getString("编译与上传"));
         this.setScene(scene);
+        
+        // Set window resizeable.
+        //this.setResizeable();
+        
+        // Set title.
+        this.setNewTitle(BDLang.rb.getString("编译与上传"));
 
         BorderPane root = new BorderPane();
         

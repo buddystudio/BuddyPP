@@ -20,7 +20,7 @@ import model.BDLang;
  *
  * @author gsh
  */
-public final class BDExampleWindow extends BDWindow
+public final class BDExampleWindow extends BDSubWindow
 {
     public ObservableList<String> strList = FXCollections.observableArrayList();
 
@@ -34,7 +34,7 @@ public final class BDExampleWindow extends BDWindow
     public BDExampleWindow()
     {
         // 窗口初始化
-        super.init(480, 550 + 35);
+        super.init(480, 550 + 40);
         
         //scene.getStylesheets().add("resources/style/listViewStyle.css");
         
@@ -42,11 +42,13 @@ public final class BDExampleWindow extends BDWindow
         this.setAlwaysOnTop(true);
        
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
+        //this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
        
         this.setTitle("  " + BDLang.rb.getString("请选择示例"));
         this.setScene(scene);
+        
+        this.setNewTitle(BDLang.rb.getString("请选择示例"));
         
         importBtn.setStyle("-fx-background-radius: 0, 0;");
        

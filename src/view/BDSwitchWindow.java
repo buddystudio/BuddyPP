@@ -22,7 +22,7 @@ import model.BDParameters;
  *
  * @author gsh
  */
-public class BDSwitchWindow extends BDWindow
+public class BDSwitchWindow extends BDSubWindow
 {
     @SuppressWarnings("rawtypes")
 	public ComboBox value1CmbBox = new ComboBox();
@@ -44,22 +44,24 @@ public class BDSwitchWindow extends BDWindow
         // 窗口初始化
     	if(BDParameters.langues.equals("English"))
     	{
-    		super.init(520, 250 + 30);
+    		super.init(520, 250 + 30 + 5);
     	}
     	else
     	{
-    		super.init(500, 250 + 30);
+    		super.init(500, 250 + 30 + 5);
     	}
         
         // 总在最前方
     	this.setAlwaysOnTop(true);
        
     	// 只有关闭按钮的窗口
-    	this.initStyle(StageStyle.UTILITY);
+    	//this.initStyle(StageStyle.UTILITY);
     	this.setResizable(false);
        
     	this.setTitle("  " + BDLang.rb.getString("Switch-Case语句"));
     	this.setScene(scene);
+    	
+    	this.setNewTitle(BDLang.rb.getString("Switch-Case语句"));
 
     	VBox contain  = new VBox();
        

@@ -18,7 +18,7 @@ import model.BDLang;
  *
  * @author gsh
  */
-public class BDDwWindow extends BDWindow
+public class BDDwWindow extends BDSubWindow
 {
     public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     
@@ -28,46 +28,48 @@ public class BDDwWindow extends BDWindow
     public BDDwWindow()
     {
         // 窗口初始化
-        super.init(585, 60 + 30);
+        super.init(585, 60 + 30 + 10);
         
         // 总在最前方
-       this.setAlwaysOnTop(true);
+        this.setAlwaysOnTop(true);
        
-       // 只有关闭按钮的窗口
-       this.initStyle(StageStyle.UTILITY);
-       this.setResizable(false);
+        // 只有关闭按钮的窗口
+        //this.initStyle(StageStyle.UTILITY);
+        this.setResizable(false);
        
-       this.setTitle("  " + BDLang.rb.getString("写入数字端口"));
-       this.setScene(scene);
+        this.setTitle("  " + BDLang.rb.getString("写入数字端口"));
+        this.setScene(scene);
+        
+        this.setNewTitle(BDLang.rb.getString("写入数字端口"));
 
-       HBox contain  = new HBox();
+        HBox contain  = new HBox();
        
-       contain.getChildren().add(new Label(BDLang.rb.getString("端口") + "："));
+        contain.getChildren().add(new Label(BDLang.rb.getString("端口") + "："));
        
-       value1CmbBox.setEditable(true);
-       value2CmbBox.setEditable(true);
+        value1CmbBox.setEditable(true);
+        value2CmbBox.setEditable(true);
        
-       value1CmbBox.setPromptText(BDLang.rb.getString("端口") + " / " + BDLang.rb.getString("变量"));
-       value2CmbBox.setPromptText(BDLang.rb.getString("变量"));
+        value1CmbBox.setPromptText(BDLang.rb.getString("端口") + " / " + BDLang.rb.getString("变量"));
+        value2CmbBox.setPromptText(BDLang.rb.getString("变量"));
        
-       submitBtn.setPrefSize(80, 30);
+        submitBtn.setPrefSize(80, 30);
 
-       value2CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
-       value1CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
-       submitBtn.setStyle("-fx-background-radius: 0, 0;");
+        value2CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
+        value1CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
+        submitBtn.setStyle("-fx-background-radius: 0, 0;");
        
-       value1CmbBox.setPrefWidth(160);
-       value2CmbBox.setPrefWidth(160);
+        value1CmbBox.setPrefWidth(160);
+        value2CmbBox.setPrefWidth(160);
        
-       contain.setPadding(new Insets(15, 15, 15, 15));  // 设置边距
-       contain.setSpacing(10);                          // 设置间距
-       contain.setAlignment(Pos.CENTER);                // 居中排列
+        contain.setPadding(new Insets(15, 15, 15, 15));  // 设置边距
+        contain.setSpacing(10);                          // 设置间距
+        contain.setAlignment(Pos.CENTER);                // 居中排列
        
-       contain.getChildren().add(value1CmbBox);
-       contain.getChildren().add(new Label(BDLang.rb.getString("变量") + "："));
-       contain.getChildren().add(value2CmbBox);
-       contain.getChildren().add(submitBtn);
+        contain.getChildren().add(value1CmbBox);
+        contain.getChildren().add(new Label(BDLang.rb.getString("变量") + "："));
+        contain.getChildren().add(value2CmbBox);
+        contain.getChildren().add(submitBtn);
 
-       rootPanel.getChildren().add(contain);
+        rootPanel.getChildren().add(contain);
     }
 }

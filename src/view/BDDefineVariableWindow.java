@@ -15,13 +15,12 @@ import javafx.scene.layout.HBox;
 import javafx.stage.StageStyle;
 import model.BDDefineVariableWindowModel;
 import model.BDLang;
-import model.BDParameters;
 
 /**
  *
  * @author gsh
  */
-public class BDDefineVariableWindow extends BDWindow
+public class BDDefineVariableWindow extends BDSubWindow
 {
     public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     public ComboBox combType = new ComboBox();
@@ -32,13 +31,13 @@ public class BDDefineVariableWindow extends BDWindow
     {
     	// 窗口初始化
     	//super.init(630, 60);
-    	super.init(630, 90);
+    	super.init(630, 90 + 10);
         
     	// 总在最前方
     	this.setAlwaysOnTop(true);
        
     	// 只有关闭按钮的窗口
-    	this.initStyle(StageStyle.UTILITY);
+    	//this.initStyle(StageStyle.UTILITY);
     	this.setResizable(false);
                 
     	this.setMaximized(false);
@@ -47,6 +46,8 @@ public class BDDefineVariableWindow extends BDWindow
        
     	this.setTitle("  " + BDLang.rb.getString("定义变量"));
     	this.setScene(scene);
+    	
+    	this.setNewTitle(BDLang.rb.getString("定义变量"));
        
     	HBox contain  = new HBox();
        

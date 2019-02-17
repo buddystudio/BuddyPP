@@ -42,7 +42,7 @@ public final class BDAboutWindow extends BDSubWindow
 
         //scene.getStylesheets().add("resources/style/settingStyle.css");
         rootPanel.getStylesheets().clear();
-        rootPanel.getStylesheets().add("resources/style/titleStyle.css"); 
+        //rootPanel.getStylesheets().add("resources/style/titleStyle.css"); 
        
         // 定义无边框窗体
         //this.initStyle(StageStyle.UNDECORATED);
@@ -67,6 +67,9 @@ public final class BDAboutWindow extends BDSubWindow
        
         this.setTitle("  " + BDLang.rb.getString("关于"));
         this.setScene(scene);
+        
+        // Set sub window title.
+        this.setNewTitle(BDLang.rb.getString("关于"));
        
         VBox contain  = new VBox();
        

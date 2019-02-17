@@ -21,7 +21,7 @@ import model.BDLang;
  *
  * @author gsh
  */
-public class BDComWindow extends BDWindow
+public class BDComWindow extends BDSubWindow
 {
     public BorderPane rootContain = new BorderPane();
     
@@ -49,11 +49,13 @@ public class BDComWindow extends BDWindow
         this.setAlwaysOnTop(true);
 
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
+        //this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
 
         this.setTitle("  " + BDLang.rb.getString("串口通讯工具"));
         this.setScene(scene);
+        
+        this.setNewTitle(BDLang.rb.getString("串口通讯工具"));
 
         HBox topPanel = new HBox();
         HBox bottomPanel = new HBox();
@@ -111,6 +113,8 @@ public class BDComWindow extends BDWindow
         recMsgtxt.setStyle("-fx-font-size: 20;");
         
         recMsgtxt.setEditable(false);
+        
+        recMsgtxt.setMinHeight(490);
 
         //TextArea recMsgtxt = new TextArea();
         /*rootContain.setTop(topPanel);

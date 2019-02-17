@@ -5,29 +5,21 @@
  */
 package view;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Locale;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Side;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.stage.StageStyle;
 import model.BDLang;
 import model.BDParameters;
 
@@ -35,7 +27,7 @@ import model.BDParameters;
  *
  * @author gsh
  */
-public class BDSettingWindow extends BDWindow
+public class BDSettingWindow extends BDSubWindow
 { 
     public ObservableList<String> strList = FXCollections.observableArrayList();
     public ObservableList<String> strList2 = FXCollections.observableArrayList();
@@ -55,17 +47,18 @@ public class BDSettingWindow extends BDWindow
         // 窗口初始化
         super.init(500, 500 + 30);
         
-        //scene.getStylesheets().add("resources/style/listViewStyle.css");
-        
         // 总在最前方
         this.setAlwaysOnTop(true);
        
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
-        this.setResizable(false);
+        //this.initStyle(StageStyle.UTILITY);
+        //this.setResizable(false);
        
-        this.setTitle("  " + "设置");
+        this.setTitle("  " + BDLang.rb.getString("设置"));
         this.setScene(scene);
+        
+        // Set sub window title.
+        this.setNewTitle(BDLang.rb.getString("设置"));
         
         TabPane tabPane = new TabPane();
         
@@ -393,9 +386,7 @@ public class BDSettingWindow extends BDWindow
     		
     		c.setAlignment(Pos.CENTER_LEFT);
     	}
-    	
-    	
-    	
+
     	return scrollPane;
     }
 }

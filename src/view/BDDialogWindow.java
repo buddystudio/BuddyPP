@@ -22,7 +22,7 @@ import model.BDLang;
  *
  * @author gsh
  */
-public class BDDialogWindow extends BDWindow
+public class BDDialogWindow extends BDSubWindow
 {
     public Image image;
     public Label msgLbl;
@@ -35,7 +35,8 @@ public class BDDialogWindow extends BDWindow
     {
         // 窗口初始化
         //super.init(360, 132 + 30);
-    	super.init(500, 132 + 30);
+    	//super.init(500, 132 + 30);
+    	super.init(500, 132 + 45);
         
         rootPanel.getStylesheets().clear();
         
@@ -43,12 +44,12 @@ public class BDDialogWindow extends BDWindow
        this.setAlwaysOnTop(true);
        
        // 只有关闭按钮的窗口
-       this.initStyle(StageStyle.UTILITY);
-       
-       this.setResizable(false);
-       
+       //this.initStyle(StageStyle.UTILITY);
+       //this.setResizable(false);
        this.setTitle(title);
        this.setScene(scene);
+       
+       this.setNewTitle(title);
        
        okBtn.setPrefWidth(105);
        okBtn.setPrefHeight(20);

@@ -19,7 +19,7 @@ import model.BDLang;
  *
  * @author gsh
  */
-public class BDLibWindow extends BDWindow
+public class BDLibWindow extends BDSubWindow
 { 
     public ObservableList<String> strList = FXCollections.observableArrayList();
     
@@ -29,7 +29,7 @@ public class BDLibWindow extends BDWindow
     public BDLibWindow()
     {
         // 窗口初始化
-        super.init(450, 450 + 30);
+        super.init(450, 450 + 45);
         
         //scene.getStylesheets().add("resources/style/listViewStyle.css");
         
@@ -37,11 +37,13 @@ public class BDLibWindow extends BDWindow
         this.setAlwaysOnTop(true);
        
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
+        //this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
        
         this.setTitle("  " + BDLang.rb.getString("请选择导入库"));
         this.setScene(scene);
+        
+        this.setNewTitle(BDLang.rb.getString("请选择导入库"));
        
         VBox contain  = new VBox();
        
