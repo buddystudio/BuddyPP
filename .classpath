@@ -12,9 +12,9 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="D:/Projects/Github/BuddyPP/src/libs"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Projects/Github/BuddyPP/src/libs/jssc.jar">
+	<classpathentry kind="lib" path="E:/Projects/Github/BuddyPP/src/libs/jssc.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="D:/Projects/Github/BuddyPP/src/libs"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="E:/Projects/Github/BuddyPP/src/libs"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="bin"/>

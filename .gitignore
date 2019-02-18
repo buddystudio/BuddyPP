@@ -38,3 +38,5 @@ hs_err_pid*
 /hardware/tools
 profile/editor.txt
 profile/editor.txt
+profile/editor.txt
+.classpath
