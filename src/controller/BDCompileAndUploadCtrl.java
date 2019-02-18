@@ -273,10 +273,21 @@ public class BDCompileAndUploadCtrl
 		    	@Override
 		        public void handle(ActionEvent event) 
 		        {
-		        	/*compileAndUploadWindow.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
-		            compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(0);*/
-		    		
 		    		// 更新串口列表
+		    		updateSerialPorts();
+		    		
+		            if(compileAndUploadWindow.getSerialListCombox().getItems().get(0).equals(BDLang.rb.getString("未连接")))
+					{
+						// 如果当前列表选项为“未连接”则选中默认选项
+		            	compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(0);
+					}
+					else
+					{
+						// 如果当前串口列表不为空则选择最后一项
+						compileAndUploadWindow.getSerialListCombox().getSelectionModel().select(compileAndUploadWindow.getSerialListCombox().getItems().size() - 1);
+					}
+		            
+		            // 更新串口列表
 		    		updateSerialPorts();
 		        }
 		    });

@@ -23,7 +23,9 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import model.BDCodeModel;
+import model.BDLang;
 import model.BDParameters;
+import model.BDSerialManager2;
 import model.BDWindowsManager;
 import view.BDCompileAndUploadWindow;
 import view.BDExampleWindow;
@@ -297,6 +299,17 @@ public class BDMenuCtrl
 				// 显示编译功能窗口
 				cauwView.show();
 				
+				cauwView.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
+				
+				if(cauwView.getSerialListCombox().getItems().get(0).equals(BDLang.rb.getString("未连接")))
+				{
+					cauwView.getSerialListCombox().getSelectionModel().select(0);
+				}
+				else
+				{
+					cauwView.getSerialListCombox().getSelectionModel().select(cauwView.getSerialListCombox().getItems().size() - 1);
+				}
+				
 				// 更新串口号
 				cauwCtrl.updateSerialPorts();
 				
@@ -361,7 +374,20 @@ public class BDMenuCtrl
 				
 				// 显示编译功能窗口
 				cauwView.show();
-
+				
+				cauwView.getSerialListCombox().setItems(new BDSerialManager2().getPortList());
+				
+				if(cauwView.getSerialListCombox().getItems().get(0).equals(BDLang.rb.getString("未连接")))
+				{
+					// 如果当前列表选项为“未连接”则选中默认选项
+					cauwView.getSerialListCombox().getSelectionModel().select(0);
+				}
+				else
+				{
+					// 如果当前串口列表不为空则选择最后一项
+					cauwView.getSerialListCombox().getSelectionModel().select(cauwView.getSerialListCombox().getItems().size() - 1);
+				}
+				
 				// 更新串口号
 				cauwCtrl.updateSerialPorts();
 				

@@ -15,6 +15,7 @@
 package buddy;
 
 import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -86,6 +87,9 @@ public class BuddyPP extends Application
         
         // 获取操作系统指令长度（32bit/64bit）
         BDParameters.arch = arch;
+    	
+    	// Get screen dpi.
+    	int dpi = Toolkit.getDefaultToolkit().getScreenResolution();
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         
