@@ -50,7 +50,15 @@ public class BDPinModeWindow extends BDSubWindow
        
        combPin.setPrefWidth(90);
        combMode.setPrefWidth(220);
-
+       
+       BDPinModeWindowModel pmwm = new BDPinModeWindowModel();
+       
+       combPin.setItems(pmwm.pinList);
+       combMode.setItems(pmwm.modeList);
+       
+       combPin.getSelectionModel().select(0);
+       combMode.getSelectionModel().select(1);
+       
        submitBtn.setPrefSize(80, 30);
        
        combPin.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");

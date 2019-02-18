@@ -97,8 +97,8 @@ class BDDrWindowCtrl
                 String dgValue = drWindow.value2CmbBox.getValue().toString();
             	
                 // 去掉前缀“D”
-                /*switch(dgValue)
-            	{
+                switch(dgValue)
+            		{
             		case "D0":
             			dgValue = "0";
             			break;
@@ -141,12 +141,7 @@ class BDDrWindowCtrl
             		case "D13":
             			dgValue = "13";
             			break;
-            	}*/
-                
-                if(dgValue.matches("[D][0-9]*"))
-            	{
-            		dgValue = dgValue.substring(1, dgValue.length());
-            	}
+            		}
                 
                 if(drWindow.value1CmbBox.getSelectionModel().getSelectedIndex() == -1)
                 {

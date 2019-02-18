@@ -82,9 +82,50 @@ public class BDDwWindowCtrl
             	String dgValue = dwWindow.value1CmbBox.getValue().toString();
             	
                 // 去掉前缀“D”
-            	if(dgValue.matches("[D][0-9]*"))
+                switch(dgValue)
             	{
-            		dgValue = dgValue.substring(1, dgValue.length());
+            		case "D0":
+            			dgValue = "0";
+            			break;
+            		case "D1":
+            			dgValue = "1";
+            			break;
+            		case "D2":
+            			dgValue = "2";
+            			break;
+            		case "D3":
+            			dgValue = "3";
+            			break;
+            		case "D4":
+            			dgValue = "4";
+            			break;
+            		case "D5":
+            			dgValue = "5";
+            			break;
+            		case "D6":
+            			dgValue = "6";
+            			break;
+            		case "D7":
+            			dgValue = "7";
+            			break;
+            		case "D8":
+            			dgValue = "8";
+            			break;
+            		case "D9":
+            			dgValue = "9";
+            			break;
+            		case "D10":
+            			dgValue = "10";
+            			break;
+            		case "D11":
+            			dgValue = "11";
+            			break;
+            		case "D12":
+            			dgValue = "12";
+            			break;
+            		case "D13":
+            			dgValue = "13";
+            			break;
             	}
                 
                 // 如果缺省输入
