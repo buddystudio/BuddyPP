@@ -12,6 +12,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -28,15 +29,20 @@ import java.net.URISyntaxException;
  *
  * @author gsh
  */
-public final class BDAboutWindow extends BDWindow
+public final class BDAboutWindow extends BDSubWindow
 {
+	//public BDSubTitleView titlePanel = new BDSubTitleView();
+	private BorderPane root = new BorderPane();
+	
     public BDAboutWindow()
     {
         // 窗口初始化
-        super.init(500, 365 + 30);
+        //super.init(500, 365 + 30);
+    	super.init(500, 450);
 
         //scene.getStylesheets().add("resources/style/settingStyle.css");
         rootPanel.getStylesheets().clear();
+        //rootPanel.getStylesheets().add("resources/style/titleStyle.css"); 
        
         // 定义无边框窗体
         //this.initStyle(StageStyle.UNDECORATED);
@@ -45,8 +51,8 @@ public final class BDAboutWindow extends BDWindow
         this.setAlwaysOnTop(true);
        
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
-        this.setResizable(false);
+        //this.initStyle(StageStyle.UTILITY);
+        //this.setResizable(false);
         
         String bitTxt = "";
 
@@ -61,6 +67,9 @@ public final class BDAboutWindow extends BDWindow
        
         this.setTitle("  " + BDLang.rb.getString("关于"));
         this.setScene(scene);
+        
+        // Set sub window title.
+        this.setNewTitle(BDLang.rb.getString("关于"));
        
         VBox contain  = new VBox();
        
@@ -141,7 +150,16 @@ public final class BDAboutWindow extends BDWindow
         
         contain.getChildren().add(links);
        
-        rootPanel.getChildren().add(contain);
+        //rootPanel.getChildren().add(contain);
+        //root.setTop(this.titlePanel);
+        root.setCenter(contain);
+        
+        rootPanel.getChildren().add(root);
+        
+        // 定义无边框窗体
+        //this.initStyle(StageStyle.UNDECORATED);
+        
+        rootPanel.getStylesheets().add("resources/style/modena_dark.css");
     }
     
     public void browserUrl(String url)

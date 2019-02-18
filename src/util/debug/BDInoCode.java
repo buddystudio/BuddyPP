@@ -17,7 +17,9 @@ public class BDInoCode
 	public String codeText 	= ""; 				// 程序代码文本
 	public String name 		= ""; 				// 程序代码源文件名称
 	public String className = ""; 				// 类名
+	
 	private ArrayList<File> importedLibraries; 	// 导入库列表
+	private String suffix = "";					// 文件后缀名
 
 	public BDInoCode(){}
 	
@@ -39,6 +41,13 @@ public class BDInoCode
 	public String getFileName()
 	{
 		return name;
+	}
+	
+	public String getSuffix()
+	{
+		this.suffix = name.substring(name.lastIndexOf(".") + 1);
+		
+		return this.suffix;
 	}
 	
 	public String preprocess(String buildPath, BDPreprocessor preprocessor) throws BDRunnerException {

@@ -30,7 +30,7 @@ public class BDParameters
 	static public int codeIdCount        = 0;        		// 代码文档序号
     static public int variableId         = 0;        		// 循环计数变量序号
     
-    static public String version         = "1.2.0";  		// 软件版本号
+    static public String version         = "1.2.1";  		// 软件版本号
     static public String langues         = "简体中文";  		// 语言
     static public String organization	 = "BuddyStudio";	// 开发组织
     static public String author			 = "李宝智、郭少豪";	// 开发者署名
@@ -53,14 +53,22 @@ public class BDParameters
     static public double curWidth		 = 940;
     static public double curHeight	     = 660;*/
     
+    /*
     static public double defWidth		 = 900;
     static public double defHeight	     = 690;
+
+    static public double curWidth		 = 900;
+    static public double curHeight	     = 690; 
+     */
+    
+    static public double defWidth		 = 1280;
+    static public double defHeight	     = 825;
+
+    static public double curWidth		 = 1280;
+    static public double curHeight	     = 825;
     
     static public double minWidth		 = 800;
     static public double minHeight	     = 660;
-    
-    static public double curWidth		 = 900;
-    static public double curHeight	     = 690;
     
     static public java.util.List<String> serialports;
     

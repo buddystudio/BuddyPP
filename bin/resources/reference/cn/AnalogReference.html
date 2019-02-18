@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Arduino Reference - AnalogReference </title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+  <link rel='stylesheet' href='arduinoWideRender.css' 
+type='text/css' />
+    <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+  <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
+</head>
+<body style="line-height:25px"> 
+<div id="page">
+  <div id="pagetext">
+  <!--PageText-->
+<div id='wikitext'>
+<p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
+</p>
+<p class='vspace'></p><h2>analogReference(type)</h2>
+<h4>描述</h4>
+<p>配置模式引脚的参考电压. 函数 analogRead 在读取模拟值之后, 将根据参考电压将 模拟值转换到[0,10]区间. 有以下类型：
+</p>
+<p class='vspace'></p><ul><li>DEFAULT：默认5V（Arduino板为5V）或3.3伏特（Arduino板为3.3V）为基准电压。
+</li><li>INTERNAL：在ATmega168和ATmega328上以1.1V为基准电压，以及在ATmega8上以2.56V为基准电压（Arduino Mega无此选项）。
+</li><li>INTERNAL1V1：以1.1V为基准电压（此选项仅针对Arduino Mega）
+</li><li>INTERNAL2V56：以2.56V为基准电压（此选项仅针对Arduino Mega）
+</li><li>EXTERNAL：以AREF引脚（0至5V）的电压作为基准电压。
+</li></ul><p class='vspace'></p><h4>参数</h4>
+<p>type: 使用哪种参考类型（DEFAULT, INTERNAL, INTERNAL1V1, INTERNAL2V56, 或者 EXTERNAL）
+</p>
+<p class='vspace'></p><h4>返回值</h4>
+<p>None.
+</p>
+<p class='vspace'></p><h4>注意</h4>
+<p>改变基准电压后，之前从analogRead()读取的数据可能不准确。
+</p>
+<p class='vspace'></p><h4>警告</h4>
+<p>不要在AREF引脚上使用使用任何小于0V或超过5V的外部电压。如果你使用AREF引脚上的电压作为基准电压，你在调用analogRead()前必须设置参考类型为EXTERNAL。否则，你将会削短有效的基准电压（内部产生）和AREF引脚，这可能会损坏您Arduino板上的单片机。 
+</p>
+<p class='vspace'></p><p>另外，您可以在外部基准电压和AREF引脚之间连接一个5K电阻，使你可以在外部和内部基准电压之间切换。请注意，总阻值将会发生改变，因为AREF引脚内部有一个32K电阻。这两个电阻都有分压作用。所以，例如，如果输入2.5V的电压，最终在在AREF引脚上的电压将为2.5 * 32 /（32 + 5）= 2.2V。  
+</p>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+</p>
+</div>
+</body>
+</html>

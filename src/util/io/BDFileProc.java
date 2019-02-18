@@ -24,6 +24,7 @@ public class BDFileProc
 		FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++  (*.cpp)", "*.cpp");
 		FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C  (*.c)", "*.c");
 		FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("Head Files  (*.h)", "*.h");
+		FileChooser.ExtensionFilter extFilterPY = new FileChooser.ExtensionFilter("Python  (*.py)", "*.py");
 		FileChooser.ExtensionFilter extFilterAll = new FileChooser.ExtensionFilter("All Files  (*.*)", "*.*");
 
 		fileChooser.getExtensionFilters().add(extFilterINO);
@@ -31,6 +32,7 @@ public class BDFileProc
 		fileChooser.getExtensionFilters().add(extFilterCPP);
 		fileChooser.getExtensionFilters().add(extFilterC);
 		fileChooser.getExtensionFilters().add(extFilterH);
+		fileChooser.getExtensionFilters().add(extFilterPY);
 		fileChooser.getExtensionFilters().add(extFilterAll);
 
 		// Show open file dialog
@@ -41,8 +43,17 @@ public class BDFileProc
 			return code;
 		}
 		
-		code = new BDCodeModel();
-			
+		String suffix = file.getName().substring(file.getName().lastIndexOf(".") + 1);
+		
+		if(suffix.equals("ino"))
+		{
+			code = new BDCodeModel("INO");
+		}
+		else if(suffix.equals("py"))
+		{
+			code = new BDCodeModel("PY");
+		}
+
 		code.setName(file.getName());
 
 		try 
@@ -64,6 +75,7 @@ public class BDFileProc
 		
 		return code;
 	}
+	
 	// 保存文件
 	public static boolean saveFile(BDWorkspaceCtrl workspaceCtrl) 
 	{
@@ -96,17 +108,27 @@ public class BDFileProc
 			FileChooser fileChooser = new FileChooser();
 	
 			// Set extension filter
-			FileChooser.ExtensionFilter extFilterTXT = new FileChooser.ExtensionFilter("Text  (*.txt)", "*.txt");
-			FileChooser.ExtensionFilter extFilterINO = new FileChooser.ExtensionFilter("Arduino  (*.ino)", "*.ino");
-			FileChooser.ExtensionFilter extFilterCPP = new FileChooser.ExtensionFilter("C++  (*.cpp)", "*.cpp");
-			FileChooser.ExtensionFilter extFilterC = new FileChooser.ExtensionFilter("C  (*.c)", "*.c");
-			FileChooser.ExtensionFilter extFilterH = new FileChooser.ExtensionFilter("Head Files (*.h)", "*.h");
+			FileChooser.ExtensionFilter extFilterTXT 	= new FileChooser.ExtensionFilter("Text  (*.txt)", "*.txt");
+			FileChooser.ExtensionFilter extFilterINO 	= new FileChooser.ExtensionFilter("Arduino  (*.ino)", "*.ino");
+			FileChooser.ExtensionFilter extFilterCPP 	= new FileChooser.ExtensionFilter("C++  (*.cpp)", "*.cpp");
+			FileChooser.ExtensionFilter extFilterC 		= new FileChooser.ExtensionFilter("C  (*.c)", "*.c");
+			FileChooser.ExtensionFilter extFilterPY 	= new FileChooser.ExtensionFilter("Python  (*.py)", "*.py");
+			FileChooser.ExtensionFilter extFilterH 		= new FileChooser.ExtensionFilter("Head Files (*.h)", "*.h");
 	
 			fileChooser.getExtensionFilters().add(extFilterINO);
 			fileChooser.getExtensionFilters().add(extFilterTXT);
 			fileChooser.getExtensionFilters().add(extFilterCPP);
 			fileChooser.getExtensionFilters().add(extFilterC);
 			fileChooser.getExtensionFilters().add(extFilterH);
+			fileChooser.getExtensionFilters().add(extFilterPY);
+			
+			fileChooser.setInitialFileName(workspaceCtrl.workspaceView.workspaceModel.curTab.code.getName());
+			
+			// 文件类型选PY
+			if(workspaceCtrl.workspaceView.workspaceModel.curTab.code.type.equals("PY"))
+			{
+				fileChooser.setSelectedExtensionFilter(extFilterPY);
+			}
 
 			try
 			{
@@ -119,7 +141,7 @@ public class BDFileProc
 			{
 				return false;
 			}
-		
+
 			// Write file
 			BDCodeWriter.fileWriter(file.getPath(),
 				//workspaceCtrl.workspaceView.workspaceModel.curTab.textArea.getText());

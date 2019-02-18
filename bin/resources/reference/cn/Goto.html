@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Arduino Reference - Goto </title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+  <link rel='stylesheet' href='arduinoWideRender.css' 
+type='text/css' />
+    <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+  <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
+</head>
+<body style="line-height:25px">
+<div id="page">
+  <div id="pagetext">
+  <!--PageText-->
+<div id='wikitext'>
+<p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
+</p>
+<p class='vspace'></p><h2>goto</h2>
+<p>在程序中转移程序流到一个标记点</p>
+<p class='vspace'></p><h4>语法</h4>
+<p>label: 
+</p>
+<p class='vspace'></p><p>goto label;  // sends program flow to the label
+</p>
+<p class='vspace'></p><h4>提示</h4>
+<p>在C程序中不建议使用goto，而且一些C编程书的作者主张永远不要使用goto语句，但是明智地使用它可以简化某些代码。许多程序员不赞成使用goto的原因是，无节制地使用goto语句很容易产生执行流混乱的很难被调试程序。
+</p>
+<p class='vspace'></p><p>尽管如此，仍然有很多使用goto语句而大大简化编码的实例。其中之一就是从一个很深的循环嵌套中跳出去，或者是if逻辑块，在某些条件下。
+</p>
+<p class='vspace'></p><h4>例子</h4>
+<pre>
+for(byte r = 0; r &lt; 255; r++)
+{
+    for(byte g = 255; g &gt; -1; g--)
+	{
+        for(byte b = 0; b &lt; 255; b++)
+		{
+            if (analogRead(0) &gt; 250)
+			{ 
+				goto bailout;
+			}
+            // more statements ... 
+        }
+    }
+}
+
+bailout:
+</pre>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+</p>
+</div>
+</body>
+</html>

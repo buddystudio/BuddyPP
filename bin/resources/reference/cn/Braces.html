@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Arduino Reference - Braces </title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+  <link rel='stylesheet' href='arduinoWideRender.css' 
+type='text/css' />
+    <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+  <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
+</head>
+<body style="line-height:25px">
+<div id="page">
+  <div id="pagetext">
+  <!--PageText-->
+<div id='wikitext'>
+<p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
+</p>
+<p class='vspace'></p><h2>{} 大括号</h2>
+<p>大括号（又称括弧或花括号）是C语言的主要组成部分。它们用在几个不同的结构中，大致如下，这可能会令初学者感到困惑。
+</p>
+<p class='vspace'></p><p>一个左大括号必须有一个右大括号跟在后面。这是一个常被称为平衡括号的条件。Arduino IDE（集成开发环境）包含一个方便的特性以检验平衡大括号。只需选择一个大括号，甚至直接在一个大括号后面点击插入点，然后它的逻辑上的同伴就会高亮显示。
+</p>
+<p class='vspace'></p><p>目前此功能有些许错误，因为IDE经常在文本中（错误地）发现一个已经被注释掉的大括号。
+</p>
+<p class='vspace'></p><p>初级程序员，和从BASIC转到C的程序员常常发现使用大括号令人困惑或畏缩。毕竟，用同样的大括号在子例程（函数）中替换RETURN语句，在条件语句中替换ENDIF语句和在FOR循环中替换NEXT语句。
+</p>
+<p class='vspace'></p><p>由于大括号的使用是如此的多样，当插入一个需要大括号的结构时，直接在打出开括号之后打出闭括号是个不错的编程实践。然后在大括号之间插入一些回车符，接着开始插入语句。你的大括号，还有你的态度，将永远不会变得不平衡。
+</p>
+<p class='vspace'></p><p>不平衡的大括号常常导致古怪的，难以理解的编译器错误，有时在大型程序中很难查出。因为它们的多样的使用，大括号对于程序的语法也是极其重要的，对一个大括号移动一行或两行常常显著地影响程序的意义。
+</p>
+<p class='vspace'></p><h4><strong>以下是大括号的主要用法</strong></h4>
+<h4>函数</h4>
+<pre>  
+	void myfunction(datatype argument)
+	{
+		statements(s)
+	}
+</pre>
+<p class='vspace'></p><h4>循环</h4>
+<pre>  
+	while (boolean expression)
+	{
+		statement(s)
+	}
+
+	do
+	{
+		statement(s)
+	} 
+	while (boolean expression);
+
+	for (initialisation; termination condition; incrementing expr)
+	{
+		statement(s)
+	} 
+</pre>
+<p class='vspace'></p><h4>条件语句</h4>
+<p class='vspace'></p>
+<pre>  
+	if (boolean expression)
+	{
+		statement(s)
+	}
+
+	else if (boolean expression)
+	{
+		statement(s)
+	} 
+	else
+	{
+		statement(s)
+	}
+</pre>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+</p>
+</div>
+</body>
+</html>

@@ -18,7 +18,7 @@ import model.BDLang;
  *
  * @author gsh
  */
-public class BDSerialWindow extends BDWindow
+public class BDSerialWindow extends BDSubWindow
 {   
 	public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     
@@ -28,17 +28,19 @@ public class BDSerialWindow extends BDWindow
     public BDSerialWindow()
     {
     	// 窗口初始化
-        super.init(550, 60 + 30);
+        super.init(550, 60 + 30 + 10);
         
         // 总在最前方
        this.setAlwaysOnTop(true);
        
        // 只有关闭按钮的窗口
-       this.initStyle(StageStyle.UTILITY);
+       //this.initStyle(StageStyle.UTILITY);
        this.setResizable(false);
        
        this.setTitle("  " + BDLang.rb.getString("串口通讯模板"));
        this.setScene(scene);
+       
+       this.setNewTitle(BDLang.rb.getString("串口通讯模板"));
 
        HBox contain  = new HBox();
        

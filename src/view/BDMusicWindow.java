@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
 import model.BDLang;
 
-public class BDMusicWindow extends BDWindow
+public class BDMusicWindow extends BDSubWindow
 {
 	public Button submitBtn = new Button(BDLang.rb.getString("生成"));
     public Button cleanBtn = new Button(BDLang.rb.getString("清空"));
@@ -136,18 +136,18 @@ public class BDMusicWindow extends BDWindow
 	public BDMusicWindow()
     {
 		// 窗口初始化
-        super.init(640, 485 + 30);
+        super.init(640, 485 + 30 + 10);
         
         // 总在最前方
         this.setAlwaysOnTop(true);
        
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
-       
+        //this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
-       
         this.setTitle("  " + BDLang.rb.getString("谱曲工具"));
         this.setScene(scene);
+        
+        this.setNewTitle(BDLang.rb.getString("谱曲工具"));
 
         contain.setPadding(new Insets(0, 0, 5, 0));  // 设置边距
         contain.setSpacing(5);

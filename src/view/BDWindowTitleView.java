@@ -6,9 +6,13 @@
 package view;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import model.BDLang;
 
 /**
  *
@@ -17,32 +21,27 @@ import javafx.scene.layout.HBox;
 public class BDWindowTitleView extends BorderPane
 {
     public Button closeBtn = new Button();
+    public Label titleLbl = new Label();
+    public String title = "";
         
     public BDWindowTitleView()
     {
-        // 标题栏
-        //BorderPane titlePanel = new BorderPane();
-        
-        //this.setStyle("-fx-background-color: #333333;");
     	this.setStyle("-fx-background-color: #ffffff;"); 
-    	
-    	//this.setPrefHeight(20);
-        
-        //this.setLeft(icon);
+    	this.getStylesheets().add("resources/style/titleStyle.css");
         
         HBox titleBtns = new HBox();
 
-        closeBtn.getStyleClass().add("closeBtn2"); 
-        
-        closeBtn.setPrefSize(20, 20);
-        
+        closeBtn.getStyleClass().add("closeBtn2");
+
         titleBtns.getChildren().add(closeBtn);
+        titleBtns.setPadding(new Insets(5, 5, 5, 5));  // 设置边距
+
+        titleLbl = new Label(title);
         
-        //titleBtns.setPadding(new Insets(2, 2, 2, 2));  // 设置边距
-        
-        this.setPadding(new Insets(2, 2, 2, 2));  // 设置边距
+        titleLbl.setPadding(new Insets(8, 8, 8, 15));  // 设置边距
+        titleLbl.setTextFill(Color.web("#000000"));
         
         this.setRight(titleBtns);
+        this.setLeft(titleLbl);
     }
-    
 }

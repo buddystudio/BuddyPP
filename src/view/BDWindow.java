@@ -21,8 +21,6 @@ public class BDWindow extends Stage
     public Stage root;
     public Scene scene;
     
-    public BDWindowTitleView titlePanel = new BDWindowTitleView();
-    
     protected void init(){};
     
     protected void init(double w, double h)

@@ -134,7 +134,7 @@ public class BDTabCtrl
 					File file = files.get(i);
 
 					// 重新打开
-					BDCodeModel code = new BDCodeModel();
+					BDCodeModel code = new BDCodeModel("INO");
 
 					try 
 					{
@@ -147,7 +147,7 @@ public class BDTabCtrl
 						//code.setCodeText(code.getCodeText().replaceAll("\"","\\\\\""));
 
 						// 添加新标签页
-						workspaceCtrl.addTab(code);
+						workspaceCtrl.addTab(code, "INO");
 					} 
 					catch (Exception ex) 
 					{

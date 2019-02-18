@@ -10,8 +10,6 @@ import controller.BDMenuCtrl;
 import controller.BDSettingWindowCtrl;
 import controller.BDToolsCtrl;
 import controller.BDWorkspaceCtrl;
-import javafx.application.Platform;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -33,7 +31,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.BDDocTabModel;
 import model.BDGUIModel;
-import model.BDMsgTabModel;
 import model.BDParameters;
 import model.BDRefTabModel;
 import util.base.BDDrawUtil;
@@ -59,7 +56,6 @@ public class BDGUIView
     
     public SplitPane splitPanel 			= new SplitPane();
     public BorderPane consolePanel 			= new BorderPane();
-    //public CodeArea msgArea					= new CodeArea();
     public VBox dividerPanel 				= new VBox();
     
     public BDMenuCtrl menuCtrl              = new BDMenuCtrl(menuPanel);
@@ -69,8 +65,6 @@ public class BDGUIView
     
     public BDSettingWindow settingWindow	= new BDSettingWindow();
     public BDSettingWindowCtrl settingWindowCtrl = new BDSettingWindowCtrl(settingWindow, workspaceCtrl);
-    
-    public BDAboutWindow aboutWindow = new BDAboutWindow();	// 关于我们窗口
 
     public Rectangle2D visualBounds;
     

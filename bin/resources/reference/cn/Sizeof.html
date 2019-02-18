@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Arduino Reference - Sizeof </title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+  <link rel='stylesheet' href='arduinoWideRender.css' 
+type='text/css' />
+    <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+  <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
+</head>
+<body style="line-height:25px"> 
+<div id="page">
+  <div id="pagetext">
+  <!--PageText-->
+<div id='wikitext'>
+<p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
+</p>
+<p class='vspace'></p><h2>sizeof 运算符</h2>
+<h4>描述</h4>
+<p>sizeof操作符返回一个变量类型的字节数，或者该数在数组中占有的字节数。
+</p>
+<p class='vspace'></p><h4>语法</h4>
+<p>sizeof(variable)
+</p>
+<p class='vspace'></p><h4>参数</h4>
+<p>variable: 任何变量类型或数组（如int，float，byte）
+</p>
+<p class='vspace'></p><h4>例子</h4>
+<p>sizeof操作符用来处理数组非常有效，它能很方便的改变数组的大小而不用破坏程序的其他部分。
+</p>
+<p class='vspace'></p><p>这个程序一次打印出一个字符串文本的字符。尝试改变一下字符串。
+</p>
+<p class='vspace'></p><pre>
+char myStr[] = "this is a test";
+int i;
+
+void setup()
+{
+	Serial.begin(9600);
+}
+
+void loop() 
+{ 
+	for (i = 0; i &lt; sizeof(myStr) - 1; i++)
+	{
+		Serial.print(i, DEC);
+		Serial.print(" = ");
+		Serial.write(myStr[i]);
+		Serial.println();
+	}
+	
+	delay(5000); // slow down the program
+}
+</pre><p>请注意sizeof返回字节数总数。因此，较大的变量类型，如整数，for循环看起来应该像这样。
+</p>
+<p class='vspace'></p><pre>
+for (i = 0; i &lt; (sizeof(myInts)/sizeof(int)) - 1; i++) 
+{
+	// do something with myInts[i]
+}
+</pre><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+</p>
+</div>
+</body>
+</html>

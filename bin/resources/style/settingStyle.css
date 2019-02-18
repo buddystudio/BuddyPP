@@ -1,0 +1,73 @@
+
+
+.tab .tab-label 
+{
+    -fx-background-color: transparent;    
+    -fx-alignment: CENTER;
+    -fx-content-display: right; /* 关闭图标放右侧 */
+    -fx-background-radius: 5 5 5 5;
+    -fx-border-style:none;
+    -fx-background-insets: 5,5,5,5;
+    
+}
+
+.tab-content-area 
+{
+    -fx-background-color: -fx-control-inner-background;
+    /*-fx-padding: 2;*/
+    
+}
+
+.tab
+{
+    -fx-background-color:#727272;
+    -fx-background-insets: 1, 0, 0, 0;
+    
+    -fx-text-fill:#ffffff;
+    /*-fx-tab-min-height: 50px;
+    //-fx-effect:innershadow;
+    //-fx-tab-min-height:300px;
+    
+    // 去掉蓝色阴影
+    -fx-focus-color:none;
+    //-fx-shadow-highlight-color: #ffffff;
+    //-fx-shadow-highlight-color:-fx-background-color;
+    //-fx-highlight-fill:#ffffff;
+    * 
+    */
+}
+
+.tab:focused
+{
+    
+}
+
+.tab:selected 
+{
+    -fx-background-color: #ffffff;
+    
+    -fx-border-style:none;
+    /*-fx-focus-traversable:true;*/
+}
+
+.tab-pane *.tab-header-background 
+{
+    -fx-background-color: #444444;
+}
+
+.tab-pane .headers-region {
+   /*-fx-effect: null;*/
+}
+
+.tab-pane
+{
+    -fx-tab-min-height:25px;
+    -fx-tab-min-width:80px; 
+}
+
+.tab-pane:top *.tab-header-area 
+{
+    -fx-background-insets: 0, 0 0 1 0;
+ /* -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
+    -fx-padding: 7 0 -1 30; /* overriden as 5 2 0 0 */
+}

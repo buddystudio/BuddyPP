@@ -17,7 +17,7 @@ import model.BDLang;
  *
  * @author gsh
  */
-public class BDPluginWindow extends BDWindow
+public class BDPluginWindow extends BDSubWindow
 {
     public Button magLedsBtn = new Button(); 	// LEDs插件
     public Button magMusicBtn = new Button(); 	// 谱曲插件
@@ -30,7 +30,7 @@ public class BDPluginWindow extends BDWindow
     public BDPluginWindow()
     {
        // 窗口初始化
-       super.init(500, 350 + 30);
+       super.init(500, 350 + 30 + 10);
        
        scene.getStylesheets().add("resources/style/settingStyle.css");
 
@@ -41,13 +41,15 @@ public class BDPluginWindow extends BDWindow
        this.setAlwaysOnTop(true);
        
        // 只有关闭按钮的窗口
-       this.initStyle(StageStyle.UTILITY);
+       //this.initStyle(StageStyle.UTILITY);
        this.setResizable(false);
        
        //BDTitleView  titlePanel  = new BDTitleView();
        
        this.setTitle("  " + BDLang.rb.getString("工具"));
        this.setScene(scene);
+       
+       this.setNewTitle(BDLang.rb.getString("工具"));
        
        HBox contain  = new HBox();
        
@@ -80,7 +82,7 @@ public class BDPluginWindow extends BDWindow
        this.rootPanel.getStylesheets().add("resources/style/pluginStyle.css"); 
 
        contain.setPadding(new Insets(10, 10, 10, 10));
-       contain.setSpacing(5);
+       contain.setSpacing(10);
        contain.setAlignment(Pos.TOP_LEFT);
        contain.getChildren().add(magLedsBtn);
        contain.getChildren().add(magMusicBtn);

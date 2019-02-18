@@ -22,10 +22,12 @@ public class BDEditorCtrl
 	public BDCodeModel codeModel;
 	
 	public WebView webView;
+	public String type = "";
 	
-	public BDEditorCtrl(BDEditorView editor, String code) 
+	public BDEditorCtrl(BDEditorView editor, String code, String type) 
 	{
 		this.webView = editor.webView;
+		this.type = type;
 		
 		// 获取编辑器参数
         //BDParameters.getEditorProfile();
@@ -68,7 +70,19 @@ public class BDEditorCtrl
 	                        //setTheme("chaos");
 	                        //setTheme("xcode");
 	                        setMode("arduino");
+	                        
+	                        if(type.equals("PY"))
+	                        {
+	                        	setMode("python");
+	                        }
+	                        
 	                        setCode(code);
+	                        
+	                        // 设置打印边界距离
+	                        webView.getEngine().executeScript("editor.setPrintMarginColumn(70);");
+	                        
+	                        // 设置焦点
+	                        setFoucs();
 	                    }  
 	                    else if (newState == Worker.State.FAILED)
 	                    {
@@ -159,6 +173,16 @@ public class BDEditorCtrl
     {
 		//System.out.println("on change selection...");
     }
+	
+	// Set foucs.
+	public void setFoucs()
+	{
+		webView.getEngine().executeScript("editor.focus();");
+		
+		//把焦点移到内容的最后面
+		webView.getEngine().executeScript("let session = editor.getSession();let count = session.getLength();editor.gotoLine(count, session.getLine(count - 1).length);");
+
+	}
 	
 	// Set code font size.
 	public void setFontSize(int size)

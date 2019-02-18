@@ -20,7 +20,7 @@ import model.BDParameters;
  *
  * @author gsh
  */
-public final class BDIfWindow extends BDWindow
+public final class BDIfWindow extends BDSubWindow
 {
     public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     public ComboBox<String> optCmbBox = new ComboBox<String>();
@@ -35,22 +35,24 @@ public final class BDIfWindow extends BDWindow
         // 窗口初始化
     	if(BDParameters.langues.equals("English"))
     	{
-    		super.init(850, 60 + 30);
+    		super.init(850, 60 + 30 + 10);
     	}
     	else
     	{
-    		super.init(750, 60 + 30);
+    		super.init(750, 60 + 30 + 10);
     	}
         
         // 总在最前方
         this.setAlwaysOnTop(true);
        
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
+        //this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
 
         this.setTitle("  " + BDLang.rb.getString("输入条件"));
         this.setScene(scene);
+        
+        this.setNewTitle(BDLang.rb.getString("输入条件"));
 
         HBox contain  = new HBox();
 

@@ -18,7 +18,7 @@ import model.BDLang;
  *
  * @author gsh
  */
-public class BDColorWindow extends BDWindow
+public class BDColorWindow extends BDSubWindow
 {
     public Button submitBtn = new Button(BDLang.rb.getString("生成颜色数值"));
     public Button submitBtn2 = new Button(BDLang.rb.getString("生成颜色分量"));
@@ -34,16 +34,16 @@ public class BDColorWindow extends BDWindow
         this.setAlwaysOnTop(true);
        
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
-       
+        //this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
-       
         this.setTitle("  " + BDLang.rb.getString("调色工具"));
         this.setScene(scene);
+        
+        this.setNewTitle(BDLang.rb.getString("调色工具"));
 
         VBox contain  = new VBox();
        
-        contain.setPadding(new Insets(12,0,5,0));  // 设置边距
+        contain.setPadding(new Insets(20,0,5,0));  // 设置边距
         contain.setSpacing(5);                    // 设置间距
        
         contain.setAlignment(Pos.CENTER);

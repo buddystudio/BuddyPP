@@ -1,0 +1,32 @@
+.command {
+	-fx-fill: #3434FF;
+    -fx-font-weight: bold;
+}
+.error {
+	-fx-fill:  #FF3030 ;
+    -fx-font-weight: bold;
+}
+
+.keywords{
+	 -fx-fill: purple;
+	  -fx-font-weight: bold;
+}
+
+.bracket {
+    -fx-fill: darkgreen;
+    -fx-font-weight: bold;
+}
+
+.avrdude{
+	-fx-fill: darkgreen;
+    -fx-font-weight: bold;
+}
+
+.normal{
+	-fx-fill: #FF0000;
+    -fx-font-weight: bold;
+}
+
+.paragraph-box:has-caret {
+    -fx-background-color: #e2f9fc;
+}

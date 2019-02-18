@@ -17,7 +17,6 @@ import view.BDLEDsWindow;
 import view.BDLibWindow;
 import view.BDPinModeWindow;
 import view.BDPluginWindow;
-import view.BDPreSettingWindow;
 import view.BDSearchWindow;
 import view.BDSerialWindow;
 import view.BDSwitchWindow;
@@ -31,7 +30,6 @@ public class BDWindowsManager
 	public static BDSearchWindow searchWindow 	= new BDSearchWindow();     // 搜索窗口
 	public static BDLibWindow libWindow     	= new BDLibWindow();        // 添加库窗口
 	public static BDComWindow comWindow     	= new BDComWindow();        // 串口通讯窗口
-	public static BDPreSettingWindow psw    	= new BDPreSettingWindow(); // 预设置窗口
 	public static BDExampleWindow expWindow 	= new BDExampleWindow();    // 例程窗口
 	public static BDConsoleWindow consoleWindow = new BDConsoleWindow();    // 编译信息窗口
 	public static BDAboutWindow aboutWindow 	= new BDAboutWindow();      // 关于我们窗口

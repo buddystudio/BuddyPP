@@ -24,7 +24,7 @@ import model.BDLang;
  *
  * @author gsh
  */
-public class BDLEDsWindow extends BDWindow
+public class BDLEDsWindow extends BDSubWindow
 {
     public Button submitBtn = new Button(BDLang.rb.getString("生成"));
     public Button cleanBtn = new Button(BDLang.rb.getString("清空"));
@@ -37,18 +37,18 @@ public class BDLEDsWindow extends BDWindow
     public BDLEDsWindow()
     {
         // 窗口初始化
-        super.init(340, 380 + 30);
+        super.init(340, 380 + 30 + 20);
         
         // 总在最前方
         this.setAlwaysOnTop(true);
        
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
-       
+        //this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
-       
         this.setTitle("  " + BDLang.rb.getString("LED阵列工具"));
         this.setScene(scene);
+        
+        this.setNewTitle(BDLang.rb.getString("LED阵列工具"));
        
         GridPane grid = new GridPane();
        
@@ -61,7 +61,7 @@ public class BDLEDsWindow extends BDWindow
        
         grid.setHgap(5);
         grid.setVgap(5);
-        grid.setPadding(new Insets(0, 10, 10, 10));
+        grid.setPadding(new Insets(15, 10, 10, 10));
        
         for(int i = 0; i < 8; i++)
         {

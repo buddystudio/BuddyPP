@@ -23,7 +23,7 @@ import model.BDParameters;
  *
  * @author gsh
  */
-public final class BDForWindow extends BDWindow
+public final class BDForWindow extends BDSubWindow
 {
     public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     public RadioButton norRB = new RadioButton(BDLang.rb.getString("基本"));
@@ -49,22 +49,24 @@ public final class BDForWindow extends BDWindow
         // 窗口初始化
     	if(BDParameters.langues.equals("English"))
     	{
-    		super.init(900, 165 + 30);
+    		super.init(900, 165 + 30 + 5);
     	}
     	else
     	{
-    		super.init(755, 165 + 30);
+    		super.init(755, 165 + 30 + 5);
     	}
         
         // 总在最前方
         this.setAlwaysOnTop(true);
        
         // 只有关闭按钮的窗口
-        this.initStyle(StageStyle.UTILITY);
+        //this.initStyle(StageStyle.UTILITY);
         this.setResizable(false);
        
         this.setTitle("  " + BDLang.rb.getString("循环语句"));
         this.setScene(scene);
+        
+        this.setNewTitle(BDLang.rb.getString("循环语句"));
        
         HBox contain  = new HBox();
        

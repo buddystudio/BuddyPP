@@ -95,8 +95,9 @@ public class BDMenuCtrl
 				{
 					if(code != null)
 					{
+						
 						// 添加代码标签页
-						workspaceCtrl.addTab(code);
+						workspaceCtrl.addTab(code, code.type);
 					}
 				} 
 				catch (AWTException ex) 
@@ -106,7 +107,7 @@ public class BDMenuCtrl
 			}
 		});
 
-		// 新建文件
+		// 新建文件INO
 		menuView.menuNewBtn.setOnAction(new EventHandler<ActionEvent>() 
 		{
 			@Override
@@ -116,7 +117,26 @@ public class BDMenuCtrl
 				try 
 				{
 					// 添加代码标签页
-					workspaceCtrl.addNewTab();
+					workspaceCtrl.addNewTab("INO");
+				} 
+				catch (AWTException ex) 
+				{
+					//logger.error(ex.getMessage());
+				}
+			}
+		});
+		
+		// 新建文件Python
+		menuView.menuNewPyBtn.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			@Override
+			public void handle(ActionEvent event) 
+			{
+				// 新建文件
+				try 
+				{
+					// 添加代码标签页
+					workspaceCtrl.addNewTab("PY");
 				} 
 				catch (AWTException ex) 
 				{
@@ -296,7 +316,7 @@ public class BDMenuCtrl
 				// 保存临时源码文件
 				String code = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode();
 				workspaceCtrl.workspaceView.workspaceModel.curTab.code.setCodeText(code);
-				
+
 				cauwCtrl.openFileFromCode(builtPath + File.separator, codePath + File.separator);
 				
 				try 
@@ -361,6 +381,15 @@ public class BDMenuCtrl
 				String code = workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.getCode();
 				workspaceCtrl.workspaceView.workspaceModel.curTab.code.setCodeText(code);
 
+				// 如果当前为Python工程
+				//if(workspaceCtrl.workspaceView.workspaceModel.curTab.code.type.equals("PY"))
+				if(workspaceCtrl.workspaceView.workspaceModel.curTab.code.getSuffix().equals("py"))
+				{
+					cauwCtrl.openFileFromPyCode(builtPath + File.separator, codePath + File.separator);
+					
+					return;
+				}
+				
 				cauwCtrl.openFileFromCode(builtPath + File.separator, codePath + File.separator);
 				
 				try 
