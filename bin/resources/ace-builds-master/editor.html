@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Editor</title>
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+
+    #editor {
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+  </style>
+</head>
+<body>
+
+<pre id="editor">
+
+</pre>
+
+<script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+	
+	ace.require("ace/ext/language_tools");
+	
+	editor.setOptions(
+	{  
+              enableBasicAutocompletion: true,  
+              enableSnippets: true,  
+              enableLiveAutocompletion: true, // 智能补全  
+    });
+    
+    //自动换行,设置为off关闭
+	editor.setOption("wrap", "free")  
+	
+	/*
+	editor.setTheme("ace/theme/ambiance");
+	editor.setTheme("ace/theme/chaos");
+	editor.setTheme("ace/theme/clouds");
+	editor.setTheme("ace/theme/clouds_midnight");
+	editor.setTheme("ace/theme/cobalt");
+	editor.setTheme("ace/theme/chrome");
+	editor.setTheme("ace/theme/crimson_editor");
+	editor.setTheme("ace/theme/dawn");
+	editor.setTheme("ace/theme/dracula");
+	editor.setTheme("ace/theme/dreamweaver");
+	editor.setTheme("ace/theme/eclipse");
+	editor.setTheme("ace/theme/github");
+	editor.setTheme("ace/theme/gob");
+	editor.setTheme("ace/theme/gruvbox");
+	editor.setTheme("ace/theme/idle_fingers");
+	editor.setTheme("ace/theme/iplastic");
+	editor.setTheme("ace/theme/katzenmilch");
+	editor.setTheme("ace/theme/kr_theme");
+	editor.setTheme("ace/theme/kuroir");
+	editor.setTheme("ace/theme/merbivore");
+	editor.setTheme("ace/theme/merbivore_sof");
+	editor.setTheme("ace/theme/mono_industrial");
+	editor.setTheme("ace/theme/monokai");
+	editor.setTheme("ace/theme/pastel_on_dark");
+	editor.setTheme("ace/theme/solarized_dark");
+	editor.setTheme("ace/theme/solarized_light");
+	editor.setTheme("ace/theme/sqlserver");
+	editor.setTheme("ace/theme/terminal");
+	editor.setTheme("ace/theme/textmate");
+	editor.setTheme("ace/theme/tomorrow");
+	editor.setTheme("ace/theme/tomorrow_night");
+	editor.setTheme("ace/theme/tomorrow_night_blue");
+	editor.setTheme("ace/theme/tomorrow_night_bright");
+	editor.setTheme("ace/theme/tomorrow_night_eighties");
+	editor.setTheme("ace/theme/twilight");
+	editor.setTheme("ace/theme/vibrant_ink");
+	editor.setTheme("ace/theme/xcode");
+	
+	*/
+	
+	editor.setTheme("ace/theme/xcode");
+	
+    //editor.session.setMode("ace/mode/javascript");
+	editor.session.setMode("ace/mode/c_cpp");
+	//editor.session.setMode("ace/mode/arduino");
+
+	editor.setFontSize(14);
+	
+</script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+
+.mgaLEDsBtn
+{  
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/mag_leds_btn_1.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.mgaLEDsBtn:hover
+{
+    -fx-background-color: #333333;
+    -fx-background-image: url("../images/mag_leds_btn_2.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.mgaLEDsBtn:pressed
+{
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/mag_leds_btn_3.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.mgaMusicBtn
+{  
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/mag_music_btn_1.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.mgaMusicBtn:hover
+{
+    -fx-background-color: #333333;
+    -fx-background-image: url("../images/mag_music_btn_2.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.mgaMusicBtn:pressed
+{
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/mag_music_btn_3.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.mgaColorBtn
+{  
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/mag_color_btn_1.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.mgaColorBtn:hover
+{
+    -fx-background-color: #333333;
+    -fx-background-image: url("../images/mag_color_btn_2.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.mgaColorBtn:pressed
+{
+    -fx-background-color: #333333; 
+    -fx-background-image: url("../images/mag_color_btn_3.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.tip
+{  
+    -fx-font-size:13px;
+}

@@ -1,0 +1,251 @@
+.deBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDeBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.deBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDeBtn2.png");
+}
+
+.deBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDeBtn.png");
+}
+
+.ifBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftIfBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.ifBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftIfBtn2.png");
+}
+
+.ifBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftIfBtn.png");
+}
+
+.forBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftForBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.forBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftForBtn2.png");
+}
+
+.forBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftForBtn.png");
+}
+
+.whileBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftWhileBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.whileBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftWhileBtn2.png");
+}
+
+.whileBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftWhileBtn.png");
+}
+
+.switchBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftSwitchBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.switchBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftSwitchBtn2.png");
+}
+
+.switchBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftSwitchBtn.png");
+}
+
+.pinModeBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftPmBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.pinModeBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftPmBtn2.png");
+}
+
+.pinModeBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftPmBtn.png");
+}
+
+.dwBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDwBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.dwBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDwBtn2.png");
+}
+
+.dwBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDwBtn.png");
+}
+
+.drBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDrBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.drBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDrBtn2.png");
+}
+
+.drBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDrBtn.png");
+}
+
+.awBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftAwBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.awBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftAwBtn2.png");
+}
+
+.awBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftAwBtn.png");
+}
+
+.arBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftArBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.arBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftArBtn2.png");
+}
+
+.arBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftArBtn.png");
+}
+
+.delayBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDlBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.delayBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDlBtn2.png");
+}
+
+.delayBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftDlBtn.png");
+}
+
+.tcomBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftComBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.tcomBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftComBtn2.png");
+}
+
+.tcomBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftComBtn.png");
+}
+
+.ledsBtn
+{  
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftLEDsBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.ledsBtn:hover
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftLEDsBtn2.png");
+}
+
+.ledsBtn:pressed
+{
+    -fx-background-color: #333333;  
+    -fx-background-image: url("../images/leftLEDsBtn.png");
+}
+
+.tip
+{  
+    -fx-font-size:13px;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Arduino Reference - Boolean </title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+  <link rel='stylesheet' href='arduinoWideRender.css' 
+type='text/css' />
+    <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+  <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
+</head>
+<body style="line-height:25px"> 
+<div id="page">
+  <div id="pagetext">
+  <!--PageText-->
+<div id='wikitext'>
+<p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
+</p>
+<p class='vspace'></p><h1>布尔运算符</h1>
+<p>它们可用于if语句中的条件。
+</p>
+<p class='vspace'></p><h3>&amp;&amp; (逻辑 与)</h3>
+<p>只有在两个操作数都为真时才返回真，例如：
+</p><p class='vspace'></p><pre>
+if (digitalRead(2) == HIGH  &amp;&amp; digitalRead(3) == HIGH) { // read two switches 
+  // ...
+} 
+</pre><p class='vspace'></p><p>只在两个输入都为高时返回真。
+</p>
+<p class='vspace'></p><h3>|| (逻辑 或)</h3><p class='vspace'></p>
+<p>任意一个为真时返回真，例如：
+</p><p class='vspace'></p><pre>
+if (x &gt; 0 || y &gt; 0) {
+  // ...
+} 
+</pre><p class='vspace'></p><p>x或y任意一个大于0时返回真。
+</p>
+<p class='vspace'></p><h3>! (逻辑 非)</h3><p class='vspace'></p>
+<p>当操作数为假时返回真，例如：
+</p><p class='vspace'></p><pre>
+if (!x) { 
+  // ...
+} 
+</pre><p class='vspace'></p><p>若x为假返回真（即如果x等于0）。
+</p>
+<p class='vspace'></p><h4>警告</h4>
+<p>确保你没有把布尔与运算符，&&（两个与符号）错认为按位与运算符&（单个与符号）。它们是完全不同的概念。
+</p>
+<p class='vspace'></p><p>同样，不要混淆布尔或运算符||（双竖杠）与按位或运算符|（单竖杠）。
+</p>
+<p class='vspace'></p><p>按位取反~（波浪号）看起来与布尔非!有很大不同（感叹号或程序员口中的“棒”），但是你仍然必须确保在什么地方用哪一个。
+</p>
+<p class='vspace'></p><h4>例子</h4>
+<pre>
+if (a &gt;= 10 &amp;&amp; a &lt;= 20){}   // true if a is between 10 and 20
+
+</pre>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+</p>
+</div>
+</body>
+</html>

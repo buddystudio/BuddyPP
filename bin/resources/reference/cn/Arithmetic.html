@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Arduino Reference - Arithmetic </title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+  <link rel='stylesheet' href='arduinoWideRender.css' 
+type='text/css' />
+    <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+  <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
+</head>
+<body style="line-height:25px"> 
+<div id="page">
+  <div id="pagetext">
+  <!--PageText-->
+<div id='wikitext'>
+<p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
+</p>
+<p class='vspace'></p><h2>加、减、乘、除</h2>
+<h4>描述</h4>
+<p>这些运算符（分别）返回两人运算对象的和，差，积，商。这些操作受运算对象的数据类型的影响。所以，例如，9 / 4结果是2，如果9和2是整型数。这也意味着运算会溢出，如果结果超出其在相应的数据类型下所能表示的数。（例如，给整型数值767加1结果是-768）。如果运算对象是不同的类型，会用那个较大的类型进行计算。
+</p>
+<p class='vspace'></p><p>如果其中一个数字（运算符）是float类型或double类型，将采用浮点数进行计算。
+</p>
+<p class='vspace'></p><h4>例子</h4>
+<pre>
+y = y + 3;
+x = x - 7;
+i = j * 6;
+r = r / 5;
+</pre>
+<p class='vspace'></p><h4>语法</h4>
+<pre>
+result = value1 + value2;
+result = value1 - value2;
+result = value1 * value2;
+result = value1 / value2;
+</pre>
+<p class='vspace'></p><h4>参数</h4>
+<p>value1: 任何变量或常量
+</p>
+<p class='vspace'></p><p>value2: 任何变量或常量
+</p>
+<p class='vspace'></p><h4>提示</h4>
+<ul><li>要知道整型常量默认为int型，因此一些常量计算可能会溢出（例如：60 * 1000将产生负的结果）。
+<p class='vspace'></p></li><li>选择一个大小足够大的变量以容纳你的最大的计算结果。
+<p class='vspace'></p></li><li>要知道你的变量在哪一点将会“翻转”且要知道在另一个方向上会发生什么，例如：（0 - 1）或（0 - 768）。
+<p class='vspace'></p></li><li>对于数学需要分数，就使用浮点变量，但是要注意它们的缺点：占用空间大，计算速度慢。
+<p class='vspace'></p></li><li>使用强制类型转换符例如：（int）myFloat以在运行中转换一个变量到另一个类型。
+</li></ul><p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+</p>
+
+
+</div>
+</body>
+</html>

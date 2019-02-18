@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Arduino Reference - Float </title>
+  <link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+  <link rel='stylesheet' href='arduinoWideRender.css' 
+type='text/css' />
+    <!--HeaderText--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  .editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style>  <meta name='robots' content='index,follow' />
+
+  <meta name="verify-v1" content="TtxFIEJAB6zdJ509wLxjnapQzKAMNm9u0Wj4ho6wxIY=" />
+</head>
+<body style="line-height:25px"> 
+<div id="page">
+  <div id="pagetext">
+  <!--PageText-->
+<div id='wikitext'>
+<p><strong>参考文档   </strong> &nbsp;  <a class='wikilink' href='index.html'>语法</a> | <a class='wikilink' href='Libraries.html'>库</a> | <a class='wikilink' href='Comparison.html'>对比</a> | <a class='wikilink' href='Changes.html'>变化</a>
+</p>
+<p class='vspace'></p><h2>float</h2>
+<h4>描述</h4>
+<p>float，浮点型数据，就是有一个小数点的数字。浮点数经常被用来近似的模拟连续值，因为他们比整数更大的精确度。浮点数的取值范围在 3.40285 E+38 ~ -3.40285E +38 。它被存储为位（4字节）的信息。
+</p>
+<p class='vspace'></p><p>float只有6-7位有效数字。这指的是总位数，而不是小数点右边的数字。与其他平台不同的是，在那里你可以使用double型得到更精确的结果（如15位），在Arduino上，double型与float型的大小相同。
+</p>
+<p class='vspace'></p><p>浮点数字在有些情况下是不准确的，在数据大小比较时，可能会产生奇怪的结果。例如 6.0 / 3.0 可能不等于 2.0。你应该使两个数字之间的差额的绝对值小于一些小的数字，这样就可以近似的得到这两个数字相等这样的结果。
+</p>
+<p class='vspace'></p><p>浮点运算速度远远慢于执行整数运算，例如，如果这个循环有一个关键的计时功能，并需要以最快的速度运行，就应该避免浮点运算。程序员经常使用较长的程式把浮点运算转换成整数运算来提高速度。
+</p>
+<p class='vspace'></p><h4>例子</h4>
+<pre>
+	float myfloat;
+	float sensorCalbrate = 1.117;
+</pre>
+<p class='vspace'></p><h4>语法</h4>
+<pre>    float var = val;
+</pre>
+<p class='vspace'></p><ul><li>var - your float variable name
+</li><li>val - the value you assign to that variable
+</li></ul><p class='vspace'></p><h4>例子</h4>
+<pre>
+   int x;
+   int y;
+   float z;
+
+   x = 1;
+   y = x / 2;            // y now contains 0, ints can't hold fractions
+   z = (float)x / 2.0;   // z now contains .5 (you have to use 2.0, not 2)
+</pre>
+<p class='vspace'></p><p><a class='wikilink' href='index.html'>返回首页</a>
+</p>
+</div>
+</body>
+</html>
