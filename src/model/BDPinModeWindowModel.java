@@ -21,28 +21,34 @@ public class BDPinModeWindowModel
     public BDPinModeWindowModel()
     {
         // 添加模拟端口
-        pinList.add("A0");
-        pinList.add("A1");
-        pinList.add("A2");
-        pinList.add("A3");
-        pinList.add("A4");
-        pinList.add("A5");
+        for(int i = 0; i < 6; i++)
+    	{
+        	 pinList.add("A" + i);
+    	}
+        
+        if(BDParameters.boardType.equals("Arduino/Genuino Mega w/ ATmega2560") || 
+           BDParameters.boardType.equals("Arduino Mega w/ ATmega1280"))
+        {
+        	for(int i = 6; i < 16; i++)
+        	{
+        		 pinList.add("A" + i);
+        	}
+        }
         
         // 添加数字端口
-        pinList.add("D0");
-        pinList.add("D1");
-        pinList.add("D2");
-        pinList.add("D3");
-        pinList.add("D4");
-        pinList.add("D5");
-        pinList.add("D6");
-        pinList.add("D7");
-        pinList.add("D8");
-        pinList.add("D9");
-        pinList.add("D10");
-        pinList.add("D11");
-        pinList.add("D12");
-        pinList.add("D13");
+        for(int i = 0; i < 14; i++)
+    	{
+        	 pinList.add("D" + i);
+    	}
+        
+        if(BDParameters.boardType.equals("Arduino/Genuino Mega w/ ATmega2560") || 
+                BDParameters.boardType.equals("Arduino Mega w/ ATmega1280"))
+        {
+         	for(int i = 14; i < 54; i++)
+        	{
+            	pinList.add("D" + i);
+            }
+        }
         
         // 添加端口状态
         modeList.add("INPUT");
