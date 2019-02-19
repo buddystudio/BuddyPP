@@ -19,16 +19,18 @@ public class BDEditorView extends BorderPane
 		this.setCenter(webView);
 	}
 	
-	public BDEditorView(String homePageUrl) 
+	public BDEditorView(String homePageUrl)
 	{
 		this.url = homePageUrl;
 		this.webView.getEngine().load(homePageUrl);
 		this.setCenter(webView);
 		
-		// 启用滚动条样式
-		this.getStylesheets().add("resources/style/listViewStyle.css");
+		this.getStylesheets().add("resources/style/modena_dark.css");
 		
-		this.webView.getStyleClass().add("mylistview");
+		// 启用滚动条样式
+		//this.getStylesheets().add("resources/style/listViewStyle.css");
+		
+		//this.webView.getStyleClass().add("mylistview");
 	}
 	
 	public WebView getWebView() 

@@ -9,13 +9,10 @@
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="lib" path="src/libs/RXTXcomm.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="D:/Projects/Github/BuddyPP/src/libs"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="D:/Projects/Github/BuddyBlock/src/libs"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Projects/Github/BuddyPP/src/libs/jssc.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="D:/Projects/Github/BuddyPP/src/libs"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="src/libs/richtextfx-fat-0.7-M5.jar"/>
+	<classpathentry kind="lib" path="D:/Projects/Github/BuddyBlock/src/libs/jssc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
