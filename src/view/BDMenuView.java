@@ -65,9 +65,10 @@ public class BDMenuView extends HBox
             
         // 设置菜单栏位置
         this.setPrefHeight(60);
-        this.setPadding(new Insets(0, 0, 0, 25));
+        this.setPadding(new Insets(0, 0, 0, 40));
+        this.setSpacing(5);
         //this.setPadding(new Insets(5, 0, 0, 15));
-        this.setSpacing(-5);
+        //this.setSpacing(-5);
         
         this.setAlignment(Pos.CENTER_LEFT);  // 居中排列
         

@@ -38,7 +38,7 @@ public class BDToolsView extends VBox
         this.setStyle("-fx-background-color: #333333;"); 
         
         // 设置左侧工具栏图标上边距
-        this.setPadding(new Insets(30, 0, 0, 0));
+        this.setPadding(new Insets(37, 0, 0, 0));
         
         // 设置工具按钮的尺寸
         toolsDe.setPrefSize(40, 40);
