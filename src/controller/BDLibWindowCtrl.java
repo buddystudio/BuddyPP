@@ -84,21 +84,28 @@ public class BDLibWindowCtrl
                 int index = libWindow.listView.getSelectionModel().getSelectedIndex();
 
                 // 生成语句
-                
                 int len = BDParameters.libsList.get(index).libsList.size();
                 
                 String code = "";
+                String curCode = workspaceCtrl.workspaceView.workspaceModel.curTab.code.getCodeText();
                 
                 for(int i = 0; i < len; i++)
                 {
-                    code += "#include <" + BDParameters.libsList.get(index).libsList.get(i) + ">\\n";
-                }
+                	String tmp = "#include <" + BDParameters.libsList.get(index).libsList.get(i) + ">\\n";
 
-                // 插入语句
-                code = code.replaceAll("\"","\\\\\"");
+                	// 避免重复导入库
+                	if(curCode.indexOf(BDParameters.libsList.get(index).libsList.get(i).toString()) == -1)
+                	{
+                		code += tmp;
+                	}
+                }
                 
-                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.moveCursorTo(0, 0);
-                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(code);
+                // 插入语句
+                String tmpCode = code.replaceAll("\"", "\\\\\"");
+
+                // 跳转到第一行并插入代码
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.gotoLine2(1, 0);
+                workspaceCtrl.workspaceView.workspaceModel.curTab.editorCtrl.insert(tmpCode);
 
                 // 关闭窗口
                 libWindow.close();

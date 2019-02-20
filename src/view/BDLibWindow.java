@@ -56,7 +56,8 @@ public class BDLibWindow extends BDSubWindow
         
         listView.setPrefSize(400, 450);
         listView.getStyleClass().add("mylistview"); 
-        listView.setStyle("-fx-font-size: 16;");
+        listView.setStyle("-fx-font-size: 20;");
+        //listView.setStyle("-fx-font-size: 16;");
 
         importBtn.setStyle("-fx-background-radius: 0, 0;");
         importBtn.setPrefSize(150, 70);

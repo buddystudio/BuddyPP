@@ -223,6 +223,12 @@ public class BDEditorCtrl
 		webView.getEngine().executeScript("editor.setValue(\"" + code + "\", -1);");
 	}
 	
+	public void setCode2(String code)
+	{
+		// 设置代码（参数1，光标移动到最后一个字符后，参数-1，光标移动到第一个字符前）
+		webView.getEngine().executeScript("editor.setValue(\"" + code + "\", 1);");
+	}
+	
 	public void resize()
 	{
 		webView.getEngine().executeScript("editor.resize();");
@@ -335,10 +341,17 @@ public class BDEditorCtrl
 		webView.getEngine().executeScript("editor.gotoLine(" + num + ");");
 	}
 	
+	public void gotoLine2(int rows, int columns)
+	{
+		webView.getEngine().executeScript("editor.focus();");
+		webView.getEngine().executeScript("editor.gotoLine(" + rows + ", " + columns + ");");
+	}
+	
 	public void moveCursorTo(int rows, int columns)
 	{
 		// 移动光标至第r行，第c列 
 		webView.getEngine().executeScript("editor.moveCursorTo(" + rows + ", " + columns + ");");
+		//webView.getEngine().executeScript("editor.moveCursorTo(" + rows + ", " + columns + ");");
 	}
 	
 	// Get source code from the editor.
