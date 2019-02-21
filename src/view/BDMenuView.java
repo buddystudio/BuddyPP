@@ -113,7 +113,7 @@ public class BDMenuView extends HBox
         Tooltip menuForumBtnTip = new Tooltip(BDLang.rb.getString("关于"));
         //Tooltip menuSettingBtnTip = new Tooltip(BDLang.rb.getString("设置"));
         //Tooltip menuForumBtnTip = new Tooltip(BDLang.rb.getString("社区"));
-        Tooltip menuHelpBtnTip = new Tooltip(BDLang.rb.getString("社区"));
+        Tooltip menuHelpBtnTip = new Tooltip(BDLang.rb.getString("帮助"));
 
         menuOpenBtnTip.getStyleClass().add("tip");
         menuNewBtnTip.getStyleClass().add("tip");
@@ -131,6 +131,23 @@ public class BDMenuView extends HBox
         menuSettingBtnTip.getStyleClass().add("tip");
         menuForumBtnTip.getStyleClass().add("tip");
         menuHelpBtnTip.getStyleClass().add("tip");
+        
+        menuOpenBtnTip.setStyle("-fx-font-size: 16;");
+        menuNewBtnTip.setStyle("-fx-font-size: 16;");
+        menuNewPyBtnTip.setStyle("-fx-font-size: 16;");
+        menuSaveBtnTip.setStyle("-fx-font-size: 16;");
+        menuSaveAsBtnTip.setStyle("-fx-font-size: 16;");
+        menuExampleBtnTip.setStyle("-fx-font-size: 16;");
+        menuUndoBtnTip.setStyle("-fx-font-size: 16;");
+        menuRedoBtnTip.setStyle("-fx-font-size: 16;");
+        menuSearchBtnTip.setStyle("-fx-font-size: 16;");
+        menuLibBtnTip.setStyle("-fx-font-size: 16;");
+        menuVerifyBtnTip.setStyle("-fx-font-size: 16;");
+        menuUploadBtnTip.setStyle("-fx-font-size: 16;");
+        menuComBtnTip.setStyle("-fx-font-size: 16;");
+        menuSettingBtnTip.setStyle("-fx-font-size: 16;");
+        menuForumBtnTip.setStyle("-fx-font-size: 16;");
+        menuHelpBtnTip.setStyle("-fx-font-size: 16;");
 
         menuOpenBtn.setTooltip(menuOpenBtnTip);
         menuNewBtn.setTooltip(menuNewBtnTip);

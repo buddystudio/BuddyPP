@@ -67,7 +67,7 @@ public class BDParameters
     static public double curWidth		 = 1280;
     static public double curHeight	     = 825;
     
-    static public double minWidth		 = 800;
+    static public double minWidth		 = 810;
     static public double minHeight	     = 660;
     
     static public java.util.List<String> serialports;

@@ -116,6 +116,20 @@ public class BDToolsView extends VBox
         toolsDelayTip.getStyleClass().add("tip");
         toolsComTip.getStyleClass().add("tip");
         toolsPlugsTip.getStyleClass().add("tip");
+        
+        toolsDeTip.setStyle("-fx-font-size: 16;");
+        toolsIFTip.setStyle("-fx-font-size: 16;");
+        toolsForTip.setStyle("-fx-font-size: 16;");
+        toolsWhileTip.setStyle("-fx-font-size: 16;");
+        toolsSwitchTip.setStyle("-fx-font-size: 16;");
+        toolsPinModeTip.setStyle("-fx-font-size: 16;");
+        toolsDRTip.setStyle("-fx-font-size: 16;");
+        toolsDWTip.setStyle("-fx-font-size: 16;");
+        toolsARTip.setStyle("-fx-font-size: 16;");
+        toolsAWTip.setStyle("-fx-font-size: 16;");
+        toolsDelayTip.setStyle("-fx-font-size: 16;");
+        toolsComTip.setStyle("-fx-font-size: 16;");
+        toolsPlugsTip.setStyle("-fx-font-size: 16;");
 
         // 把按钮添加到主容器上
         this.getChildren().add(toolsDe);
