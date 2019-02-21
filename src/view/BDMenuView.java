@@ -46,6 +46,7 @@ public class BDMenuView extends HBox
     public Button menuComBtn       = new Button(); // 串口通讯按钮
     public Button menuSettingBtn   = new Button(); // 设置按钮
     public Button menuAboutBtn     = new Button(); // 社区按钮
+    public Button menuHelpBtn      = new Button(); // 社区按钮
     
     public Button menuPreSetBtn    = new Button(); // 预设置按钮
     
@@ -76,6 +77,7 @@ public class BDMenuView extends HBox
         
         ImageView sp01 = new ImageView(image);
         ImageView sp02 = new ImageView(image);
+        ImageView sp03 = new ImageView(image);
 
         menuOpenBtn.setPrefSize(50, 50);
         menuNewBtn.setPrefSize(50, 50);
@@ -92,6 +94,7 @@ public class BDMenuView extends HBox
         menuComBtn.setPrefSize(50, 50);
         menuSettingBtn.setPrefSize(50, 50);
         menuAboutBtn.setPrefSize(50, 50);
+        menuHelpBtn.setPrefSize(50, 50);
         
         Tooltip menuOpenBtnTip = new Tooltip(BDLang.rb.getString("打开"));
         Tooltip menuNewBtnTip = new Tooltip(BDLang.rb.getString("新建") + " INO");
@@ -110,6 +113,7 @@ public class BDMenuView extends HBox
         Tooltip menuForumBtnTip = new Tooltip(BDLang.rb.getString("关于"));
         //Tooltip menuSettingBtnTip = new Tooltip(BDLang.rb.getString("设置"));
         //Tooltip menuForumBtnTip = new Tooltip(BDLang.rb.getString("社区"));
+        Tooltip menuHelpBtnTip = new Tooltip(BDLang.rb.getString("社区"));
 
         menuOpenBtnTip.getStyleClass().add("tip");
         menuNewBtnTip.getStyleClass().add("tip");
@@ -126,6 +130,7 @@ public class BDMenuView extends HBox
         menuComBtnTip.getStyleClass().add("tip");
         menuSettingBtnTip.getStyleClass().add("tip");
         menuForumBtnTip.getStyleClass().add("tip");
+        menuHelpBtnTip.getStyleClass().add("tip");
 
         menuOpenBtn.setTooltip(menuOpenBtnTip);
         menuNewBtn.setTooltip(menuNewBtnTip);
@@ -142,6 +147,7 @@ public class BDMenuView extends HBox
         menuComBtn.setTooltip(menuComBtnTip);
         menuSettingBtn.setTooltip(menuSettingBtnTip);
         menuAboutBtn.setTooltip(menuForumBtnTip);
+        menuHelpBtn.setTooltip(menuHelpBtnTip);
         
         menuOpenBtn.getStyleClass().add("openBtn");
         menuNewBtn.getStyleClass().add("newBtn");
@@ -158,6 +164,7 @@ public class BDMenuView extends HBox
         menuComBtn.getStyleClass().add("comBtn");
         menuSettingBtn.getStyleClass().add("settingBtn");
         menuAboutBtn.getStyleClass().add("forumBtn");
+        menuHelpBtn.getStyleClass().add("helpBtn");
         
         this.getChildren().add(menuNewBtn);
         // 展示隐藏创建Python文件的功能
@@ -175,8 +182,9 @@ public class BDMenuView extends HBox
         this.getChildren().add(menuComBtn);
         //this.getChildren().add(menuVerifyBtn);
         this.getChildren().add(menuUploadBtn);
+        this.getChildren().add(sp03);
         //this.getChildren().add(menuSettingBtn);
-        //this.getChildren().add(menuForumBtn);
+        this.getChildren().add(menuHelpBtn);
 
         //this.getChildren().add(settingPanel);
         

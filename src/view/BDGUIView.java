@@ -201,18 +201,21 @@ public class BDGUIView
         consolePanel.setCenter(msgTab);
 
         workspaceRoot.setCenter(workspacePanel);
-        workspaceRoot.setRight(dividerPanel);
+        // 右侧信息栏在新版本中被删除
+        //workspaceRoot.setRight(dividerPanel);
         
         dividerPanel.setAlignment(Pos.CENTER);
         dividerPanel.getChildren().add(arrowBtn);
 
+        // 右侧信息栏在新版本中被删除
         // 设置右侧控制台最多占60%空间
         //consolePanel.maxWidthProperty().bind(splitPanel.widthProperty().multiply(0.6));
-        workspaceRoot.minWidthProperty().bind(splitPanel.widthProperty().multiply(0.4));
+        //workspaceRoot.minWidthProperty().bind(splitPanel.widthProperty().multiply(0.4));
 
-        splitPanel.setDividerPosition(0, 1);
-        SplitPane.setResizableWithParent(consolePanel, false);	// 锁定右侧面板
-        splitPanel.getItems().addAll(this.workspaceRoot, consolePanel);
+        //splitPanel.setDividerPosition(0, 1);
+        //SplitPane.setResizableWithParent(consolePanel, false);	// 锁定右侧面板
+        //splitPanel.getItems().addAll(this.workspaceRoot, consolePanel);
+        splitPanel.getItems().addAll(this.workspaceRoot);
 
         // 初始化布局
         this.root.setTop(this.topPanel);
@@ -221,49 +224,6 @@ public class BDGUIView
         
         window.setTop(this.titlePanel);
         window.setCenter(this.root);
-        
-        //BDTextAreaConsole consoleTxt = BDTextAreaConsole.getTextAreaConsoleInstance();
-        
-        //consoleTxt.gui = this;
-        
-        // 为控制台添加右键菜单
-        //menu.getItems().addAll(clearMenuItem, copyMenuItem, selectAllMenuItem);
-        
-        // 屏蔽原来控制台信息的功能
-        /*msgArea.setParagraphGraphicFactory(LineNumberFactory.get(msgArea));
-        msgArea.setEditable(false);
-        //msgArea.setPrefHeight(535);
-        msgArea.setAutoScrollOnDragDesired(true);
-        //msgArea.setWrapText(true);
-        //msgArea.autosize();
-		msgArea.setContextMenu(menu);
-        msgArea.getStylesheets().add("resources/style/compileStyle.css");
-        
-        // 设置控制台信息高亮
-        msgArea.richChanges().filter(ch -> !ch.getInserted().equals(ch.getRemoved())).subscribe(change -> 
-        {
-        	Platform.runLater(new Runnable() 
-	        {
-	            @Override
-	            public void run() 
-	            {
-	            	// 如果当前控制台信息为空则返回
-	            	if(msgArea.getText().length() == 0)
-	            	{
-	            		return;
-	            	}
-	            	
-	                // 更新JavaFX的主线程的代码放在此处
-	            	msgArea.setStyleSpans(0, BDTextAreaConsole.computeHighlighting(msgArea.getText()));
-	            }
-	        });
-        	
-        	// 光标跟随
-        	msgArea.setEstimatedScrollY(msgArea.getCaretPosition());
-		});*/
-   
-        //consoleMsgPanel.setTop(consoleTitlePanel);
-        //consoleMsgPanel.setCenter(msgArea);
 
         // 右侧栏暂时屏蔽
         //this.root.setRight(this.guidePanel); 

@@ -164,7 +164,6 @@ public final class BDAboutWindow extends BDSubWindow
     
     public void browserUrl(String url)
     {
-    	 
         // 判断是否支持Desktop扩展,如果支持则进行下一步
         if (Desktop.isDesktopSupported())
         {

@@ -67,7 +67,9 @@ public class BDGUICtrl
         //this.gui.saveWindow = new BDDialogWindow("  保存提示", "是否保存当前文件");
         this.gui.saveWindow = new BDDialogWindow("  " + BDLang.rb.getString("保存提示"), BDLang.rb.getString("是否保存当前文件"));
         
-        // 检测分割面板尺寸变化
+        // 右侧信息栏在新版本中被删除
+        
+        /*// 检测分割面板尺寸变化
         gui.workspacePanel.widthProperty().addListener((obs, oldVal, newVal) -> 
         {
         	// 获取分割位置信息
@@ -81,7 +83,7 @@ public class BDGUICtrl
         	{
         		gui.arrowBtn.setImage(gui.iconArrowRightImg);
         	}
-        });
+        });*/
         
         // 点击 展开 / 收起 按钮
         gui.arrowBtn.setOnMouseClicked(new EventHandler<MouseEvent>()

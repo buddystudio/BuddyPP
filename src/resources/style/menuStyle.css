@@ -284,6 +284,25 @@
     -fx-background-image: url("../images/toolsPreSetBtn.png");
 }
 
+.helpBtn
+{  
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsHelpBtn.png");
+    -fx-padding: 5 5 5 5;
+}
+
+.helpBtn:hover
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsHelpBtn2.png");
+}
+
+.helpBtn:pressed
+{
+    -fx-background-color: #42b2e4;  
+    -fx-background-image: url("../images/toolsHelpBtn.png");
+}
+
 .tip
 {  
     -fx-font-size:13px;
