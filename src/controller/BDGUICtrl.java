@@ -269,7 +269,7 @@ public class BDGUICtrl
                 xOffset = event.getSceneX();
                 yOffset = event.getSceneY();
                 
-                if(gui.guiModel.isMaximized == false)
+                if(gui.guiModel.isMaximized == false &&	isEdged == false)
                 {
                 	// 记录窗体当前的位置
                     gui.guiModel.preX = gui.primaryStage.getX();
@@ -784,7 +784,7 @@ public class BDGUICtrl
         		gui.primaryStage.setY(yOffset);
                 gui.primaryStage.setWidth(gui.visualBounds.getWidth() + 2);
                 gui.primaryStage.setHeight(gui.visualBounds.getHeight() + hOffset);
-        	}	
+        	}
             
             // 更新状态标签
             gui.guiModel.isMaximized = true;
