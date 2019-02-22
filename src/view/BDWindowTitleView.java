@@ -28,20 +28,23 @@ public class BDWindowTitleView extends BorderPane
     {
     	this.setStyle("-fx-background-color: #ffffff;"); 
     	this.getStylesheets().add("resources/style/titleStyle.css");
+    	this.setPadding(new Insets(5, 5, 5, 5));  // 设置边距
         
         HBox titleBtns = new HBox();
 
         closeBtn.getStyleClass().add("closeBtn2");
+        closeBtn.setMinSize(26, 26);
 
         titleBtns.getChildren().add(closeBtn);
-        titleBtns.setPadding(new Insets(5, 5, 5, 5));  // 设置边距
+        //titleBtns.setPadding(new Insets(0, 0, 0, 0));  // 设置边距
 
         titleLbl = new Label(title);
         
-        titleLbl.setPadding(new Insets(8, 8, 8, 15));  // 设置边距
+        titleLbl.setPadding(new Insets(3, 0, 0, 15));  // 设置边距
         titleLbl.setTextFill(Color.web("#000000"));
+        titleLbl.setStyle("-fx-font-size: 16;");
         
-        this.setRight(titleBtns);
         this.setLeft(titleLbl);
+        this.setRight(titleBtns);
     }
 }

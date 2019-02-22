@@ -258,6 +258,16 @@ public class BDGUIView
             primaryStage.setY(edtPosY);
         }
         
+        // 判断当前屏幕尺寸是否小于默认尺寸（单一屏幕）
+        double screenWidth = this.visualBounds.getWidth();
+    	double screenHeight = this.visualBounds.getHeight();
+    	
+    	if(edtWidth > screenWidth || edtHeight > screenHeight)
+    	{
+    		edtWidth = BDParameters.minWidth + (screenWidth - BDParameters.minWidth) / 2;
+			edtHeight = edtWidth / 1.55;
+    	}
+        
         // 初始化主窗口并设置尺寸
         //Scene scene = new Scene(this.root, 1024 - 110, 640 + 10 + 10);
         //Scene scene = new Scene(window, 940, 640 + 10 + 10);

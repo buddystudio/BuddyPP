@@ -33,7 +33,7 @@ public class BDSubWindow extends Stage
     {
         //rootPanel   = new StackPane();
     	rootPanel   = new VBox();
-        scene       = new Scene(rootPanel, w, h + 26);
+        scene       = new Scene(rootPanel, w, h + 36);
         root        = this;
         
         this.setWidth(w);

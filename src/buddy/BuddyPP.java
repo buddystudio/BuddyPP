@@ -89,7 +89,7 @@ public class BuddyPP extends Application
         BDParameters.arch = arch;
     	
     	// Get screen dpi.
-    	int dpi = Toolkit.getDefaultToolkit().getScreenResolution();
+    	//int dpi = Toolkit.getDefaultToolkit().getScreenResolution();
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         
@@ -131,7 +131,7 @@ public class BuddyPP extends Application
     	BDLang.rb = ResourceBundle.getBundle("resources.lang.lang", BDLang.locale);
     }
     
-    private void setStyle()
+    /*private void setStyle()
     {
     	// 设置Swing组件保持Windows风格
         try 
@@ -142,5 +142,5 @@ public class BuddyPP extends Application
         {
             //logger.error(this.getClass().toString(),ex);
         }
-    }
+    }*/
 }

@@ -85,7 +85,7 @@ public class BDGUICtrl
         	}
         });*/
         
-        // 点击 展开 / 收起 按钮
+        /*// 点击 展开 / 收起 按钮
         gui.arrowBtn.setOnMouseClicked(new EventHandler<MouseEvent>()
         {    
             @Override
@@ -140,7 +140,7 @@ public class BDGUICtrl
                     thread.start();
             	}
             }
-        });
+        });*/
 
         // 点击设置按钮
         gui.titlePanel.settingBtn.setOnAction(new EventHandler<ActionEvent>() 
@@ -302,6 +302,12 @@ public class BDGUICtrl
             			// 左边缘
                 		if((screenX < offset) && (screenY > offset))
                 		{
+                			// 判断当前屏幕尺寸是否小于默认尺寸时屏蔽依附功能    	
+                	    	if(screenWidth / 2 < BDParameters.minWidth)
+                	    	{
+                	    		return;
+                	    	}
+                	    	
                             // 窗体依附左边缘
                             if(BDParameters.os.equals("Mac OS X"))
                             {
@@ -322,6 +328,12 @@ public class BDGUICtrl
                 		}
                 		else if((screenX > screenWidth - offset) && (screenY > offset))
                 		{
+                			// 判断当前屏幕尺寸是否小于默认尺寸时屏蔽依附功能    	
+                	    	if(screenWidth / 2 < BDParameters.minWidth)
+                	    	{
+                	    		return;
+                	    	}
+                	    	
                 			// 窗体依附右边缘
                             if(BDParameters.os.equals("Mac OS X"))
                             {

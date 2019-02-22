@@ -12,6 +12,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 import javafx.stage.StageStyle;
 //import jfxtras.styles.jmetro8.JMetro;
 import model.BDBoardManager;
@@ -66,18 +67,27 @@ public class BDCompileAndUploadWindow extends BDSubWindow
 		// 隐藏菜单栏后的尺寸
 		//super.init(750, 720);
 		
+		// 获取屏幕高度
+		double dh = 750;
+		double h = Screen.getPrimary().getVisualBounds().getHeight();
+		
+		if(dh > h)
+		{
+			dh = h;
+		}
+		
 		if(BDParameters.langues.equals("English"))
     	{
 			winWidth = 870;
 			
-    		super.init(winWidth, 750 - 5);
+    		super.init(winWidth, dh);
     	}
     	else
     	{
     		//winWidth = 750;
     		winWidth = 810;
     		
-    		super.init(winWidth, 750 - 5);
+    		super.init(winWidth, dh);
     	}
         
         // 总在最前方
