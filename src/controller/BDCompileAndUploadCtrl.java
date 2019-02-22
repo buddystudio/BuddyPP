@@ -63,7 +63,7 @@ public class BDCompileAndUploadCtrl
 	private String bd_rate 			= "115200";
 	
 	private int timeOut				= 30000;		// 默认操作30秒超时
-	private String title			= "  " + BDLang.rb.getString("编译与上传");	// 窗口标题
+	private String title			= BDLang.rb.getString("编译与上传");	// 窗口标题
 	private double upLoadProgress 	= 0;			// 上传进度
 	
 	private enum WorkMode 
@@ -390,7 +390,8 @@ public class BDCompileAndUploadCtrl
 					compileAndUploadWindow.getAcvCtrl().clear();
 					compileAndUploadWindow.getProgressBar().setProgress(0);
 					
-					compileAndUploadWindow.setTitle(title);
+					//compileAndUploadWindow.setTitle(title);
+					compileAndUploadWindow.setNewTitle(title);
 				}
 			});
 			
@@ -691,7 +692,8 @@ public class BDCompileAndUploadCtrl
                         	    @Override
                         	    public void run() 
                         	    {
-                        	    	compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("初始化") + "：" + value + "%");
+                        	    	//compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("初始化") + "：" + value + "%");
+                        	    	compileAndUploadWindow.setNewTitle(title + "   " + BDLang.rb.getString("初始化") + "：" + value + "%");
                         	    }
                         	});
                         }
@@ -782,11 +784,13 @@ public class BDCompileAndUploadCtrl
                         	    {
                         	    	if(progress == 1)
                         	    	{
-                        	    		compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("编译操作已完成"));
+                        	    		//compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("编译操作已完成"));
+                        	    		compileAndUploadWindow.setNewTitle(title + "   " + BDLang.rb.getString("编译操作已完成"));
                         	    	}
                         	    	else
                         	    	{
-                        	    		compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("编译进度") + "：" + value + "%");
+                        	    		//compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("编译进度") + "：" + value + "%");
+                        	    		compileAndUploadWindow.setNewTitle(title + "   " + BDLang.rb.getString("编译进度") + "：" + value + "%");
                         	    	}
                         	    }
                         	});
@@ -832,7 +836,8 @@ public class BDCompileAndUploadCtrl
                 	    @Override
                 	    public void run() 
                 	    {
-                	    	compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("编译过程出现错误") +"！");
+                	    	//compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("编译过程出现错误") +"！");
+                	    	compileAndUploadWindow.setNewTitle(title + "   " + BDLang.rb.getString("编译过程出现错误") +"！");
                 	    }
                 	});
                 }
@@ -1113,11 +1118,13 @@ public class BDCompileAndUploadCtrl
                     	    {
                     	    	if(upLoadProgress == 1)
                     	    	{
-                    	    		compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("上传操作已完成"));
+                    	    		//compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("上传操作已完成"));
+                    	    		compileAndUploadWindow.setNewTitle(title + "   " + BDLang.rb.getString("上传操作已完成"));
                     	    	}
                     	    	else
                     	    	{
-                    	    		compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("上传进度") + "：" + (upLoadProgress * 100) + "%");
+                    	    		//compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("上传进度") + "：" + (upLoadProgress * 100) + "%");
+                    	    		compileAndUploadWindow.setNewTitle(title + "   " + BDLang.rb.getString("上传进度") + "：" + (upLoadProgress * 100) + "%");
                     	    	}
                     	    }
                     	});
@@ -1141,7 +1148,8 @@ public class BDCompileAndUploadCtrl
                 	    @Override
                 	    public void run() 
                 	    {
-                	    	compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("上传过程出现错误") + "！");
+                	    	//compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("上传过程出现错误") + "！");
+                	    	compileAndUploadWindow.setNewTitle(title + "   " + BDLang.rb.getString("上传过程出现错误") + "！");
                 	    }
                 	});
                 }
@@ -1442,7 +1450,8 @@ public class BDCompileAndUploadCtrl
             	    @Override
             	    public void run() 
             	    {
-            	    	compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("用户已终止所有操作") + "！");
+            	    	//compileAndUploadWindow.setTitle(title + "   " + BDLang.rb.getString("用户已终止所有操作") + "！");
+            	    	compileAndUploadWindow.setNewTitle(title + "   " + BDLang.rb.getString("用户已终止所有操作") + "！");
             	    }
             	});
         	}

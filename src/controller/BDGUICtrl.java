@@ -65,7 +65,7 @@ public class BDGUICtrl
         gui.searchItem.setOnAction(editHandler);
         
         //this.gui.saveWindow = new BDDialogWindow("  保存提示", "是否保存当前文件");
-        this.gui.saveWindow = new BDDialogWindow("  " + BDLang.rb.getString("保存提示"), BDLang.rb.getString("是否保存当前文件"));
+        this.gui.saveWindow = new BDDialogWindow(BDLang.rb.getString("保存提示"), BDLang.rb.getString("是否保存当前文件"));
         
         // 右侧信息栏在新版本中被删除
         
