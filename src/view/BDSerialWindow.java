@@ -28,7 +28,7 @@ public class BDSerialWindow extends BDSubWindow
     public BDSerialWindow()
     {
     	// 窗口初始化
-        super.init(550, 60 + 30 + 10);
+        super.init(570, 60 + 30 + 10);
         
         // 总在最前方
        this.setAlwaysOnTop(true);
@@ -49,7 +49,7 @@ public class BDSerialWindow extends BDSubWindow
        value1CmbBox.setEditable(true);
        value1CmbBox.setPromptText(BDLang.rb.getString("变量名"));
        
-       submitBtn.setPrefSize(80, 50);
+       submitBtn.setPrefSize(80, 30);
        
        value1CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
        value2CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");

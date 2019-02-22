@@ -58,6 +58,7 @@ public class BDSubWindow extends Stage
         panelStyle += "-fx-border-color: #7a7a7a;";
         panelStyle += "-fx-border-width:1px;";
         panelStyle += "-fx-border-radius:1px;";
+        panelStyle +="-fx-font-size: 16px;";
         
         rootPanel.setStyle(panelStyle);
         

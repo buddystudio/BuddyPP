@@ -5,7 +5,7 @@ import view.BDArWindow;
 import view.BDAwWindow;
 import view.BDComWindow;
 import view.BDConsoleWindow;
-import view.BDDefineVariableWindow;
+import view.BDVariableWindow;
 import view.BDDelayWindow;
 import view.BDDrWindow;
 import view.BDDwWindow;
@@ -35,7 +35,7 @@ public class BDWindowsManager
 	public static BDAboutWindow aboutWindow 	= new BDAboutWindow();      // 关于我们窗口
 	public static BDPluginWindow pluginWindow   = new BDPluginWindow();     // 工具插件窗口
 	
-	public static BDDefineVariableWindow dfvWindow = new BDDefineVariableWindow();     // 变量定义窗口
+	public static BDVariableWindow dfvWindow = new BDVariableWindow();     // 变量定义窗口
     public static BDPinModeWindow pinModeWindow    = new BDPinModeWindow();            // pinMode端口设置窗口
     public static BDDelayWindow delayWindow        = new BDDelayWindow();              // Delay延时设置窗口
     public static BDForWindow forWindow            = new BDForWindow();                // For条件循环设置窗口

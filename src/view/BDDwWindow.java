@@ -28,7 +28,7 @@ public class BDDwWindow extends BDSubWindow
     public BDDwWindow()
     {
         // 窗口初始化
-        super.init(585, 60 + 30 + 10);
+        super.init(600, 90 + 10);
         
         // 总在最前方
         this.setAlwaysOnTop(true);

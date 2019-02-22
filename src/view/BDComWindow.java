@@ -39,7 +39,7 @@ public class BDComWindow extends BDSubWindow
     public BDComWindow() 
     {
         // 窗口初始化
-        super.init(550, 600 + 30);
+        super.init(550, 600 + 40);
         
         //scene.getStylesheets().add("resources/style/listViewStyle.css");
 
@@ -99,7 +99,7 @@ public class BDComWindow extends BDSubWindow
         bottomPanel.getChildren().add(ctrlBtn);
         bottomPanel.getChildren().add(clearBtn);
         
-        sendMsgTxt.setStyle("-fx-text-fill: white; -fx-font-size: 15;-fx-background-radius: 0, 0; -fx-text-inner-color:#ffffff");
+        sendMsgTxt.setStyle("-fx-text-fill: white; -fx-font-size: 16;-fx-background-radius: 0, 0; -fx-text-inner-color:#ffffff");
         sendMsgTxt.setPromptText(BDLang.rb.getString("输入发送的信息") + "...");
         
         topPanel.getChildren().add(sendMsgTxt);
@@ -113,14 +113,13 @@ public class BDComWindow extends BDSubWindow
         recMsgtxt.setStyle("-fx-font-size: 20;");
         
         recMsgtxt.setEditable(false);
-        
         recMsgtxt.setMinHeight(490);
 
         //TextArea recMsgtxt = new TextArea();
         /*rootContain.setTop(topPanel);
         rootContain.setCenter(recMsgtxt);
         rootContain.setBottom(bottomPanel);*/
-        
+        rootContain.setPadding(new Insets(0, 0, 10, 0));
         rootContain.setTop(bottomPanel);
         rootContain.setCenter(recMsgtxt);
         rootContain.setBottom(topPanel);

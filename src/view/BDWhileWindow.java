@@ -35,11 +35,11 @@ public class BDWhileWindow extends BDSubWindow
         // 窗口初始化
     	if(BDParameters.langues.equals("English"))
     	{
-    		super.init(700, 60 + 30 + 10);
+    		super.init(720, 90 + 10);
     	}
     	else
     	{
-    		super.init(670, 60 + 30 + 10);
+    		super.init(690, 90 + 10);
     	}
         
         // 总在最前方
@@ -78,7 +78,7 @@ public class BDWhileWindow extends BDSubWindow
 
         optCmbBox.getSelectionModel().select(0);
         
-        submitBtn.setPrefSize(80, 50);
+        submitBtn.setPrefSize(80, 30);
         
         optCmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
         value1CmbBox.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
@@ -88,7 +88,7 @@ public class BDWhileWindow extends BDSubWindow
         value1CmbBox.setPrefWidth(160);
         value2CmbBox.setPrefWidth(160);
         
-        contain.setPadding(new Insets(15, 15, 15, 15));  // 设置边距
+        contain.setPadding(new Insets(15, 15, 25, 15));  // 设置边距
         contain.setSpacing(10);                          // 设置间距
         contain.setAlignment(Pos.CENTER);                // 居中排列
 

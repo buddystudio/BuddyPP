@@ -149,7 +149,7 @@ public class BDMusicWindow extends BDSubWindow
         
         this.setNewTitle(BDLang.rb.getString("谱曲工具"));
 
-        contain.setPadding(new Insets(0, 0, 5, 0));  // 设置边距
+        contain.setPadding(new Insets(0, 0, 15, 0));  // 设置边距
         contain.setSpacing(5);
         
         book.setPrefSize(640, 365);

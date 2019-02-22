@@ -28,7 +28,7 @@ public class BDColorWindow extends BDSubWindow
     public BDColorWindow()
     {
         // 窗口初始化
-        super.init(200, 150 + 30);
+        super.init(200, 150 + 35);
         
         // 总在最前方
         this.setAlwaysOnTop(true);
@@ -43,9 +43,9 @@ public class BDColorWindow extends BDSubWindow
 
         VBox contain  = new VBox();
        
-        contain.setPadding(new Insets(20,0,5,0));  // 设置边距
-        contain.setSpacing(5);                    // 设置间距
-       
+        contain.setPadding(new Insets(15,0,20,0));  // 设置边距
+        contain.setSpacing(5);                    	// 设置间距
+        contain.setMinHeight(150);
         contain.setAlignment(Pos.CENTER);
 
         colorPicker.setPrefSize(150, 30);

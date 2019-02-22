@@ -49,11 +49,11 @@ public final class BDForWindow extends BDSubWindow
         // 窗口初始化
     	if(BDParameters.langues.equals("English"))
     	{
-    		super.init(900, 165 + 30 + 5);
+    		super.init(930, 165 + 30 + 20);
     	}
     	else
     	{
-    		super.init(755, 165 + 30 + 5);
+    		super.init(785, 165 + 30 + 20);
     	}
         
         // 总在最前方
@@ -149,7 +149,7 @@ public final class BDForWindow extends BDSubWindow
         selPanel.setSpacing(25);                         // 设置间距
         optPanel.setSpacing(11);                         // 设置间距
        
-        contain.setPadding(new Insets(20, 15, 15, 15));  // 设置边距
+        contain.setPadding(new Insets(25, 15, 25, 15));  // 设置边距
         contain.setSpacing(20);                          // 设置间距
         contain.setAlignment(Pos.CENTER);                // 居中排列
     

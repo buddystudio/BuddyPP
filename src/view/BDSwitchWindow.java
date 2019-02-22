@@ -109,11 +109,11 @@ public class BDSwitchWindow extends BDSubWindow
        
     	if(BDParameters.langues.equals("English"))
     	{
-    		bottomPanel.setPadding(new Insets(-15, 15, 15, 117)); // 设置边距
+    		bottomPanel.setPadding(new Insets(-15, 15, 15, 121)); // 设置边距
     	}
     	else
     	{
-    		bottomPanel.setPadding(new Insets(-15, 15, 15, 85)); // 设置边距
+    		bottomPanel.setPadding(new Insets(-15, 15, 15, 89)); // 设置边距
     	}
     	
     	bottomPanel.setSpacing(10);                          // 设置间距
@@ -121,7 +121,7 @@ public class BDSwitchWindow extends BDSubWindow
        
     	buttonPanel.setPadding(new Insets(-15, 0, 0, 350));  // 设置边距
        
-    	contain.setPadding(new Insets(15, 15, 10, 15));  	// 设置边距
+    	contain.setPadding(new Insets(15, 15, 30, 15));  	// 设置边距
     	contain.setSpacing(10);                          	// 设置间距
     	contain.setAlignment(Pos.CENTER_RIGHT);           	// 居中排列
 

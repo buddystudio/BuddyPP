@@ -31,11 +31,11 @@ public class BDDrWindow extends BDSubWindow
         // 窗口初始化
     	if(BDParameters.langues.equals("English"))
     	{
-    		super.init(600, 60 + 30 + 10);
+    		super.init(620, 90 + 10);
     	}
     	else
     	{
-    		super.init(580, 60 + 30 + 10);
+    		super.init(600, 90 + 10);
     	}
         
         // 总在最前方

@@ -8,7 +8,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import model.BDLang;
-import view.BDDefineVariableWindow;
+import view.BDVariableWindow;
 
 /**
  *
@@ -16,7 +16,7 @@ import view.BDDefineVariableWindow;
  */
 public class BDDefineVariableWindowCtrl 
 {
-    public BDDefineVariableWindowCtrl(BDDefineVariableWindow defineVariableWindow, BDWorkspaceCtrl workspaceCtrl)
+    public BDDefineVariableWindowCtrl(BDVariableWindow defineVariableWindow, BDWorkspaceCtrl workspaceCtrl)
     {
         // 清空输入
         defineVariableWindow.combType.getSelectionModel().select(0);

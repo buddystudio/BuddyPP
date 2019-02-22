@@ -20,14 +20,14 @@ import model.BDLang;
  *
  * @author gsh
  */
-public class BDDefineVariableWindow extends BDSubWindow
+public class BDVariableWindow extends BDSubWindow
 {
     public Button submitBtn = new Button(BDLang.rb.getString("确定"));
     public ComboBox combType = new ComboBox();
     public TextField txtName = new TextField();
     public TextField txtValue = new TextField();
     
-    public BDDefineVariableWindow()
+    public BDVariableWindow()
     {
     	// 窗口初始化
     	//super.init(630, 60);
@@ -67,7 +67,7 @@ public class BDDefineVariableWindow extends BDSubWindow
        
        	txtName.setPrefWidth(100);
        	txtValue.setPrefWidth(100);
-       	submitBtn.setPrefSize(80, 50);
+       	submitBtn.setPrefSize(80, 30);
        
        	submitBtn.setStyle("-fx-background-radius: 0, 0;");
        	combType.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
@@ -82,7 +82,7 @@ public class BDDefineVariableWindow extends BDSubWindow
        	contain.getChildren().add(txtValue);
        	contain.getChildren().add(submitBtn);
        
-       	contain.setPadding(new Insets(15, 15, 15, 15));  // 设置边距
+       	contain.setPadding(new Insets(15, 15, 25, 15));  // 设置边距
        	contain.setSpacing(10);                          // 设置间距
        	contain.setAlignment(Pos.CENTER);                // 居中排列
        

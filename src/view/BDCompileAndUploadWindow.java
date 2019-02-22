@@ -124,9 +124,8 @@ public class BDCompileAndUploadWindow extends BDSubWindow
         	//this.menuBar.setVisible(false);
         	this.menuBar.setDisable(true);
 
-			//this.btnsBar.setMinWidth(865);
-        	//this.btnsBar.setMinWidth(winWidth);
-			this.btnsBar.setPadding(new Insets(20, 20, 20, 20));
+        	root.setPadding(new Insets(10, 0, 0, 0));
+			this.btnsBar.setPadding(new Insets(10, 20, 20, 20));
 			this.btnsBar.setSpacing(10);
 
 			if(!BDParameters.langues.equals("English"))
@@ -188,7 +187,7 @@ public class BDCompileAndUploadWindow extends BDSubWindow
 		
 			//this.acvView.setPrefHeight(610);
 			this.acvView.autosize();
-			this.progressBar.setPrefSize(winWidth, 40);
+			this.progressBar.setPrefSize(winWidth, 50);
 			
 			// 隐藏菜单栏
 			//topPanel.getChildren().add(this.menuBar);

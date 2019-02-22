@@ -30,7 +30,7 @@ public class BDPluginWindow extends BDSubWindow
     public BDPluginWindow()
     {
        // 窗口初始化
-       super.init(500, 350 + 30 + 10);
+       super.init(500, 350 + 30);
        
        scene.getStylesheets().add("resources/style/settingStyle.css");
 
@@ -42,7 +42,7 @@ public class BDPluginWindow extends BDSubWindow
        
        // 只有关闭按钮的窗口
        //this.initStyle(StageStyle.UTILITY);
-       this.setResizable(false);
+       //this.setResizable(false);
        
        //BDTitleView  titlePanel  = new BDTitleView();
        
@@ -81,13 +81,14 @@ public class BDPluginWindow extends BDSubWindow
 
        this.rootPanel.getStylesheets().add("resources/style/pluginStyle.css"); 
 
-       contain.setPadding(new Insets(10, 10, 10, 10));
+       contain.setMinHeight(350);
        contain.setSpacing(10);
        contain.setAlignment(Pos.TOP_LEFT);
        contain.getChildren().add(magLedsBtn);
        contain.getChildren().add(magMusicBtn);
        contain.getChildren().add(magColorBtn);
-       
+       contain.setPadding(new Insets(10, 10, 0, 10));
+
        rootPanel.getChildren().add(contain);
     }
 }

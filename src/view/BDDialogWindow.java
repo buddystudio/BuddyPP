@@ -36,7 +36,7 @@ public class BDDialogWindow extends BDSubWindow
         // 窗口初始化
         //super.init(360, 132 + 30);
     	//super.init(500, 132 + 30);
-    	super.init(500, 132 + 45);
+    	super.init(500, 132 + 52);
         
         rootPanel.getStylesheets().clear();
         
@@ -58,9 +58,9 @@ public class BDDialogWindow extends BDSubWindow
        cancleBtn.setPrefWidth(105);
        cancleBtn.setPrefHeight(20);
        
-       okBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
-       giveupBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
-       cancleBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
+       //okBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
+       //giveupBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
+       //cancleBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
 
        VBox contain  = new VBox();
        
@@ -72,10 +72,11 @@ public class BDDialogWindow extends BDSubWindow
        HBox topPanel = new HBox();
        HBox bottomPanel = new HBox();
        
-       topPanel.setPadding(new Insets(25,0,25,0));      // 设置边距
+       contain.setPadding(new Insets(0, 0, 10, 0));      // 设置边距
+       topPanel.setPadding(new Insets(25, 0, 25, 0));      // 设置边距
        //topPanel.setSpacing(5);                        // 设置间距
-       bottomPanel.setPadding(new Insets(15,0,15,0));   // 设置边距
-       bottomPanel.setSpacing(7);                       // 设置间距
+       bottomPanel.setPadding(new Insets(15, 0, 15, 0));   // 设置边距
+       bottomPanel.setSpacing(10);                       // 设置间距
        
        topPanel.setAlignment(Pos.CENTER);
        bottomPanel.setAlignment(Pos.CENTER);
@@ -86,7 +87,7 @@ public class BDDialogWindow extends BDSubWindow
        
        msgLbl = new Label(msg);
        
-       msgLbl.setFont(Font.font(null, FontWeight.BOLD, 18));
+       msgLbl.setFont(Font.font(null, FontWeight.BOLD, 20));
        
        topPanel.setStyle("-fx-background-color:#ffffff");
        //topPanel.getChildren().add(iv);

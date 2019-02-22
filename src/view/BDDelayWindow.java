@@ -26,7 +26,7 @@ public class BDDelayWindow extends BDSubWindow
     public BDDelayWindow()
     {
         // 窗口初始化
-        super.init(450, 60 + 30 + 10);
+        super.init(470, 90 + 10);
         
         // 总在最前方
        this.setAlwaysOnTop(true);
@@ -46,10 +46,10 @@ public class BDDelayWindow extends BDSubWindow
        
        HBox contain  = new HBox();
        
-       contain.setPadding(new Insets(15, 5, 5, 5));  // 设置边距
-       contain.setSpacing(10);                      // 设置间距
+       contain.setPadding(new Insets(15, 15, 15, 15));  // 设置边距
+       contain.setSpacing(10);                      	// 设置间距
        
-       contain.setAlignment(Pos.CENTER);            // 居中排列
+       contain.setAlignment(Pos.CENTER);            	// 居中排列
        
        Label hintLbl      = new Label(BDLang.rb.getString("延时") + "(1s=1000ms)：");
        Label unitLbl      = new Label("ms");
@@ -57,7 +57,7 @@ public class BDDelayWindow extends BDSubWindow
        timeTxt.setPrefWidth(120);
        submitBtn.setPrefSize(80, 30);
        
-       timeTxt.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
+       //timeTxt.setStyle("-fx-background-radius: 0, 0;-fx-font-size: 15;");
        submitBtn.setStyle("-fx-background-radius: 0, 0;");
        
        timeTxt.setPromptText("1s = 1000ms");

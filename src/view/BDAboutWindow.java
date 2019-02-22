@@ -149,6 +149,7 @@ public final class BDAboutWindow extends BDSubWindow
         links.getChildren().addAll(linkTxt, linkTxt2);
         
         contain.getChildren().add(links);
+        contain.setPadding(new Insets(0, 0, 300, 0));  // 设置边距
        
         //rootPanel.getChildren().add(contain);
         //root.setTop(this.titlePanel);

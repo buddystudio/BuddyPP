@@ -35,11 +35,11 @@ public final class BDIfWindow extends BDSubWindow
         // 窗口初始化
     	if(BDParameters.langues.equals("English"))
     	{
-    		super.init(850, 60 + 30 + 10);
+    		super.init(870, 90 + 10);
     	}
     	else
     	{
-    		super.init(750, 60 + 30 + 10);
+    		super.init(770, 90 + 10);
     	}
         
         // 总在最前方
@@ -83,7 +83,7 @@ public final class BDIfWindow extends BDSubWindow
         
         submitBtn.setPrefSize(80, 30);
         
-        contain.setPadding(new Insets(15, 15, 15, 15));  // 设置边距
+        contain.setPadding(new Insets(15, 15, 25, 15));  // 设置边距
         contain.setSpacing(10);                          // 设置间距
         contain.setAlignment(Pos.CENTER);                // 居中排列
         
