@@ -40,74 +40,74 @@ public class BDDialogWindow extends BDSubWindow
         
         rootPanel.getStylesheets().clear();
         
-       // 总在最前方
-       this.setAlwaysOnTop(true);
+        // 总在最前方
+        this.setAlwaysOnTop(true);
        
-       // 只有关闭按钮的窗口
-       //this.initStyle(StageStyle.UTILITY);
-       //this.setResizable(false);
-       this.setTitle(title);
-       this.setScene(scene);
+        // 只有关闭按钮的窗口
+        //this.initStyle(StageStyle.UTILITY);
+        //this.setResizable(false);
+        this.setTitle(title);
+        this.setScene(scene);
        
-       this.setNewTitle(title);
+        this.setNewTitle(title);
        
-       okBtn.setPrefWidth(105);
-       okBtn.setPrefHeight(20);
-       giveupBtn.setPrefWidth(105);
-       giveupBtn.setPrefHeight(20);
-       cancleBtn.setPrefWidth(105);
-       cancleBtn.setPrefHeight(20);
+        okBtn.setPrefWidth(105);
+        okBtn.setPrefHeight(20);
+        giveupBtn.setPrefWidth(105);
+        giveupBtn.setPrefHeight(20);
+        cancleBtn.setPrefWidth(105);
+        cancleBtn.setPrefHeight(20);
        
-       //okBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
-       //giveupBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
-       //cancleBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
+        //okBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
+        //giveupBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
+        //cancleBtn.setFont(Font.font(null, FontWeight.NORMAL, 14));
 
-       VBox contain  = new VBox();
+        VBox contain  = new VBox();
        
-       //contain.setPadding(new Insets(10,0,5,0));  // 设置边距
-       //contain.setSpacing(5);                    // 设置间距
+        //contain.setPadding(new Insets(10,0,5,0));  // 设置边距
+        //contain.setSpacing(5);                    // 设置间距
        
-       contain.setAlignment(Pos.CENTER);
+        contain.setAlignment(Pos.CENTER);
        
-       HBox topPanel = new HBox();
-       HBox bottomPanel = new HBox();
+        HBox topPanel = new HBox();
+        HBox bottomPanel = new HBox();
        
-       contain.setPadding(new Insets(0, 0, 10, 0));      // 设置边距
-       topPanel.setPadding(new Insets(25, 0, 25, 0));      // 设置边距
-       //topPanel.setSpacing(5);                        // 设置间距
-       bottomPanel.setPadding(new Insets(15, 0, 15, 0));   // 设置边距
-       bottomPanel.setSpacing(10);                       // 设置间距
+        contain.setPadding(new Insets(0, 0, 10, 0));      // 设置边距
+        topPanel.setPadding(new Insets(25, 0, 25, 0));      // 设置边距
+        //topPanel.setSpacing(5);                        // 设置间距
+        bottomPanel.setPadding(new Insets(15, 0, 15, 0));   // 设置边距
+        bottomPanel.setSpacing(10);                       // 设置间距
        
-       topPanel.setAlignment(Pos.CENTER);
-       bottomPanel.setAlignment(Pos.CENTER);
+        topPanel.setAlignment(Pos.CENTER);
+        bottomPanel.setAlignment(Pos.CENTER);
        
-       image = new Image("resources/images/iconIsSave.png");
+        image = new Image("resources/images/iconIsSave.png");
        
-       ImageView iv = new ImageView(image);
+        ImageView iv = new ImageView(image);
        
-       msgLbl = new Label(msg);
+        msgLbl = new Label(msg);
        
-       msgLbl.setFont(Font.font(null, FontWeight.BOLD, 20));
+        msgLbl.setFont(Font.font(null, FontWeight.BOLD, 20));
        
-       topPanel.setStyle("-fx-background-color:#ffffff");
-       //topPanel.getChildren().add(iv);
-       topPanel.getChildren().add(msgLbl);
+        topPanel.setStyle("-fx-background-color:#ffffff");
+        //topPanel.getChildren().add(iv);
+        topPanel.getChildren().add(msgLbl);
        
-       this.scene.getStylesheets().add("resources/style/msgWindowStyle.css");
+        this.scene.getStylesheets().add("resources/style/msgWindowStyle.css");
        
-       //okBtn.setStyle("-fx-background-color: #c2c2c2;");
+        //okBtn.setStyle("-fx-background-color: #c2c2c2;");
        
-       okBtn.getStyleClass().add("okBtn");
-       giveupBtn.getStyleClass().add("okBtn");
-       cancleBtn.getStyleClass().add("okBtn");
+        okBtn.getStyleClass().add("okBtn");
+        giveupBtn.getStyleClass().add("okBtn");
+        cancleBtn.getStyleClass().add("okBtn");
 
-       bottomPanel.getChildren().add(okBtn);
-       bottomPanel.getChildren().add(giveupBtn);
-       bottomPanel.getChildren().add(cancleBtn);
+        bottomPanel.getChildren().add(okBtn);
+        bottomPanel.getChildren().add(giveupBtn);
+        bottomPanel.getChildren().add(cancleBtn);
        
-       contain.getChildren().add(topPanel);
-       contain.getChildren().add(bottomPanel);
+        contain.getChildren().add(topPanel);
+        contain.getChildren().add(bottomPanel);
        
-       rootPanel.getChildren().add(contain);
+        rootPanel.getChildren().add(contain);
     }
 }
