@@ -12,7 +12,6 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="D:/Projects/Github/BuddyBlock/src/libs"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="src/libs/richtextfx-fat-0.7-M5.jar"/>
 	<classpathentry kind="lib" path="D:/Projects/Github/BuddyBlock/src/libs/jssc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
