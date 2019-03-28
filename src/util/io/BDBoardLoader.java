@@ -1,0 +1,104 @@
+package util.io;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+
+import model.BDParaModel;
+
+public class BDBoardLoader
+{
+
+	public BDBoardLoader()
+	{
+		
+		String user_root_path = System.getProperty("user.dir") + "\\";
+		String path = user_root_path + "\\arduino-builder-windows\\hardware\\boards_test.json";
+		
+		JsonParser parser = new JsonParser();  // 创建JSON解析器
+		
+		try
+		{
+			JsonObject object = (JsonObject) parser.parse(new FileReader(path));
+			
+			// 将json数据转为为String型的数据
+			System.out.println("board = "+object.get("board").getAsString()); 
+			
+			// 得到为json的数组
+			JsonArray paras = object.get("paras").getAsJsonArray();
+			JsonArray dumpCmd = object.get("dump_cmd").getAsJsonArray();
+			
+			//BDParaModel paraList[] = new BDParaModel[array.size()];
+			ArrayList<BDParaModel> paraList = new ArrayList<BDParaModel>();
+			ArrayList<BDParaModel> dumpCmdList = new ArrayList<BDParaModel>();
+			
+			// 创建参数数组
+			for(int i = 0; i < paras.size(); i++)
+			{
+                JsonObject subObject = paras.get(i).getAsJsonObject();
+
+                BDParaModel para = new BDParaModel();
+                
+                para.setName(subObject.get("name").getAsString());
+                para.setValue(subObject.get("value").getAsString());
+                
+                paraList.add(para);
+            }
+			
+			// 创建命令数组
+			for(int i = 0; i < dumpCmd.size(); i++)
+			{
+                JsonObject subObject = dumpCmd.get(i).getAsJsonObject();
+
+                BDParaModel para = new BDParaModel();
+                
+                para.setName(subObject.get("name").getAsString());
+                para.setValue(subObject.get("value").getAsString());
+                
+                dumpCmdList.add(para);
+            }
+			
+			String cmd = "";
+			
+			for(int j = 0; j < dumpCmdList.size(); j++)
+			{
+				String segment = "";
+				
+				if(dumpCmdList.get(j).getName().equals("para"))
+				{
+					// 获取参数
+					String key = dumpCmdList.get(j).getValue();
+					
+					for(int i = 0; i < paraList.size(); i++)
+					{
+						if(paraList.get(i).getName().equals(key))
+						{
+							segment = paraList.get(i).getValue();
+						}
+					}
+				}
+				else if(dumpCmdList.get(j).getName().equals("cmd"))
+				{
+					// 获取命令
+					segment = dumpCmdList.get(j).getValue();
+				}
+				
+				// 组合命令片段
+				cmd += segment;
+			}
+			
+			System.out.println("CMD IS : " + cmd);
+		} 
+		catch (JsonIOException | JsonSyntaxException | FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+}

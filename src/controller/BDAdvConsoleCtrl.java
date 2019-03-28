@@ -10,8 +10,10 @@ public class BDAdvConsoleCtrl
 	private String html = "";
 	// 不显示滚动条
 	//private String htmlHead = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"></head><body onload='window.scrollTo(0,document.body.scrollHeight);' style='margin:0;overflow-x:hidden;'><table onselectstart='return false' onselect='document.selection.empty()' border='0' cellpadding='10' cellspacing='0' style='overflow-y:hidden;'>";
-	// 显示滚动条
-	private String htmlHead = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"></head><body onload='window.scrollTo(0,document.body.scrollHeight);' style='margin:0;'><table onselectstart='return false' onselect='document.selection.empty()' border='0' cellpadding='10' cellspacing='0' style='overflow-y:hidden;'>";
+	// 显示滚动条（不可选择）
+	//private String htmlHead = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"></head><body onload='window.scrollTo(0,document.body.scrollHeight);' style='margin:0;'><table onselectstart='return false' onselect='document.selection.empty()' border='0' cellpadding='10' cellspacing='0' style='overflow-y:hidden;'>";
+	// 显示滚动（可以选择）
+	private String htmlHead = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"></head><body onload='window.scrollTo(0,document.body.scrollHeight);' style='margin:0;'><table onselectstart='' onselect='document.selection.empty()' border='0' cellpadding='10' cellspacing='0' style='overflow-y:hidden;'>";
 	private String htmlFoot = "</table></body></html>";
 
 	public BDAdvConsoleCtrl(BDAdvConsoleView acv)

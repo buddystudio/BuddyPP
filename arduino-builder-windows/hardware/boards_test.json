@@ -1,0 +1,43 @@
+{
+	"board":"Arduino UNO",
+	"paras":
+	[
+		{"name":"bd_root_path","value":""},
+		{"name":"bd_hardware_path","value":""},
+		{"name":"bd_tools01_path","value":""},
+		{"name":"bd_tools02_path","value":""},
+		{"name":"bd_built_in_libraries_path","value":""},
+		{"name":"bd_libraries_path","value":""},
+		{"name":"bd_fqbn","value":"arduino:avr:uno"},
+		{"name":"bd_ide_version","value":"10805"},
+		{"name":"bd_built_path","value":""},
+		{"name":"bd_code_path","value":""}
+	],
+    "dump_cmd":
+	[
+		{"name":"para","value":"bd_root_path"},
+        {"name":"cmd","value":"arduino-builder -dump-prefs -logger=machine -hardware "},
+        {"name":"para","value":"bd_hardware_path"},
+		{"name":"cmd","value":" -tools "},
+		{"name":"para","value":"bd_tools01_path"},
+		{"name":"cmd","value":" -tools "},
+		{"name":"para","value":"bd_tools02_path"},
+		{"name":"cmd","value":" -built-in-libraries "},
+		{"name":"para","value":"bd_built_in_libraries_path"},
+		{"name":"cmd","value":" -libraries "},
+		{"name":"para","value":"bd_libraries_path"},
+		{"name":"cmd","value":" -fqbn="},
+		{"name":"para","value":"bd_fqbn"},
+		{"name":"cmd","value":" -ide-version="},
+		{"name":"para","value":"bd_ide_version"},
+		{"name":"cmd","value":" -build-path "},
+		{"name":"para","value":"bd_built_path"},
+		{"name":"cmd","value":" -warnings=none -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.avrdude.path="},
+		{"name":"para","value":"bd_tools02_path"},
+		{"name":"cmd","value":" -prefs=runtime.tools.avr-gcc.path="},
+		{"name":"para","value":"bd_tools02_path"},
+		{"name":"cmd","value":"-verbose "},
+		{"name":"para","value":"bd_code_path"}
+    ],
+    "pop":true
+}
