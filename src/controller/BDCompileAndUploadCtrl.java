@@ -133,7 +133,7 @@ public class BDCompileAndUploadCtrl
 
 		String user_root_path = System.getProperty("user.dir") + "\\";
 		
-		bd_root_path = user_root_path + "\\arduino-builder-windows\\";
+		bd_root_path = user_root_path + "arduino-builder-windows\\";
 		
 		bd_hardware_path 			= bd_root_path + "hardware";
 		bd_tools01_path 			= bd_root_path + "tools-builder";
@@ -458,7 +458,6 @@ public class BDCompileAndUploadCtrl
                 } 
                 catch (IOException e) 
                 {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 
@@ -519,7 +518,6 @@ public class BDCompileAndUploadCtrl
                 } 
                 catch (IOException e) 
                 {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 
@@ -564,7 +562,6 @@ public class BDCompileAndUploadCtrl
         } 
         catch (IOException e) 
         {
-        	// TODO Auto-generated catch block
         	e.printStackTrace();
         }
 	}
@@ -825,7 +822,6 @@ public class BDCompileAndUploadCtrl
                 } 
                 catch (IOException e) 
                 {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                     
                     compileMessage.setMessage("ERROR");
@@ -1138,7 +1134,6 @@ public class BDCompileAndUploadCtrl
                 } 
                 catch (IOException e)
                 {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                     
                     //updateMessage("ERROR");

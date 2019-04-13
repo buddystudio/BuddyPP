@@ -6,9 +6,15 @@ public class BDParaModel
 	private String name = "";
 	private String value = "";
 	
+	public BDParaModel(String name, String value)
+	{
+		this.setName(name);
+		this.setValue(value);
+	}
+	
 	public BDParaModel()
 	{
-		
+
 	}
 
 	public String getName() {

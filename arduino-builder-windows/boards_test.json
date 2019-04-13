@@ -2,16 +2,16 @@
 	"board":"Arduino UNO",
 	"paras":
 	[
-		{"name":"bd_root_path","value":""},
-		{"name":"bd_hardware_path","value":""},
-		{"name":"bd_tools01_path","value":""},
-		{"name":"bd_tools02_path","value":""},
-		{"name":"bd_built_in_libraries_path","value":""},
-		{"name":"bd_libraries_path","value":""},
+		{"name":"bd_root_path","value":"./arduino-builder-windows/"},
+		{"name":"bd_hardware_path","value":"./arduino-builder-windows/hardware"},
+		{"name":"bd_tools01_path","value":"./arduino-builder-windows/tools-builder"},
+		{"name":"bd_tools02_path","value":"./arduino-builder-windows/hardware/tools/avr"},
+		{"name":"bd_built_in_libraries_path","value":"./libraries"},
+		{"name":"bd_libraries_path","value":"./libraries"},
 		{"name":"bd_fqbn","value":"arduino:avr:uno"},
 		{"name":"bd_ide_version","value":"10805"},
-		{"name":"bd_built_path","value":""},
-		{"name":"bd_code_path","value":""}
+		{"name":"bd_built_path","value":"./arduino-builder-windows/temp/Built"},
+		{"name":"bd_code_path","value":"./arduino-builder-windows/temp/Code"}
 	],
     "dump_cmd":
 	[

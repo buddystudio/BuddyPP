@@ -1,8 +1,10 @@
 package util.io;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonIOException;
@@ -10,16 +12,103 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
+import model.BDBoardInfoModel;
 import model.BDParaModel;
 
 public class BDBoardLoader
-{
-
+{	
 	public BDBoardLoader()
 	{
 		
-		String user_root_path = System.getProperty("user.dir") + "\\";
-		String path = user_root_path + "\\arduino-builder-windows\\hardware\\boards_test.json";
+		this.parse2();
+	}
+	
+	public void parse2()
+	{
+		String user_root_path = System.getProperty("user.dir");
+		String path = user_root_path + "\\arduino-builder-windows\\boards_info.json";
+		
+		JsonParser parser = new JsonParser();  // 创建JSON解析器
+		
+		try
+		{
+			JsonObject object = (JsonObject) parser.parse(new FileReader(path));
+			
+			// 将json数据转为为String型的数据
+			System.out.println("board = "+object.get("board").getAsString()); 
+			
+			// 得到为json的数组
+			JsonArray paras = object.get("paras").getAsJsonArray();
+			
+			//BDParaModel paraList[] = new BDParaModel[array.size()];
+			ArrayList<BDParaModel> paraList = new ArrayList<BDParaModel>();
+			
+			// 创建参数数组
+			for(int i = 0; i < paras.size(); i++)
+			{
+                JsonObject subObject = paras.get(i).getAsJsonObject();
+
+                BDParaModel para = new BDParaModel();
+                
+                para.setName(subObject.get("name").getAsString());
+                para.setValue(subObject.get("value").getAsString());
+                
+                paraList.add(para);
+            }
+			
+			ArrayList<String>hardwaveList = new ArrayList<String>();
+			ArrayList<String>toolsList = new ArrayList<String>();
+			
+			BDBoardInfoModel boardInfo = new BDBoardInfoModel();
+			
+			for(int i = 0; i < paraList.size(); i++)
+			{
+				if(paraList.get(i).getName().equals("-hardware"))
+				{
+					boardInfo.getHardwaveList().add(paraList.get(i).getValue());
+				}
+				else if(paraList.get(i).getName().equals("-tools"))
+				{
+					boardInfo.getToolsList().add(paraList.get(i).getValue());
+				}
+				else if(paraList.get(i).getName().equals("-built-in-libraries"))
+				{
+					boardInfo.setBuilt_in_libraries(paraList.get(i).getValue());
+				}
+				else if(paraList.get(i).getName().equals("-libraries"))
+				{
+					boardInfo.setLibraries(paraList.get(i).getValue());
+				}
+				else if(paraList.get(i).getName().equals("-fqbn"))
+				{
+					boardInfo.setFqbn(paraList.get(i).getValue());
+				}
+				else if(paraList.get(i).getName().equals("-ide-version"))
+				{
+					boardInfo.setIde_version(paraList.get(i).getValue());
+				}
+			}
+			
+			for(int i = 0; i < hardwaveList.size(); i++)
+			{
+				System.out.println(hardwaveList.get(i));
+			}
+			
+			for(int i = 0; i < toolsList.size(); i++)
+			{
+				System.out.println(toolsList.get(i));
+			}
+		} 
+		catch (JsonIOException | JsonSyntaxException | FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void parse()
+	{
+		String user_root_path = System.getProperty("user.dir");
+		String path = user_root_path + "\\arduino-builder-windows\\boards_test.json";
 		
 		JsonParser parser = new JsonParser();  // 创建JSON解析器
 		
@@ -79,7 +168,18 @@ public class BDBoardLoader
 					{
 						if(paraList.get(i).getName().equals(key))
 						{
-							segment = paraList.get(i).getValue();
+							if(paraList.get(i).getValue().length() >= 2)
+							{
+								if(paraList.get(i).getValue().substring(0, 2).equals("./"))
+								{
+									// 解析路径
+									segment = user_root_path + paraList.get(i).getValue().substring(1).replaceAll("/", Matcher.quoteReplacement(File.separator));
+								}
+								else
+								{
+									segment = paraList.get(i).getValue();
+								}
+							}
 						}
 					}
 				}
@@ -100,5 +200,4 @@ public class BDBoardLoader
 			e.printStackTrace();
 		}
 	}
-
 }
