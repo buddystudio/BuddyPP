@@ -66,7 +66,7 @@ public class BDCompileAndUploadWindow extends BDSubWindow
         //super.init(750, 760);
 		// 隐藏菜单栏后的尺寸
 		//super.init(750, 720);
-		
+
 		// 获取屏幕高度
 		double dh = 750;
 		double h = Screen.getPrimary().getVisualBounds().getHeight();

@@ -7,6 +7,7 @@ public class BDBoardInfoModel
 	private ArrayList<String>hardwaveList = new ArrayList<String>();
 	private ArrayList<String>toolsList = new ArrayList<String>();
 	
+	private String boardName 			= "";
 	private String built_in_libraries 	= "";
 	private String libraries 			= "";
 	private String fqbn 				= "";
@@ -63,5 +64,13 @@ public class BDBoardInfoModel
 
 	public void setIde_version(String ide_version) {
 		this.ide_version = ide_version;
+	}
+
+	public String getBoardName() {
+		return boardName;
+	}
+
+	public void setBoardName(String boardName) {
+		this.boardName = boardName;
 	}
 }

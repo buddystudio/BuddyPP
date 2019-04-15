@@ -75,8 +75,7 @@ public class BuddyPP extends Application
         
         // 初始化界面控制器
         BDGUICtrl guiCtrl = new BDGUICtrl(gui);
-        
-        BDBoardLoader bl = new BDBoardLoader();
+
     }
     
     private void getSysInfo()

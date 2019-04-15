@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
 import javafx.stage.FileChooser;
+import model.BDCmdGenerator;
 import model.BDLang;
 import model.BDMessage;
 import model.BDParameters;
@@ -29,9 +30,9 @@ import view.BDCompileAndUploadWindow;
 
 public class BDCompileAndUploadCtrl
 {
-	private String bd_root_path 				= "C:\\Software\\Develop\\Arduino\\arduino-1.8.5-test\\";
-	private String bd_built_path 				= "D:\\Temp\\arduino_build";
-	private String bd_code_path 				= "D:\\Hello\\Hello.ino";
+	private String bd_root_path 				= "";
+	private String bd_built_path 				= "";
+	private String bd_code_path 				= "";
 
 	/*private String bd_hardware_path 			= bd_root_path + "hardware";
 	private String bd_tools01_path 				= bd_root_path + "tools-builder";
@@ -87,9 +88,9 @@ public class BDCompileAndUploadCtrl
 	{
 		workMode = WorkMode.FROM_CODE;
 		
-		this.bd_built_path 				= builtPath;
-		this.bd_code_path 				= codePath;
-		this.bd_hex_path				= builtPath + "\\Code.ino.hex";
+		this.bd_built_path = builtPath;
+		this.bd_code_path  = codePath;
+		this.bd_hex_path   = builtPath + "\\Code.ino.hex";
 		
 		// 导入源码文件，全部功能可用。
 		compileAndUploadWindow.getCompileBtn().setDisable(false);
@@ -595,10 +596,14 @@ public class BDCompileAndUploadCtrl
 		
 		String boardName = this.compileAndUploadWindow.getBoardListCombox().getSelectionModel().getSelectedItem();
 		
+		int index = -1;
+		
 		for(int i = 0; i < this.compileAndUploadWindow.getBoardManager().getBoards().size(); i++)
 		{
 			if(boardName.equals(this.compileAndUploadWindow.getBoardManager().getBoards().get(i).getName()))
 			{
+				index = i;
+				
 				bd_fqbn = this.compileAndUploadWindow.getBoardManager().getBoards().get(i).getFqbn();
 				bd_cpu = this.compileAndUploadWindow.getBoardManager().getBoards().get(i).getMcu();
 				bd_rate = this.compileAndUploadWindow.getBoardManager().getBoards().get(i).getSpeed();
@@ -614,6 +619,22 @@ public class BDCompileAndUploadCtrl
         
         System.out.println("compileCmd: " + compileCmd);
         System.out.println("uploadCmd: " + uploadCmd);
+        
+        // 在这里要先获取版型信息。。。。。
+        if(index != -1)
+        {
+        	// 当前选中版型为拓展板型（非基础板型）
+        	if(this.compileAndUploadWindow.getBoardManager().getBoards().get(index).getTool().equals("ex"))
+        	{
+        		// 暂时屏蔽拓展板型后续操作
+        		return;
+        	}
+        }
+        
+        // 代码生成器
+        BDCmdGenerator cmdGenerator = new BDCmdGenerator();
+    	
+    	String dumpCmdNew = cmdGenerator.genDumpCmd();
         
         File file = new File(bd_built_path);
         
@@ -640,11 +661,6 @@ public class BDCompileAndUploadCtrl
 
                 try 
                 {
-                	/*dumpMessage.setMessage("msg_" + "");
-                	dumpMessage.setMessage("msg_" + ">>>>>>> Buddy++：" + BDLang.rb.getString("初始化操作即将开始") + "...");
-                	dumpMessage.setMessage("msg_" + ">>>>>>> ===================================================================");
-                	dumpMessage.setMessage("msg_" + "");*/
-                	
                 	Platform.runLater(new Runnable() 
             		{
             		    @Override
@@ -657,7 +673,7 @@ public class BDCompileAndUploadCtrl
 			                compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
                         }
             		});
-            		
+
                 	// display command.
                 	dumpMessage.setMessage("cmd_" + dumpCmd);
                 	

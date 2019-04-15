@@ -1,5 +1,5 @@
 {
-	"board":"Arduino UNO",
+	"board":"Tansor Higgs-Core",
 	"paras":
 	[
 		{"name":"-hardware","value":"D:/Projects/Github/BuddyPP/arduino-builder-windows/hardware"},
