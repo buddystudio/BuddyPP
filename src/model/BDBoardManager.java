@@ -11,8 +11,6 @@ public class BDBoardManager
 	{
 		// 加载板型信息
         BDParameters.loadBoardsInfo();
-        
-		System.out.println("GGGGGG");
 		
 		// 添加拓展板型信息
 		for(int i = 0; i < BDParameters.exBoardsList.size(); i++)

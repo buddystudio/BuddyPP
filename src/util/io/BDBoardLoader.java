@@ -24,6 +24,25 @@ public class BDBoardLoader
 		this.parse2();
 	}
 	
+	private String parsePath(String value)
+	{
+		String path = "";
+		String user_root_path = System.getProperty("user.dir");
+		
+		path = value;
+		
+		if(value.length() >= 6)
+		{
+			if(value.substring(0, 6).equals("$root/"))
+			{
+				// 解析路径
+				path = user_root_path + value.substring(5).replaceAll("/", Matcher.quoteReplacement(File.separator));
+			}
+		}
+		
+		return path;
+	}
+	
 	public void parse2()
 	{
 		String user_root_path = System.getProperty("user.dir");
@@ -68,8 +87,13 @@ public class BDBoardLoader
 	                BDParaModel para = new BDParaModel();
 	                
 	                para.setName(subObject.get("name").getAsString());
-	                para.setValue(subObject.get("value").getAsString());
+	                para.setValue(this.parsePath(subObject.get("value").getAsString()));
 	                
+	                if(subObject.get("value2") != null)
+	                {
+	                	para.setValue2(this.parsePath(subObject.get("value2").getAsString()));
+	                }
+
 	                paraList.add(para);
 	            }
 				
@@ -101,6 +125,13 @@ public class BDBoardLoader
 					else if(paraList.get(i).getName().equals("-ide-version"))
 					{
 						boardInfo.setIde_version(paraList.get(i).getValue());
+					}
+					else if(paraList.get(i).getName().equals("-prefs"))
+					{
+						String value = paraList.get(i).getValue();
+						String value2 = paraList.get(i).getValue2();
+						
+						boardInfo.getPrefsList().add("=" + value + "=" + value2);
 					}
 				}
 				

@@ -16,6 +16,10 @@
 		{"name":"-P","value":""},
 		{"name":"-b","value":"115200"},
 		{"name":"-D","value":""},
-		{"name":"-U","value":"flash:w:"}
+		{"name":"-U","value":"flash:w:"},
+		{"name":"-prefs","value":"build.warn_data_percentage","value2":"75"},
+		{"name":"-prefs","value":"runtime.tools.avrdude.path","value2":"$root/arduino-builder-windows/hardware/tools/avr"},
+		{"name":"-prefs","value":"runtime.tools.avr-gcc.path","value2":"$root/arduino-builder-windows/hardware/tools/avr"},
+		{"name":"-prefs","value":"runtime.tools.arduinoOTA.path","value2":"$root/arduino-builder-windows/hardware/tools/avr"}
 	]
 }

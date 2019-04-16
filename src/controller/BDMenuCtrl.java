@@ -401,6 +401,7 @@ public class BDMenuCtrl
 				String tempPath = System.getProperty("java.io.tmpdir") + "BDTmpPath";
 				String builtPath = tempPath + File.separator + "Built";
 				String codePath = tempPath + File.separator + "Code";
+				String cachePath = tempPath + File.separator + "Cache";
 
 				//System.out.println("builtPath: " + builtPath);
 				//System.out.println("codePath: " + codePath);
@@ -426,16 +427,19 @@ public class BDMenuCtrl
 					BDFileProc.deleteDir(tempPath);
 					BDFileProc.deleteDir(builtPath);
 					BDFileProc.deleteDir(codePath);
+					BDFileProc.deleteDir(cachePath);
 					
 					// 创建源码临时目录
 					File file01 = new File(tempPath);
 					File file02 = new File(builtPath);
 					File file03 = new File(codePath);
+					File file04 = new File(cachePath);
 
 			        // Create temporary directory.
 			        file01.mkdir();
 			        file02.mkdir();
 			        file03.mkdir();
+			        file04.mkdir();
 			        
 			        //System.out.println(codePath + "Code.ino");
 			        

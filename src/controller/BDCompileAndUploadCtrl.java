@@ -21,6 +21,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
 import javafx.stage.FileChooser;
+import model.BDBoardInfoModel;
+import model.BDBoardModel;
 import model.BDCmdGenerator;
 import model.BDLang;
 import model.BDMessage;
@@ -33,6 +35,7 @@ public class BDCompileAndUploadCtrl
 	private String bd_root_path 				= "";
 	private String bd_built_path 				= "";
 	private String bd_code_path 				= "";
+	private String bd_cache_path				= "";
 
 	/*private String bd_hardware_path 			= bd_root_path + "hardware";
 	private String bd_tools01_path 				= bd_root_path + "tools-builder";
@@ -91,6 +94,9 @@ public class BDCompileAndUploadCtrl
 		this.bd_built_path = builtPath;
 		this.bd_code_path  = codePath;
 		this.bd_hex_path   = builtPath + "\\Code.ino.hex";
+		
+		String tempPath = System.getProperty("java.io.tmpdir") + "BDTmpPath";
+		this.bd_cache_path = tempPath + File.separator + "Cache";
 		
 		// 导入源码文件，全部功能可用。
 		compileAndUploadWindow.getCompileBtn().setDisable(false);
@@ -587,6 +593,10 @@ public class BDCompileAndUploadCtrl
 	private BDMessage compileMessage 	= new BDMessage();
 	private BDMessage uploadMessage 	= new BDMessage();
 
+	String dumpCmd 		= "";
+	String compileCmd 	= "";
+	String uploadCmd 	= "";
+	
 	public void compileAndUpload()
 	{
 		// 屏蔽功能按钮
@@ -613,28 +623,50 @@ public class BDCompileAndUploadCtrl
 			}
 		}
 
-		String dumpCmd 		= bd_root_path + "arduino-builder -dump-prefs -logger=machine -hardware " + bd_hardware_path +" -tools " + bd_tools01_path + " -tools " + bd_tools02_path + " -built-in-libraries " + bd_built_in_libraries_path + " -libraries " + bd_libraries_path + " -fqbn=" + bd_fqbn + " -ide-version=" + bd_ide_version + " -build-path " + bd_built_path + " -warnings=none -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.avrdude.path=" + bd_tools02_path + " -prefs=runtime.tools.avr-gcc.path=" + bd_tools02_path +" -prefs=runtime.tools.arduinoOTA.path=" + bd_tools02_path + "-verbose " + bd_code_path;
-        String compileCmd 	= bd_root_path + "arduino-builder -compile -logger=machine -hardware " + bd_hardware_path + " -tools " + bd_tools01_path + " -tools " + bd_tools02_path + " -built-in-libraries " + bd_built_in_libraries_path + " -libraries " + bd_libraries_path + " -fqbn=" + bd_fqbn + " -ide-version=" + bd_ide_version + " -build-path " + bd_built_path + " -warnings=none -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.avrdude.path=" + bd_tools02_path + " -prefs=runtime.tools.avr-gcc.path=" + bd_tools02_path + " -prefs=runtime.tools.arduinoOTA.path=" + bd_tools02_path + " -verbose " + bd_code_path;
-        String uploadCmd 	= bd_avrdude_path + "avrdude -C" + bd_avrdude_conf + " -v -p" + bd_cpu + " -c" + bd_platform + " -P" + bd_com + " -b" + bd_rate + " -D -Uflash:w:" + bd_hex_path + ":i";
+		dumpCmd 	= bd_root_path + "arduino-builder -dump-prefs -logger=machine -hardware " + bd_hardware_path +" -tools " + bd_tools01_path + " -tools " + bd_tools02_path + " -built-in-libraries " + bd_built_in_libraries_path + " -libraries " + bd_libraries_path + " -fqbn=" + bd_fqbn + " -ide-version=" + bd_ide_version + " -build-path " + bd_built_path + " -warnings=none -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.avrdude.path=" + bd_tools02_path + " -prefs=runtime.tools.avr-gcc.path=" + bd_tools02_path +" -prefs=runtime.tools.arduinoOTA.path=" + bd_tools02_path + "-verbose " + bd_code_path;
+        compileCmd 	= bd_root_path + "arduino-builder -compile -logger=machine -hardware " + bd_hardware_path + " -tools " + bd_tools01_path + " -tools " + bd_tools02_path + " -built-in-libraries " + bd_built_in_libraries_path + " -libraries " + bd_libraries_path + " -fqbn=" + bd_fqbn + " -ide-version=" + bd_ide_version + " -build-path " + bd_built_path + " -warnings=none -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.avrdude.path=" + bd_tools02_path + " -prefs=runtime.tools.avr-gcc.path=" + bd_tools02_path + " -prefs=runtime.tools.arduinoOTA.path=" + bd_tools02_path + " -verbose " + bd_code_path;
+        uploadCmd 	= bd_avrdude_path + "avrdude -C" + bd_avrdude_conf + " -v -p" + bd_cpu + " -c" + bd_platform + " -P" + bd_com + " -b" + bd_rate + " -D -Uflash:w:" + bd_hex_path + ":i";
         
-        System.out.println("compileCmd: " + compileCmd);
-        System.out.println("uploadCmd: " + uploadCmd);
+        //System.out.println("compileCmd: " + compileCmd);
+        //System.out.println("uploadCmd: " + uploadCmd);
         
         // 在这里要先获取版型信息。。。。。
         if(index != -1)
         {
+        	BDBoardModel curBoard = this.compileAndUploadWindow.getBoardManager().getBoards().get(index);
+        	
         	// 当前选中版型为拓展板型（非基础板型）
-        	if(this.compileAndUploadWindow.getBoardManager().getBoards().get(index).getTool().equals("ex"))
+        	if(curBoard.getTool().equals("ex"))
         	{
+        		for(int k = 0; k < BDParameters.exBoardsList.size(); k++)
+        		{
+        			BDBoardInfoModel board = BDParameters.exBoardsList.get(k);
+        			
+        			if(board != null)
+        			{
+        				// 搜索到对应拓展板型的信息
+        				if(board.getBoardName().equals(curBoard.getName()))
+        				{
+        					// 将路径传入
+        					board.setBuilt_path(bd_built_path);
+        					board.setCode_path(bd_code_path);
+        					board.setCache_path(bd_cache_path);
+        					
+        					// 代码生成器
+                            BDCmdGenerator cmdGenerator = new BDCmdGenerator();
+                        	
+                            dumpCmd = cmdGenerator.genDumpCmd(board);
+                        	
+                        	// 结束搜索
+                        	break;
+        				}
+        			}
+        		}
+
         		// 暂时屏蔽拓展板型后续操作
-        		return;
+        		//return;
         	}
         }
-        
-        // 代码生成器
-        BDCmdGenerator cmdGenerator = new BDCmdGenerator();
-    	
-    	String dumpCmdNew = cmdGenerator.genDumpCmd();
         
         File file = new File(bd_built_path);
         
@@ -673,6 +705,8 @@ public class BDCompileAndUploadCtrl
 			                compileAndUploadWindow.getAcvCtrl().updateMessageByLine("");
                         }
             		});
+                	
+                	System.out.println("cmd is : " + dumpCmd);
 
                 	// display command.
                 	dumpMessage.setMessage("cmd_" + dumpCmd);

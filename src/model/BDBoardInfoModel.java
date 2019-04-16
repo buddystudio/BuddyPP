@@ -6,12 +6,17 @@ public class BDBoardInfoModel
 {
 	private ArrayList<String>hardwaveList = new ArrayList<String>();
 	private ArrayList<String>toolsList = new ArrayList<String>();
+	private ArrayList<String>prefsList = new ArrayList<String>();
 	
 	private String boardName 			= "";
 	private String built_in_libraries 	= "";
 	private String libraries 			= "";
 	private String fqbn 				= "";
 	private String ide_version 			= "";
+	
+	private String built_path			= "";
+	private String code_path			= "";
+	private String cache_path			= "";
 	
 	public BDBoardInfoModel()
 	{
@@ -72,5 +77,37 @@ public class BDBoardInfoModel
 
 	public void setBoardName(String boardName) {
 		this.boardName = boardName;
+	}
+
+	public String getBuilt_path() {
+		return built_path;
+	}
+
+	public void setBuilt_path(String built_path) {
+		this.built_path = built_path;
+	}
+
+	public String getCode_path() {
+		return code_path;
+	}
+
+	public void setCode_path(String code_path) {
+		this.code_path = code_path;
+	}
+
+	public String getCache_path() {
+		return cache_path;
+	}
+
+	public void setCache_path(String cache_path) {
+		this.cache_path = cache_path;
+	}
+
+	public ArrayList<String> getPrefsList() {
+		return prefsList;
+	}
+
+	public void setPrefsList(ArrayList<String> prefsList) {
+		this.prefsList = prefsList;
 	}
 }
