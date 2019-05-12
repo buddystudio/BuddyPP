@@ -1,5 +1,5 @@
 {
-	"board":"Tansor Higgs-Core",
+	"board":"Tansor/Kidin Higgs-Core",
 	"paras":
 	[
 		{"name":"-hardware","value":"D:/Projects/Github/BuddyPP/arduino-builder-windows/hardware"},
@@ -7,7 +7,7 @@
 		{"name":"-tools","value":"D:/Projects/Github/BuddyPP/arduino-builder-windows/hardware/tools/avr"},
 		{"name":"-built-in-libraries","value":"D:/Projects/Github/BuddyPP/libraries"},
 		{"name":"-libraries","value":"D:/Projects/Github/BuddyPP/libraries"},
-		{"name":"-fqbn","value":"arduino:avr:uno"},
+		{"name":"-fqbn","value":"arduino:avr:pro:cpu=16MHzatmega328"},
 		{"name":"-ide-version","value":"10805"},
 		{"name":"-C","value":"C:/Software/Develop/Arduino/arduino-1.8.5-windows/hardware/tools/avr/etc/avrdude.conf"},
 		{"name":"-v","value":""},

@@ -653,9 +653,10 @@ public class BDCompileAndUploadCtrl
         					board.setCache_path(bd_cache_path);
         					
         					// 代码生成器
-                            BDCmdGenerator cmdGenerator = new BDCmdGenerator();
+                            BDCmdGenerator cmdGenerator = new BDCmdGenerator(board);
                         	
-                            dumpCmd = cmdGenerator.genDumpCmd(board);
+                            dumpCmd = cmdGenerator.genDumpCmd();
+                            compileCmd = cmdGenerator.genCompileCmd();
                         	
                         	// 结束搜索
                         	break;
@@ -706,7 +707,7 @@ public class BDCompileAndUploadCtrl
                         }
             		});
                 	
-                	System.out.println("cmd is : " + dumpCmd);
+                	//System.out.println("cmd is : " + dumpCmd);
 
                 	// display command.
                 	dumpMessage.setMessage("cmd_" + dumpCmd);

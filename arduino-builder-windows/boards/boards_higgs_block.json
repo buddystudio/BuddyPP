@@ -1,5 +1,5 @@
 {
-	"board":"Tansor Higgs-Block",
+	"board":"Tansor/Kidin Higgs-Block",
 	"paras":
 	[
 		{"name":"-hardware","value":"$root/arduino-builder-windows/hardware"},
