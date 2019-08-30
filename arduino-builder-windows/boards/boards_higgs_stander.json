@@ -1,5 +1,5 @@
 {
-	"board":"TANSOR/KIDIN HIGGS-BLOCK",
+	"board":"TANSOR/KIDON HIGGS-STANDER",
 	"paras":
 	[
 		{"name":"-hardware","value":"$root/arduino-builder-windows/hardware"},
@@ -9,12 +9,12 @@
 		{"name":"-libraries","value":"$root/libraries"},
 		{"name":"-fqbn","value":"arduino:avr:uno"},
 		{"name":"-ide-version","value":"10805"},
-		{"name":"-C","value":"C:/Software/Develop/Arduino/arduino-1.8.5-windows/hardware/tools/avr/etc/avrdude.conf"},
+		{"name":"-C","value":"$root/arduino-builder-windows/hardware/tools/avr/etc/avrdude.conf"},
 		{"name":"-v","value":""},
 		{"name":"-p","value":"atmega328p"},
 		{"name":"-c","value":"arduino"},
 		{"name":"-P","value":""},
-		{"name":"-b","value":"115200"},
+		{"name":"-b","value":"57600"},
 		{"name":"-D","value":""},
 		{"name":"-U","value":"flash:w:"},
 		{"name":"-prefs","value":"build.warn_data_percentage","value2":"75"},

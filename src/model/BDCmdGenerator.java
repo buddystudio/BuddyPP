@@ -109,9 +109,20 @@ public class BDCmdGenerator
 		return cmd;
 	}
 	
-	public String genUploadCmd()
+	public String genUploadCmd(String com, String hexPath)
 	{
 		String cmd = "";
+		
+		// 生成烧录程序的命令
+		cmd += builder_path + "hardware\\tools\\avr\\bin\\avrdude";
+		cmd += " -C" + board.getConfig_path();
+		cmd += " -v" + board.getV();
+		cmd += " -p" + board.getP();
+		cmd += " -c" + board.getC();
+		cmd += " -P" + com;
+		cmd += " -b" + board.getB();
+		cmd += " -D" + board.getD();
+		cmd += " -U" + board.getU() + hexPath + ":i";
 		
 		return cmd;
 	}

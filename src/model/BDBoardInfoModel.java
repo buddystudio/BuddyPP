@@ -18,6 +18,14 @@ public class BDBoardInfoModel
 	private String code_path			= "";
 	private String cache_path			= "";
 	
+	private String config_path			= "";
+	private String v					= "";
+	private String p					= "";
+	private String c					= "";
+	private String b					= "";
+	private String d					= "";
+	private String u					= "";
+	
 	public BDBoardInfoModel()
 	{
 
@@ -109,5 +117,61 @@ public class BDBoardInfoModel
 
 	public void setPrefsList(ArrayList<String> prefsList) {
 		this.prefsList = prefsList;
+	}
+
+	public String getConfig_path() {
+		return config_path;
+	}
+
+	public void setConfig_path(String config_path) {
+		this.config_path = config_path;
+	}
+
+	public String getV() {
+		return v;
+	}
+
+	public void setV(String v) {
+		this.v = v;
+	}
+
+	public String getP() {
+		return p;
+	}
+
+	public void setP(String p) {
+		this.p = p;
+	}
+
+	public String getC() {
+		return c;
+	}
+
+	public void setC(String c) {
+		this.c = c;
+	}
+
+	public String getB() {
+		return b;
+	}
+
+	public void setB(String b) {
+		this.b = b;
+	}
+
+	public String getD() {
+		return d;
+	}
+
+	public void setD(String d) {
+		this.d = d;
+	}
+
+	public String getU() {
+		return u;
+	}
+
+	public void setU(String u) {
+		this.u = u;
 	}
 }

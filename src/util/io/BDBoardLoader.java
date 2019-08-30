@@ -47,7 +47,6 @@ public class BDBoardLoader
 	{
 		String user_root_path = System.getProperty("user.dir");
 		//String path = user_root_path + "\\arduino-builder-windows\\boards\\boards_info.json";
-		
 		File file = new File(user_root_path + "\\arduino-builder-windows\\boards\\");
 		
 		// 遍历所有板型信息文件
@@ -99,7 +98,7 @@ public class BDBoardLoader
 				
 				ArrayList<String>hardwaveList = new ArrayList<String>();
 				ArrayList<String>toolsList = new ArrayList<String>();
-
+				
 				for(int i = 0; i < paraList.size(); i++)
 				{
 					if(paraList.get(i).getName().equals("-hardware"))
@@ -132,6 +131,34 @@ public class BDBoardLoader
 						String value2 = paraList.get(i).getValue2();
 						
 						boardInfo.getPrefsList().add("=" + value + "=" + value2);
+					}
+					else if(paraList.get(i).getName().equals("-C"))
+					{
+						boardInfo.setConfig_path(paraList.get(i).getValue());
+					}
+					else if(paraList.get(i).getName().equals("-v"))
+					{
+						boardInfo.setV(paraList.get(i).getValue());
+					}
+					else if(paraList.get(i).getName().equals("-p"))
+					{
+						boardInfo.setP(paraList.get(i).getValue());
+					}
+					else if(paraList.get(i).getName().equals("-c"))
+					{
+						boardInfo.setC(paraList.get(i).getValue());
+					}
+					else if(paraList.get(i).getName().equals("-b"))
+					{
+						boardInfo.setB(paraList.get(i).getValue());
+					}
+					else if(paraList.get(i).getName().equals("-D"))
+					{
+						boardInfo.setD(paraList.get(i).getValue());
+					}
+					else if(paraList.get(i).getName().equals("-U"))
+					{
+						boardInfo.setU(paraList.get(i).getValue());
 					}
 				}
 				

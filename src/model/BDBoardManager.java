@@ -15,7 +15,9 @@ public class BDBoardManager
 		// 添加拓展板型信息
 		for(int i = 0; i < BDParameters.exBoardsList.size(); i++)
 		{
-			boards.add(new BDBoardModel(BDParameters.exBoardsList.get(i).getBoardName(), "ex", "", "", "", "", "",""));
+			BDBoardInfoModel board = BDParameters.exBoardsList.get(i);
+			
+			boards.add(new BDBoardModel(board.getBoardName(), "ex", "", "", "", "", "",""));
 		}
 
 		boards.add(new BDBoardModel("Arduino/Genuino Uno", 

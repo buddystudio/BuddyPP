@@ -657,7 +657,8 @@ public class BDCompileAndUploadCtrl
                         	
                             dumpCmd = cmdGenerator.genDumpCmd();
                             compileCmd = cmdGenerator.genCompileCmd();
-                        	
+                            uploadCmd = cmdGenerator.genUploadCmd(bd_com, bd_hex_path);
+                            
                         	// 结束搜索
                         	break;
         				}
