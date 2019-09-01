@@ -54,7 +54,8 @@ public class BDCompileAndUploadCtrl
 	// Get the filename from path.
 	private File tempFile = new File(bd_code_path.trim());
 
-	private String bd_hex_path = bd_built_path + "\\" + tempFile.getName() + ".ino.hex";
+	//private String bd_hex_path = bd_built_path + "\\" + tempFile.getName() + ".ino.hex";
+	private String bd_hex_path = bd_built_path + tempFile.getName() + ".ino.hex";
 	
 	/*private String bd_avrdude_path 	= bd_root_path + "hardware\\tools\\avr\\bin\\";
 	private String bd_avrdude_conf 	= bd_root_path + "hardware\\tools\\avr\\etc\\avrdude.conf";*/
@@ -93,7 +94,7 @@ public class BDCompileAndUploadCtrl
 		
 		this.bd_built_path = builtPath;
 		this.bd_code_path  = codePath;
-		this.bd_hex_path   = builtPath + "\\Code.ino.hex";
+		this.bd_hex_path   = builtPath + "Code.ino.hex";
 		
 		String tempPath = System.getProperty("java.io.tmpdir") + "BDTmpPath";
 		this.bd_cache_path = tempPath + File.separator + "Cache";
@@ -942,7 +943,8 @@ public class BDCompileAndUploadCtrl
             	{
             		tempFile = new File(bd_code_path.trim());
 
-            		bd_hex_path = bd_built_path + "\\" + tempFile.getName() + ".ino.hex";
+            		//bd_hex_path = bd_built_path + "\\" + tempFile.getName() + ".ino.hex";
+            		bd_hex_path = bd_built_path + tempFile.getName() + ".ino.hex";
             	}
 
             	Runtime run = Runtime.getRuntime();

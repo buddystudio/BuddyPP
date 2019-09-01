@@ -55,8 +55,21 @@ public class BDBoardLoader
 			String fileName = file.listFiles()[j].getName();
 			
 			String infoPath = user_root_path + "\\arduino-builder-windows\\boards\\" + fileName;
+			
+			String[] strArray = fileName.split("\\.");
+			
+			// 获取后缀名
+			int suffixIndex = strArray.length - 1;
+			
+			String suffix = strArray[suffixIndex];
+			
+			// 如果不是json文件则忽略
+			if(!suffix.equals("json"))
+			{
+				continue;
+			}
 		
-			System.out.println(fileName);
+			//System.out.println(fileName);
 			
 			// 创建JSON解析器
 			JsonParser parser = new JsonParser();  
@@ -66,7 +79,7 @@ public class BDBoardLoader
 				JsonObject object = (JsonObject) parser.parse(new FileReader(infoPath));
 				
 				// 将json数据转为为String型的数据
-				System.out.println("board = " + object.get("board").getAsString()); 
+				//System.out.println("board = " + object.get("board").getAsString()); 
 				
 				// 得到为json的数组
 				JsonArray paras = object.get("paras").getAsJsonArray();
