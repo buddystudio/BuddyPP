@@ -15,12 +15,8 @@
 package buddy;
 
 import java.awt.GraphicsEnvironment;
-import java.awt.Toolkit;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
@@ -31,7 +27,6 @@ import javafx.stage.Stage;
 import model.BDLang;
 import model.BDParameters;
 import util.base.Preferences;
-import util.io.BDBoardLoader;
 import view.BDGUIView;
 
 /**
