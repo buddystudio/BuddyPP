@@ -20,7 +20,7 @@ public class BDBoardLoader
 {	
 	public BDBoardLoader()
 	{
-		
+		this.parse3();
 		this.parse2();
 	}
 	
@@ -41,6 +41,69 @@ public class BDBoardLoader
 		}
 		
 		return path;
+	}
+	
+	public void parse3()
+	{
+		String user_root_path = System.getProperty("user.dir");
+		//String path = user_root_path + "\\arduino-builder-windows\\boards\\boards_info.json";
+		File file = new File(user_root_path + "\\arduino-builder-windows\\boards\\");
+		
+		// 遍历所有板型信息文件
+		for(int j = 0; j < file.listFiles().length; j++)
+		{
+			String fileName = file.listFiles()[j].getName();
+			
+			String infoPath = user_root_path + "\\arduino-builder-windows\\boards\\" + fileName;
+			
+			String[] strArray = fileName.split("\\.");
+			
+			// 获取后缀名
+			int suffixIndex = strArray.length - 1;
+			
+			String suffix = strArray[suffixIndex];
+			
+			// 如果不是board文件则忽略
+			if(!suffix.equals("board"))
+			{
+				continue;
+			}
+			
+			System.out.println("fileName: " + fileName);
+			
+			// 创建JSON解析器
+			JsonParser parser = new JsonParser();
+			
+			try
+			{
+				JsonObject object = (JsonObject) parser.parse(new FileReader(infoPath));
+				
+				BDBoardInfoModel boardInfo = new BDBoardInfoModel();
+
+				String board = object.get("board").getAsString();
+				String dump = object.get("dump").getAsString();
+				String compile = object.get("compile").getAsString();
+				String upload = object.get("upload").getAsString();
+				
+				// 获取主控板名称，设置、编译以及上传的命令模板
+				boardInfo.setBoardName(object.get("board").getAsString());
+				boardInfo.setDump(object.get("dump").getAsString());
+				boardInfo.setCompile(object.get("compile").getAsString());
+				boardInfo.setUpload(object.get("upload").getAsString());
+				
+				System.out.println("board : " + board);
+				System.out.println("dump : " + dump);
+				System.out.println("compile : " + compile);
+				System.out.println("upload : " + upload);
+				
+				// 添加一个板型信息
+				BDParameters.exBoardsList.add(boardInfo);
+			} 
+			catch (JsonIOException | JsonSyntaxException | FileNotFoundException e)
+			{
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public void parse2()

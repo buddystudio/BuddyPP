@@ -14,6 +14,17 @@ public class BDCmdGenerator
 	public String genDumpCmd()
 	{
 		String cmd = "";
+		
+		String root = System.getProperty("user.dir");
+		
+		cmd = this.board.getDump();
+		
+		cmd = cmd.replace("$root$", root);
+		cmd = cmd.replace("$cache$", board.getCache_path());
+		cmd = cmd.replace("$build$", board.getBuilt_path());
+		cmd = cmd.replace("$temp$", board.getCode_path());
+		
+		/*
 
 		cmd += builder_path + "arduino-builder -dump-prefs -logger=machine";
 		
@@ -56,6 +67,8 @@ public class BDCmdGenerator
 		}
 		
 		cmd += " -verbose " + board.getCode_path() + "Code.ino";
+		
+		*/
 
 		return cmd;
 	}
@@ -63,6 +76,17 @@ public class BDCmdGenerator
 	public String genCompileCmd()
 	{
 		String cmd = "";
+		
+		String root = System.getProperty("user.dir");
+		
+		cmd = this.board.getCompile();
+		
+		cmd = cmd.replace("$root$", root);
+		cmd = cmd.replace("$cache$", board.getCache_path());
+		cmd = cmd.replace("$build$", board.getBuilt_path());
+		cmd = cmd.replace("$temp$", board.getCode_path());
+		
+		/*
 		
 		cmd += builder_path + "arduino-builder -compile -logger=machine";
 		
@@ -105,6 +129,7 @@ public class BDCmdGenerator
 		}
 		
 		cmd += " -verbose " + board.getCode_path() + "Code.ino";
+		*/
 		
 		return cmd;
 	}

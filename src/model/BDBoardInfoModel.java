@@ -26,6 +26,12 @@ public class BDBoardInfoModel
 	private String d					= "";
 	private String u					= "";
 	
+	// 修改后的部分
+	//private String boardName 			= "";
+	private String dump 			= "";
+	private String compile 			= "";
+	private String upload 			= "";
+	
 	public BDBoardInfoModel()
 	{
 
@@ -173,5 +179,29 @@ public class BDBoardInfoModel
 
 	public void setU(String u) {
 		this.u = u;
+	}
+
+	public String getDump() {
+		return dump;
+	}
+
+	public void setDump(String dump) {
+		this.dump = dump;
+	}
+
+	public String getCompile() {
+		return compile;
+	}
+
+	public void setCompile(String compile) {
+		this.compile = compile;
+	}
+
+	public String getUpload() {
+		return upload;
+	}
+
+	public void setUpload(String upload) {
+		this.upload = upload;
 	}
 }
